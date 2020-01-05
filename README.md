@@ -185,6 +185,79 @@ Rotated the other way we get the following table.
 | Particle | 👀     | 👀   | 👀     | 👀      | 👀🖊     |
 
 
+### Emitter Settings, Emitter Spawn Group, and Emitter Update Group
+
+URL: https://docs.unrealengine.com/en-US/Engine/Niagara/EmitterReference/EmitterSettings/index.html  
+URL: https://docs.unrealengine.com/en-US/Engine/Niagara/EmitterReference/EmitterSpawn/index.html
+URL: https://docs.unrealengine.com/en-US/Engine/Niagara/EmitterReference/EmitterUpdate/index.html
+
+Every emitter is created with an `Emitter Properties` item in its stack.
+It contains a bunch of properties that is configured for this emitter.
+
+The `Emitter Spawn` group is executed once when the emitter is created.
+The following types of modules can be included:
+
+- Create New Parameter
+- Location
+- MAX Scripts
+- Set Specific Parameters
+- Spawning
+- Vector Field
+- User-created custom modules.
+
+`Create New Parameter` adds a `Set Variable` module to the stack.
+There are four types of parameters: Primitive, Enum, Struct, and Data Interface.
+A Collision Query is a struct.
+Curl Noise is a Data Interface.
+There is a long list of parameter types.
+
+`Location` spawns particles in a grid.
+The naming here is odd.
+
+`MAX Scripts` has to do with vertex animation.
+I don't think I need this.
+
+`Set Specific Parameters` is very similar to `Create New Parameter`.
+It also adds a `Set Variable` module to the stack.
+There is a list of `Emitter.` and `System.` parameters that can be set.
+
+`Spawning Modules` are Spawn Per Unit and Spawn Rate.
+`Unit` in Spawn Per Unit is unit length, and is the distance the emitter has traveled.
+`Rate` in `Spawn Rate` is particles per second.
+
+_How can modules added to the Particle Spawn group continiously spawn particles? They are only executed at the spawn event and will never again be given the opportunity to spawn particles._
+
+`Vector Field Modules` is a bunch of different types of vector fields.
+I don't know what they are for.
+
+
+The `Emitter Update` group is executed on every tick.
+It is used to compute values for particle spawn or to update emitter parameters.
+The following modules intended for `Emitter Update` are included in Unreal Engine.
+
+- Beam
+- Create New Parameter
+- Emitter
+- Location
+- MAX Scripts
+- Scalability
+- Set Specific Parameters
+- Spawning
+- Utility
+- Vector Field
+
+Use-created custom modules can also be added.
+
+The `Beam` module provide settings for beam emitters.
+`Create New Parameter` works the same in Emitter Update as it does in `Emitter Spawn`.
+The `Emitter Lice Cycle` module control how the emitter loops.
+There are four `Spawning` modules:
+
+- Spawn Burst Instantaneous
+- Spawn Per Frame
+- Sapwn Per Unit
+- Spawn Rate
+
 
 
 ### How-to index (this should perhaps not be it's own section)
@@ -353,9 +426,9 @@ Create using a blank/empty system/emitter and using no pre-existing modules.
 
 ### Keep max number
 
+Continuation of the tornado.
 Every now and then, spawn a bunch of particles so that a target number of particles exist.
-Kill particles that fall off the edge of a box.
-An alternative to the box, use the tornado described above and delete particles that move too far away from the tornado center.
+Remove particles that move too far away from the tornado center.
 
 Requirements:
 
@@ -367,6 +440,17 @@ Requirements:
 ### Blueprint triggering
 
 Trigger an emitter cycle on an existing partile system from a blueprint/C++.
+
+
+### Flow over mesh
+
+Spawn particles that flow over the surface of a mesh.
+Remove particles that fall off the mesh.
+
+Requirements:
+
+- Collision Query struct parameter.
+- Age tracking that is reset on contact.
 
 
 ### C++ simulation
