@@ -123,6 +123,7 @@ _I don't understand what a dynamic input is._
 
 
 
+
 ## Niagara presentations
 
 ### Building Effects with Niagara and Blueprint | GDC 2019 | Unreal Engine
@@ -266,3 +267,43 @@ The only pre-created module is `Emitter Properties`, which is identical to the b
 Right-click in the `Content Browser` again and select `FX` → `Niagara Module Script`.
 Name it `SpawnSomeParticles`.
 
+
+## Particle system exercise ideas
+
+### Tornado from scratch
+
+A swirl of particles affected by a circular inward-facing force field.
+Create using a blank/empty system/emitter and using no pre-existing modules.
+
+
+### Keep max number
+
+Every now and then, spawn a bunch of particles so that a target number of particles exist.
+Kill particles that fall off the edge of a box.
+An alternative to the box, use the tornado described above and delete particles that move too far away from the tornado center.
+
+Requirements:
+
+- Burst spawning.
+- Integer parameter.
+- Current number of particles.
+
+
+### Blueprint triggering
+
+Trigger an emitter cycle on an existing partile system from a blueprint/C++.
+
+
+### C++ simulation
+
+Do particle simulation in C++, pass particle data to Niagara through a data interface.
+
+
+### SPH
+
+Requirements: Neighbor lists.
+
+
+### CPU communication
+
+Compute per-particle data in C++, access that data in a module.
