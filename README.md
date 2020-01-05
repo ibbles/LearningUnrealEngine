@@ -1,2 +1,200 @@
-# LearningUnrealEngine
-A bunch of notes and code snippets that I write while figuring out how to use the Unreal Engine.
+# Learning Unreal Engine
+
+This is a bunch of notes and code snippets that I write while figuring out how to use the Unreal Engine.
+
+# Materials
+
+A `Material`, or a set of materials, is what defines the colors an object has.
+A `Material` is a blueprint and all `Materials` have a `Result Node` that define the properties of the material.
+
+
+# AI units
+
+In this section we create a AI controlled unit that moves around.
+It is based on the following tutorial:
+
+Unreal Engine Beginner Tutorial: Building Your First Game  
+https://www.youtube.com/watch?v=QJpfLkEsoek  
+Creates evil cubes.
+
+The first step is to create the AI, the brain of the 
+
+Create a new Blueprint class with `AIController` as parent named `UnitAI`.
+In the event graph, add an `AI MoveTo`.
+Drag from the `Pawn` pin and select `Get Controller Pawn`.
+This find find the pawn that this AI is attached to.
+Create a `Set Timer by FunctionName` to have the `AI MoveTo` trigger every now and then.
+Give it the function name `MoveToCorner`, set time to 1.0, and enable looping.
+Right-click and create a custom event with the same name, i.e., `MoveToCorner`.
+Drag from `Event BeginPlay` to the timer to start the timer loop.
+Connect `MoveToCorner` to `AI MoveTo`.
+Now the `AI MoveTo` will be called once every second.
+
+The second step is to create the unit that the AI is controlling.
+Create a new blueprint class with `Pawn` as the parent.
+Add static meshes of whatever else you want for a visual representation.
+Also add a `Floating Pawn Movement`.
+This is where we define how the unit is allowed to move.
+Speed and acceleration and the like.
+Select the root object, i.e. the `Pawn`, in the `Components` tab and look at the `Pawn` section of the details tab.
+Find `AI Controller Class` and set it to the `UnitAI` class we created previously.
+
+The third step is to create a navigation mesh.
+In the `Place` mode, under `Volumes`, find `Nav Mesh Bounds`.
+Scale it to cover the entive level.
+In the viewport, click `Show` in the top-left and then click Nativation.
+Walkable areas will be colored green.
+There must be a mesh to walk on, so make sure you have a floor.
+Not sure how to do a flying unit.
+
+
+# Particle systems
+
+On Unreal Engine 2.23 the Niagara plugin must be enabled to use particle systems.
+
+Particel systems are created from the `FX` section of the `Content Browser's` right-click menu.
+
+
+## Niagara presentations
+
+### Building Effects with Niagara and Blueprint | GDC 2019 | Unreal Engine
+
+URL: https://www.youtube.com/watch?v=etSfYfIIoSE  
+By: Unreal Engine  
+Pusblished: Mar 25, 2019  
+Duration: 29m 21s
+
+Niagara consists of several pieces to make it easier to extend share resources between systems.
+A Niagara system is something that is added into the world.
+Niagara systems contains Niagara emitters.
+An emitter can for example be fore sparks, smoke, and flames.
+
+The Emitter GUI contains the viewport, the modules, and a timeline.
+On the right, every block is called a module.
+It's a series of instructions that get run at that point in the system.
+`Emitter Spawn`: When the emitter is first created, do this stuff.
+`Emitter Update`: On every tick.
+Green blocks are per-particle instructions.
+Niagara modules are blueprint scripts.
+In scripts, everything works in namespaces.
+Uses default values if the variable doesn't exist.
+Can have dependencies between modules, i.e., `Gravity Force` and `Solve Forces and Velocity`.
+Used to build bigger systems with several modules.
+Various ways to spawn particles.
+Sphere, cylinder, ...
+Orthgraphic projection viewport can be used as a ruler by holding middle mouse button.
+Niagara systems can be created from an emitter by right-clicking the emitter.
+The position of the system can be copy/pasted from another object by right-click on Location.
+We can add new data to the particle system by clickig `+` in `Particle Spawn` and selecting e.g., `Vector 2D`.
+We can see the data for every particle in the `Window` → `Attribute Spreadsheet`.
+Can set spawn position direction by adding a `Particles.position` setting to `Particle Spawn`.
+Can write code directly by setting the value type to `Make new expression`.
+Can add `Sample Texture` to `Particle Update.`
+Set `UV` to be `Particle.UV` to get the per-particle random value.
+Now each new particle "own" a texel in the texture, and in this case each texel is a 3D space coordinate.
+By setting the position of the particle to the sampled texture data we can create shapes.
+Texture sampling can only be done with GPUSim particles.
+
+### Introduction to Niagara | Unreal Fest Europe 2019 | Unreal Engine
+
+URL: https://www.youtube.com/watch?v=2CtBa3zEaYU  
+By: Unreal Engine
+Published: May 20, 2019  
+Duration: 25m 39s
+
+If you need some piece of data that is accessable to all particles, then create it in `Emitter Spawn`.
+Kind of like `BeginPlay`.
+If you need to update that data over time, then do that in `Emitter Update`.
+Kind of like `EventTick`.
+`Particle Spawn` happens at the start of every particle's lifetime.
+Set initial state, position, velocity, size, etc.
+The various color fields are "tabs", e.g. the red is the render tab.
+The gray sets are called "modules".
+
+Create an empty emitter.
+Create a sprite renderer.
+Create a `Spawn Rate`.
+`Spawn Rate` depends on `EmitterLifeCycle`.
+
+
+
+
+
+## Studying Directional Burst template
+
+The main part of a particle system is one or more emitters.
+Let's study the `Directional Burst` template emitter.
+It is created by right-clickig in the `Content Browser`, expanding `FX` and selecting `Niagara Emitter`.
+From the emitter creation dialog select the `Directional Burst` template.
+
+Opening the emitter we see that it consists of three main parts: a timeline, a set of parameters, and a stack of modules.
+The module stacks are what defines the behavior of the emitter.
+It consists of three sections, each with it's separate color.
+Orange is for the emitter itself, green is for the emitted particles, and red is for rendering. Each colored part contains a collection of groups, and each group contains a stack of modules.
+
+The orange Emitter section conists of the `Emitter Spawn` group and the `Emitter Update` group.
+The first is executed when the emitter is created and the second on every tick.
+The `Emitter Spawn` group created by the `Directional Burst` template contains a single module named `Emitter Properties`.
+This is where we can set various general properties of the emitter.
+The `Emitter Update` group contains two modules: `Emitter Life Cycle` and `Spawn Burst Instantaneous`.
+`Emitter Life Cycle` seems to be a set of general emitter properties much like the `Emitter Properties` under `Emitter Spawn`.
+The `Spawn Burst Instantaneous` modules is half of what defines this emitter.
+This is where we define the number of particles that should be spawend in each burst, with the `Spawn Count` parameter.
+I don't understand why that number of particles isn't spawned every tick.
+What defines when it's time to spawn again?
+
+The second section is the green `Particle Spawn`.
+It contains the modules that should execute for each spawned particle.
+The first module is `Initialize Particle`.
+This can be considered a particle constructor.
+Here we can set things such as lifetime, mass, color, and sprite size.
+Unfortunately, changing the sprite size has no effect on the size of the particles.
+`Mesh Scale` doesn't seem to do anything either.
+I don't know what's up with that.
+OK I got it, the next module in the `Particle Spawn` group is `Calculate Size by Mass`.
+I'm guessing this is overwriting the values I set in `Initialize Particle`.
+The last module in the `Particle Spawn` group is `Add Velocity in Cone`.
+It gives each particle a random velocity within a cone.
+The oddity here is that even with the same minimum and maximum `Velocity Strength` and a very narrow `Cone Angle`, some particles fly much farther and others.
+I don't know why.
+OK I got it, it's the `Velocity Fallof Away From Cone Axis` checkbox.
+Moving on to the `Particle Update` group we find a number of modules related to particle simulation.
+`Update Age` reduces the lifetime or particles and kill too old particles.
+`Gravity Force` adds a gravity force to each particle.
+`Drag` adds a drag force to each particle.
+`Scale Color` scales the alpha channel of the particles so they fade out over their lifetime.
+This doesn't seem to do anything. The particles disappears suddenly at the end of life no matter what alpha curve I set.
+Isn't alpha supported by the renderer?
+I switched, under `Rendering`, the `Material` from `DefaultSpriteMaterial` to `DefaultSpriteMaterial` and now the alpha curve works again.
+`Solve Forces and Velocity` uses the forces we've added to compute new positions and velocities.
+`Sprite Size Scale by Velocity` makes fast particles larger, I think.
+
+The last section is the red one, which consists of the single `Render` group.
+This one has a lot of parameters and toggles.
+
+Having finished reading through the burst template, I was never able to figure out why `Spawn Count` particles wasn't spawned every tick by the `Spawn Burst Instantaneous` module in `Emitter Update`.
+Invastigating another emitter template, a more continious one, to see what that emitter does differently.
+Creating a particle system from a `Fountain` emitter.
+
+
+## Comparing Direction Burst and Fountain
+
+They both have the same `Emitter Spawn` → `Emitter Properties`.
+Under `Emitter Update` → `Emitter Life Cycle`, the fountain has 0 `MaxLoopCount` and 5.0 `NextLoopDuration`, compared to the directional burst's `MaxLoopCount` of 10 and `NextLoopDuration` of 1.44....
+
+Instead of `Spawn Instantaneous`, the fountain has a `Spawn Rate`.
+This seems like an important difference.
+
+
+## Creating a particle system from scratch
+
+The goal is to create a particle emitter maintains a fixed number of particles.
+We do this by having a target number of particles parameters and every now and then checking the current number of particles and if too low create create a bunch of new ones.
+
+Right-click in the `Content Browser`, select `FX` → `Niagara Emitter`.
+The created emitter has all the sections, orange, green, and red, and all the groups within the sections.
+The only pre-created module is `Emitter Properties`, which is identical to the burst template.
+
+Right-click in the `Content Browser` again and select `FX` → `Niagara Module Script`.
+Name it `SpawnSomeParticles`.
+
