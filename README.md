@@ -123,6 +123,81 @@ _I don't understand what a dynamic input is._
 
 
 
+### Key concepts
+
+URL: https://docs.unrealengine.com/en-US/Engine/Niagara/NiagaraKeyConcepts/index.html  
+
+Epic Games' goals when designing Niagara:
+
+- Full control in the hands of the artist.
+- Programmable and customizable on every axis.
+- Tooling for debugging, visualization, and performance.
+- Can incorporate data from other parts of the engine.
+- Unobtrusive.
+
+Namespaces provide containers for hierarchical data.
+For example, the Emitter part of Emitter.Age show that this is the age of an emitter, while Particle.Position is the position of a particle.
+Our parameter map is the particle payload that carries all of the particle’s attributes. As a result of this, everything becomes optional.
+
+_I don't understand the last sentence._
+
+Any type of data can be added as a particle parameter, including structs, matrices,and flags.
+
+Modules speak to common data, encapsulate behaviors, and stack together.
+The operations performed by a module are defined using a visual node graph.
+
+Emitter are containers for modules that are stacked on each other.
+Parameters on modules bubble up to become parameters on the emitter unless set by the emitter itself.
+
+Systems are containers for emitters, which it combines to create an effect.
+Emitter parameters are set by the system they belong to or become parameters of the system.
+The module stacks of the emitters can be modified by the system.
+
+Modules are assigned to groups.
+Each group has a defined point in time when it's modules are executed.
+Modules are executed top to bottom.
+Modules part of the System group is executed first, handling behavior that is shared with every emitter.
+Then the modules of the Emitter groups are executed, once for each emitter.
+Then the modules of the Particle groups are executed, once for each particle.
+Then the modules of the Render groups are executed.
+
+In addition to when a module is executed, the group assignment also control what data the module operates on.
+Each collection of data is called a namespace.
+Modules in the group that correspond to a namespace can read/write parameters in that namespace, and read parameters in the namespaces above it.
+The namespace order is Engine, User, System, Emitter, Particle.
+Computation whose results are used in several instances of a lower lever should be computed in an upper level.
+
+
+| Group       | Read | Write |
+|-------------|------|-------|
+| System      | Engine, User, System | System |
+| Emitter     | Engine, User, System, Emitter | Emitter |
+| Particle    | Engine, User, System, Emitter, Particle | Particle |
+
+
+Rotated the other way we get the following table.
+
+
+| Group    | Engine | User | System | Emitter | Particle |
+|----------|--------|------|--------|---------|----------|
+| System   | 👀     | 👀   | 👀🖊   |         |          |
+| Emitter  | 👀     | 👀   | 👀     | 👀🖊    |          |
+| Particle | 👀     | 👀   | 👀     | 👀      | 👀🖊     |
+
+
+
+
+### How-to index (this should perhaps not be it's own section)
+
+URL: https://docs.unrealengine.com/en-US/Engine/Niagara/HowTo/index.html
+
+
+### Emitter reference (this should perhaps not be its own section)
+
+URL: https://docs.unrealengine.com/en-US/Engine/Niagara/EmitterReference/index.html  
+
+
+
 
 ## Niagara presentations
 
