@@ -50,9 +50,77 @@ Not sure how to do a flying unit.
 
 # Particle systems
 
-On Unreal Engine 2.23 the Niagara plugin must be enabled to use particle systems.
-
+On Unreal Engine 2.23 the `Niagara` plugin must be enabled to use particle systems.
 Particel systems are created from the `FX` section of the `Content Browser's` right-click menu.
+
+## Unreal Engine official documentation
+
+URL: https://docs.unrealengine.com/en-US/Engine/Niagara/index.html  
+
+Niagara is the part of Unreal Engine that deals with creating and previewing particle effects.
+Before Niagara there were another particle system called Cascade.
+
+### Niagara Overview
+
+URL: https://docs.unrealengine.com/en-US/Engine/Niagara/Overview/index.html
+
+There are four core components in Niagara:
+
+- Systems
+- Emitters
+- Modules
+- Parameters
+
+A `System` holds emitters that together produce an effect.
+There is a system editor in which emitters are added and configured.
+It contains a timeline and a section that is very similar to the emitter editor.
+`Emitters` produce and simulate particles.
+Their behavior is controlled using modules and there is a stack of modules for each phase of the emitter.
+Examples of phases are particle spawn, particle update, and render.
+Theses phases are called groups, as they are a group of modules.
+`Modules` are building blocks for behaviors, acting like regular functions.
+Modules transforms the state of the particle system in some way, reading and/or writing common data.
+Modules are stacked together to form a sequence.
+They are created using blueprint graph nodes.
+Unreal Engine ships with a sizable collection of useful modules.
+`Parameters` let us provide customizations of an emitter or particle system.
+A parameter can be either a primitive, and enum, a struct, or a data interface.
+The first three are what they sound like.
+The last one, data interface, is used to provide data from other parts of the application.
+Parameters are created either explicitly through `Create New Parameter` or implicitly using a `Set Specific Parameter` module.
+
+Each active module is a system belong to a group, and all modules in that group form a stack.
+The modules in the stack are executed top to bottom when that group is triggered.
+The group order is from large to small, starting with System groups, then Emitter groups, and finally Particle groups.
+The groups are System Spawn, System Update, Emitter Spawn, Emitter Update, Particle Spawn, Particle Update, Render.
+
+Modules in the Emitter Spawn group will execute when the emitter spawns.
+Modules in the Emitter Update group will execute over time.
+Modules in the Particle Spawn group will execute each time a particle is created.
+Modules in the Particle Update group will execute per particle over time.
+Event handlers allow particles to interact with each other and other emitters or systems.
+
+Events are a way to communicate between elements (such as particles, emitters, and systems).
+Events can be any kind of data, packed into a payload (such as a struct) and sent. Then anything else can listen for that event and take action.
+An event can be run directly on a particle using Particle.ID, on every particle in a system, or spawn a collection of particles on run on those.
+
+Data interfaces is an extensible system to allow access to arbitrary data, including meshes, audio, DDC information, code objects and text containers.
+
+When creating a new system or emitter you are given the choise to create from a template.
+Nothing is locked or special in such a system or emitter.
+
+A module's function flow consists of four main parts: Reading from the incoming parameter map, performing computation or other actions, write restults into the parameter map, and finally module output.
+Modules accumulate to a temporary namespace.
+If two modules contrinbute to the same attribute the modules will stack and accumulate properly.
+
+_I don't understand the above._
+
+Modules created using the blueprint graph scripting language can be run on both the CPU and the GPU.
+
+Dynamic inputs act on a value type instead of a parameter map.
+
+_I don't understand what a dynamic input is._
+
 
 
 ## Niagara presentations
