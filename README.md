@@ -274,6 +274,134 @@ URL: https://docs.unrealengine.com/en-US/Engine/Niagara/EmitterReference/index.h
 
 ## Niagara presentations
 
+### Programmable VFX with Unreal Engine's Niagara | GDC 2018 | Unreal Engine
+
+URL: https://www.youtube.com/watch?v=mNPYdfRVPtM  
+By: Unreal Engine  
+Published: Mar 22, 2018  
+Duration: 56m 01s
+
+Unreal much broader in scope now than before.
+Moving into domains where Epic Games isn't the experts.
+Goal is to give control to the artists.
+Support for arbitrary data, from other parts of Unreal Engine or external.
+Started with data sharing, expose everything.
+Uses namespace paradigm, hierarchical containers.
+`Emitter.` namespace, `Particle.` namespace.
+Parameter map is the particle payload, the data we have asked to come along.
+Read from and write to parameter map.
+Makes everything optional, can disable stuff used for rendering when not rendering.
+Can add arbitrary data to payload.
+Uses both graphs and stacks.
+Graphs are flexible, stacks are modular and give at-a-glance overview.
+Hierarchy:
+Modules speak to data, encapsulate behavior, and stack nicely.
+Works like function.s
+Emitters are containers for modules.
+Emitters are single purpose reusable pieces of a larger particle system.
+Parameteres can bubble up from modules to the emitter.
+Systems hold emitteres.
+Modules are graphs.
+Emitters are collections of stacks.
+Systems are timelines.
+
+A module start with an Input Map.
+This is our access point to the payload.
+We get data from the map and do some work.
+When we have a result we write it back to the parameter map.
+Open, read, work, write, close.
+Engine namespace: The thing that owns this particle system.
+Module namespace: Things that I as a model author have added and exposed.
+Particle namespace: Data that belong to the current particle.
+Map Get Particles.Velocity and Module.VelocityScale → Multiply the two → Map Set Particles.Velocity.
+Module Usage Bitmask dictate when a module may be used.
+Since we read and write particle data, the example module can only be used in particle groups.
+These are Particle Spawn, Particle Spawn Interpolated, Particle Update, and Particle Event.
+Strive to build modules that stack nicely with each other.
+Accumulate rather than set things such as forces.
+Use temporary namespaces.
+Temporary namespace are "unreserved" namespace names, just pick one.
+Examples uses `Physics.`.
+Multiple modules using the same name in a namespace will see each other's data.
+Example uses `Physics.Force`.
+_Not clear to me how the temporary data is stored/assigned/structured._
+_Will it be one per particle? One per emitter?_
+_Depends on the group the access is part of?_
+_What if the same name in used in multiple places in the hierarchy?_
+At the end of the frame the data will be thrown away.
+Called transient values.
+_Do we get a default value, e.g., zero, when a transient value is read first read?_
+Everything compiled down to HLSL. Sent to GPU or CPU virtual machine.
+Goal as full partity CPU and GPU. When applicable.
+Can have raw HLSL in a node.
+
+Screenshot of editor.
+Stack to the right, color coded by behavior section.
+Orange is emitter, stuff that happens at the emitter level instead of per-particle level.
+Both spawn and update. First frame versus all subsequent frames.
+Modules listed in the stacks are all optional, even very basic stuff such as age or velocity/position integration.
+Green is particle.
+
+The parameter pane list particle-emitter-system-user parameters.
+Can just drag them into the stack.
+Can be shared between multiple emitters.
+
+The sequencer timeline controls looping, loop count, bursts, random start/stop, spawn rate.
+
+Emitters are building blocks of system.
+Systems have their own set of global user variables.
+Systems control timing between emitters.
+Systems have their own Spawn and Update stacks, in blue.
+The system timeline show all emitters and renderes.
+Systems have a render stack.
+Simulation decoupled from rendering.
+Simulate once, render in multple ways.
+
+Module creation demo.
+Default values for parameters can be provided in a module.
+The attribute spreadsheet shows all the data in the system.
+
+Inheritance important to design.
+Old tools (Cascade) made reuse difficult.
+Overrides can be inserted anywhere.
+A system can uncheck a module from an imported emitter.
+A system can insert new modules into an imported emitter.
+
+Dynamic inputs.
+Like modules, uses graph logic and user facing values.
+Not working on parameter map, working on a type.
+Ex: dynamic input with Vector. eg mirror it, uniform distribution,.
+Can get data from somewhere outside of Niagara.
+
+Micro expressions.
+HLSL pretty much anywhere.
+Can access particle attributes.
+Good for small one-off features.
+
+Demo of inheritance and modularity.
+
+Events.
+A way to communicate.
+Can send any payload.
+Struct of anything.
+Can run events directly on a particle, all particles in a system, spawned particles.
+`LocationEvent Write` struct in graph. Add the data you want.
+Add event handles to the stack, tell it how to behave.
+Events have a separate execution stack.
+Demo of recursive three builder.
+Demo of teslacoil.
+
+Data interfaces.
+Access to arbitrary data.
+Can write plugin for greate extensibility (in the future?).
+Example from Houdini simulation.
+Built-in component is skeletal mesh data interface.
+
+
+
+
+
+
 ### Building Effects with Niagara and Blueprint | GDC 2019 | Unreal Engine
 
 URL: https://www.youtube.com/watch?v=etSfYfIIoSE  
