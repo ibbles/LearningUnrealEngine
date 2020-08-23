@@ -47,6 +47,9 @@ Instances of classes are created with the `Construct Object From Class` node.
 Variables are used by dragging them from the My Blueprint panel into the graph.
 Hold Alt or Ctrl to select get or set.
 
+For more information see [./Blueprints.md](Blueprints) where blah blah.
+
+
 [[2020-03-09_21:54:48]] Blueprints
 [[2020-03-11_21:08:39]] Blueprints and UPROPERTY
 [[2020-03-09_21:43:36]] UPROPERTY
