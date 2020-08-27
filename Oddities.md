@@ -4,6 +4,15 @@
 
 Here I list behavior that surprised me, explain why I was surprised, and hopefuly why Unreal Engine behaves the way it does.
 
+## Play button grayed out
+
+The Play button in the Level Editor Toolbar has been grayed out.
+I don't know why.
+I don't see any compiler errors in my Blueprints.
+It was because lighting has finished building and a small dialog in the lower-left corner of my screen, far away from the editor, wanted me to click "Apply".
+Play button active again.
+
+
 ## Editor stuck in fullscreen
 
 I can't resize my editor anymore, It's stuck in fullscreen.
