@@ -2,7 +2,7 @@
 
 # Loading assets
 
-In a Actor or Component constructor (possibly other classes as well), an asset should be loaded with
+In an Actor or Component constructor (possibly other classes as well), an asset should be loaded with
 
 ```c++
 #include "UObject/ConstructorHelpers.h"
@@ -10,7 +10,7 @@ In a Actor or Component constructor (possibly other classes as well), an asset s
 MyClass::MyClass()
 {
 	static ConstructorHelpers::FObjectFinder<UMyAsset> Finder(
-        TEXT("/Game/Folder/AssetName"));
+        TEXT("/Game/<Folder>/<AssetName>"));
 	UMyAsset* MyAsset =
 			Finder.Succeeded()
 				? Cast<UMyAsset>(Finder.Object)
@@ -44,3 +44,7 @@ if (Asset == nullptr)
 }
 // Safe to use Asset here.
 ```
+
+There is also `FStringAssetReference` which should be used when loading assets.
+It holds the path to the asset and has a `TryLoad` member function to get a reference to the asset itself.
+Not sure how `StaticLoadObject` and `FStringAssetReference.TryLoad` relate to each other.

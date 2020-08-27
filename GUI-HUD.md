@@ -5,7 +5,6 @@
 A HUD is a way to provide 2D visual feedback and interaction to a user.
 Text, sliders, etc.
 
-
 GUIs are built from `Widgets`.
 Works much like many other GUI tool kits in that `Widgets` are placed into container `Widgets`.
 A new `Widget` is created in the Content Browser by right-click → User Interface → Blueprint Widget.
@@ -15,7 +14,7 @@ The Graph part is where behavior and functionality is added.
 A HUD is created from the `PlayerController`'s `BeginPlay` by calling `CreateWidget`.
 The HUD needs something to talk to in order to get state updates and send user input.
 It therefore be given a `PlayerController` variable that is marked Expose on Spawn.
-The widget needs an Owning Player, which should be <TODO more text here.>
+The widget needs an Owning Player, which should be *TODO more text here*.
 The created widget is added to the viewport with `Add to Viewport`.
 
 

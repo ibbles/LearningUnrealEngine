@@ -3,7 +3,7 @@
 # Blueprint function
 
 A function is another type of container, a container for an action.
-Functions are added to a Blueprint by clicking the `+` button in the title of the Functions category of the My Blueprint panel in the Blueprint Editor.
+Functions are added to a Blueprint by clicking the `+` button in the title of the Functions category of the My Blueprint panel in the [Blueprint Editor](./Blueprint Editor.md).
 Each Function Graph has a purple execution start node.
 They function very much like an Event Node in that execution starts here and flows along the wires connected to the execution pins.
 
@@ -11,7 +11,7 @@ They function very much like an Event Node in that execution starts here and flo
 A Blueprint function is similar to a Blueprint macro.
 A function does an actual call.
 A function can have inputs and outputs.
-They are added in the `Details` Panel in the function's tab when the function execution start node, the purple one, is selected.
+Inputs and outputs are added in the `Details` Panel in the function's tab when the function execution start node, the purple one, is selected.
 Each input and output has a name and a type.
 A function as an `Access Specifier`.
 * Public: Any other Blueprint can call this function.

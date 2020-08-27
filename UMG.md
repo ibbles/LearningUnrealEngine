@@ -2,7 +2,7 @@
 
 # UMG - Unreal Motion Graphics
 
-For creating UI elements.
+For creating UI, GUI, and HUD elements.
 Such as health bars, point counters, skill indicators, etc.
 
 

@@ -3,6 +3,7 @@
 # PlayerController
 
 A type of controller that reads input from the player, i.e., a game pad, keboard, mouse, joystic, or similar.
+The `PlayerController` to use in a game is set in the `GameMode`, either for the entire project or override per level.
 A `PlayerController` have access to the `Pawn` it is controlling through the `GetPlayerPawn` function.
 The `Pawn` is often of a known subclass whose type has been defined in the selected `GameMode`.
 The `PlayerController` Blueprint often has a variable of the subclass type that is set in `BeginPlay`.
@@ -16,9 +17,11 @@ The result of the add, i.e., the new `Location`, is written back to a new `Trans
 Just copy over the `Rotaion` and `Scale` from the old `Transform` to the new one.
 The new `Transform` is applied to the `Actor` with `SetActorTransform`.
 
+A PlayerController contains settings for who the mouse should behave.
+Settings like "Show Mouse Cursor" and "Enable Click Events".
 
-[[2020-04-11_11:18:18]] Controller
-[[2020-04-11_11:28:47]] AIController
-[[2020-04-11_11:26:21]] Game mode
-[[2020-04-10_21:46:17]] Inputs
-[[2020-05-08_22:41:33]] Coordinates
+[[2020-04-11_11:18:18]] Controller [Controller](./Controllermd)
+[[2020-04-11_11:28:47]] AIController [AIController](./AIController.md)
+[[2020-04-11_11:26:21]] Game mode [Game mode](./Game mode.md)
+[[2020-04-10_21:46:17]] Inputs [Inputs](./Inputs.md)
+[[2020-05-08_22:41:33]] Coordinates [Coordinate](./Coordinates.md)
