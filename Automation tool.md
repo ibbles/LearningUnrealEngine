@@ -19,4 +19,5 @@ Global options:
 - `-Submit`: Allow file submit. No idea what this means. Submit to version control? To a build process? To some server somewhere?
 - `-NoCompile`: Disable compilation of `.Automation.csproj` projects on startup.
 
+Project-specific tasks can be created by placing a C# project where Automation Tool can find it.
 
