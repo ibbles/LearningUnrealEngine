@@ -91,7 +91,7 @@ Dependent modules will still get compiler and liker flags that result from optio
 Such as added include paths, setting macros/defines, and linking against libraries.
 The `Build.cs` files should be in one of the `Source` folders for the project, optionally in a `ThirdParty` subdirectory.
 `RuntimeDependencies` is a list of third-party dynamic libraries that is copied when the project is packaged. the library must already exist.
-``
+
 An example third-party library `Build.cs`:
 ```csharp
 using System;
@@ -302,6 +302,13 @@ Some tips:
     It converts legacy C++ projects into IWYU-style projects.
 
 [IWYU@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Programming/BuildTools/UnrealBuildTool/IWYU/index.html)
+
+
+## The build process
+
+Has two steps:
+- Unreal Header Tool parses the header files to extract type metadata then generates code to implement requested features.
+- The normal C++ compiler is invoked to compile the results.
 
 
 ## Creating a binary release
