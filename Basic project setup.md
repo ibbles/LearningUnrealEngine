@@ -9,6 +9,9 @@ A basic project consists of the following pieces:
 - Pawn
 - PlayerController
 
+GameMode should be Game Logic.
+GameState should be accessible stuffs.
+
 ## Game mode
 
 [[2020-04-11_11:26:21]] Game mode
