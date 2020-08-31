@@ -21,3 +21,10 @@ We can use the same Structure for several Data Tables.
 To read from a Data Table in a Blueprint use the Get Data Table Row node.
 Select the Data Table to read in the node's drop down.
 The second input should be one from the CSV's first column, the one that isn't matched by the structure's members.
+
+Objects can store references to rows in a data table:
+```c++
+UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Item",
+          meta = (ShowOnlyInnerProperties, RowType = "LoadoutItem"))
+FDataTableRowHandle LoadoutItem;
+```
