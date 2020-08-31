@@ -19,5 +19,22 @@ Global options:
 - `-Submit`: Allow file submit. No idea what this means. Submit to version control? To a build process? To some server somewhere?
 - `-NoCompile`: Disable compilation of `.Automation.csproj` projects on startup.
 
+## Creating a new automation project
 Project-specific tasks can be created by placing a C# project where Automation Tool can find it.
+Must use a source build of Unreal Engine.
+The project must be placed in one of the directories listed in `<UE_ROOT>/UE4Game.uprojectdirs`.
+The project cannot be in a folder with a `.Build.cs` or `.Target.cs` file.
+Do:
+- Open Visual Studio.
+- Right-click project folder.
+- Add > New Project…
+- Select `Class Library (.NET Framworkd) Visual C#.`
+- Set Name to end with `.Automation`.
+- Set Location to the `Build` directory inside the Unreal Engine project.  
+    The `Build` directory and the `.uproject` file should be siblings.
+- Set Framework to whatever the current version of Unreal Engine is using.  
+    Not sure how to determine that.
 
+There are many more steps, I won't repeat them here.
+    
+[AddingAutomationProjects@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Programming/BuildTools/AutomationTool/HowTo/AddingAutomationProjects/index.html)
