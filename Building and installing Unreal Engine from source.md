@@ -311,7 +311,83 @@ Has two steps:
 - The normal C++ compiler is invoked to compile the results.
 
 
+## Build graph
+
+Script-based built automation system.
+Graph of building blocks.
+Examples of building blocks: compile, cook, run test.
+Extensible and customizable.
+Integrates with UnrealBuildTool, AutomationTool, and Unreal Editor.
+Build graphs are run with `RunAUT`, which is at `<UE4Root>/Engine/Build/BatchFiles/RunUAT.(sh)|(bat).`
+
+The name of the graph is passed with the `-Scripts=` parameters.
+The path is relative to the root Unreal Engine directory.
+Arguments to the particular script are passed after the script name (I think, it could be that `-ListOnly` is a global option that they just happened to place last.).
+
+`RunUAT BuildGraph -Script=Engine/Build/Graph/Examples/AllExamples.xml -ListOnly`
+
+Options (see below) are set with `-Set:<PROPERTY>=<VALUE>`.
+
+List nodes to be executed for a target: `RunUAT BuildGraph -Script=EngineBuild/Graph/Examples/AllExamples.xml -Target="<TARGET>" -ListOnly`
+
+Old builds are cleaned with `-Clean` at the end.
+
+Putput debug graph: `RunUAT BuildGraph -Script="<SCRIPT>" -Target="<TARGET>" -Preprocess="<PATH>.xml"`
+
+
+Graphs written in XML.
+Encodes graph of nodes and dependnecies.
+A node contains a list of tasks to execute.
+Built for build farm configuration.
+Each node annotated with host machine requirements.
+Tracks creation of output files.
+Build artifacts transfered to and from a network share automatically.
+Example graphs can be found at `<UE4Root>/Engine/Build/Graph/Examples`.
+Script for binary distribution at `<UE4Root>/Engine/Build/InstalledEngineBuild.xml`.
+Schema for the XML format at `<UE4Root>/Engine/Build/Grpah/Schema.xsd`.
+
+Parts in a graph:
+- Tasks: Actions that are executed as part of a build process.
+- Nodes: A named sequence of rodered tasks. Nodes may have dependencies.
+- Agents: A group of nodes executed on the same machine. No effect when building locally.
+- Triggers: Container for groups that should only be executed after manual intervention.
+- Aggregates: Groups of nodes and named outputs that can be referred to with a single name.
+
+Values can be stored in `Property` elements.
+Used for reusable or fonditially defined values.
+Properties are referenced with `$(Property <NAME>)`.
+Can be used within all attribute strings.
+Values that are passed from the command line are declared with the `Option` element.
+Environment variables are read with `EnvVar` elements.
+
+Perforce style wildcards are used for file matching, i.e., `...`, `*`, `?` patterns.
+Can define tagged collections of files.
+
+
+
+
+### Creating build graphs
+
+
+
+
+
 ## Creating a binary release
+
+There is a Build Graph script that creates an install version of Unreal Engine.
+The script is `<UE4Root>/Engine/Build/InstalledBuild.xml`.
+Run with
+```
+RunUAT BuildGraph -Target="Make Installed Build <PLATFORM>" -Script="Engine/Build/InstalledEngineBuild.xml" -Clean
+```
+Why the `-Clean` part?
+Platform can be either `Win64`, `Mac`, or `Linux`.
+The Installed Build is created at `<UE4Root>/LocalBuilds/Engine`.
+Can be changed somehow, but the docs don't say how.
+
+To build only for the host platform, pass `-Set:HostPlatformOnly=true`.
+To disable Derived Data Cache build, pass `-Set:WithDDC=false`.
+To select which configuration to build, pass `-Set:GameConfiguration=Development`.
 
 Unreal Engine creates a BuildID for each build.
 The BuildID prevents dynamic libraries from being used with the wrong build of the engine.
@@ -320,7 +396,8 @@ At build time a `.modules` JSON file is written to each output directory that ha
 This files lists the modules, their associated dynamic library, and the BuildID for the current build.
 The `.modules` files should be included in binary releases of the engine.
 
-[VersioningofBinaries@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Programming/BuildTools/UnrealBuildTool/VersioningofBinaries/index.html)
+[UsinganInstalledBuild@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Programming/Deployment/UsinganInstalledBuild/index.html)  
+[VersioningofBinaries@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Programming/BuildTools/UnrealBuildTool/VersioningofBinaries/index.html)  
 
 
 ## Unorganized notes
