@@ -332,7 +332,7 @@ List nodes to be executed for a target: `RunUAT BuildGraph -Script=EngineBuild/G
 
 Old builds are cleaned with `-Clean` at the end.
 
-Putput debug graph: `RunUAT BuildGraph -Script="<SCRIPT>" -Target="<TARGET>" -Preprocess="<PATH>.xml"`
+Output debug graph: `RunUAT BuildGraph -Script="<SCRIPT>" -Target="<TARGET>" -Preprocess="<PATH>.xml"`
 
 
 Graphs written in XML.
