@@ -38,6 +38,6 @@ MyFirstModule
     └── MyFirstModule.h
 ```
 
-[[2020-09-10_19:42:18]] [Code projects](./Code projects)
+[[2020-09-10_19:42:18]] [Code projects](./Code projects.md)
 [[2020-09-15_17:27:33]] [Plugins](./Plugins.md)
 [[2020-09-15_21:10:32]] [Module types](./Module types.md)
