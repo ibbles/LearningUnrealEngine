@@ -17,7 +17,7 @@ A `Module` element contains at least `Name`, `Type`, and `LoadingPhase`.
 `LoadingPhase` is one of `Default`, ...?
 Can also have `WhitelistPlatforms` and `BlacklistPlatforms`.
 
-[[2020-09-15_21:10:32]] [Module types](./Module types.md)
+[[2020-09-15_21:10:32]] [Module types](./Module%20types.md)
 
 A module consists of a private part and public part.
 The private part can only be used by the module itself.
