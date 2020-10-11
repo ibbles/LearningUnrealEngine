@@ -28,6 +28,11 @@ The private part is stored in the `<ModuleName>/Private` directory.
 For simple modules this is exactly the `.h`/`.cpp` separation.
 But modules may place source files differently.
 
+Classes defined within a module should be decorated with the module's `*_API` macro.
+This exports the class from the module so that it can be used by other modules.
+For example: `class MYMODULE_API UMyClass : public UObject`.
+The definition for the macro is automatically created by the engine.
+
 Example module file system organization, for a module named `MyFirstModule`:
 ```
 MyFirstModule
