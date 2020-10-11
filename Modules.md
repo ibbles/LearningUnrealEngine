@@ -16,6 +16,9 @@ A `Module` element contains at least `Name`, `Type`, and `LoadingPhase`.
 `Type` is one of `Runtime`, `Developer(Tool?)`, or `Editor`. There are a few more.
 `LoadingPhase` is one of `Default`, ...?
 Can also have `WhitelistPlatforms` and `BlacklistPlatforms`.
+```
+TODO: Add example module entry here.
+```
 
 [[2020-09-15_21:10:32]] [Module types](./Module%20types.md)
 
@@ -43,6 +46,23 @@ MyFirstModule
     └── MyFirstModule.h
 ```
 
+Each module must have exactly one `*.Build.cs` file.
+It should contain a C# class that define how the module is to be compiled.
+At build time Unreal Build Tool searching the project directory tree for `*.Build.cs` files.
+
+
+[[Build.cs]] Build.cs
+
+Each module must have exactly one `*Module.cpp` file.
+This is where the module itself is declared for the C++ runtime.
+Contains a single class (usually) that implements `IModuleInterface`.
+Has two virtual methods:
+- `StartupModule`
+    Called when the editor or game is starting, really when the module is loaded into memory. Do initialization here.
+- `ShutdownModule`
+    Called when the editor or game is shutting down, really when the module is unloaded from memory.
+
 [[2020-09-10_19:42:18]] [Code projects](./Code%20projects.md)  
 [[2020-09-15_17:27:33]] [Plugins](./Plugins.md)  
 [[2020-09-15_21:10:32]] [Module types](./Module%20types.md)  
+[[2020-09-18_08:51:49]] [Build.cs](./Build.cs.md)  
