@@ -36,3 +36,11 @@ Discussion from Unreal Slackers Discord:
 
 > thats what the standalone flag is for. I think the markasrootset is for UObjects that arent assets
 
+
+
+A `.pak` file can be unpacked with
+```
+unrealpak.exe "path/to/pak" -extract "path/to/empty/folder"
+```
+
+> Should the text above be somewhere else? This text is about `.uasset` files, not `.pak` files.
