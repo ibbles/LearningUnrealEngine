@@ -8,4 +8,11 @@ How a project is built depends on the type of project files that has been genera
 
 All the variants above all ultimately reach the build scripts shipped with Unreal Engine.
 These can be invoked manually.
-`<UnrealRoot>/Engine/Build/BatchFiles/Linux/Build.sh <ProjectName> Linux Development -project=<UnrealProjectsDir>/<ProjectName>/<ProjectName>.uproject -game -progress -buildscw"`
+Here are a few variants that I've seen recommended:
+- `<UnrealRoot>/Engine/Build/BatchFiles/Linux/Build.sh <ProjectName> Linux Development -project=<UnrealProjectsDir>/<ProjectName>/<ProjectName>.uproject -game -progress -buildscw"`
+- `<UnrealRoot>/Engine/Build/BatchFiles/Linux/Build.sh <ProjectName>Editor Linux Development -Project=<PATH TO UPROJECT>`
+
+One can also run `UnrealBuildTool` directly.
+Not sure if this works as-is on Linux, or if something mono-related must be done as well.
+Compare with the contents of the build scripts to make sure, I guess they end up with a similar command line at the end.
+- `<UnrealRoot>/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Linux -Project="projectpath.uproject" -TargetType=Editor -Progress -NoEngineChanges -NoHotReloadFromIDE`
