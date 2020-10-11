@@ -4,10 +4,20 @@
 
 ## Compiling third-party libraries
 
-On Linux, Unreal Engine shipps with a compiler and a standard library that should be used when building third-party libraries.
-In particular, the system standard library should not be used because of binary incompabilities.
+Unreal Engine is able to automate some of this in some cases.
+The following is from the [Unreal Engine 4.25 release notes](https://docs.unrealengine.com/en-US/Support/Builds/ReleaseNotes/4_25/index.html):
+```
+RunUAT.bat BuildCMakeLib -TargetLib=ExampleLib -TargetLibVersion=examplelib-0.1 -TargetConfigs=relase+debug -TargetPlatform=PlatformName -LibOutputPath=lib -CMakeGenerator=Makefile -CMakeAdditionalArguments="-DEXAMPLE_CMAKE_DEFINE=1" -MakeTarget=all -SkipSubmit
+```
+
+
+On Linux, Unreal Engine shipps with a compiler, a C++ standard library implementation, and a set of third-party libraries that should be used when building third-party libraries.
+In particular, the system C++ standard library should not be used because of binary incompabilities.
 Different `sizeof(std::function)`, for example, and different mangled names for a few standard library classes and functions.
-When using the shipped compiler and libraries binaries will be transferable between Linux distributions and versions.
+Unreal Engine comes with a set of third-party libraries. 
+Most of them built as static libraries.
+To prevent invalid symbol interpositions third-party libraries should be built against the third-party libraries shipped with Unreal Engine, whenever such a library exists.
+When using the shipped compiler and libraries, compiled binaries will be transferable between Linux distributions and versions.
 The compiler is stored at `Engine/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/v16_clang-9.0.1-centos7/x86_64-unknown-linux-gnu/`.
 We call this the "compiler directory".
 The standard library is stored at `Engine/Source/ThirdParty/Linux/LibCxx/lib/Linux/x86_64-unknown-linux-gnu/`.
@@ -76,6 +86,18 @@ This is the reason why we need to build with the Unreal Engine included compiler
 
 Another commenter state that GCC works just fine, i.e., Clang is not required, as long as the Unreal Engine provided `libc++` is used.
 
+One is supposed to be able to use Unreal Build Tool to generate a list of compile commands.
+This would be useful to see the full build commands that are generated when building the project source files.
+From a Bash shell run:
+```
+cd ${UE_ROOT}/Engine/Build/BatchFiles/Linux
+source SetupMono.sh $(readlink -f .)
+cd ${PROJECT_DIR}
+mono ${UE_ROOT}/Engine/Binaries/DotNET/UnrealBuildTool.exe -mode=GenerateClangDatabase -Project=${PROJECT_DIR}/${PROJECT_NAME}.uproject AGXUnrealDevEditor Linux Debug
+```
+Should should generate `compile_commands.json`.
+For me it errors out with `ERROR: Clang must be installed in order to build this target.`.
+A search for `must be installed in order` in `${UE_ROOT}/Engine/Source/Programs` only finds stuff in `UnrealBuildTool/Platform/Windows/VCEnvironment.cs`, which doesn't seem to be what I need.
 
 
 
@@ -89,7 +111,7 @@ Build scripts for those can be studied to understand more of the build process.
 
 Just like any module, each third-party library needs a `.Build.cs` file.
 For third-party libraries the `.Build.cs` file doesn't describe how to build the library but only how to integrate it with the modules built by UnrealBuildTool.
-The third-party library itself is built using whatever build system the library itself is using.
+The third-party library itself is built separately using whatever build system the library itself is using.
 Set the `Type` member variable to `ModuleType.External` to signal that it is an external library.
 UnrealBuildTool will perform no compilation for external libraries.
 Any preprocessor defines that the library needs can be added to `PublicDefinitions`.
@@ -251,5 +273,7 @@ Why not?
 [[Modules]] [Modules](./Modules.md)  
 [[Plugins]] [Plugins](./Plugins.md)  
 [[Building plugins]] [Building plugins](./Building%20plugins.md)  
+[[Build systems]] [Build systems](./Build%20systems.md)  
 
 [ThirdPartyLibraries@https://docs.unrealengine.com](https://docs.unrealengine.com/en-US/Programming/BuildTools/UnrealBuildTool/ThirdPartyLibraries/index.html)  
+[Introduction To Conan-UE4CLI@https://docs.adamrehn.com](https://docs.adamrehn.com/conan-ue4cli/read-these-first/introduction-to-conan-ue4cli)
