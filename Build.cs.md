@@ -4,19 +4,31 @@
 
 A `Build.cs` file is a C# class that defines how a module should be built.
 In the `Build.cs` file a subclass of `ModuleRules` is defined.
-In the class' constructor we define, for example:
+In the class' constructor we define a number of properties, for example:
 - The module's type.
 - Compiler definitions/macros.
 - Compiler include paths.
 - Linker library search paths.
 - Additional library dependencies.
+- `<Visibility>DependencyModuleNames`
+    Modules this module vishes to import/use. This is how `public` build properties of other modules are inherited into this module.
+- `<Visibility>IncludePaths`
+    For `PrivateIncludePaths` the given paths are relative to the module's `Private` directory. Directories in the `Public` subdirectory are found and added automatically by Unreal Build Tool, so no need to list them.
 
-Most of these settings can be either public or private.
-Public means that any module that depend on this module also get the settings.
+Most of these settings can have either public or private visbility.
+Public means that any module that depend on this module also get the setting.
+Private means that the dependency is only for the module's private implementation, is only used when compiling the module itself.
 Private means that only the current module get the settings.
 I don't think that `Build.cs`/`ModuleRules` has anything like CMake's `INTERFACE`.
 
-The `Build.cs` file has sligthly different semantics for third-party libraries.
+Example `Build.cs` file:
+```
+TODO: Paste some code into here.
+```
+
+
+The `Build.cs` file has sligthly different semantics for modules that represetnt third-party libraries.
+Third-party library modules are not compiled by Unreal Buid Tool, but they can provide compiler settings that are inherited by other modules that depend on the third-party library module.
 
 [[20200827122445]] [Third-pary libraries](./Third-pary%20libraries.md)  
 [[Modules]] [Modules](./Modules.md)  
