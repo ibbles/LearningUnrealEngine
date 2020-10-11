@@ -17,6 +17,7 @@ Need the following headers: `"CoreMinimal.h"` `"UObject/Object.h"`, `"UObject/Ob
 As with all generated classes, also need `"<CLASS_NAME>.generated.h"` last in the include list.
 Non-static data members that form the salient properties of the asset should be marked with `UPROPERTY`.
 
+New asset types can be created by plugins. 
 
 ## Factories
 Factories are used when creating instances of the asset type.
@@ -93,8 +94,38 @@ Example `MyAssetFactoryNew`, a factory that creates `MyAsset` instances from the
 By default the asset editor is generated automatically in the same way as the Details Panel.
 This can be customized.
 The Blueprint and Material editor are examples of custom asset editors.
+The asset can have custom color, text, and icon in the Content Browser.
+The icon can be any UI widget, including a 3D viewport.
+Look into `UThimbnailRenderer`.
 
-New asset types can be created by plugins. 
+Asset Action are used to customize the look and feel of assets in the Editor, and to provide custom actions that can be performed on the assets.
+Custom editor actions on assets are created by inheriting from `FAssetTypeActions_Base`.
+`FAssetTypeActions_Base` is a helper class, one can also inherit from the `IAssetTypeActions` interface.
+The actual action is registered/implemented in `FTextAssetActions::GetActions`.
+The implementation can be a lambda callback.
+The action must be registered with the Editor.
+This is often done in the module's `IModuleInterface` implementation, which is in `<MODULE_NAME>Module.cpp`.
+
+To register an asset tool, load the `AssetTools` module and call `RegisterAssetTypeAction`.
+The `AssetTools` module maintains a registry of of all the asset tools.
+Use `RegisterAssetTypeAction`, passing in the `AssetTools` and a new instance of the `IAssetTypeActions` subclass.
+```c++
+virtual void StartupModule() override
+{
+    Style = MakeShareable(new FMyAssetEditorStyle());
+    IAssetTools& AssetTools = 
+        ModuleManager::LoadModuleChecked<FAssetToolsModule>(
+            "AssetTools").Get();
+    RegisterAssetTypeActions(AssetTools, MakeShareable(new FMyAssetActions(Style.ToSharedRef())));
+}
+```
+Not sure what the `Style` is.
+
+
+[[2020-09-10_19:55:50]] [Modules](./Modules.md)  
+[[2020-09-30_13:13:51]] [Callbacks](./Callbacks.md)  
+[[2020-08-31_10:01:57]] [Garbage collection](./Garbage%20collection.md)  
+
 
 
 [[2020-03-11_19:00:31]] [Assets](./Assets.md)  
