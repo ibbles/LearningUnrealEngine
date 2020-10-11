@@ -17,3 +17,5 @@ if (Outer->GetFlags() == RF_Transactional)
 ```
 
 which would mean that we should set the `RF_Transactional` flag on objects we create while we're editing in the Editor and not setting the flag in Play mode.
+
+[[20200930131947]] [Undo redo](./Undo%20redo.md)
