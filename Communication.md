@@ -40,6 +40,6 @@ The HeroCharacter has a CharacterMovement Component inherited from Character.
 It is a built-in Component that will pick up the Add Movement Input and Set Control Rotation calls.
 
 
-
+[BlueprintCommsUsage@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Blueprints/UserGuide/BlueprintCommsUsage/index.html)
 
 [[2020-04-10_21:40:28]] [col] TwinStickShooter
