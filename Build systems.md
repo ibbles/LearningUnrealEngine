@@ -33,9 +33,31 @@ On Linux this file is at `~/.config/Unreal Engine/UnrealBuildTool/`.
 ```
 This doesn't work.
 
+## Fixing red squiggles
+
+A bug introduced in Unreal Engine 4.25 broke IDE, e.g. CLion, integration. Someone has prepared engine source fixes for it:
+- 4.25: https://gist.github.com/ericwomer/142650e65473087073f30e5fb97fd6e8 
+- 4.26: https://gist.github.com/jerobarraco/92839db6e6305fb04a04bab415ec8ae4  
+
+In short, the problem is in `Engine/Source/Programs/UnrealBuildTool/Configuration/UEBuildModuleCPP.cs` and the cause is that `CompileEnvironment.Definitions` is cleared too early.
+
+Symptoms are Unreal Engine macros not being recognized, missing class definitions, undeclared definitions.
 
 ## Listing compiler commands
 
 Unreal Build Tool is supposed to be able to generate a list of native compiler invocations with `UnrealBuildTool.exe -mode=GenerateClangDatabase`, but I have not been able to get it to work.
+
+
+## Compiler flags
+
+One can not make changes to the generated project files to add or remove build flags.
+That's all handled by Unreal Build Tool and it doesn't take the settings in the build files into account.
+There is some control over build flags through the per-module `.Build.cs` files.
+To change it globaly you must edit the engine code for Unreal Build Tool.
+- Linux platform: `Engine/Source/Programs/UnrealBuildTool/Platform/Linux/LinuxToolChain.cs`.
+- CMake build environment: `Engine/Source/Programs/UnrealBuildTool/ProjectFiles/CMake`.
+
+Changes to `.cs` files part of Unreal Build Tool will be detected and the tool rebuilt when running `GenerateProjectFiles.sh`.
+
 
 [[20200827122445]] Third-party libraries
