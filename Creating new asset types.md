@@ -59,7 +59,7 @@ UMyAssetFactoryNew::UMyAssetFactoryNew(const FObjectInitializer& ObjectInitializ
 
     // This factory creates new instances from scratch
     // rather than importing using drag-and-drop. This is
-    // what decide which of the tree factory types this
+    // what decide which of the three factory types this
     // factory is. How we can get three types from a bool is
     // beyond me.
     bCreateNew = true;
@@ -96,7 +96,7 @@ This can be customized.
 The Blueprint and Material editor are examples of custom asset editors.
 The asset can have custom color, text, and icon in the Content Browser.
 The icon can be any UI widget, including a 3D viewport.
-Look into `UThimbnailRenderer`.
+Look into `UThumbnailRenderer`.
 
 Asset Action are used to customize the look and feel of assets in the Editor, and to provide custom actions that can be performed on the assets.
 Custom editor actions on assets are created by inheriting from `FAssetTypeActions_Base`.
