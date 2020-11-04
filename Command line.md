@@ -70,6 +70,15 @@ $UE_ROOT/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Linux -Project="
 Don't know what other options for `TargetType` might be.
 
 
+## Plugin stuff
+
+### Exporting a plugin
+```
+eval $UE_ROOT/Engine/Build/BatchFiles/RunUAT.sh BuildPlugin -Plugin=<PATH>/<PROJECT>/Plugins/<PLUGIN>/<PLUGIN>.uplugin -Package=<PATH>/<OTHER_PROJECT>/Plugins/<PLUGIN> -Rocket
+```
+Don't know what `-Rocket` does.
+May want to add a `-TargetPlatform(s?)=` here.
+
 
 ## Other stuff
 
