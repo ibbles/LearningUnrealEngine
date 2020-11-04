@@ -12,5 +12,5 @@ This is done by setting the variable type to `Blackboard Key Selector`.
 
 AIController has a Use Blackboard function.
 
-[[2020-07-04_15:46:00]] Behavior tree
-[[2020-07-04_16:13:21]] AI task
+[[2020-07-04_15:46:00]] [Behavior tree](./Behavior\%20tree.md)  
+[[2020-07-04_16:13:21]] [AI task](./AI%20task.md)
