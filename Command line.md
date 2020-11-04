@@ -4,6 +4,10 @@
 
 A collection of command line actions.
 
+## Engine stuff
+
+### Initial build of the engine
+
 Initial build of Unreal Engine:
 - `mkdir UnrealEngine_<VERSION>`
 - `cd UnrealEngine_<VERSION>`
@@ -14,36 +18,60 @@ Initial build of Unreal Engine:
 - `make`
 - `./Engine/Binaries/Linux/UE4Editor`
 
+### Creating a binary release of the engine
 
 Creating a binare release of Unreal Engine:
 ```
-RunUAT.sh BuildGraph -Target="Make Installed Build Linux" -Script=Engine/Build/InstalledEngineBuild.xml -Set:HostPlatformOnly=true -Set:WithDDC=false -Set:WithLinuxAArch64=false -Set:HostPlatformDDCOnly=false -Set:GameConfigurations=Development -Clean
+RunUAT.sh BuildGraph -Target="Make Installed Build Linux" -Script=Engine/Build/InstalledEngineBuild.xml -Set:HostPlatformOnly=true -Set:WithDDC=false -Set:WithLinuxAArch64=false -Set:HostPlatformDDCOnly=false -Set:GameConfigurations=Development;Shipping -Clean
 ```
-I think it's possible to pass multiple `GameConfigurations`. Shipping is good to have.
+I think it's possible to pass multiple `GameConfigurations`. Shipping is good to have because the `BuildPlugin` `RunUAT` command require it.
 
+## Project stuff
 
-Generating build system project files for a C++ Unreal Engine project:
+### Generate C++ project files
+
+Generating build system project files for a C++ Unreal Engine project using wrapper script:
 ```
-./GenerateProjectFiles.sh <PATH>/<PROJECT>.uproject -game -Makefile -CMakefile
+eval $UE_ROOT/GenerateProjectFiles.sh <PATH>/<PROJECT>.uproject -Game -Makefile -CMakefile
 ```
 
-Build a C++ Unreal Engine project:
+Generating build system project files for a C++ Unreal Engine project using `Build.sh`:
+```
+eval $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh ProjectFiles -Project=<PATH>/<PROJECT>.uproject -Game -Makefile
+```
+
+### Building a C++ project
+
+Build a C++ Unreal Engine project with the generated project files. Here assuming `Makefile`:
 ```
 make <ProjectName>Editor
 ```
+The above builds for use in the editor.
+The below builds for use in an cooked/exported project.
 ```
 make <ProjectName>
 ```
+
+Build a project with `Build.sh`:
 ```
-<UnrealRoot>/Engine/Build/BatchFiles/Linux/Build.sh <ProjectName> Linux Development -project=<UnrealProjectsDir>/<ProjectName>/<ProjectName>.uproject -game -progress -buildscw"`
+eval $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh <PROJECT> Linux Development -project=<PATH>/<PROJECT>.uproject -Game -Progress -buildscw"`
 ```
 ```
-<UnrealRoot>/Engine/Build/BatchFiles/Linux/Build.sh <ProjectName>Editor Linux Development -Project=<PATH TO UPROJECT>
+eval $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh <PROJECT>Editor Linux Development -Project=<PATH>/<PROJECT>.uproject
 ```
+
+Not sure what the `-buildscw` part does. Possibly related to Shader Compiler Workers. Not sure why it's on the `<PROJECT>` build but not the `<PROJECT>Editor` build.
+
+Building with Unreal Build Tool directory.
 ```
 # A source SetupMono.sh or similar is required here. Find the note and update here.
-<UnrealRoot>/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Linux -Project="projectpath.uproject" -TargetType=Editor -Progress -NoEngineChanges -NoHotReloadFromIDE
+$UE_ROOT/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Linux -Project="<PATH>/<PROJECT>.uproject" -TargetType=Editor -Progress -NoEngineChanges -NoHotReloadFromIDE
 ```
+Don't know what other options for `TargetType` might be.
+
+
+
+## Other stuff
 
 Unpack a `.pak` file:
 ```
