@@ -14,6 +14,7 @@ The Graph part is where behavior and functionality is added.
 A HUD is created from the `PlayerController`'s `BeginPlay` by calling `CreateWidget`.
 The HUD needs something to talk to in order to get state updates and send user input.
 It therefore be given a `PlayerController` variable that is marked Expose on Spawn.
+Or maybe the other way around, the `PlayerController` pushing data to the widget.
 The widget needs an Owning Player, which should be *TODO more text here*.
 The created widget is added to the viewport with `Add to Viewport`.
 
