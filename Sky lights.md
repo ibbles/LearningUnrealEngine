@@ -2,7 +2,7 @@
 
 # Sky lights
 
-Simulates light coming from a infinite large dome.
+Simulates light coming from a infinitely large dome.
 Uses a cube map to color the incoming light.
 
 
