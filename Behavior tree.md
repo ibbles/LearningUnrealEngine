@@ -30,4 +30,4 @@ The selector and the key often have the same name.
 The public variables and their bindings are also shown in the node in the Behavioral Tree.
 The default binding is to SelfActor. Not sure what that means.
 
-[[2020-07-04_16:13:21]] AI task
+[[2020-07-04_16:13:21]] [AI task](./AI%20task.md)
