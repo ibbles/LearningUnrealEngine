@@ -27,7 +27,7 @@ Select your Widget class from the drop down.
 The created Widget is often promoted to a variable.
 Next add it to the viewport.
 
-
+The default-created root of the Widget, a Canvas Panel, can be removed, making a new Widget component the new root. Do this when creating sub-Widgets, but keep the Canvas Panel when creating the Widget that will be added to the viewport.
 
 [[2020-08-10_20:32:35]] UMG
 [[2020-08-10_20:34:24]] Widget Blueprint
