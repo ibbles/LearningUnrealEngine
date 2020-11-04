@@ -8,3 +8,4 @@ This is a collection of notes related to lighting.
 [[2020-04-11_08:47:38]] Directional lights
 [[2020-04-11_08:53:10]] Sky lights
 [[2020-04-11_09:04:45]] Exposure
+[[2020-10-21_11:40:08]] [Static vs dynamic lights](./Static%20vs%20dynamic lights.md)
