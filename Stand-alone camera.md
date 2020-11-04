@@ -4,7 +4,7 @@
 
 A Camera can be added to the Level as a stand-alone Actor.
 We can view what the camera sees by doing Viewport > Perspective > Placed Cameras and select the camera to view through.
-In the camera view mode we can move the camera around with the reguliar navigation controls.
+In the camera view mode we can move the camera around with the regular navigation controls.
 That is, right-click-and-hold to enter camera control mode, mouse-move to look around, and  WASD to move.
 Click the eject button in the top-left of the viewport to exit camera control mode.
 
