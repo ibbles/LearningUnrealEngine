@@ -20,6 +20,35 @@ The new `Transform` is applied to the `Actor` with `SetActorTransform`.
 A PlayerController contains settings for who the mouse should behave.
 Settings like "Show Mouse Cursor" and "Enable Click Events".
 
+The `PlayerController` can be found with:
+- `AHUD::PlayerOwner`.
+- FILL IN MORE WAYS HERE!
+
+## Input events in C++
+
+The C++ version of the Event nodes in the Event Graph is the `SetupInputComponent` member function.
+In `SetupInputComponent` we bind actions to input events.
+```c++
+void AMyPlayerController::SetupInputComponent()
+{
+    Super::SetupInputComponent();
+    if (InputComponent == nullptr)
+    {
+        error
+    }
+    
+    InputComponent->BindAction(
+        "MyAction", IE_Pressed, this, &AMyPlayerComponent::MyAction);
+}
+
+void AMyPlayerController::MyAction()
+{
+    // Implement event behavior here.
+}
+```
+
+
+
 [[2020-04-11_11:18:18]] Controller [Controller](./Controllermd)
 [[2020-04-11_11:28:47]] AIController [AIController](./AIController.md)
 [[2020-04-11_11:26:21]] Game mode [Game mode](./Game mode.md)
