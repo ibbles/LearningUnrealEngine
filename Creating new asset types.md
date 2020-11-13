@@ -19,6 +19,13 @@ Non-static data members that form the salient properties of the asset should be 
 
 New asset types can be created by plugins. 
 
+One can bypass all the factory stuff described below by having the asset type derive from `UDataAsset` instead of `UObject`.
+Then the asset type will show up in the Content Browser > Context Menu > Miscellaneous > Data Asset list.
+By default these assets get the standard property editor, but can have a custom editor i.e, a Detail Customization.
+
+
+[Link](https://youtu.be/zg_VstBxDi8?t=1731)
+
 ## Factories
 Factories are used when creating instances of the asset type.
 Factories are editor concepts and should be in an editor module. [[2020-09-15_21:10:32]] [Module types](./Module%20types.md)
@@ -87,13 +94,12 @@ bool UMyAssetFactoryNew::ShouldShowInNewMenu() const
 Example `MyAssetFactoryNew`, a factory that creates `MyAsset` instances from the Content Browser right-click menu.
 
 
+There is also `UActorFactory`, which is used when an asset is dragged from the Content Browser into the Level Viewport.
 
+There is also `IComponentAssetBroker`, which is used when an asset is dragged from the Content Browser into the Componets Panel of a Blueprint class.
 
 ## Editor customization
 
-By default the asset editor is generated automatically in the same way as the Details Panel.
-This can be customized.
-The Blueprint and Material editor are examples of custom asset editors.
 The asset can have custom color, text, and icon in the Content Browser.
 The icon can be any UI widget, including a 3D viewport.
 Look into `UThumbnailRenderer`.
@@ -121,14 +127,83 @@ virtual void StartupModule() override
 ```
 Not sure what the `Style` is.
 
+By default the asset editor is generated automatically in the same way as the Details Panel.
+This can be customized.
+The Blueprint and Material editor are examples of custom asset editors.
+
+We need two classes:
+- `FMyAssetActions : IAssetTypeActions`: To create the new editor when needed.
+- `FMyAssetEditor : FAssedEditorToolkit, FEditorUndoClient, FGCObject`: The asset editor.
+Both classes should be in the Editor module of the plugin
+
+To provide a custom asset editor override `OpenAssetEditor` in your `IAssetTypeActions` subclass.
+"Toolkit" is a synonym for Asset Editor. 
+Toolkit often used within the code, for type names and such.
+Asset Editor is often used within documentation and articles.
+```
+void OpenAssetEditor(
+    const TArray<UObject*>& InObjects,
+    TSharedPtr<IToolkitHost> EditWithinLevelEditor)
+```
+- `InObjects`: The objects being edited. Can be multiple since multiple objects can be selected in the Content Browser. Loop over these and use `Cast` to determine if it's a type of object supported .
+- `EditWithinLevelEditor`: Passed on to the `EditorToolkit` instances we create.
+
+For each object, create and initialize a new `FMyAssetEditorToolkit`:
+```
+TSharedRef<FTextAssetEditorToolkit> EditorToolkit = MakeShareable(
+    new FMyAssetEditorToolkit(Style));
+   
+EditorToolkit->Initialize(MyAsset, Mode, EditWithinLevelEditor);
+```
+
+`Style` is the one that was created in `StartupModule`.
+`MyAsset` is the `Cast`ed object we got form `InObjects`.
+`Mode` either `WorldCentric` or `STandalone` depending on if `EditWithinLevelEditor` is valid.
+
+Full example:
+```
+void FMyAssetActions: OpenAssetEditor(
+    const TArray<UObject*>& InObjects,
+    TSharedPtr<IToolkitHost> EditWithinLevelEditor)
+{
+    EToolkitMode::Type Mode = EditWithinLevelEditor.IsValid()
+        ? EToolkiMode::WorldCentric
+        : EToolkitMode::Standalone;
+    for (auto ObjIt = InObjects.CreateConstIterator(); ObjIt; ++ObjIt)
+    {
+        UMyAsset* MyAsset = Cast<UMyAsset(*ObjIt);
+        if (MyAsset == nullptr)
+        {
+            continue;
+        }
+        TSharedRef<FTextAssetEditorToolkit> EditorToolkit = MakeShareable(
+            new FMyAssetEditorToolkit(Style));
+        EditorToolkit->Initialize(MyAsset, Mode, EditWithinLevelEditor);
+    }
+}
+```
+
+The call to `Initialize` will cause the assed editor to show up.
+
+The `FMyAssetEditor` class is much larger. Too large to descript in detail here.
+See [TextAsset@github.com](https://github.com/ue4plugins/TextAsset) for the full code.
+In short, the editor is built inside a `Layout` where a big expression is used to create the splits that the editor window is divided into.
+This is where the layout of the tabs is declared.
+
+A collection of tabs that share an area on the screen is called a tab well.
+With the Layout created we call `FAssetEditorToolkit::InitAssetEditor`.
+
+You can find examples of how to create Styles in  `Engine/Source/Editor/EditorStyle/Private/SlateEditorStyle.cpp`.
 
 [[2020-09-10_19:55:50]] [Modules](./Modules.md)  
 [[2020-09-30_13:13:51]] [Callbacks](./Callbacks.md)  
 [[2020-08-31_10:01:57]] [Garbage collection](./Garbage%20collection.md)  
 
 
-
 [[2020-03-11_19:00:31]] [Assets](./Assets.md)  
 [[2020-08-17_09:45:29]] [Loading assets](./Loading%20assets.md)  
 [[2020-03-10_21:23:32]] [Naming convention](./Naming%20convention.md)  
 [[2020-03-09_21:43:36]] [UPROPERTY](./UPROPERTY.md)  
+
+[Custom Asset Editors Code Exploration@learn.unrealengine.com](https://learn.unrealengine.com/course/2436528/module/5372752?moduletoken=UHxxnDLPW8ROFOnyLDf7jkpDsWH-6EgInZkaEVy-utqnxQVniUN~z2b6Dq5f9wUr&LPId=0)
+[TextAsset@github.com](https://github.com/ue4plugins/TextAsset)
