@@ -26,6 +26,10 @@ RunUAT.sh BuildGraph -Target="Make Installed Build Linux" -Script=Engine/Build/I
 ```
 I think it's possible to pass multiple `GameConfigurations`. Shipping is good to have because the `BuildPlugin` `RunUAT` command require it.
 
+### Benchmarks
+
+`%UAT_PATH% BenchmarkBuild -project=UE4 -editor -client -noxge -iterations=1`
+
 ## Project stuff
 
 ### Generate C++ project files
