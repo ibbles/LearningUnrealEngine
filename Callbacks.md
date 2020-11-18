@@ -8,7 +8,7 @@ It's similar to `std::function<>`.
 There are also delegates, both single and multi.
 
 `FMenuBuilder::AddMenuEntry` uses `FUIAction` for its callbacks.
-The `FUIAction` can be created from `FExecuteAction::CreateLambda()`, which in turn is created from a C++ lamda.
+The `FUIAction` can be created from `FExecuteAction::CreateLambda()`, which in turn is created from a C++ lambda.
 `FExecuteAction` is a `TBaseDelegate_NoParams`.
 
 ## Slate
