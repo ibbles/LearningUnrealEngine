@@ -47,6 +47,8 @@ void AMyPlayerController::MyAction()
 }
 ```
 
+There is some uncertainty whether the Component is `InputComponent` or `PlayerInputComponent`.
+
 
 
 [[2020-04-11_11:18:18]] Controller [Controller](./Controllermd)
