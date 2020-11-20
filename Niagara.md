@@ -7,10 +7,17 @@
 Cascade showing it's age. Inflexible. New effects and behaviors require programming.
 Not suitable for a wide range of domains.
 Need a new tool that puts more control in the hands of artists.
+Artists has the ability to create additional functionality themselves.
 More flexibility in what kind of data and data sources can be used to drive the simulation.
 Improved tools for debugging and visualization.
 
 ## Basic concepts
+
+The Niagara system consists of the following core components:
+- Systems.
+- Emitters.
+- Modules.
+- Parameters.
 
 A Niagara system is configured using Graphs and Stacks.
 Graphs are flexible and powerful but requires some technical knowledge.
@@ -65,6 +72,13 @@ Add a new module parameter by clicking the `+` in the `Map Get` node and type in
 New attributes are added by clicking the `+` next to one of the attribute containers in the Parameters Panel.
 After being created the attribute can be added to the `Map Get` node.
 
+(
+I'm not entirely sure on the difference between the `Map Get` `+` and the Parameters Panel `+`.
+In the Houdini Niagara [video about custom attributes](https://www.sidefx.com/docs/unreal/_niagara.html#CustomModuleAttributes) at 7:50 the user tries to add Emitter Age from the Parameters Panel but it doesn't show up.
+It does however show up from `Map Get`.
+Why the difference?
+)
+
 The `Map Get` node can also be used to create input parameters.
 Click the `+`, select Create New Parameter, and pick a type.
 Input Parameters will be shown  under Module Inputs in the Parameters Panel.
@@ -73,6 +87,10 @@ The value can either be:
 - Set directly to a numeric value.
 - Bound to an Emitter Parameter by dragging it from the Parameter Panel.
 - Computed using an expression tree, created using expression statements accessed from the drop-down menu.
+
+Attributes can have Namespace Modifiers, which is a kind of sub-group grouping.
+The default NamespaceModifier for a newly created attribute is `Module`.
+This name can be changed.
 
 New output parameters are added by clicking the `+` on the `Map Set` node.
 Implement logic by placing expression nodes between the `Map Get` output pins and the `Map Set` input pin.
@@ -85,6 +103,8 @@ This dictate which part of the stack the module may be placed.
 This is set in Script Details > Script > Module Usage Bitmask.
 Different placement in the stack may produce different behavior for a module.
 Scaling velocity in spawn causes a single kick, scaling in update gives an acceleration.
+
+A module can be included in the module search dialogs by checking Script Details > Script > Expose to Library.
 
 The Module Graph, with all of its nodes, specifies a HLSL program.
 The HLSL program is compiled either to a GPU shader or to CPU virtual machine instructions.
@@ -125,6 +145,7 @@ The particle modules are split into two sections.
 
 Add a module to a section by clicking the `+` next to that section and type the module name.
 May need to uncheck "Library Only" to see your own modules.
+This is avoided by checking `Expose to Library` in the module settings.
 There may be dependencies between modules.
 The Emitter Editor will warn about unmet dependencies and provide help for fixing them.
 
@@ -163,10 +184,11 @@ Some important parameters:
 ### Sequencer timeline
 
 
-# System
+## System
 
 Systems are containers for multiple emitter.
 A system produces one complete effect.
+An example of an effect is a firework.
 The emitters are choreographed using emitter sequencing in a timeline.
 Can set which emitters loops and bursts and so on.
 Systems have global variables that are available to the contained emitters.
@@ -179,15 +201,50 @@ New emitters are added using the `+ Track` button in the Timeline Panel.
 All emitters are listed as separate tracks in the Timeline Panel.
 Here we control the relative timing between the emitters.
 
+The added emitters can be modified to tweak the effect.
+
 System can inherit from each other.
 Inherited modules can be disabled.
 New modules can be added.
 Module parameter input values can be changed, both setting a new value and create a new binding.
 
+## Events
 
-# Events
+(For 4.25, events only work for CPU particles, not GPU.)
 
+Requires Persistent IDs must be enabled in the Emitter Properties of emitters that use events.
+Not sure if this is a requirement on both event triggers and event handlers.
+
+Events are a way to communicate between emitters in a system.
+One emitter generates some data and emitters listens for and reacts to that data.
+We say that the listening emitter has an Event Handler for an Event.
+Both Events and Event Handlers are Modules.
+An event trigger can send arbitrary payload, i.e., an attribute container, to the event handlers.
+An event handler can run on a particular particle  (by ID) or on every particle.
+An event handler can spawn new particles and run on those.
+An event handler has it's own execution stack. (Module stack?)
+Splitting the logic up between the main emitter stack and a set of event stacks help with organization.
+There are built-in events for collision, death, and location.
+
+### Location Events
+
+Location events are enabled by adding a Generate Location Event module to the Particle Update group in an emitter.
+Particles spawned by that emitter will continuously generate location events.
+The location event has a payload that contains a bunch of attributes or the particle.
+Position, Velocity, and normalized age, for example.
+The payload attributes can be linked to any attribute.
+
+### Death events
+
+
+
+
+## Data interfaces
+
+Used to send arbitrary external data into a particle system.
+The data is made accessible in the Modules.
+One example is the Houdini plugin, which can pre-simulate a rigid body simulation which is imported into Unreal Engine. With the simulation comes events for things such as body breakage, impact positions, body velocities, etc. These can be used as events in the particle system.
 
 
 [VFX and Particle Systems @ learn.unrealengine.com](https://learn.unrealengine.com/course/2547426/module/5502400)  
-
+[Advanced Niagara Effects | Inside Unreal by Unreal Engine @ youtube.com](https://www.youtube.com/watch?v=31GXFW-MgQk)  
