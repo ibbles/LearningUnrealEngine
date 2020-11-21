@@ -24,4 +24,6 @@ void FMyModule::MyConsoleCommand()
 
 ```
 
-["C++ Extending the Editor" By Unreal Engine @ youtube.com](https://youtu.be/zg_VstBxDi8?t=1639)
+[[2020-11-21_15:49:09]] [Console](./Console.md)  
+
+["C++ Extending the Editor" By Unreal Engine @ youtube.com](https://youtu.be/zg_VstBxDi8?t=1639)  
