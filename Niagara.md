@@ -203,6 +203,12 @@ Example:
 Particle.NormalizedAge * 100 + Engine.Owner.Velocity
 ```
 
+
+We can sample a vector field using the Sample Vector Field module.
+Must also have an Apply Vector Field module.
+The vector field can apply either a force or a velocity.
+
+
 Particles can be rendered as sprites, lights, meshes, ribbons.
 It is possible to have multiple renderers in the same stack, e.g. rendering particles with both sprites and meshes.
 The rendering modules contains a section name Bindings.
@@ -323,6 +329,10 @@ Buttons on the Tool Bar control tangents.
 
 ### Scratch Pad Panel
 
+Area where you can experiment with module scripts.
+The scratch module can be injected into the Emitter Module Stack.
+Can also be saved out to a Module assets for long-term use.
+
 ## System
 
 Systems are assets that live in the Content Browser.
@@ -360,8 +370,6 @@ Module parameter input values can be changed, both setting a new value and creat
 
 ## Rendering
 
-Sprite particles are quads that are always facing the camera.
-They are rendering with the same (almost) kinds of materials as any mesh.
 Render modules are added to the red section of an Emitter's Module Stack.
 There are:
 - Sprint Renderer:
@@ -369,9 +377,25 @@ There are:
 - Ribbon Renderer:
 - Light Renderer:
 
+An Emitter can have multiple renderers.
+
+The Dynamic Parameter Material node is used to communicate per-particle data from the particle system to the Material.
+Dynamic parameter values are set in Niagara with the Dynamic Material Parameters module.
+There are four Dynamic Parameter slots and each slot holds four channels.
+The slot index to use must match the Details > Param Names > Parameter Index property of the Dynamic Parameter node in the Material.
+
+
+(
+Is this false?
+There are Dynamic Parameters bindings in the rendering modules where we bind each Dynamic Parameter to a Particle attribute.
+)
+
 ### Sprite Renderer
 
+Sprite particles are quads that are always facing the camera.
 The Sprite Renderer renders camera facing quads.
+They are rendering with the same (almost) kinds of materials as any mesh.
+
 The sprite rotation is in degrees, but there is a dynamic input that converts a `[0..1]` float to degrees.
 
 The Material used by the Sprint Renderer may use texture sampling.
@@ -415,13 +439,30 @@ Where `f` is a literal float. You can make this into a User Exposed parameter if
 
 An alternative way to get a random value per particle is to use Link Inputs > Particles > MaterialRandom.
 
-
 We can create a smoother animation with UV Blending.
 Enable Sprite Renderer > Sub UV > Sub UV Blending Enabled.
 In the Material, replace the Texture Sample node with a Particle SubUV node.
 Enable Particle SubUV > Details Panel > Material Expression Particle SubUV > Blend.
 Now the Sprite Renderer/Material will load two texture samples per frame and blend between them.
 Gives a bit smoother animation, but also a kind of ghosting effect, especially where texels goes from masked to unmasked.
+
+### Mesh Renderer
+
+The size of each particle's mesh is controlled with the Mesh Scale attribute.
+The rotation of each particle's mesh is controlled with the Mesh Orientation attribute.
+The size is set by the Initialize Particle module, but the orientation is not.
+Instead we have the Initial Mesh Orientation Module, which can be added to Particle Spawn.
+
+Mesh Particles are made spinning by adding a Mesh Rotation Force module.
+Is accumulated, so consider placing it in Particle Spawn instead of Particle Update.
+If so, add an Apply Initial Forces as well.
+
+Mesh Renderer cannot use skeletal meshes, so animations must be done in different ways.
+Can create flipbook meshes, a mesh where all positions of e.g. a wing has been modeled.
+A Material with an opacity mask is used so that only one of the wing models get an on-mask.
+The mask is created using a panning texture where the Time input pin is connected to `floor(Time * 7) / n` to get  an `n`-stepped sequence from 0.0 to 1.0.
+The mask texture itself is `n-1` black texels and one white.
+Multiply the diffuse color texture's alpha channel with the panned 1/0 mask and link to Opacity Mask.
 
 
 ### Ribbon Renderer
@@ -430,6 +471,15 @@ Renders a spline between particles that have the same Ribbon ID attribute value.
 (
 Easy in principle, but weird stuff with flickering and ribbons phasing in and out of reality always seems to happen for me.
 )
+
+Taking particle positions, drawing trail of geometry through those positions, creating a strip.
+
+There is an Initialize Ribbon module.
+
+### Light Renderer
+
+Uses the color of the particle.
+
 
 ### Materials
 
@@ -517,6 +567,19 @@ If I disable their `ReceiveLocationEvent` module and re-implement the parts of i
 Used to send arbitrary external data into a particle system.
 The data is made accessible in the Modules.
 One example is the Houdini plugin, which can pre-simulate a rigid body simulation which is imported into Unreal Engine. With the simulation comes events for things such as body breakage, impact positions, body velocities, etc. These can be used as events in the particle system.
+
+
+## GPU Particles
+
+A particular Emitter is either spawning CPU or GPU particles.
+This is selected in Tmitter Properties > Emitter > Sim Target.
+Select CPUSim or GPUCompute Sim.
+
+GPU particle systems should have a fixed bound.
+This is because the CPU needs to know where the particles might be but that information is only on the GPU.
+If there are particles outside of the bounds then those may be popping as the smaller bounds is transitioning in and out of view.
+Set in the Emitter or System properties, and can be visualized with the Bounds button in the Emitter Tool Bar.
+The Tool Bar button has a sub-button that sets the bound to the current particle space volume.
 
 
 [VFX and Particle Systems @ learn.unrealengine.com](https://learn.unrealengine.com/course/2547426/module/5502400)  
