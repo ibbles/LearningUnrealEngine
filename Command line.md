@@ -73,6 +73,33 @@ $UE_ROOT/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Linux -Project="
 ```
 Don't know what other options for `TargetType` might be.
 
+### Packaging a project
+
+On Linux, clicking Package Project in Unreal Editor runs the following Unreal Automation Tool command:
+```
+mono AutomationTool.exe
+    -ScriptsForProject=<PROJECT_PATH>/<PROJECT_NAME>.uproject 
+    BuildCookRun
+    -nocompileeditor
+    -nop4
+    -project=<PROJECT_PATH>/<PROJECT_NAME>.uproject
+    -cook
+    -stage
+    -archive
+    -archivedirectory=<PACKAGE_PATH>/
+    -package
+    -ue4exe=$UE4_ROOT/Engine/Binaries/Linux/UE4Editor
+    -pak
+    -prereqs
+    -nodebuginfo
+    -targetplatform=Linux
+    -build
+    -target=AGXUnrealDev
+    -clientconfig=Development
+    -utf8output
+```
+
+I expect there to be a fairly straightforward conversion to a `RunUAT.sh` command line from this.
 
 ## Plugin stuff
 
@@ -82,7 +109,6 @@ eval $UE_ROOT/Engine/Build/BatchFiles/RunUAT.sh BuildPlugin -Plugin=<PATH>/<PROJ
 ```
 Don't know what `-Rocket` does.
 May want to add a `-TargetPlatform(s?)=` here.
-
 
 ## Other stuff
 
