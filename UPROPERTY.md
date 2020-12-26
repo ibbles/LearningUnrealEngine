@@ -23,8 +23,8 @@ The following are some of the specifiers available to the `UPROPERTY` macro:
 - `VisibleInstanceOnly` Instance values can be seen, but not edited.
 
 The system:
-`Edit` vs `Visible`: Wheter the property can be edited or just seen.
-`DefaultsOnly` vs `InstanceOnly`: Wheter the `Editor` or `Visible` part applies to defaults or a particular instance.
+`Edit` vs `Visible`: Whether the property can be edited or just seen.
+`DefaultsOnly` vs `InstanceOnly`: Whether the `Editor` or `Visible` part applies to defaults or a particular instance.
 `Anywhere`: Both defaults and instance.
 
 The `Blueprint(ReadOnly)|(ReadWrite)` and `(Edit)|(Visible)(DefaultsOnly)|(InstanceOnly)|(Anywhere)` specifiers are independent. One is about Blueprint scripts and the other is about the property windows in the Unreal Editor.
