@@ -252,6 +252,18 @@ This seems to be because I have two modules with the `ReceiveLocationEvent` node
 If I disable their `ReceiveLocationEvent` module and re-implement the parts of it that I need in my module that it works.
 )
 
+### Custom events
+
+A custom event is generated from a module by adding an `Add <TYPE> Event Write` node, where `<TYPE>` is the type of the payload to send.
+The module must be in the Particle Update module group, it seems.
+Not sure, but events generated in Emitter Updates aren't picked up by the Source drop-down list in Event Handler Properties.
+
+
+A custom event is received in a module by adding an `Add <TYPE> Event Read` node, where `<TYPE>` is the type of the payload to receive.
+The module must be added to 
+
+
+[How to Add Enums And Structs To Niagara @ niagara-vfx.herokuapp.com](https://niagara-vfx.herokuapp.com/how-to-add-enums-and-structs-to-niagara/#)
 
 ## Data interfaces
 
