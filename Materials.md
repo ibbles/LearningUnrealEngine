@@ -2,8 +2,11 @@
 
 # Materials
 
+A \`Material\`, or a set of materials, is what defines the colors an object has.
 Materials define the look of a surface or volume.
 This can be a `StaticMesh` or a sprite.
+
+A `Material` is a blueprint and all `Materials` have a `Result Node` that define the properties of the material.
 
 ## Common nodes and tips-and-tricks
 
