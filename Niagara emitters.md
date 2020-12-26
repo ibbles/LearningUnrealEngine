@@ -5,10 +5,15 @@
 Emitters are assets that live in the Content Browser.
 Emitters are single-purpose, reusable components.
 Emitters are building blocks for Systems.
+Systems are containers for emitters, which it combines to create an effect.
 We only set defaults on the Emitter. An emitter instance in a System can be tweaked.
+Emitter parameters are set by the system they belong to or become parameters of the system.
 Emitters are containers for modules.
+Emitter are containers for modules that are stacked on each other.
 They contain modules that provide the intended behavior of the particles.
+Parameters on modules bubble up to become parameters on the emitter unless set by the emitter itself.
 The modules are stacked, so that one run after the other.
+Theses phases are called groups, as they are a group of modules.
 The module stacks are grouped into:
 - Emitter Spawn: When the emitter is spawned.
 - Emitter Update: Every update.
@@ -18,6 +23,7 @@ The module stacks are grouped into:
 - Render: Every frame.
 
 Parameters on the modules bubble up and can be modified on the emitter.
+The module stacks of the emitters can be modified by the system.
 
 The Emitter Editor consists of the following parts:
 - Module Stack: A list of modules added to the emitter.
@@ -30,6 +36,8 @@ In the Top Tool Bar:
 - Apply: Apply the latest changes to all Systems that use this Emitter.
 
 ### Module Stack
+
+The group order is from large to small, starting with System groups, then Emitter groups, and finally Particle groups.
 
 The Module Stack is color coded.
 - Orange: Emitter modules. Spawn rate and such.
