@@ -25,11 +25,11 @@ Unobtrusive.
 ## Basic concepts
 
 The Niagara system consists of the following core components:
-- [[2020-12-03_21:29:00]] Systems
-- [[2020-12-03_21:34:16]] Emitters
-- [[2020-12-03_21:41:31]] Modules
-- [[2020-12-03_21:50:39]] Parameters
-- [[2020-12-26_20:22:38]] Events
+- [[2020-12-03_21:29:00]] [Systems](./Systems.md)
+- [[2020-12-03_21:34:16]] [Emitters](./Emitters.md)
+- [[2020-12-03_21:41:31]] [Modules](./Modules.md)
+- [[2020-12-03_21:50:39]] [Parameters](./Parameters.md)
+- [[2020-12-26_20:22:38]] [Events](./Events.md)
 
 A System holds emitters that together produce an effect.
 A Niagara system is configured using Graphs and Stacks.
@@ -41,7 +41,7 @@ Modules are created my technical artists and combined into stacks by artists.
 Parameters let us provide customizations of an emitter or particle system.
 Events are a way to communicate between elements (such as particles, emitters, and systems).
 
-[NiagaraKeyConcepts @ docs.unrealengine.com](URL: https://docs.unrealengine.com/en-US/Engine/Niagara/NiagaraKeyConcepts/index.html)  
+[NiagaraKeyConcepts @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/NiagaraKeyConcepts/index.html)  
 
 ## Data
 
