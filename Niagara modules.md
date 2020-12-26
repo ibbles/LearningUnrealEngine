@@ -10,12 +10,77 @@ The later use of parameter is the same as parameters to a function. These are al
 The former use of parameter is the same as parametrization of a system.
 )
 
+Modules are building blocks for behaviors, acting like regular functions.
 A module is like a function, something that takes some set of input data and produce some kind of output data.
+Modules transforms the state of the particle system in some way, reading and/or writing common data.
 Modules speak to a shared pool data, the particle positions and velocities and such.
 Modules encapsulate behavior, for example to simulate attraction forces, or gravity, or noise.
+Modules are stacked together to form a sequence.
 Modules stack with each other to accomplish more complex behavior, the result of one module being used by the next.
+Modules speak to common data, encapsulate behaviors, and stack together.
+Each active module is a system belong to a group, and all modules in that group form a stack.
+The modules in the stack are executed top to bottom when that group is triggered.
+The groups are System Spawn, System Update, Emitter Spawn, Emitter Update, Particle Spawn, Particle Update, Render.
+Modules in the Emitter Spawn group will execute when the emitter spawns.
+Modules in the Emitter Update group will execute over time.
+Modules in the Particle Spawn group will execute each time a particle is created.
+Modules in the Particle Update group will execute per particle over time.
+Event handlers allow particles to interact with each other and other emitters or systems.
+
+Modules are assigned to groups.
+Each group has a defined point in time when it's modules are executed.
+Modules are executed top to bottom.
+Modules part of the System group is executed first, handling behavior that is shared with every emitter.
+Then the modules of the Emitter groups are executed, once for each emitter.
+Then the modules of the Particle groups are executed, once for each particle.
+Then the modules of the Render groups are executed.
+
+In addition to when a module is executed, the group assignment also control what data the module operates on.
+Each collection of data is called a namespace.
+Modules in the group that correspond to a namespace can read/write parameters in that namespace, and read parameters in the namespaces above it.
+The namespace order is Engine, User, System, Emitter, Particle.
+Computation whose results are used in several instances of a lower lever should be computed in an upper level.
+
+| Group       | Read | Write |
+|-------------|------|-------|
+| System      | Engine, User, System | System |
+| Emitter     | Engine, User, System, Emitter | Emitter |
+| Particle    | Engine, User, System, Emitter, Particle | Particle |
+
+
+Rotated the other way we get the following table.
+
+
+| Group    | Engine | User | System | Emitter | Particle |
+|----------|--------|------|--------|---------|----------|
+| System   | 👀     | 👀   | 👀🖊   |         |          |
+| Emitter  | 👀     | 👀   | 👀     | 👀🖊    |          |
+| Particle | 👀     | 👀   | 👀     | 👀      | 👀🖊     |
+
+Modules are created using blueprint graph nodes.
+The operations performed by a module are defined using a visual node graph.
 Modules are implemented using the graphs, the regular visual scripting language in Unreal Engine.
 The modules are implemented as node graphs which are compiled to HLSL.
+Unreal Engine ships with a sizable collection of useful modules.
+
+A module's function flow consists of four main parts:
+- Reading from the incoming parameter map
+- Performing computation or other actions
+- Write results into the parameter map
+- Module output.
+
+Modules accumulate to a temporary namespace.
+If two modules contribute to the same attribute the modules will stack and accumulate properly.
+(
+I don't understand the above.
+)
+
+Modules created using the blueprint graph scripting language can be run on both the CPU and the GPU.
+
+Dynamic inputs act on a value type instead of a parameter map.
+(
+I don't understand the above.
+)
 
 The module graph has four fundamental node types:
 - `InputMap`: The incoming parameter map. A container with all the attributes and parameters in the system.
