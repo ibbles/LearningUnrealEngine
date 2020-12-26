@@ -8,6 +8,8 @@ Data can be recorded remotely to minimize the impact of the collection.
 That is, one machine runs the target application and another runs Unreal Insights.
 This is the recommended way.
 
+Unreal Insights is started by running `./UnrealInsights` from `$UE_ROOT/Engine/Binaries/Linux`.
+
 The game should be started with
 `-tracehost=127.0.0.1 -trace=frame,cpu,gpu`
 
