@@ -272,7 +272,7 @@ The data is made accessible in the Modules.
 One example is the Houdini plugin, which can pre-simulate a rigid body simulation which is imported into Unreal Engine. With the simulation comes events for things such as body breakage, impact positions, body velocities, etc. These can be used as events in the particle system.
 
 
-## GPU Particles
+## GPU particles
 
 A particular Emitter is either spawning CPU or GPU particles.
 This is selected in Tmitter Properties > Emitter > Sim Target.
@@ -283,6 +283,31 @@ This is because the CPU needs to know where the particles might be but that info
 If there are particles outside of the bounds then those may be popping as the smaller bounds is transitioning in and out of view.
 Set in the Emitter or System properties, and can be visualized with the Bounds button in the Emitter Tool Bar.
 The Tool Bar button has a sub-button that sets the bound to the current particle space volume.
+
+GPU particles does not support:
+- Attribute Reader. (Fixed in 4.26?)
+- Events.
+
+## Debugging
+
+The Attributes Spreadsheet is used to view all attributes within the current emitter.
+
+Using a Sprite Renderer we can write numbers as text on the particles.
+Text rendering is handled by a Material, so create a new Material for this.
+Create a new instantiation of the Sprite Renderer module.
+In the Sprite Renderer assign the debug Material.
+A Dynamic Material Parameter is used to pass the number to print to the Material.
+There are four Dynamic Material Parameters and each contains four floats.
+We set the Dynamic Material Parameters in Niagara using the Dynamic Material Parameters module.
+In the Material create a Dynamic Parameter node, feed the X, Y, and Z values to an `Append Many` node, and then to a `Debug Float 3 Values`.
+Feed the Color output to the materials Emissive Color and the Grey Scale Output to the Opacity Mask output.
+The Material's Blend Mode should be set to Masked.
+Some tweaking in the material may be required to make it readable.
+For example, the Sprite Size binding can be bound to a dedicated debug sprite attribute to control the size of the debug rendering independent of the souce particle's size.
+
+[Diving Into Niagara: Intelligent Particle Effects | Unreal Fest Online 2020 by Unreal Engine @ youtube.com](https://youtu.be/oX6uiPWXJDY?t=1654)  
+
+
 
 
 [VFX and Particle Systems @ learn.unrealengine.com](https://learn.unrealengine.com/course/2547426/module/5502400)  
