@@ -38,3 +38,5 @@ Do:
 There are many more steps, I won't repeat them here.
     
 [AddingAutomationProjects@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Programming/BuildTools/AutomationTool/HowTo/AddingAutomationProjects/index.html)
+
+[[2020-09-28_07:47:55]] [Command line](./Command%20line.md)  
