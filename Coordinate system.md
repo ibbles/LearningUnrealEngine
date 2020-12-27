@@ -2,12 +2,14 @@
 
 # Coordinate system
 
-Uneral uses a left-handed coordinate system with:
+Unreal uses a left-handed coordinate system with:
 X: Forward.
 Y: Right.
 Z: Up.
 
-Unreal Engine uses a left-handed coordinate system with X forward, Y right, and Z up.
+Each object with a transformation has both a global/world and a local/object space.
+Switch mode with the Cycle Transform Gizmo Coordinate System button in the top-right of the viewport.
+
 We can find the current transformation of an `Actor` using `GetActorTransform`.
 We can find the current transformation of a `Component` with `GetComponentTransform`.
 We can find the local/relative transformation of a Component with `GetRelativeTransform`.
