@@ -11,6 +11,11 @@ What's the difference between Simulation and Play?
 Details Panel lists the properties that are available for the currently selected part of the Blueprint.
 In the Viewport we can see the components of the Blueprint.
 
+After any change to the Blueprint the Compile button will display a question mark.
+Uncompiled changes are visible in the Blueprint Editor only, and not on any instance of the Blueprint.
+After a successful compile the question mark will change to a check mark and the changes are applied to the instances.
+All uncompiled Blueprints are automatically compiled when starting a Play session or when packaging the game.
+
 Construction Script customizable parameters for the Blueprint.
 For example to provide parameters that are visible outside of the Blueprint Editor, for use by artists.
 For example a light color or intensity.
@@ -18,7 +23,7 @@ The Construction Script is executed every time any change is made to the Bluepri
 
 The Event Graph contains the moment to moment script this is run during gameplay.
 
-My Blueprint panel shows graphcs, functions, macros, variables, including Components, and event dispatchers.
+My Blueprint panel shows graphs, functions, macros, variables, including Components, and event dispatchers.
 Event dispatchers are a way to communicate between Blueprints.
 
 Types of nodes that can be added:
@@ -45,7 +50,7 @@ Mark the variable `Instance Editable` to make it show up in the Details Panel.
 Instances of classes are created with the `Construct Object From Class` node.
 
 Variables are used by dragging them from the My Blueprint panel into the graph.
-Hold Alt or Ctrl to select get or set.
+Hold `Alt` or `Ctrl` to select get or set.
 
 For more information see [Blueprints](./Blueprints.md).
 
