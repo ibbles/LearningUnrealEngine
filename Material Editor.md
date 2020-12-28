@@ -16,4 +16,18 @@ The Shading Model is selected from the Details Panel when the main material node
 - Apply: Apply the recent changes to all users, i.e., meshes and material instances, of this material.
 - Search: 
 
-[[2020-08-24_10:51:04]] [Shading models](./Shading models.md)
+## Graph
+
+This is where the material is defined, using a Visual Scripting Graph of expression nodes.
+There are no execution nodes in a Material Graph. Or rather, the main material node is the sole execution node.
+
+Hold `Alt` and click on a node pin to disconnect the wire from it.
+Nodes can be duplicated with `Ctrl`+`w`.
+
+## Viewport
+
+
+
+[[2020-08-24_10:51:04]] [Shading models](./Shading models.md)  
+[[2020-12-28_15:11:08]] [Material shading model inputs](./Material%20shading%20model%20inputs.md)  
+[[2020-05-10_11:01:04]] [Materials](./Materials.md)  
