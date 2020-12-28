@@ -36,6 +36,6 @@ Each Shading Model gives a separate *look* for the material.
 - Cloth  
 
 [[2020-05-10_11:01:04]] [Materials](./Material.md)
-
+[[2020-12-28_15:11:08]] [Material shading model inputs](./Material%20shading model%20inputs.md)  
 
 [Lighting Models @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/MaterialProperties/LightingModels/index.html)

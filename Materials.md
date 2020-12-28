@@ -26,3 +26,4 @@ Each channel can have each own name.
 [[2020-08-11_11:11:52]] [Material instance](./Material%20instance.md)  
 [[2020-08-11_19:05:49]] [Material parameter collection](./Material%20parameter%20collection.md)  
 [[2020-05-08_22:05:51]] [StaticMesh](./StaticMesh.md)  
+[[2020-12-28_15:11:08]] [Material shading model inputs](./Material%20shading%20model%20inputs.md)  
