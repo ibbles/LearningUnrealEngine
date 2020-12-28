@@ -101,6 +101,28 @@ mono AutomationTool.exe
 
 I expect there to be a fairly straightforward conversion to a `RunUAT.sh` command line from this.
 
+An example RunUAT line to build a server:
+```
+RunUAT
+    BuildCookRun
+    -project="MyProject".uproject
+    -noP4
+    -platform=Linux
+    -clientconfig=Development
+    -serverconfig=Development
+    -cook
+    -server
+    -serverplatform=Linux
+    -targetplatform=Linux
+    -noclient
+    -build
+    -compile
+    -stage
+    -pak
+    -archive
+    -archivedirectory="MyProjectOutputDir"
+```
+
 ## Plugin stuff
 
 ### Exporting a plugin
