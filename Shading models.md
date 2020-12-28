@@ -34,8 +34,6 @@ Each Shading Model gives a separate *look* for the material.
     Used to render hair. Supports multiple specular highlights: one for the light color and another for light+hair color.
     The Material Graph can set Base Color, Scatter, Specular, Roughness, Emissive Color, Tangent, World Position Offset, Backlit, Ambient Occlusion, Pixel Depth Offset.
 - Cloth  
-    
-
 
 [[2020-05-10_11:01:04]] [Materials](./Material.md)
 
