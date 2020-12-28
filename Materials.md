@@ -2,7 +2,7 @@
 
 # Materials
 
-A \`Material\`, or a set of materials, is what defines the colors an object has.
+A `Material`, or a set of materials, is what defines the colors an object has and how light interacts with the object.
 Materials define the look of a surface or volume.
 This can be a `StaticMesh` or a sprite.
 
