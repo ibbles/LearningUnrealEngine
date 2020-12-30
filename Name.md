@@ -2,5 +2,10 @@
 
 # Name
 
-There is a difference between `GetName` and `GetActorLabel`, but there is some kind of relationship between them.
-`GetActorLabel` is editor only.
+There is a difference between `GetName`/`GetObjectName` and `GetActorLabel`/`GetDisplayName`, but there is some kind of relationship between them.
+In editor builds `GetActorLabel` returns the label of the actor in the World Outliner.
+In non-editor builds `GetActorLabel` is forwarded to `GetName`.
+The named returned by `GetActorLabel` is neither unique nor localized.
+`GetActorLabel` should not be displayed to the end-user.
+
+I don't know what the difference between Blueprint's `Get Display Name` and C++'s `GetActorLabel` is.
