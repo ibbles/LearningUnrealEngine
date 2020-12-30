@@ -17,8 +17,9 @@ A number of class specifiers can be added to the `UCLASS` macro to specify ho th
 - `BlueprintType`: Allow creation of variables of this type in Blueprint classes.
 - `NotBlueprintable`: Do not allow creation of Blueprint subclasses of the C++ class.
 
-[[2020-03-09_21:43:36]] UPROPERTY
-[[2020-03-09_21:48:56]] UFUNCTION
-[[2020-03-09_21:54:48]] Blueprints
-[[2020-03-11_18:48:51]] Blueprint from C++ class
-[[2020-03-09_21:57:41]] Unreal Build Tool
+[[2020-03-09_21:43:36]] [UPROPERTY](./UPROPERTY.md)  
+[[2020-03-09_21:48:56]] [UFUNCTION](./UFUNCTION.md)  
+[[2020-03-09_21:54:48]] [Blueprints](./Blueprints.md)  
+[[2020-03-11_18:48:51]] [Blueprint from C++ class](./Blueprint%20from%20C++%20class.md)  
+[[2020-03-09_21:57:41]] [Unreal Build Tool](./Unreal%20Build%20Tool.md)  
+[[2020-12-30_17:24:55]] [Class specifiers](./Class%20specifiers.md)  
