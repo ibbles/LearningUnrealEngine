@@ -2,7 +2,13 @@
 
 # Garbage collection
 
+Garbage collection is used to avoid having to manually call `delete` on dynamically allocated objects that are no longer referenced.
+Types marked with `UCLASS` or `USTRUCT` (I think) are garbage collected.
 Unreal Engine uses reference counting to implement garbage collection.
+Any pointer held by a `UCLASS` or `USTRUCT` (I think) type in a `UPROPERTY` member variable participate in the reference counting of the pointed-to object.
+The pointed-to object is marked for deletion when the last `UPROPERTY` pointer to it is cleared or redirected.
+Objects marked for deletion are deleted on the next garbage collection cycle.
+You should not manually delete `UCLASS` and `USTRUCT` (I think) objects.
 
 Something related to garbage collection is done with `MyUObject->ConditionalBeginDestroy`.
 
