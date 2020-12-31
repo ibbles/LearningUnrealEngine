@@ -9,8 +9,8 @@ Pointers to `UCLASS` classes (and possibly `USTRUCT` structs) participate in gar
 Specifiers can be added to the `UPROPERTY` macro to change the way it behaves within Unreal Editor.
 The following are some of the specifiers available to the `UPROPERTY` macro:
 
-- `BlueprintReadOnly` Blueprints can read, but not write, the property.
-- `BlueprintReadWrite` Blueprints can both read and write the property.
+- `BlueprintReadOnly` Blueprint Visual Scripts can read, but not write, the property.
+- `BlueprintReadWrite` Blueprint Visual Scripts can both read and write the property.
 - `Category` The category/section/submenu to put the property in in the property editor / Details Panel.
 - `EditFixedSize` Only for arrays. The elements can be edited, but the number of elements if fixed.
 - `EditInline` Only for pointers. The properties of the pointed-to object is shown instead of the pointer.
@@ -30,7 +30,10 @@ The system:
 
 The `Blueprint(ReadOnly)|(ReadWrite)` and `(Edit)|(Visible)(DefaultsOnly)|(InstanceOnly)|(Anywhere)` specifiers are independent. One is about Blueprint scripts and the other is about the property windows in the Unreal Editor.
 
-
+To read the value of a `UPROPERTY` in a Blueprint Visual Script, right-click the Visual Script background and type `get <NAME>`.
+An expression node with the variable's current value as its only output pin is created.
+To set the value of a `UPROPERTY` in a Blueprint Visual Script, right-click the Visual Script background and type `set <NAME>`.
+An execution node is created with the variables new value as its only input pin is created.
 
 
 [[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
