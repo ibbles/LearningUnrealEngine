@@ -19,5 +19,9 @@ Don't know if that is guaranteed or not.
 )
 
 
+[does it makes difference if i make events Vs functions? @ reddit.com](https://www.reddit.com/r/unrealengine/comments/bfyia3/does_it_makes_difference_if_i_make_events_vs/)  
+[Event/functions, what's the main difference between them? @ answers.unrealengine.com](https://answers.unrealengine.com/questions/391663/eventfunctions-whats-the-main-difference-between-t.html)  
+[Managing complexity in Blueprints @ unrealengine.com/blog](https://www.unrealengine.com/en-US/blog/managing-complexity-in-blueprints)
+
 
 [[2020-12-28_13:28:11]] [Blueprint events](./Blueprint%20events.md)  
