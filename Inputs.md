@@ -27,6 +27,8 @@ Select a Component in the Components panel in the Blueprint Editor and scroll th
 Click the `+` next to the event you want.
 It is not possible to create these events when multiple Components are selected.
 
-[[2020-04-10_21:40:28]] [col] TwinStickShooter
-[[2020-03-09_21:54:48]] [col] Blueprints
+[[2020-04-11_09:21:04]] [Pawn](./Pawn.md)  
+[[2020-12-31_17:03:18]] [C++ inputs](./C++%20inputs.md)  
+[[2020-04-10_21:40:28]] [col] TwinStickShooter  
+[[2020-03-09_21:54:48]] [col] Blueprints  
 
