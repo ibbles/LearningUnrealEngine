@@ -3,19 +3,26 @@
 # Inputs
 
 Inputs are named events that the user can trigger and that Blueprints listen for.
-They are created in the Project Settings, the Engine → Input category.
+Example input event names are "Jump" and "Forward".
+Each input event is bound to some hardware device input.
+Such as key or button presses, mouse clicks and drags, thumb stick angle, and triggers.
+Bindings are created in Top Menu Bar > Edit > Project Settings > Engine > Input > Bindings.
 There are Action Mappings and Axis mappings.
 Action mappings are one-off binary pressed/released events, like keys and buttons.
 Axis mappings are continuous both in time and value, like thumbstics and joysticks.
-We can bind many keys/sticks to each mapping, i.e., we can have several buttons for "jump".
+Axis events are fired every frame.
+We can bind many keys/sticks to each mapping, i.e., we can have several buttons for "Jump".
 We can bind keys and buttons to axis mappings and set a scale that can be negative.
 This makes it possible to have keyboard fallback for events that are usually continuous.
+For example, `w` can be bound to the axis event "Forward" with the value 1 and `s` to the same axis event with the value -1.
 
 We can also bind low-level inputs directly, i.e., create keyboard, mouse, and gamepad event nodes.
 In an Actor's Event Graph, right-click and select something from the Gamepad or Keyboard categories.
 These low-level events must be enabled in an actor by calling Enable Input, passing in Get Player Controller, in BeginPlay.
+The recommended way to bind inputs is with proper input events, not binding to the device inputs directly.
 
 Some Components have build-in events that can be added to a Blueprints event graph.
+`TODO:` List some examples here. 
 Select a Component in the Components panel in the Blueprint Editor and scroll the Details panel down to the Events category.
 Click the `+` next to the event you want.
 It is not possible to create these events when multiple Components are selected.
