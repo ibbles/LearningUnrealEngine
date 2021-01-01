@@ -35,22 +35,25 @@ class AMyPawn : public APawn
 public:
     GENERATED_BODY()
     
-    virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent);
+    virtual void SetupPlayerInputComponent(UInputComponent* Input);
     
     void OnInteractStart();
     void OnInteractEnd();
     void OnForward(float Value);
+    void OnRight(float Value);
 };
 
 void AMyPawn::SetupPlayerInputComponent(UInputComponent* Input)
 {
-    Super::SetupPlayerInputComponent(PlayerInputComponent);
+    Super::SetupPlayerInputComponent(Input);
     
     Input->BindAction("Interact", IE_Pressed, this, &AMyPawn::OnInteractStart);
     Input->BindAction("Interact", IE_Released, this, &AMyPawn::OnInteractEnd);
     
-    Input->BindAxis("Forward", this, &AMyPawn::Forward);
+    Input->BindAxis("Forward", this, &AMyPawn::OnForward);
+    Input->BindAxis("Right", this, &AMyPawn::OnRight);
 }
 ```
 
 [[2020-04-10_21:46:17]] [Inputs](./Inputs.md)  
+[[2021-01-01_16:41:46]] [C++ Pawn](./C++%20Pawn.md)  
