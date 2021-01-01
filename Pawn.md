@@ -49,9 +49,8 @@ Position and rotate the StaticMesh until you get the view point you want.
 The StaticMesh is often a sphere.
 I don't know what the purpose of the StaticMesh is.
 
-
-
 [[2020-03-10_21:29:17]] [Actor](Actor.md)  
 [[2020-04-11_09:24:51]] [Character](./Character.md)  
 [[2020-04-11_11:18:18]] [Controller](./Controller.md)  
 [[2020-04-11_11:26:21]] [Game mode](./Game%20mode.md)  
+[[2021-01-01_16:41:46]] [C++ Pawn](./C++%20Pawn.md)  
