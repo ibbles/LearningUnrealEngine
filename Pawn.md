@@ -24,7 +24,7 @@ Call `BindAction` and/or `BindAxis` on the `UInputcomponent` to setup input even
 
 ## Spawning
 The main Pawn in a level is either one placed in a level or created by the Game Mode.
-If the Pawn is placed in the level then set its Details Panel> Pawn > Auto Possess Player property to one of the players.
+If the Pawn is placed in the level then set its Details Panel > Pawn > Auto Possess Player property to one of the players.
 If created by the Game Mode then:
 - Set Game Mode > Details Panel > Default Pawn Class to the wanted Pawn class.
 - Set that Game Mode either on the level (World Settings Panel > Game Mode Override) or in Project Settings > Project > Maps & Modes > Default Game Mode.
@@ -32,6 +32,11 @@ If created by the Game Mode then:
 
 If there is no Player Start then Play In Editor sessions will spawn the Pawn at the current camera location.
 I don't know what will happen if the project is packaged and run stand-alone.
+
+[[2020-04-11_11:26:21]] [Game mode](./Game%20mode.md)  
+
+Unreal Engine has a Default Pawn class that is used if no Pawn has been selected.
+The Default Pawn is a spectator type Pawn that can fly around the level.
 
 ## Possessing
 
