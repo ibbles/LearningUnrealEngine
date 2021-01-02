@@ -40,7 +40,15 @@ class AMyPawn : public APawn
 
 public:
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	float Speed {500.0f};
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	FVector2D Direction;
+
 	AMyPawn();
+    
+    virtual void Tick(float DeltaTime) override;
 
 	void OnInteractStart();
 	void OnInteractEnd();
@@ -90,6 +98,27 @@ void AMyPawn::OnForward(float Value)
 void AMyPawn::OnRight(float Value)
 {
     // Called every frame, where Value is the amount the thumb stick has been moved, 0 to 1.
+}
+
+namespace AMyPawn_helpers
+{
+    FVector IntegrateLocation(const FVector& OldLocation, const FVector2D Direction, float Speed)
+    {
+        FVector DeltaLocation = FVector(Direction.X, Direction.Y, 0.0f);
+        if (!DeltaLocation.Normalize())
+        {
+            return OldLocation;
+        }
+        DeltaLocation *= Speed * DeltaTime;
+        NewLocation = OldLocation + DeltaLocation;
+        return NewLocation;
+    }
+}
+
+void AMyPawn::Tick(float DeltaTime)
+{
+    using namepsace AMyPawn_helpers;
+	SetActorLocation(IntegratePosition(GetActorLocation(), Direction, Speed));
 }
 
 void AMyPawn::SetupPlayerInputComponent(UInputComponent* Input)
