@@ -40,6 +40,22 @@ The Default Pawn is a spectator type Pawn that can fly around the level.
 
 ## Possessing
 
+The initial possession happens when the default Pawn is spawned by the game.
+See Spawning above.
+
+`TODO:` Write about how to move the PlayerController from pawn to pawn here.
+
+## Movement
+
+There is a lot of movement helper code available is one inherits from Character instead of Pawn.
+
+One way to do movement is to set speed and direction variables based on the input axis values.
+Use the speed and direction values in `Tick`.
+Get the Actor location, add Speed * Direction * DeltaTime, set the Actor location.
+
+
+
+
 ## Free-floating top-down view Pawn
 
 For e.g., a RTS or RPG game.
