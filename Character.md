@@ -3,10 +3,13 @@
 # Character
 
 A type of pawn.
-Used for things that walk.
-Has a skeletal mesh, physics capsule, and a CharacterMovementComponent.
+Used for humanoid things that walk, run, jump, and similar.
+Has a Capsule, used for collision detection, as its Root Component.
+Has a mesh for the visual representation.
+Has a Character Movement Component for handling movement.
 Controls how the character can walk/run/jump/etc.
 Knows if it is swimming/falling/etc.
+Has a Player Controller. Not sure what this means.
 
 
 [[2020-03-10_21:29:17]] [Actor](./Actor.md)  
