@@ -1,6 +1,6 @@
 2020-12-26_21:50:52
 
-# Skeletal mesh
+# Skeletal Mesh
 
 A mesh that in addition to triangles contains a bone structure.
 The triangles follows the bones as they move in relation to each other.
