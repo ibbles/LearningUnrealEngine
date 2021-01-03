@@ -110,15 +110,15 @@ namespace AMyPawn_helpers
             return OldLocation;
         }
         DeltaLocation *= Speed * DeltaTime;
-        NewLocation = OldLocation + DeltaLocation;
+        FVector NewLocation = OldLocation + DeltaLocation;
         return NewLocation;
     }
 }
 
 void AMyPawn::Tick(float DeltaTime)
 {
-    using namepsace AMyPawn_helpers;
-	SetActorLocation(IntegratePosition(GetActorLocation(), Direction, Speed));
+    using namespace AMyPawn_helpers;
+	SetActorLocation(IntegrateLocation(GetActorLocation(), Direction, Speed));
 }
 
 void AMyPawn::SetupPlayerInputComponent(UInputComponent* Input)
