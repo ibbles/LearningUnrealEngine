@@ -7,4 +7,4 @@ The triangles follows the bones as they move in relation to each other.
 
 Another type of mesh is the Static Mesh, which doesn't have a bone structure.
 
-[[2020-05-08_22:05:51]] [StaticMesh](./StaticMesh.md)  
+[[2020-05-08_22:05:51]] [Static Mesh](./Static%20Mesh.md)  

@@ -1,6 +1,6 @@
 2020-05-08_22:05:51
 
-## StaticMesh
+## Static Mesh
 
 A `StaticMesh` is a mesh in which the triangles and vertices don't move in relation to each other.
 A `StaticMesh` is either imported, often from an `.fbx` file, or generated from a `RawMesh`.
@@ -15,4 +15,4 @@ Each material slot maps to a set of triangles.
 When a Material is assigned to a material slot the triangles mapped to that slot is given that material.
 
 
-[[2020-12-26_21:50:52]] [Skeletal mesh](./Skeletal%20mesh.md)  
+[[2020-12-26_21:50:52]] [Skeletal Mesh](./Skeletal%20Mesh.md)  

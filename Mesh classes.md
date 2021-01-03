@@ -11,7 +11,7 @@ It should be a guide in choosing which class to override for your own mesh types
 
 `UStaticMeshComponent`
 
-[[2020-05-08_22:05:51]] [StaticMesh](./StaticMesh.md)  
+[[2020-05-08_22:05:51]] [Static Mesh](./Static%20Mesh.md)  
 
 `USkeletalMeshComponent`
 
