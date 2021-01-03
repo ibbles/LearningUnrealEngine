@@ -15,4 +15,4 @@ It should be a guide in choosing which class to override for your own mesh types
 
 `USkeletalMeshComponent`
 
-[[2020-12-26_21:50:52]] [Skeletal mesh](./Skeletal%20mesh.md)  
+[[2020-12-26_21:50:52]] [Skeletal mesh](./Skeletal%20Mesh.md)  
