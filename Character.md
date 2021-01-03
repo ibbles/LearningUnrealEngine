@@ -5,6 +5,7 @@
 A type of pawn.
 Used for humanoid things that walk, run, jump, and similar.
 Has a Capsule, used for collision detection, as its Root Component.
+Has an Arrow, to show the forward direction which is along the X axis.
 Has a Skeletal Mesh for the visual representation.
 Has a Character Movement Component for handling movement.
 Controls how the character can walk/run/jump/etc.
