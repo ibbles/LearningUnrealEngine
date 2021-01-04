@@ -9,8 +9,8 @@ Such as key or button presses, mouse clicks and drags, thumb stick angle, and tr
 Bindings are created in Top Menu Bar > Edit > Project Settings > Engine > Input > Bindings.
 There are Action Mappings and Axis mappings.
 Action mappings are one-off binary pressed/released events, like keys and buttons.
-Axis mappings are continuous both in time and value, like thumbstics and joysticks.
-Axis events are fired every frame.
+Axis mappings are continuous both in time and value, like thumb sticks, joysticks, and mouse movements.
+Axis events are fired every frame, with a potentially new value every time.
 We can bind many keys/sticks to each mapping, i.e., we can have several buttons for "Jump".
 We can bind keys and buttons to axis mappings and set a scale that can be negative.
 This makes it possible to have keyboard fallback for events that are usually continuous.
@@ -20,7 +20,7 @@ If multiple device inputs bound to the same input event is held then their value
 Input events are bound to callbacks.
 The callbacks can be in the currently possessed Pawn, the Player Controller, the Level Blueprint, or an input-enabled/accepts-input Actor.
 So the order is hardware device input > input event > callback function.
-The callback functions are considered in the following order:
+The callback function owners are considered in the following order:
 - Input-enabled / accepts-input Actor.
 - Player Controller.
 - Level Blueprint.
@@ -36,6 +36,11 @@ Some Components have build-in events that can be added to a Blueprints event gra
 Select a Component in the Components panel in the Blueprint Editor and scroll the Details panel down to the Events category.
 Click the `+` next to the event you want.
 It is not possible to create these events when multiple Components are selected.
+
+Movement inputs on a Pawn can either be handled directly and manually, i.e., with `SetActorLocation` and such,
+or with a Movement Component.
+The Character class comes with an Character Movement Component that handles a bunch of movement related tasks.
+The Movement Component is usually accessed through the Pawn member function families `AddControllerInput` and `AddMovementInput`.
 
 [[2020-04-11_09:21:04]] [Pawn](./Pawn.md)  
 [[2020-12-31_17:03:18]] [C++ inputs](./C++%20inputs.md)  

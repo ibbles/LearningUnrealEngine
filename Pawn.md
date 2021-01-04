@@ -43,6 +43,9 @@ The Default Pawn is a spectator type Pawn that can fly around the level.
 The initial possession happens when the default Pawn is spawned by the game.
 See Spawning above.
 
+The Pawn knows which Controller is currently controlling it, if any.
+Set to the `AController* Controller` property.
+
 `TODO:` Write about how to move the PlayerController from pawn to pawn here.
 
 ## Movement
