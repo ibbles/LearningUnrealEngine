@@ -57,3 +57,4 @@ void AMyPawn::SetupPlayerInputComponent(UInputComponent* Input)
 
 [[2020-04-10_21:46:17]] [Inputs](./Inputs.md)  
 [[2021-01-01_16:41:46]] [C++ Pawn](./C++%20Pawn.md)  
+[[2021-01-03_17:40:41]] [C++ Character](./C++%20Character.md)  
