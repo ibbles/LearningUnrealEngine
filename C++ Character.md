@@ -75,3 +75,61 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* Input)
 	Input->BindAxis(TEXT("MoveRight"), this, &AMyCharacter::MoveRight);
 }
 ```
+
+There are multiple ways to handle movement input.
+Here is one where Forward is in the direction which the Character is facing:
+```cpp
+AMyCharacter::AMyCharacter()
+{
+    bUseControllerRotationPitch = true;
+	bUseControllerRotationYaw = true;
+	bUseControllerRotationRoll = true;
+	GetCharacterMovement()->bOrientRotationToMovement = false;
+}
+
+void AMyCharacter::MoveForward(float AxisValue)
+{
+	const FVector Forward = GetActorForwardVector();
+	AddMovementInput(Forward, AxisValue);
+}
+
+void AMyCharacter::MoveRight(float AxisValue)
+{
+	const FVector Right = GetActorRightVector();
+	AddMovementInput(Right, AxisValue);
+}
+```
+
+Here is one where Forward is in the direction which the Controller is facing:
+```cpp
+AMyCharacter::AMyCharacter()
+{
+    bUseControllerRotationPitch = false;
+	bUseControllerRotationYaw = false;
+	bUseControllerRotationRoll = false;
+	GetCharacterMovement()->bOrientRotationToMovement = true;
+    GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f);
+}
+
+void AMyCharacter::MoveForward(float AxisValue)
+{
+	const FVector Forward = GetActorForwardVector();
+	AddMovementInput(Forward, AxisValue);
+}
+
+void AMyCharacter::MoveRight(float AxisValue)
+{
+	const FVector Right = GetActorRightVector();
+	AddMovementInput(Right, AxisValue);
+}
+```
+They assume Character setup with the Camera on a Spring Arm configured as follows:
+```cpp
+SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
+SpringArm->SetupAttachment(RootComponent);
+SpringArm->bUsePawnControlRotation = true;
+
+Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+Camera->SetupAttachment(SpringArm, USpringArmComponent::SocketName);
+Camera->bUsePawnControlRotation = false;
+```
