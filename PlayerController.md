@@ -44,9 +44,8 @@ void AMyPlayerController::MyAction()
 
 
 
-
-[[2020-04-11_11:18:18]] Controller [Controller](./Controllermd)
-[[2020-04-11_11:28:47]] AIController [AIController](./AIController.md)
-[[2020-04-11_11:26:21]] Game mode [Game mode](./Game mode.md)
-[[2020-04-10_21:46:17]] Inputs [Inputs](./Inputs.md)
-[[2020-05-08_22:41:33]] Coordinates [Coordinate](./Coordinates.md)
+[[2020-04-11_11:18:18]] [Controller](./Controllermd)  
+[[2020-04-11_11:28:47]] [AIController](./AIController.md)  
+[[2020-04-11_11:26:21]] [Game mode](./Game mode.md)  
+[[2020-04-10_21:46:17]] [Inputs](./Inputs.md)  
+[[2020-05-08_22:41:33]] [Coordinate](./Coordinates.md)  
