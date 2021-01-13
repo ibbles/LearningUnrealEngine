@@ -3,16 +3,19 @@
 # Pawn
 
 A Pawn is a type of Actor that can be controlled.
-By a player with a controller, or by an AI.
-We say that the Pawn is possessed by the controller.
+By a player with a controller/keyboard/mouse/joystick/etc, or by an AI.
+These are represented by a Player Controller or an AI Controller, respectively.
+We say that the Pawn is possessed by the Controller.
 Can be a character, a vehicle, a fish, etc.
-Often comes with a CameraComponent which the player sees through while controlling the pawn.
+Often comes with a Camera Component which the player sees through while controlling the pawn.
 The Game Mode has a default Pawn.
 
 The Pawn has a set of input events that it listens for and reacts to.
 Inputs such as key or button presses, mouse clicks and drags, thumb sticks, and triggers.
 Unreal Engine maps these device inputs to named input events.
 The device input to input event mapping is done in Top Menu Bar > Edit > Project Settings > Engine > Input > Bindings.
+The input events can be added to a Blueprint Pawn's Event Graph.
+The input events can be bound to a C++ Pawn's member functions in `Pawn::SetupPlayerInputComponent`.
 
 [[2020-04-10_21:46:17]] [Inputs](./Inputs.md)  
 
@@ -46,15 +49,15 @@ See Spawning above.
 The Pawn knows which Controller is currently controlling it, if any.
 Set to the `AController* Controller` property.
 
-`TODO:` Write about how to move the PlayerController from pawn to pawn here.
+`TODO:` Write about how to move the Player Controller from Pawn to Pawn here.
 
 ## Movement
 
-There is a lot of movement helper code available is one inherits from Character instead of Pawn.
+There is a lot of movement helper code available if one inherits from Character instead of Pawn.
 
 One way to do movement is to set speed and direction variables based on the input axis values.
 Use the speed and direction values in `Tick`.
-Get the Actor location, add Speed * Direction * DeltaTime, set the Actor location.
+Get the Actor location, add `Speed * Direction * DeltaTime`, set the Actor location.
 
 
 
