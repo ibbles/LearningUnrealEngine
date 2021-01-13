@@ -92,3 +92,6 @@ uint32 FMyWorker::Run()
     /* Put your background code here. */
 }
 ```
+
+
+[Unreal 4 Threading - Running a Task on a Worker Thread @ YouTube](https://www.youtube.com/watch?v=1lBadANnJaw)  
