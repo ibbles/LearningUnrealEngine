@@ -18,4 +18,7 @@ Directories are picked up from:
 - Directories registered with `UContentBrowserDataSource`/`ContentBrowserAssetDataSource`.
 
 
+`ContentBrowserDataSource` seems to be newer than `FPackageName::RegisterMountPoint`.
+I don't see it in my 4.25 installation.
+
 Official documentation: [https://docs.unrealengine.com/en-US/Programming/Assets/ReferencingAssets/index.html](https://docs.unrealengine.com/en-US/Programming/Assets/ReferencingAssets/index.html)
