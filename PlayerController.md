@@ -1,6 +1,6 @@
 2020-04-11_11:27:52
 
-# PlayerController
+# Player Controller
 
 A type of controller that reads input from the player, i.e., a game pad, keboard, mouse, joystic, or similar.
 The `PlayerController` to use in a game is set in the `GameMode`, either for the entire project or override per level.
@@ -27,16 +27,11 @@ The `PlayerController` can be found with:
 ## Input events in C++
 
 The C++ version of the Event nodes in the Event Graph is the `SetupInputComponent` member function.
-In `SetupInputComponent` we bind actions to input events.
+In `SetupInputComponent` we bind actions to callbacks using `UInputComponent* AActor::InputComponent`.
 ```c++
 void AMyPlayerController::SetupInputComponent()
 {
     Super::SetupInputComponent();
-    if (InputComponent == nullptr)
-    {
-        error
-    }
-    
     InputComponent->BindAction(
         "MyAction", IE_Pressed, this, &AMyPlayerComponent::MyAction);
 }
@@ -47,7 +42,6 @@ void AMyPlayerController::MyAction()
 }
 ```
 
-There is some uncertainty whether the Component is `InputComponent` or `PlayerInputComponent`.
 
 
 
