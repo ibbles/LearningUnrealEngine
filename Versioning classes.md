@@ -2,6 +2,7 @@
 
 # Versioning classes
 
+Versioning is used to get backwards compatibility.
 We can do versioning of our classes by overriding the `Serialize` member function.
 Serialize both stores and restores the class instance.
 To keep track of what data we have in the various versions one can store a per-class data set ID.
