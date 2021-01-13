@@ -2,10 +2,11 @@
 
 # C++ inputs
 
-The virtual member function `APawn::SetPlayerInputComponent` is called at the start of the game.
-Called after the Pawn constructor and before `BeginPlay`.
-It is passed an `UInputComponent`.
-The `UInputComponent` is used to bind input events to function callbacks.
+The virtual member functions `APawn::SetPlayerInputComponent` and `APlayerController::SetupInputComponent` are called at the start of the game.
+Called after the Pawn constructor and before Begin Play.
+The Pawn version is passed an `UInputComponent`.
+The Player Controller has a member named `InputComponent`
+`UInputComponent` is used to bind input events to function callbacks.
 
 The functions we bind should have these signatures:
 - Action event: `void()`.
@@ -58,3 +59,4 @@ void AMyPawn::SetupPlayerInputComponent(UInputComponent* Input)
 [[2020-04-10_21:46:17]] [Inputs](./Inputs.md)  
 [[2021-01-01_16:41:46]] [C++ Pawn](./C++%20Pawn.md)  
 [[2021-01-03_17:40:41]] [C++ Character](./C++%20Character.md)  
+[[2020-04-11_11:27:52]] [PlayerController](./PlayerController.md)  
