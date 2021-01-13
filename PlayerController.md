@@ -55,7 +55,7 @@ See also [[2020-12-31_17:03:18]] [C++ inputs](./C++%20inputs.md) and [[2021-01-0
 
 [[2020-04-11_11:18:18]] [Controller](./Controllermd)  
 [[2020-04-11_11:28:47]] [AIController](./AIController.md)  
-[[2020-04-11_11:26:21]] [Game mode](./Game mode.md)  
+[[2020-04-11_11:26:21]] [Game mode](./Game%20mode.md)  
 [[2020-04-10_21:46:17]] [Inputs](./Inputs.md)  
 [[2020-12-31_17:03:18]] [C++ inputs](./C++%20inputs.md)  
 [[2021-01-01_16:41:46]] [C++ Pawn](./C++%20Pawn.md)  
