@@ -413,12 +413,6 @@ The `.modules` files should be included in binary releases of the engine.
 [VersioningofBinaries@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Programming/BuildTools/UnrealBuildTool/VersioningofBinaries/index.html)  
 
 
-## Unorganized notes
-
-From @Maliku 🐺 on Unreal Slackers:
-
-> I'm currently building with "Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -set:HostPlatformOnly=true -set:WithDDC=false -set:WithLinuxAArch64=false -set:HostPlatformDDCOnly=false -set:GameConfigurations=Development"
-
 Read 
 - https://docs.unrealengine.com/en-US/Programming/Deployment/UsinganInstalledBuild/index.html
 - https://docs.unrealengine.com/en-US/Programming/BuildTools/AutomationTool/BuildGraph/index.html
