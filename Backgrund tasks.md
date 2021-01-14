@@ -94,4 +94,18 @@ uint32 FMyWorker::Run()
 ```
 
 
+## Async
+
+```cpp
+TFuture<void> future = Async(EAsyncExecution::ThreadPool, [/*captures*/]() {
+    // Do the background work here.
+    // Not safe to do GameThread-only stuff here, such as SetActorLocation.
+
+    // Schedule an "apply" task to apply the result of the background work onto any U-objects.
+    AsyncTask(ENamedThreads::GameThread, [/*captures*/]() {
+        // This is run on the game thread, so safe to do SetActorLocation and such.
+    });
+});
+```
+
 [Unreal 4 Threading - Running a Task on a Worker Thread @ YouTube](https://www.youtube.com/watch?v=1lBadANnJaw)  
