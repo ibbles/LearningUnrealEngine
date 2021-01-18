@@ -13,7 +13,7 @@ The following are some of the specifiers available to the `UPROPERTY` macro:
 - `BlueprintReadWrite` Blueprint Visual Scripts can both read and write the property.
 - `Category` The category/section/submenu to put the property in in the property editor / Details Panel.
 - `EditFixedSize` Only for arrays. The elements can be edited, but the number of elements if fixed.
-- `EditInline` Only for pointers. The properties of the pointed-to object is shown instead of the pointer.
+- `EditInline` Only for pointers. The properties of the pointed-to object is shown instead of the pointer. See more below.
 
 
 - `EditAnywhere` Both the default value set in the Blueprint editor and per-instance values can be edited in the property windows.
@@ -34,6 +34,11 @@ To read the value of a `UPROPERTY` in a Blueprint Visual Script, right-click the
 An expression node with the variable's current value as its only output pin is created.
 To set the value of a `UPROPERTY` in a Blueprint Visual Script, right-click the Visual Script background and type `set <NAME>`.
 An execution node is created with the variables new value as its only input pin is created.
+
+## EditInline
+
+The point of the "Instanced" keyword and "EditInlineNew" is that you create them in-place.
+Not sure what I mean by this.
 
 
 [[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
