@@ -123,6 +123,12 @@ RunUAT
     -archivedirectory="MyProjectOutputDir"
 ```
 
+### Compiling shaders (I think)
+
+```
+UE4Editor "path to uproject" -run=DerivedDataCache -fill -projectonly
+```
+
 ## Plugin stuff
 
 ### Exporting a plugin
