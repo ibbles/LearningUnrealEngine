@@ -30,6 +30,13 @@ The system:
 
 The `Blueprint(ReadOnly)|(ReadWrite)` and `(Edit)|(Visible)(DefaultsOnly)|(InstanceOnly)|(Anywhere)` specifiers are independent. One is about Blueprint scripts and the other is about the property windows in the Unreal Editor.
 
+Components created with `CreateDefaultSubobject` should never be `Edit<something>`, only `Visible<something`.
+Components created with `CreateDefaultSubobject` should never be `BlueprintReadWrite`, only `BlueprintReadOnly`.
+```cpp
+UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+UMyComponent* MyComponent;
+```
+
 To read the value of a `UPROPERTY` in a Blueprint Visual Script, right-click the Visual Script background and type `get <NAME>`.
 An expression node with the variable's current value as its only output pin is created.
 To set the value of a `UPROPERTY` in a Blueprint Visual Script, right-click the Visual Script background and type `set <NAME>`.
