@@ -1,6 +1,6 @@
 2020-05-12_20:04:59
 
-# GUI/HUD
+# ~Collection GUI/HUD
 
 [[2020-05-10_10:35:51]] [GUI-HUD](./GUI-HUD.md)  
 [[2020-07-04_19:53:32]] [Creating GUI widget](./Creating%20GUI%20widget.md)  

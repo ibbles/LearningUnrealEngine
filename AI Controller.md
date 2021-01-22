@@ -1,6 +1,6 @@
 2020-04-11_11:28:47
 
-# AIController
+# AI Controller
 
 A type of controller that uses AI to generate input signals.
 Created as a Blueprint or C++ class with `AIController` as the  parent class.
