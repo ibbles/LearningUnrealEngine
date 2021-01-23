@@ -77,3 +77,7 @@ for file in *.md ; do
         fi
     done
 done
+
+echo -e "\n\n"
+echo "Lots of link errors in Basic project setup.md."
+echo "Make this script find those."
