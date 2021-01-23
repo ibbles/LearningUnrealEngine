@@ -9,6 +9,7 @@
 # - Link points to a file that does not exist.
 # - Link is not a relative link, i.e., does not start with './'.
 # - Link does not point to a Markdown document, i.e., does not end with '.md'.
+# - Link contains spaces.
 #
 # Special cases that are allowed:
 # - Character immediately preceeding the link, i.e., '.[doc](./doc.md)'.
@@ -40,11 +41,24 @@ done
 
 echo -e "\n"
 
+
+echo "Files with contain incorrect ID-links to other documents:"
+for source in *.md ; do
+    sed -nr 's,.*\[\[(.*)\]\].*,\1,pg' "${source}" | \
+        while read link ; do
+            if echo "${link}" | grep -qvE  "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]_[0-9][0-9]:[0-9][0-9]:[0-9][0-9]" ; then
+                echo "  ${source}: Invalid ID-link '${link}'."
+            fi
+        done
+done
+
+echo -e "\n"
+
 echo "Files that contains link lists without trailing double-space:"
 for file in *.md ; do
     no_space=$(sed -nr  's,^\[\[[0-9]+-[0-9]+-[0-9]+_[0-9]+:[0-9]+:[0-9]+.*\]\] \[.*\]\((.*)\)$,\1,p' "$file")
     if [ -n "${no_space}" ] ; then
-        echo -e "$file:\n $no_space"
+        echo -e "  $file: $no_space"
     fi
 done
 
