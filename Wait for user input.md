@@ -2,28 +2,16 @@
 
 # Wait for user input
 
-```
-## DjriffToday at 11:51 AM
+(
+I don't understand the purpose of this.
+Or rather, it seems like there should be a better way.
+Perhaps there is a requirement I'm forgetting.
+)
 
-yes, but it's a bit convoluted
+We want a get-ready type of screen.
+We want to wait for the user to click a button and then call a worker function.
 
-_\[_11:52 AM_\]_
+Create a looping timer.
+Bind an Input Event to a function that clears the timer and calls the worker function.
 
-you would need to make a looping timer and bind your left mouse button input to a function that clears the timer and calls the next function you want.
-
-![ ](https://discord.com/assets/dd4dbc0016779df1378e7812eabaa04d.png)
-
-## SzymonOżógToday at 11:53 AM
-
-Okay, any resources on timers? Never made one before
-
-![ ](https://cdn.discordapp.com/avatars/132772310158409729/4b29b1a5d77fddb889b04352e6907af1.png?size=128)
-
-## DjriffToday at 11:54 AM
-
-[https://www.tomlooman.com/using-timers-in-ue4/](https://www.tomlooman.com/using-timers-in-ue4/)
-
-_\[_11:54 AM_\]_
-
-that's what I used to learn
-```
+[Using timers in UE4 @ www.tomlooman.com](https://www.tomlooman.com/using-timers-in-ue4/)
