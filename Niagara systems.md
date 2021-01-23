@@ -38,5 +38,7 @@ New modules can be added.
 Module parameter input values can be changed, both setting a new value and create a new binding.
 
 [[2020-11-18_17:39:27]] [Niagara](./Niagara.md)  
-[Niagara @ docs.unrealengine.com](URL: https://docs.unrealengine.com/en-US/Engine/Niagara/index.html)  
+
+
+[Niagara @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/index.html)  
 

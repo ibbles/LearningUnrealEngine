@@ -18,7 +18,7 @@ GUnrealEd->RegisterComponentVisualizer(
 A Component Visualizer can also be used to create in-editor tools with interactable widgets.
 The widgets can be selectable and movable.
 Can set it up so dragging the default transform widget on the actor (or component?) runs custom code within the visualizer.
-See also [[Editor mode]] [Editor mode](./Editor mode.md). 
+See also [[Editor mode]] [Editor mode](./Editor%20mode.md). 
 
 To learn how to do this read the spline component visualizer code in the engine.
 

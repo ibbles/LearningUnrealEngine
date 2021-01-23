@@ -5,7 +5,7 @@
 A function is container for nodes.
 Each Function Graph has a purple execution start node.
 They function very much like the red Event Nodes in that execution starts here and flows along the wires connected to the execution pins.
-Functions are added to a Blueprint by clicking the `+` button in the title of the Functions category of the My Blueprint panel in the [Blueprint Editor](./Blueprint Editor.md).
+Functions are added to a Blueprint by clicking the `+` button in the title of the Functions category of the My Blueprint panel in the [Blueprint Editor](./Blueprint%20Editor.md).
 
 A Blueprint function is similar to a Blueprint macro.
 A function does an actual call.

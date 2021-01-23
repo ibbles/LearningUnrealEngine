@@ -2,7 +2,7 @@
 
 # Oddities
 
-Here I list behavior that surprised me, explain why I was surprised, and hopefuly why Unreal Engine behaves the way it does.
+Here I list behavior that surprised me, explain why I was surprised, and hopefully why Unreal Engine behaves the way it does and provide a solution to how to achieve what I want.
 
 ## Play button grayed out
 
@@ -57,4 +57,4 @@ It's as if the While Loop node remain active and get re-run as it detects that I
 
 **Solution**
 
-Brain fart. I have an execution wire from the end of the `Loob Body` path back to the while loop. That doesn't mean "I'm done with this iteration", it means "Start a new While Loop inside the body of the outer one." That\s not what I want. The solution is to simply remove that wire. Doing the next iteration is built into the While Loop node when the execution path of the `Loop Body` ends.
+Brain fart. I have an execution wire from the end of the `Loob Body` path back to the while loop. That doesn't mean "I'm done with this iteration", it means "Start a new While Loop inside the body of the outer one." That's not what I want. The solution is to simply remove that wire. Doing the next iteration is built into the While Loop node when the execution path of the `Loop Body` ends.

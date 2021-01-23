@@ -25,11 +25,11 @@ Unobtrusive.
 ## Basic concepts
 
 The Niagara system consists of the following core components:
-- [[2020-12-03_21:29:00]] [Systems](./Systems.md)
-- [[2020-12-03_21:34:16]] [Emitters](./Emitters.md)
-- [[2020-12-03_21:41:31]] [Modules](./Modules.md)
-- [[2020-12-03_21:50:39]] [Parameters](./Parameters.md)
-- [[2020-12-26_20:22:38]] [Events](./Events.md)
+- [[2020-12-03_21:29:00]] [Systems](./Niagara%20systems.md)
+- [[2020-12-03_21:34:16]] [Emitters](./Niagara%20emitters.md)
+- [[2020-12-03_21:41:31]] [Modules](./Niagara%20modules.md)
+- [[2020-12-03_21:50:39]] [Parameters](./Niagara%20parameters.md)
+- [[2020-12-26_20:22:38]] [Events](./Niagara%20events.md)
 
 A System holds emitters that together produce an effect.
 A Niagara system is configured using Graphs and Stacks.

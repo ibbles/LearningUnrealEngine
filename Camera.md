@@ -7,7 +7,7 @@ Use a `Pawn` for a free-floating camera and `Character` for something that walks
 A `Camera` is often attached via a `SpringArm`.
 The `Pawn` that the `Camera` is attached to should be be the `Default Pawn Class` in the Game mode.
 
-A camera can also be [stand-alone](./Stand-alone camera.md).
+A camera can also be [stand-alone](./Stand-alone%20camera.md).
 
 
 

@@ -30,7 +30,7 @@ TODO: Paste some code into here.
 The `Build.cs` file has sligthly different semantics for modules that represetnt third-party libraries.
 Third-party library modules are not compiled by Unreal Buid Tool, but they can provide compiler settings that are inherited by other modules that depend on the third-party library module.
 
-[[20200827122445]] [Third-pary libraries](./Third-pary%20libraries.md)  
-[[Modules]] [Modules](./Modules.md)  
-[[Module types]] [Module types](./Module%20types.md)  
-[[ModuleType]] [ModuleType](./ModuleType.md)  
+[[2020-08-27_12:24:45]] [Third-party libraries](./Third-party%20libraries.md)  
+[[2020-09-10_19:55:50]] [Modules](./Modules.md)  
+[[2020-09-15_21:10:32]] [Module types](./Module%20types.md)  
+[[2020-09-11_12:52:42]] [ModuleType](./ModuleType.md)  

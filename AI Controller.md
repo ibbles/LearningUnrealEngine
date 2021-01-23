@@ -28,7 +28,7 @@ Select the Blackboard asset to use. Often called from the BeginPlay event.
 
 A Behavior Tree is started by adding a `Run Behavior Tree` node. Select the behavioral tree asset to use. Often called from the BeginPlay event.
 
-[[2020-04-11_11:18:18]] [Controller](Controller.md)  
-[[2020-04-11_09:21:04]] [Pawn](Pawn.md)  
-[[2020-07-04_16:38:27]] [Blackboard](Blackboard.md)  
-[[2020-07-04_15:46:00]] [Behavior tree](Behavior%20tree.md)  
+[[2020-04-11_11:18:18]] [Controller](./Controller.md)  
+[[2020-04-11_09:21:04]] [Pawn](./Pawn.md)  
+[[2020-07-04_16:38:27]] [Blackboard](./Blackboard.md)  
+[[2020-07-04_15:46:00]] [Behavior tree](./Behavior%20tree.md)  
