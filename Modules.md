@@ -50,7 +50,7 @@ Each module must have exactly one `*.Build.cs` file.
 It should contain a C# class that define how the module is to be compiled.
 At build time Unreal Build Tool searching the project directory tree for `*.Build.cs` files.
 
-[[Build.cs]] [Build.cs](./Build.cs.md)  
+[[2020-09-18_08:51:49]] [Build.cs](./Build.cs.md)  
 
 Each module must have exactly one `*Module.cpp` file.
 This is where the module itself is declared for the C++ runtime.

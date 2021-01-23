@@ -19,7 +19,7 @@ Unit tests are part of the Automation Tool framework.
     -log ABSLOG=/<path>/ue_tests.log
 ```
 
-[[Automation tool]] [Automation tool](./Automation%20tool.md)  
+[[2020-08-27_20:25:41]] [Automation tool](./Automation%20tool.md)  
 
 
 ## A Collection of links

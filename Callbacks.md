@@ -41,6 +41,6 @@ vid UMyClass::MyFunction()
 }
 ```
 
-[[RF_Transactional]] [RF_Transactional](./RF_Transactional.md)
+[[2020-08-22_13:21:00]] [RF_Transactional](./RF_Transactional.md)  
 
 [Delegates@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Delegates/index.html)

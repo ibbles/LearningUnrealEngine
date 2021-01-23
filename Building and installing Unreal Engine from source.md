@@ -49,7 +49,7 @@ public class MyModule : ModuleRules
 ```
 Example properties:
 - **Type** `ModuleType` Type of module.
-    `Editor`, `Game`, or `External`. `External` is used for thid-party libraries[[20200827122445]].
+    `Editor`, `Game`, or `External`. `External` is used for third-party libraries[[2020-08-27_12:24:45]].
 - **PublicIncludePathModuleNames** `List<String>` List of modules names (no path needed) with header files that our module's public headers needs access to, but we don't need to "import" or link against.
 - **PublicDependencyModuleNames** `List<String>` List of public dependency module names (no path needed) (automatically does the private/public include). These are modules that are required by our public source files.
 - **PrivateDependencyModuleNames** `List<String>`List of private dependency module names. These are modules that our private code depends on but nothing in our public include files depend on.

@@ -7,8 +7,11 @@ Subclass it to create your specifi HUD.
 The HUD base class inherits from `AActor`, so class names should be prefixed with `A`.
 The `AHUD` subclass typically contains member variables for the various root widgets it contains.
 By "root widgets" I mean widgets that may contain other widgest and that are added directly to the HUD.
-Widgets can be (are? how does UMG fit into this?) [[Slate]] [Slate](./Slate.md) classes which don't particilate in garbage collection.
+Widgets can be (are? how does UMG fit into this?) Slate classes which don't participate in garbage collection.
 We therefore use `TSharedPtr` instead of raw pointers.
+
+[[2020-11-04_18:53:51]] [Slate](./Slate.md)  
+
 ```
 UCLASS()
 class MYMODULE_API AMyHud : public AHUD
