@@ -10,10 +10,10 @@ Select the type of Actor to spawn from the drop-down, or pass in as a parameter.
 
 Actors can inherit from each other.
 Components, functions, macros, variables, and events are inherited by the child.
-When a function or an event takes a `class` of the parent type a child type can be passed.
+When a function or an event takes a class-type parameter of the parent type a child type can be passed.
 
 Unreal Engine comes with a large library of Actor classes, both ready for use and intended for subclassing.
-Commonly subclassed Actor classes are Pawn, Character, Controller.
+Commonly subclassed Actor classes are Pawn, Character, Controller, and Actor itself.
 
 ## Creating new Actor classes
 

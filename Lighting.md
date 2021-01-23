@@ -42,4 +42,4 @@ Some types of lights can be either be inverse square falloff or not.
 Inverse square falloff is more realistic but requires large luminance and radius values.
 Linear square falloff (which I assume the alternative is) can be easier to control.
 
-[[2020-04-11_08:47:51]] [[col] Lighting](./[col]%20Lighting.md)  
+[[2020-04-11_08:47:51]] [~Collection Lighting](./~Collection%20Lighting.md)  

@@ -1,6 +1,6 @@
 2020-12-26_20:07:31
 
-# AI units
+# ~Tutorial AI units
 
 In this section we create a AI controlled unit that moves around.
 It is based on the following tutorial:

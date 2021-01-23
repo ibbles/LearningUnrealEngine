@@ -37,7 +37,7 @@ void FMyAssetAction::GetActions(
 }
 ```
 
-[[2020-10-03_10:38:42]] [Creating new asset types](./Creating%20new asset%20types.md)  
+[[2020-10-03_10:38:42]] [Creating new asset types](./Creating%20new%20asset%20types.md)  
 
 Can find the existing references:
 ```c++

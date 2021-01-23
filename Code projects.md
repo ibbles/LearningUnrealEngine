@@ -40,7 +40,7 @@ THIS IS A VERY BAD IDEA!
 It rarely works and can lead to asset and Blueprint corruption.
 Use Live Coding instead, if you're on Windows. Close Unreal Editor while compiling if on any other platform.
 
-[[2020-09-10_19:55:50]] [Modules](./Modules.md)
-[[2020-09-11_13:11:21]] [Target](./Target.md)
-[[2020-09-15_17:27:33]] [Plugins](./Plugins.md)
-[[2020-09-15_18:48:29]] [Building a C++ project](./Building a C++ project.md)
+[[2020-09-10_19:55:50]] [Modules](./Modules.md)  
+[[2020-09-11_13:11:21]] [Target](./Target.md)  
+[[2020-09-15_17:27:33]] [Plugins](./Plugins.md)  
+[[2020-09-15_18:48:29]] [Building a C++ project](./Building%20a%20C++%20project.md)  

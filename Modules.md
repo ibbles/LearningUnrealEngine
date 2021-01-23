@@ -20,7 +20,7 @@ Can also have `WhitelistPlatforms` and `BlacklistPlatforms`.
 TODO: Add example module entry here.
 ```
 
-[[2020-09-15_21:10:32]] [Module types](./Module%20types.md)
+[[2020-09-15_21:10:32]] [Module types](./Module%20types.md)  
 
 A module consists of a private part and public part.
 The private part can only be used by the module itself.
@@ -50,8 +50,7 @@ Each module must have exactly one `*.Build.cs` file.
 It should contain a C# class that define how the module is to be compiled.
 At build time Unreal Build Tool searching the project directory tree for `*.Build.cs` files.
 
-
-[[Build.cs]] Build.cs
+[[Build.cs]] [Build.cs](./Build.cs.md)  
 
 Each module must have exactly one `*Module.cpp` file.
 This is where the module itself is declared for the C++ runtime.

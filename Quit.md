@@ -9,4 +9,5 @@ From C++, do the following:
 PlayerController->ConsoleCommand("quit");
 ```
 
-[[2020-04-11_11:27:52]] [PlayerController](./PlayerController.md)
+[[2020-04-11_11:27:52]] [PlayerController](./PlayerController.md)  
+

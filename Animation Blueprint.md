@@ -12,3 +12,5 @@ Is used to blend between animations.
 Update moment-to-moment variables at runtime. 
 Contains a state machine, where each state may correspond to an animation pose.
 The AnimGraph defines the moment-to-moment Final Animation Pose at runtime.
+
+[[2021-01-04_19:23:55]] [Animation](./Animation.md)  

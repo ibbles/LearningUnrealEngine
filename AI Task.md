@@ -1,6 +1,6 @@
 2020-07-04_16:13:21
 
-# AI task
+# AI Task
 
 A Task is how we cause things to happen in a Behavior tree.
 A task is a Blueprint Script that has a collection of events.
@@ -22,7 +22,7 @@ For moving Pawns we often call `Stop Movement` on the Owner Controller.
 Abort paths should end with a `Finish Abort` node.
 
 Tasks end with Finish Execute.
-Has a success boolean output.
+Has a success Boolean output.
 
 Tasks contains variables.
 A special variable type is `Blackboard Key Selector`.
@@ -38,4 +38,4 @@ There are a few built-in tasks:
 
 - Wait.
 
-[[2020-07-04_15:46:00]] Behavior tree
+[[2020-07-04_15:46:00]] [Behavior tree](./Behavior%20tree.md)  

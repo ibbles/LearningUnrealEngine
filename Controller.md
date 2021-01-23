@@ -23,5 +23,5 @@ Components that supports this are Camera and Spring Arm.
 [[2020-04-11_09:21:04]] [Pawn](./Pawn.md)  
 [[2020-04-11_09:24:51]] [Character](./Character.md)  
 [[2020-04-11_11:27:52]] [PlayerController](./PlayerController.md)  
-[[2020-04-11_11:28:47]] [AIController](./AIController.md)  
+[[2020-04-11_11:28:47]] [AIController](./AI%20Controller.md)  
 [[2020-04-10_21:46:17]] [Inputs](./Inputs.md)  

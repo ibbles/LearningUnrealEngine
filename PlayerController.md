@@ -26,7 +26,8 @@ The new `Transform` is applied to the `Actor` with `SetActorTransform`.
 
 A Player Controller contains settings for who the *mouse* should behave.
 Settings like Show Mouse Cursor, Enable Click Events, and Set Input Mode.
-[[2021-01-13_14:37:12]] [Mouse cursor](./Mouse%20cursor.md).
+
+[[2021-01-13_14:37:12]] [Mouse cursor](./Mouse%20cursor.md)  
 
 The `PlayerController` can be found with:
 - `AHUD::PlayerOwner`.
@@ -53,10 +54,10 @@ void AMyPlayerController::MyAction()
 See also [[2020-12-31_17:03:18]] [C++ inputs](./C++%20inputs.md) and [[2021-01-01_16:41:46]] [C++ Pawn](./C++%20Pawn.md). 
 
 
-[[2020-04-11_11:18:18]] [Controller](./Controllermd)  
-[[2020-04-11_11:28:47]] [AIController](./AIController.md)  
+[[2020-04-11_11:18:18]] [Controller](./Controller.md)  
+[[2020-04-11_11:28:47]] [AIController](./AI%20Controller.md)  
 [[2020-04-11_11:26:21]] [Game mode](./Game%20mode.md)  
 [[2020-04-10_21:46:17]] [Inputs](./Inputs.md)  
 [[2020-12-31_17:03:18]] [C++ inputs](./C++%20inputs.md)  
 [[2021-01-01_16:41:46]] [C++ Pawn](./C++%20Pawn.md)  
-[[2020-05-08_22:41:33]] [Coordinate](./Coordinates.md)  
+[[2020-05-08_22:41:33]] [Coordinate system](./Coordinate%20system.md)  

@@ -17,4 +17,4 @@ We just get a third-person perspective of the scene.
 An alternative to `Set View Target with Blend` is `Camera Component` > `Set Active.`
 Call `Set Active` on both the old and the new camera, passing false for `New Active` to the old and true to the new.
 
-[[2020-05-08_21:50:52]] [Camera](./Camera.md)
+[[2020-05-08_21:50:52]] [Camera](./Camera.md)  

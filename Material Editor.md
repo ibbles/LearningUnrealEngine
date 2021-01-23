@@ -28,6 +28,6 @@ Nodes can be duplicated with `Ctrl`+`w`.
 
 
 
-[[2020-08-24_10:51:04]] [Shading models](./Shading models.md)  
+[[2020-08-24_10:51:04]] [Shading models](./Shading%20models.md)  
 [[2020-12-28_15:11:08]] [Material shading model inputs](./Material%20shading%20model%20inputs.md)  
 [[2020-05-10_11:01:04]] [Materials](./Materials.md)  

@@ -58,7 +58,7 @@ Produces a flow of data transformations and aggregation.
 
 ## Modules
 
-[[2020-12-03_21:41:31]] [Niagara modules](./Niagara%20modules.md)
+[[2020-12-03_21:41:31]] [Niagara modules](./Niagara%20modules.md)  
 
 ## Common attributes
 
@@ -69,11 +69,11 @@ Produces a flow of data transformations and aggregation.
 
 ## Emitters
 
-[[2020-12-03_21:34:16]] [Niagara emitters](./Niagara%20emitters.md)
+[[2020-12-03_21:34:16]] [Niagara emitters](./Niagara%20emitters.md)  
 
 ## System
 
-[[2020-12-03_21:29:00]] [Niagara systems](./Niagara%20systems.md)
+[[2020-12-03_21:29:00]] [Niagara systems](./Niagara%20systems.md)  
 
 
 ## Rendering

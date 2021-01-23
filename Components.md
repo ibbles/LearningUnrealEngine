@@ -15,5 +15,5 @@ There are many subclasses of each.
 
 Component instances are created using factory functions.
 
-[[2020-12-31_12:14:21]] [Constructing objects](./Constructing%20objects.md)  
+[[2020-12-31_12:14:21]] [Creating objects](./Creating%20objects.md)  
 [[2020-03-10_21:29:17]] [Actor](./Actor.md)  

@@ -35,7 +35,7 @@ Each Shading Model gives a separate *look* for the material.
     The Material Graph can set Base Color, Scatter, Specular, Roughness, Emissive Color, Tangent, World Position Offset, Backlit, Ambient Occlusion, Pixel Depth Offset.
 - Cloth  
 
-[[2020-05-10_11:01:04]] [Materials](./Material.md)
-[[2020-12-28_15:11:08]] [Material shading model inputs](./Material%20shading model%20inputs.md)  
+[[2020-05-10_11:01:04]] [Materials](./Materials.md)  
+[[2020-12-28_15:11:08]] [Material shading model inputs](./Material%20shading%20model%20inputs.md)  
 
 [Lighting Models @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Rendering/Materials/MaterialProperties/LightingModels/index.html)

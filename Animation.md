@@ -60,3 +60,6 @@ This is where we can read and store state used by the Transition Rules in the St
 An animation is assigned to a Character in the Character sub-class' Details Panel with the Mesh Component selected.
 Set Mesh > Animation > Animation Mode to Use Animation Blueprint.
 Set Mesh > Animation > Anim Class to your Animation Blueprint.
+
+
+[[2020-08-10_20:20:28]] [Animation Blueprint](./Animation%20Blueprint.md)  
