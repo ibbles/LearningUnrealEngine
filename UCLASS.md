@@ -19,7 +19,7 @@ It is not allowed to create such instances using `new`.
 
 [[2020-12-31_12:14:21]] [Creating objects](./Creating%20objects.md)  
 [[2020-03-09_21:57:41]] [Unreal Build Tool](./Unreal%20Build%20Tool.md)  
-[[2020-03-10_21:18:30]] [Memory management and smart pointers](./Memory%20management%20and smart%20pointers.md)  
+[[2020-03-10_21:18:30]] [Memory management and smart pointers](./Memory%20management%20and%20smart%20pointers.md)  
 
 New classes can be created either using the `New C++ Class` wizard from within the Unreal Editor or by creating the `.h` and `.cpp` files by hand. 
 
