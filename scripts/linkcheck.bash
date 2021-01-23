@@ -5,24 +5,32 @@
 # A link has the following form, where ℕ denotes a digit and α a sequence of printable character:
 #  [[ℕℕℕℕ-ℕℕ-ℕℕ_ℕℕ:ℕℕ:ℕℕ]] [α](./α.md)
 #
+# Failure cases:
+# - Link points to a file that does not exist.
+# - Link is not a relative link, i.e., does not start with './'.
+# - Link does not point to a Markdown document, i.e., does not end with '.md'.
+#
+# Special cases that are allowed:
+# - Character immediately preceeding the link, i.e., '.[doc](./doc.md)'.
+# - Character immediately following the link, i.e., '[doc](./doc.md).'.
+# - Lambdas in C++ code, i.e., '[thi](const FDoneDelegate& Done)'.
 
 echo -e "Files that contain broken local links:"
-
 for source in *.md ; do
-    #sed -nr 's,\[[^][()]+\]\([^][()]+\),\n&,g;s,[^\n]*\n(\[[^][()]+\]\([^][()]+\))[^\n]*,\1\n,g;s,\[[^][()]+\]\(([^][()]+)\),\1,pg' "${source}" |
-    #sed -nr 's,\[\[[0-9_:-]+\]\] \[[^][()]+\]\([^][()]+\),\n&,g;s,[^\n]*\n\[\[[0-9_:-]+\]\] (\[[^][()]+\]\([^][()]+\))[^\n]*,\1\n,g;s,\[[^][()]+\]\(([^][()]+)\),\1,pg' "${source}" |
-    sed -nr 's,\[\[[0-9_:-]+\]\] \[[^][()]+\]\([^][()]+\),\n&,g;s,[^\n]*\n\[\[[0-9_:-]+\]\] (\[[^][()]+\]\([^][()]+\))[^\n]*,\1\n,g;s,.*\[[^][()]+\]\(([^][()]+)\),\1,pg' "${source}" | \
+    sed -nr 's,\[\[[0-9_:-]+\]\] \[[^][()]+\]\([^][()]+\),\n&,g;s,[^\n]*\n\[\[[0-9_:-]+\]\] \[[^][()]+\]\(([^][()]+)\)[^\n]*,\1\n,pg' "${source}" | \
         while read link ; do
             if [ -z "${link}" ] ; then
-                continue
-            fi
-            if [[ "${link}" =~ ^http ]] ; then
                 continue
             fi
             if [[ "${link}" =~ " " ]] ; then
                 echo "${source}: Space in link '${link}'."
             fi
-            #echo "'$link'"
+            if [[ ! "${link}" =~ .md$ ]] ; then
+                echo "${source}: No .md suffix in link '${link}'."
+            fi
+            if [[ ! "${link}" =~ ^./ ]] ; then
+                echo "${source}" "No ./ prefix in link '${link}'."
+            fi
             target=$(echo "$link" | sed 's,%20, ,g')
             if [ ! -f "${target}" ] ; then
                 echo "${source}: Broken link '$link'."
