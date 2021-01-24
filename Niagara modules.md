@@ -164,3 +164,8 @@ A module can be included in the module search dialogs by checking Script Details
 
 The Module Graph, with all of its nodes, specifies a HLSL program.
 The HLSL program is compiled either to a GPU shader or to CPU virtual machine instructions.
+
+
+
+`Vector Field Modules` is a bunch of different types of vector fields.
+I don't know what they are for.

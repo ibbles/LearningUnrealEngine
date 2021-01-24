@@ -35,7 +35,53 @@ In the Top Tool Bar:
 - Compile: Compiles the system so that we can see the result in the Preview Panel.
 - Apply: Apply the latest changes to all Systems that use this Emitter.
 
-### Module Stack
+## Emitter spawn
+
+The `Emitter Spawn` group is executed once when the emitter is created.
+The following types of modules can be included:
+
+- Create New Parameter
+- Location
+- MAX Scripts
+- Set Specific Parameters
+- Spawning
+- Vector Field
+- User-created custom modules.
+
+
+## Emitter update
+
+The `Emitter Update` group is executed on every tick.
+It is used to compute values for particle spawn or to update emitter parameters.
+The following modules intended for `Emitter Update` are included in Unreal Engine.
+
+- Beam
+- Create New Parameter
+- Emitter
+- Location
+- MAX Scripts
+- Scalability
+- Set Specific Parameters
+- Spawning
+- Utility
+- Vector Field
+
+Use-created custom modules can also be added.
+
+The `Beam` module provide settings for beam emitters.
+`Create New Parameter` works the same in Emitter Update as it does in `Emitter Spawn`.
+The `Emitter Lice Cycle` module control how the emitter loops.
+There are four `Spawning` modules:
+
+- Spawn Burst Instantaneous
+- Spawn Per Frame
+- Spawn Per Unit
+- Spawn Rate
+
+## Module Stack
+
+Every emitter is created with an \`Emitter Properties\` item in its stack.
+It contains a bunch of properties that is configured for this emitter.
 
 The group order is from large to small, starting with System groups, then Emitter groups, and finally Particle groups.
 
@@ -105,7 +151,7 @@ This is where we tell the renderer where it should read data from.
 
 Custom spawning modules can also be created.
 
-### Spawning particles
+## Spawning particles
 
 Particles are spawned by adding a particle spawning module to the Emitter Spawn module group.
 I would expect that they would be allowed to be put in Emitter Update as well, but I get warnings about Emitter Life Cycle and the `fix` button moves the spawn module from the Emitter Spawn group to the Emitter Update Group. Don't know why.
@@ -168,7 +214,7 @@ This makes it possible to chain multiple location modules after one another, cre
 
 [Emitter Spawn @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/EmitterReference/EmitterSpawn/index.html)  
 
-### Parameters Pane
+## Parameters Pane
 
 Contains all the parameters accessible by the selected emitter and its modules.
 This includes parameters created from within a Module.
@@ -202,7 +248,7 @@ The number next to each attribute in the Parameters Panel is the number of modul
 Some important parameters:
 - `Engine.Owner`: The emitter itself.
 
-### Timeline Panel
+## Timeline Panel
 
 Shows the current time in the simulation.
 Normally hitting Space Bar will reset back to t=0.
@@ -210,7 +256,7 @@ While in the Timeline Panel Space Bar will instead toggle play/pause.
 
 Interesting events, such as the time of a Spawn Burst Instantaneous module, is shown as a white diamond.
 
-### Curves
+## Curves
 
 Used to edit curves used as Dynamic Inputs to Module input parameters.
 Several curves can be viewed at the same time.
@@ -218,8 +264,16 @@ Shift-click to add a new control point to a curve.
 Select and hit Delete to remove.
 Buttons on the Tool Bar control tangents.
 
-### Scratch Pad Panel
+## Scratch Pad Panel
 
 Area where you can experiment with module scripts.
 The scratch module can be injected into the Emitter Module Stack.
 Can also be saved out to a Module assets for long-term use.
+
+
+
+
+URL: https://docs.unrealengine.com/en-US/Engine/Niagara/EmitterReference/EmitterSettings/index.html  
+URL: https://docs.unrealengine.com/en-US/Engine/Niagara/EmitterReference/EmitterSpawn/index.html  
+URL: https://docs.unrealengine.com/en-US/Engine/Niagara/EmitterReference/EmitterUpdate/index.html  
+URL: https://docs.unrealengine.com/en-US/Engine/Niagara/EmitterReference/index.html  

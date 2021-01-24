@@ -250,3 +250,5 @@ For example, the Sprite Size binding can be bound to a dedicated debug sprite at
 [Advanced Niagara Effects | Inside Unreal by Unreal Engine @ youtube.com](https://www.youtube.com/watch?v=31GXFW-MgQk)  
 [Events and Event Handlers Overview @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/EventHandlerOverview/index.html)  
 [Niagara by tharlevfx @ youtube.com](https://www.youtube.com/playlist?list=PLHjQE2fLIZu97z7Iwf-PjV2e1Y4_k2GKL)  
+[Niagara how-to @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/HowTo/index.html)
+
