@@ -1,3 +1,51 @@
+# Learning Unreal Engine
+
+This is a collection of notes that I write while learning how to use Unreal Engine.
+They are incomplete, sometimes incorrect, and meant more for recollection than instruction.
+You are not the target audience, I am.
+If you want to learn about Unreal Engine then I suggest you look into the resources listed below.
+The intention is that each document should be small, focused, clear, and concise.
+That's not always the case, but we're getting there.
+The texts are not written with the intention of being read top-top bottom.
+The texts are written as collections of statements, each sentence forming a stand-alone factoid.
+The texts are written in Markdown but are best read in a text editor with Markdown highlighting rather than a Markdown renderer.
+This is because line breaks are used as separators but Markdown renderers ignore them.
+Many of the documents contain links to the sources.
+There is no prescribed or implied order to the documents, just read what you find interesting.
+Some documents are different from the bulk of the documents.
+They are marked with `~` followed by a type.
+
+- ~Collection
+  A collection of documents about some topic.
+  This is not a sort of manual tag listing but a way to cross-connect various
+  subject matters that are needed to do what the collection is about.
+- ~Tutorial
+  Step-by-step instructions for how to do something.
+- ~Presentation
+  Notes that belong to a particular presentation, usually in the form of a
+  YouTube video. Any valuable information present here should also be present
+  in the document for that topic.
+- ~Trail
+  A sequence of documents or document sections that when read in a particular
+  order conveys some message or instruction. The ~Train document form the start
+  of a linked list of links.
+
+The material in these notes comes primarily from the following sources,
+but a large number of other sources have been used to write particular documents.
+See the links in each document.
+
+- The official Unreal Engine documentation
+  https://docs.unrealengine.com/en-US/index.html
+- The official Unreal Engine API reference.
+  https://docs.unrealengine.com/en-US/API/index.html
+- Unreal Engine YouTube channel
+  https://www.youtube.com/user/UnrealDevelopmentKit
+- The Unreal Engine Community Wiki
+  https://www.youtube.com/user/UnrealDevelopmentKit
+- Unreal Slackers Discord
+  https://discord.com/channels/187217643009212416/
+
+
 # Particle systems
 
 ## Niagara presentations
