@@ -28,3 +28,5 @@ std::optional<FVector> AMyPlayerController::ProjectMouseLocationToPawn() const
     return WorldLocation;
 }
 ```
+
+![Graph_MouseClickLineTrace.png](Images/Graph_MouseClickLineTrace.png)
