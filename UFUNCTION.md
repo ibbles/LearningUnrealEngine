@@ -70,5 +70,22 @@ void MyActor::MyOptionalBlueprintFunction_Implementation()
 }
 ```
 
+
+Parameters can be passed by reference to a `UFUNCTION`.
+Such parameters become output pins in Visual Scripts.
+```cpp
+UFUNCTION(BlueprintCallable)
+void Add(FMyNumeric Lhs, FMyNumeric Rhs, FMyNumeric& Result);
+```
+
+We can add `UPARAM(ref)` to make the parameter an InOut parameter.
+Such parameters become input pins in Visual Scripts.
+```cpp
+UFUNCTION(BlueprintCallable)
+void InitializeMyStruct(UPARAM(ref) FMyStruct& MyStruct);
+```
+
+
+
 [[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
 [[2020-03-09_21:43:36]] [UPROPERTY](./UPROPERTY.md)  
