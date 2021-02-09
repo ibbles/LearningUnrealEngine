@@ -21,6 +21,25 @@ Unit tests are part of the Automation Tool framework.
 
 [[2020-08-27_20:25:41]] [Automation tool](./Automation%20tool.md)  
 
+## Opening a level
+
+Level are opened, or loaded, with `OpenLevel`.
+Should be called from `OnTick`, and no earlier.
+Example:  
+`UGameplayStatics::OpenLevel(this, FName(*UGameMapsSettings::GetGameDefaultMap()), true, FString());`
+
+## Floating-Island example
+
+[Floating-Island/UE4-TDD-CI_Testing](https://github.com/Floating-Island/UE4-TDD-CI_Testing/blob/master/Source/CITesting/Tests/AcceleratingPawnTest.cpp)  
+[https://github.com/Floating-Island/UE4-TDD-CI_Testing/blob/master/Source/CITesting/Tests/AcceleratingPawnTest.cpp](https://github.com/Floating-Island/UE4-TDD-CI_Testing/blob/master/Source/CITesting/Tests/AcceleratingPawnTest.cpp)  
+
+Use FAutomationTestBase and latent commands.
+ Inside `FAnAcceleratingPawnShouldMoveForwardWhenAcceleratedTest` you'll see that the only things you need are:
+ - `FEditorLoadMap`: To load a map.
+ - `FStartPIECommand`: To start a PIE run 
+ - `FEndPlayMapCommand`: To end a PIE run 
+ 
+ The other latent commands are used to spawn actors in PIE and prepare them to check what you expect
 
 ## A Collection of links
 
@@ -55,3 +74,6 @@ CI:
 - [https://www.rare.co.uk/news/tech-blog-continuous-delivery-part1](https://www.rare.co.uk/news/tech-blog-continuous-delivery-part1)
 
 
+
+
+[unreal-testing-introduction @ benui.ca](https://benui.ca/unreal/unreal-testing-introduction/)
