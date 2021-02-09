@@ -19,3 +19,5 @@ FMemoryWriter Writer(BinaryData);
 FObjectAndNameAsStringProxyArchive Archive(Writer, true);
 Object->Serialize(Archive);
 ```
+
+[[2021-01-26_11:00:02]] [Save game](./Save%20game.md)  
