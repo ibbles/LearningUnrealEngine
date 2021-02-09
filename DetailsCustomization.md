@@ -471,6 +471,20 @@ void FMyClassCustomization::ButtonCallback()
 ```
 
 
+## FPropertyEditorModule
+
+There is some helper functionality in the FPropertyEditorModule.
+
+```cpp
+auto& PropertyModule = FModuleManager::LoadModuleChecked< FPropertyEditorModule >("PropertyEditor");
+```
+
+Also `PropertyCustomizationHelpers.h`.
+
+[FPropertyEditorModule @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/API/Editor/PropertyEditor/FPropertyEditorModule/index.html)
+
+
+
 [[2020-09-30_13:13:51]] [Callbacks](./Callbacks.md)  
 
 
