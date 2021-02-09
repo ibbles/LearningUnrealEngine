@@ -9,9 +9,12 @@ The following is from the [Unreal Engine 4.25 release notes](https://docs.unreal
 ```
 RunUAT.bat BuildCMakeLib -TargetLib=ExampleLib -TargetLibVersion=examplelib-0.1 -TargetConfigs=relase+debug -TargetPlatform=PlatformName -LibOutputPath=lib -CMakeGenerator=Makefile -CMakeAdditionalArguments="-DEXAMPLE_CMAKE_DEFINE=1" -MakeTarget=all -SkipSubmit
 ```
+I don't know what any of the above means, or what's legal to pass, or what I should pass.
 
+There's also `Engine/Build/BatchFiles/Linux/BuildThirdParty.sh`.
+An example parameter list: `-b SDL2`.
 
-On Linux, Unreal Engine shipps with a compiler, a C++ standard library implementation, and a set of third-party libraries that should be used when building third-party libraries.
+On Linux, Unreal Engine ships with a compiler, a C++ standard library implementation, and a set of third-party libraries that should be used when building third-party libraries.
 In particular, the system C++ standard library should not be used because of binary incompabilities.
 Different `sizeof(std::function)`, for example, and different mangled names for a few standard library classes and functions.
 Unreal Engine comes with a set of third-party libraries. 
