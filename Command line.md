@@ -123,6 +123,30 @@ RunUAT
     -archivedirectory="MyProjectOutputDir"
 ```
 
+Cross compiling a Linux server from Windows:
+```cpp
+RunUAT.bat
+    BuildCookRun
+    -project="MyProj\MyProj.uproject"
+    -noP4
+    -platform=Win64
+    -allmaps
+    -build
+    -noclient
+    -server
+    -ServerConfig=Development
+    -ServerPlatform=Linux
+    -cook
+    -pak
+    -stage
+    -CrashReporter
+```
+
+Another variant, not sure what it does.
+```
+RunUAT.bat BuildCookRun -project="Path/To/Project.uproject" -clientConfig=Shipping -installed -noP4 -platform=Win64 -cook -build -allmaps -stage -pak -archive
+```
+
 ### Compiling shaders (I think)
 
 ```
