@@ -10,7 +10,8 @@ Shader complexity view.
 
 `stat fps`: Show current fps.
 `stat unit`: Show time per thread.
-`statu unitgraph`: A plot of filtered times for Frame, Game, Draw, and GPU.
+`stat unitgraph`: A plot of filtered times for Frame, Game, Draw, and GPU.
+`stat scenerendering`: A table with a bunch of rendering related data.
 
 ## Unreal Insights
 
