@@ -1,30 +1,42 @@
 2020-10-03_10:38:42
 
 # Creating new asset types
+New asset types can be created by plugins. 
 Steps to create a new asset type:
 - Declare the asset type's C++ class.
 - Implement asset factories.
-- Customize asset appearance in Unreal Editor.
+- Customize asset appearance in Content Browser.
 - Customize asset editor UI.
 - Add asset-specific Content Browser actions.
 
-
 The asset's C++ class define the content of the asset.
 The class should inherit from `UObject`.
+There may be other non-Unreal Engine classes between `UObject` and the asset class.
 The class should be marked with the `*_API` macro for the module it's in.
 The class should be marked with the `UCLASS` macro.
-Need the following headers: `"CoreMinimal.h"` `"UObject/Object.h"`, `"UObject/ObjectMacros.h"`.
+Need the following headers: `"CoreMinimal.h"`, `"UObject/Object.h"`, `"UObject/ObjectMacros.h"`.
 As with all generated classes, also need `"<CLASS_NAME>.generated.h"` last in the include list.
 Non-static data members that form the salient properties of the asset should be marked with `UPROPERTY`.
 
-New asset types can be created by plugins. 
+```cpp
+#pragma once
+
+#include "UObject/Object.h"
+#include "MyAsset.generated.h"
+
+UCLASS(BlueprintType)
+class MYMODULE_API UMyAsset : public UObject
+{
+    GENERATED_BODY()
+public:
+    UPROPERTY(VisibleEverywhere, BlueprintReadOnly)
+    float MyFloat;
+}
+```
 
 One can bypass all the factory stuff described below by having the asset type derive from `UDataAsset` instead of `UObject`.
 Then the asset type will show up in the Content Browser > Context Menu > Miscellaneous > Data Asset list.
 By default these assets get the standard property editor, but can have a custom editor i.e, a Detail Customization.
-
-
-[Link](https://youtu.be/zg_VstBxDi8?t=1731)
 
 ## Factories
 Factories are used when creating instances of the asset type.
@@ -45,7 +57,7 @@ Example `MyAssetFactoryNew`, a factory that creates `MyAsset` instances from the
 `MyAssetFactoryNew.h`:
 ```c++
 UCLASS()
-class YMyAssetFactoryNew : public UFactory
+class UMyAssetFactoryNew : public UFactory
 {
     GENERATED_UCLASS_BODY()
 public:
@@ -81,6 +93,7 @@ UMyAssetFactoryNew::UMyAssetFactoryNew(const FObjectInitializer& ObjectInitializ
 // from the list.
 UObject* UMyAssetFactoryNew::FactoryCreateNew(UClass* InClass, UObject* InParent, FName, ...
 {
+    check(Class->IsChildOf(UMyAsset::StaticClass()));
     return NewObject<UMyAsset>(InParent, InClass, InName, Flags);
 }
 
@@ -96,7 +109,7 @@ Example `MyAssetFactoryNew`, a factory that creates `MyAsset` instances from the
 
 There is also `UActorFactory`, which is used when an asset is dragged from the Content Browser into the Level Viewport.
 
-There is also `IComponentAssetBroker`, which is used when an asset is dragged from the Content Browser into the Componets Panel of a Blueprint class.
+There is also `IComponentAssetBroker`, which is used when an asset is dragged from the Content Browser into the Components Panel of a Blueprint class.
 
 ## Editor customization
 
@@ -107,7 +120,7 @@ Look into `UThumbnailRenderer`.
 Asset Action are used to customize the look and feel of assets in the Editor, and to provide custom actions that can be performed on the assets.
 Custom editor actions on assets are created by inheriting from `FAssetTypeActions_Base`.
 `FAssetTypeActions_Base` is a helper class, one can also inherit from the `IAssetTypeActions` interface.
-The actual action is registered/implemented in `FTextAssetActions::GetActions`.
+The actual action is registered/implemented in `IAssetTypeActions::GetActions`.
 The implementation can be a lambda callback.
 The action must be registered with the Editor.
 This is often done in the module's `IModuleInterface` implementation, which is in `<MODULE_NAME>Module.cpp`.
@@ -122,14 +135,36 @@ virtual void StartupModule() override
     IAssetTools& AssetTools = 
         ModuleManager::LoadModuleChecked<FAssetToolsModule>(
             "AssetTools").Get();
-    RegisterAssetTypeActions(AssetTools, MakeShareable(new FMyAssetActions(Style.ToSharedRef())));
+    RegisterAssetTypeActions(
+        AssetTools, MakeShareable(new FMyAssetActions(Style.ToSharedRef())));
 }
 ```
 Not sure what the `Style` is.
+Not sure where in the Unreal Editor UI this shows up.
+
+Another variant is to register an Advanced Asset Category.
+Then a collection of Asset Actions can be collected in a submenu of the Content Browser context menu.
+```cpp
+virtual void StartupModule() override
+{
+	IAssetTools& AssetTools =
+		FModuleManager::LoadModuleChecked<FAssetToolsModule>("AssetTools").Get();
+
+	EAssetTypeCategories::Type MyAssetCategoryBit =
+        AssetTools.RegisterAdvancedAssetCategory(
+        	FName(TEXT("MyCategoryName")),
+            LOCTEXT("MyCategoryLabel", "MyCategoryLabel"));
+    
+    // Repeat for each IAssetTypeActions class.
+    TSharedPtr<IAssetTypeActions> MyAssetActions =
+        MakeShareable(new FMyAssetActions(MyAssetCategoryBit));
+    AssetTools.RegisterAssetTypeActions(MyAssetActions.ToSharedRef());
+}
+```
 
 By default the asset editor is generated automatically in the same way as the Details Panel.
 This can be customized.
-The Blueprint and Material editor are examples of custom asset editors.
+The Blueprint and Material editors are examples of custom asset editors.
 
 We need two classes:
 - `FMyAssetActions : IAssetTypeActions`: To create the new editor when needed.
@@ -158,7 +193,7 @@ EditorToolkit->Initialize(MyAsset, Mode, EditWithinLevelEditor);
 
 `Style` is the one that was created in `StartupModule`.
 `MyAsset` is the `Cast`ed object we got form `InObjects`.
-`Mode` either `WorldCentric` or `STandalone` depending on if `EditWithinLevelEditor` is valid.
+`Mode` either `WorldCentric` or `Standalone` depending on if `EditWithinLevelEditor` is valid.
 
 Full example:
 ```
@@ -183,9 +218,9 @@ void FMyAssetActions: OpenAssetEditor(
 }
 ```
 
-The call to `Initialize` will cause the assed editor to show up.
+The call to `Initialize` will cause the asset editor to show up.
 
-The `FMyAssetEditor` class is much larger. Too large to descript in detail here.
+The `FMyAssetEditor` class is much larger. Too large to describe in detail here.
 See [TextAsset@github.com](https://github.com/ue4plugins/TextAsset) for the full code.
 In short, the editor is built inside a `Layout` where a big expression is used to create the splits that the editor window is divided into.
 This is where the layout of the tabs is declared.
@@ -195,15 +230,18 @@ With the Layout created we call `FAssetEditorToolkit::InitAssetEditor`.
 
 You can find examples of how to create Styles in  `Engine/Source/Editor/EditorStyle/Private/SlateEditorStyle.cpp`.
 
+
 [[2020-09-10_19:55:50]] [Modules](./Modules.md)  
 [[2020-09-30_13:13:51]] [Callbacks](./Callbacks.md)  
 [[2020-08-31_10:01:57]] [Garbage collection](./Garbage%20collection.md)  
-
 
 [[2020-03-11_19:00:31]] [Assets](./Assets.md)  
 [[2020-08-17_09:45:29]] [Loading assets](./Loading%20assets.md)  
 [[2020-03-10_21:23:32]] [Naming convention](./Naming%20convention.md)  
 [[2020-03-09_21:43:36]] [UPROPERTY](./UPROPERTY.md)  
 
-[Custom Asset Editors Code Exploration@learn.unrealengine.com](https://learn.unrealengine.com/course/2436528/module/5372752?moduletoken=UHxxnDLPW8ROFOnyLDf7jkpDsWH-6EgInZkaEVy-utqnxQVniUN~z2b6Dq5f9wUr&LPId=0)
-[TextAsset@github.com](https://github.com/ue4plugins/TextAsset)
+[Custom Asset Editors Code Exploration @ learn.unrealengine.com](https://learn.unrealengine.com/course/2436528/module/5372752?moduletoken=UHxxnDLPW8ROFOnyLDf7jkpDsWH-6EgInZkaEVy-utqnxQVniUN~z2b6Dq5f9wUr&LPId=0)
+[TextAsset @ github.com](https://github.com/ue4plugins/TextAsset)  
+[C++ Extending the Editor | Live Training | Unreal Engine by Unreal Engine @ youtube.com](https://youtu.be/zg_VstBxDi8?t=1731)
+[Writing a Custom Asset Editor for Unreal Engine 4](http://cairansteverink.nl/cairansteverink/blog/writing-a-custom-asset-editor-for-unreal-engine-4-part-1/)  
+[Asset Editor -Development of asset editor in Unreal Engine](https://easycomplex-tech.com/blog/Unreal-AssetEditor/)  
