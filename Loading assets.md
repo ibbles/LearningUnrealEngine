@@ -45,6 +45,14 @@ if (Asset == nullptr)
 // Safe to use Asset here.
 ```
 
+There is also `LoadObject`, which is a simple wrapper around `StaticLoadObject` that does the cast and removes the `bAllowObjectReconciliation` flag.
+
+Notice that the `Name` part of the path is given twice. I'm not sure why.
+There is something called `FPackageGroupName` that may relate to this.
+
+
 There is also `FStringAssetReference` which should be used when loading assets.
 It holds the path to the asset and has a `TryLoad` member function to get a reference to the asset itself.
 Not sure how `StaticLoadObject` and `FStringAssetReference.TryLoad` relate to each other.
+
+There is also something about dependency on `LoadPackage` and limitations on cooked data, servers, and `GUseSeekFreeLoading` that I don't understand yet.
