@@ -55,3 +55,4 @@ double SecondMember = NestedObject->GetNumberField(TEXT("SecondMember"));
 // There are other Get.+Field member functions as well.
 ```
 
+[Using Json in Unreal Engine 4](http://www.wraiyth.com/?p=198)  
