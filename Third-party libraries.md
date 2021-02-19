@@ -96,7 +96,7 @@ From a Bash shell run:
 cd ${UE_ROOT}/Engine/Build/BatchFiles/Linux
 source SetupMono.sh $(readlink -f .)
 cd ${PROJECT_DIR}
-mono ${UE_ROOT}/Engine/Binaries/DotNET/UnrealBuildTool.exe -mode=GenerateClangDatabase -Project=${PROJECT_DIR}/${PROJECT_NAME}.uproject AGXUnrealDevEditor Linux Debug
+mono ${UE_ROOT}/Engine/Binaries/DotNET/UnrealBuildTool.exe -mode=GenerateClangDatabase -Project=${PROJECT_DIR}/${PROJECT_NAME}.uproject MyProjectEditor Linux Debug
 ```
 Should should generate `compile_commands.json`.
 For me it errors out with `ERROR: Clang must be installed in order to build this target.`.

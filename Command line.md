@@ -94,7 +94,7 @@ mono AutomationTool.exe
     -nodebuginfo
     -targetplatform=Linux
     -build
-    -target=AGXUnrealDev
+    -target=MyProject
     -clientconfig=Development
     -utf8output
 ```
