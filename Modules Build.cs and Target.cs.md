@@ -35,6 +35,8 @@ Target:
 
 
 ![modues_targets_and_builds](./Images/modules_targets_and_builds.png)
+
+
 [Gameplay Modules @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/ProgrammingAndScripting/GameplayArchitecture/Gameplay/index.html)  
 [Build Configuration @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/ProductionPipelines/BuildTools/UnrealBuildTool/BuildConfiguration/index.html)  
 [Targets @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/ProductionPipelines/BuildTools/UnrealBuildTool/TargetFiles/index.html)  
