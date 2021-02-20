@@ -35,6 +35,21 @@ Then the modules of the Emitter groups are executed, once for each emitter.
 Then the modules of the Particle groups are executed, once for each particle.
 Then the modules of the Render groups are executed.
 
+Module Usage Bitmask dictate when a module may be used.
+Particle groups: Particle Spawn, Particle Spawn Interpolated, Particle Update, and Particle Event.
+
+A module start with an Input Map.
+This is our access point to the payload.
+We get data from the map and do some work.
+When we have a result we write it back to the parameter map.
+Open, read, work, write, close.
+Engine namespace: The thing that owns this particle system.
+Module namespace: Things that I as a model author have added and exposed.
+Particle namespace: Data that belong to the current particle.
+Map Get Particles.Velocity and Module.VelocityScale → Multiply the two → Map Set Particles.Velocity.
+
+Default values for parameters can be provided in a module.
+
 In addition to when a module is executed, the group assignment also control what data the module operates on.
 Each collection of data is called a namespace.
 Modules in the group that correspond to a namespace can read/write parameters in that namespace, and read parameters in the namespaces above it.
@@ -56,6 +71,15 @@ Rotated the other way we get the following table.
 | System   | 👀     | 👀   | 👀🖊   |         |          |
 | Emitter  | 👀     | 👀   | 👀     | 👀🖊    |          |
 | Particle | 👀     | 👀   | 👀     | 👀      | 👀🖊     |
+
+If you need some piece of data that is accessible to all particles, then create it in `Emitter Spawn`.
+Kind of like `BeginPlay`.
+If you need to update that data over time, then do that in `Emitter Update`.
+Kind of like `EventTick`.
+`Particle Spawn` happens at the start of every particle's lifetime.
+Set initial state, position, velocity, size, etc.
+The various color fields are "tabs", e.g. the red is the render tab.
+The gray sets are called "modules".
 
 Modules are created using blueprint graph nodes.
 The operations performed by a module are defined using a visual node graph.
@@ -79,8 +103,16 @@ Modules created using the blueprint graph scripting language can be run on both 
 
 Dynamic inputs act on a value type instead of a parameter map.
 (
-I don't understand the above.
+_I don't understand the above._
 )
+Dynamic inputs.
+A way to build expressions directly in the binding for a parameter.
+Think of them like expressions that can be composed together.
+The result is assigned to a parameter.
+Like modules, uses graph logic and user facing values.
+Not working on parameter map, working on a type.
+Ex: dynamic input with Vector. eg mirror it, uniform distribution,.
+Can get data from somewhere outside of Niagara.
 
 The module graph has four fundamental node types:
 - `InputMap`: The incoming parameter map. A container with all the attributes and parameters in the system.
@@ -136,6 +168,10 @@ New output parameters are added by clicking the `+` on the `Map Set` node.
 Implement logic by placing expression nodes between the `Map Get` output pins and the `Map Set` input pin.
 There is a library of built-in nodes available to the Module Graph.
 There is a HLSL node where code can be written in a text area.
+Used for micro expressions.
+HLSL pretty much anywhere.
+Can access particle attributes.
+Good for small one-off features.
 
 To use custom particle attributes one must use the Parameters Panel of the module.
 Click the `+` next Particle Attributes, pick a type, and enter a name.
@@ -150,7 +186,7 @@ They are not listed in the Parameters Panel.
 
 Parameters marked `TRANSIENT` are like `OUTPUT`, but the value is lost at the end of the emitter module stack group execution.
 (
-I'm not sure if this is also true for `OUTUT`, and if so, what's the difference between `TRANSIENT` and `OUTPUT`?
+_I'm not sure if this is also true for `OUTUT`, and if so, what's the difference between `TRANSIENT` and `OUTPUT`?_
 )
 
 Modules can control when they execute, in what contexts the module is valid.
@@ -160,12 +196,32 @@ This is set in Script Details > Script > Module Usage Bitmask.
 Different placement in the stack may produce different behavior for a module.
 Scaling velocity in spawn causes a single kick, scaling in update gives an acceleration.
 
+Strive to build modules that stack nicely with each other.
+Accumulate rather than set things such as forces.
+Use temporary namespaces.
+Temporary namespace are "unreserved" namespace names, just pick one.
+Multiple modules using the same name in a namespace will see each other's data.
+Example uses `Physics.Force`.
+At the end of the frame the data will be thrown away.
+Called transient values.
+(
+_Do we get a default value, e.g., zero, when a transient value is read first read?_
+_Not clear to me how the temporary data is stored/assigned/structured._
+_Will it be one per particle? One per emitter?_
+_Depends on the group the access is part of?_
+_What if the same name in used in multiple places in the hierarchy?_
+)
+
 A module can be included in the module search dialogs by checking Script Details > Script > Expose to Library.
 
 The Module Graph, with all of its nodes, specifies a HLSL program.
 The HLSL program is compiled either to a GPU shader or to CPU virtual machine instructions.
-
+Goal is full parity CPU and GPU. When applicable.
+Can have raw HLSL in a node.
 
 
 `Vector Field Modules` is a bunch of different types of vector fields.
 I don't know what they are for.
+
+
+[Programmable VFX with Unreal Engine's Niagara | GDC 2018 | Unreal Engine by Unreal Engine @ youtube.com](https://www.youtube.com/watch?v=mNPYdfRVPtM)  
