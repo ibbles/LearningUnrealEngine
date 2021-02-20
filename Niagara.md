@@ -274,14 +274,14 @@ For example, the Sprite Size binding can be bound to a dedicated debug sprite at
 
 [Niagara/Overview @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/Overview/index.html)  
 [Events and Event Handlers Overview @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/EventHandlerOverview/index.html)  
-[Niagara how-to @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/HowTo/index.html)
+[Niagara how-to @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/HowTo/index.html)  
 [VFX and Particle Systems @ learn.unrealengine.com](https://learn.unrealengine.com/course/2547426/module/5502400)  
 
-[Diving Into Niagara: Intelligent Particle Effects | Unreal Fest Online 2020 by Unreal Engine @ youtube.com](https://youtu.be/oX6uiPWXJDY?t=1654)
+[Diving Into Niagara: Intelligent Particle Effects | Unreal Fest Online 2020 by Unreal Engine @ youtube.com](https://youtu.be/oX6uiPWXJDY?t=1654)  
 [Advanced Niagara Effects | Inside Unreal by Unreal Engine @ youtube.com](https://www.youtube.com/watch?v=31GXFW-MgQk)  
 [Introduction to Niagara | Unreal Fest Europe 2019 by Unreal Engine @ youtube.com](https://www.youtube.com/watch?v=2CtBa3zEaYU)  
-[Building Effects with Niagara and Blueprint | GDC 2019 by Unreal Engine @ youtube.com](https://www.youtube.com/watch?v=etSfYfIIoSE)
-[Programmable VFX with Unreal Engine's Niagara | GDC 2018 by Unreal engine @ youtube.com](https://www.youtube.com/watch?v=mNPYdfRVPtM)
+[Building Effects with Niagara and Blueprint | GDC 2019 by Unreal Engine @ youtube.com](https://www.youtube.com/watch?v=etSfYfIIoSE)  
+[Programmable VFX with Unreal Engine's Niagara | GDC 2018 by Unreal engine @ youtube.com](https://www.youtube.com/watch?v=mNPYdfRVPtM)  
 
 [Niagara by tharlevfx @ youtube.com](https://www.youtube.com/playlist?list=PLHjQE2fLIZu97z7Iwf-PjV2e1Y4_k2GKL)  
 
