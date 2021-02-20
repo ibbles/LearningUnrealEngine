@@ -2,7 +2,7 @@
 
 # Niagara events
 
-(For 4.25, events only work for CPU particles, not GPU.)
+For Unreal Engine 4.25, events only work for CPU particles, not GPU.
 
 Requires Persistent IDs must be enabled in the Emitter Properties of emitters that use events.
 Not sure if this is a requirement on both event triggers and event handlers.
@@ -12,6 +12,7 @@ One emitter generates some data and emitters listens for and reacts to that data
 We say that the listening emitter has an Event Handler for an Event.
 Both Events and Event Handlers are Modules.
 An event trigger can send arbitrary payload, i.e., an attribute container, to the event handlers.
+Struct of anything.
 An event handler can run on a particular particle  (by ID) or on every particle.
 An event handler can spawn new particles and run on those.
 An event handler has it's own execution stack. (Module stack?)
@@ -19,6 +20,11 @@ Splitting the logic up between the main emitter stack and a set of event stacks 
 There are built-in events for collision, death, and location.
 Events can be any kind of data, packed into a payload (such as a struct) and sent. Then anything else can listen for that event and take action.
 An event can be run directly on a particle using Particle.ID, on every particle in a system, or spawn a collection of particles on run on those.
+Can run events directly on a particle, all particles in a system, spawned particles.
+`LocationEvent Write` struct in graph. Add the data you want.
+Add event handles to the stack, tell it how to behave.
+Events have a separate execution stack.
+
 
 ### Location Events
 
