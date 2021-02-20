@@ -20,9 +20,15 @@ More flexibility in what kind of data and data sources can be used to drive the 
 Programmable and customizable on every axis.
 Improved tools for debugging, visualization, and performance.
 Can incorporate data from other parts of the engine.
+Support for arbitrary data, from other parts of Unreal Engine or external.
 Unobtrusive.
+Started with data sharing, expose everything.
 
 ## Basic concepts
+Niagara consists of several pieces to make it easier to extend share resources between systems.
+A Niagara system is something that is added into the world.
+Niagara systems contains Niagara emitters.
+An emitter can for example be fore sparks, smoke, and flames.
 
 The Niagara system consists of the following core components:
 - [[2020-12-03_21:29:00]] [Systems](./Niagara%20systems.md)
@@ -36,10 +42,27 @@ A Niagara system is configured using Graphs and Stacks.
 Their behavior is controlled using modules and there is a stack of modules for each phase of the emitter.
 Graphs are flexible and powerful but requires some technical knowledge.
 Stacks give at-a-glance overview and are easier to use for less technical users.
+Graphs are flexible, stacks are modular and give at-a-glance overview.
 Emitters produce and simulate particles.
 Modules are created my technical artists and combined into stacks by artists.
 Parameters let us provide customizations of an emitter or particle system.
 Events are a way to communicate between elements (such as particles, emitters, and systems).
+Makes everything optional, can disable stuff used for rendering when not rendering.
+
+Modules speak to data, encapsulate behavior, and stack nicely.
+Works like function.
+Emitters are containers for modules.
+Emitters are single purpose reusable pieces of a larger particle system.
+Parameteres can bubble up from modules to the emitter.
+Systems hold emitteres.
+Modules are graphs.
+Emitters are collections of stacks.
+
+Inheritance important to design.
+Old tools (Cascade) made reuse difficult.
+Overrides can be inserted anywhere.
+A system can uncheck a module from an imported emitter.
+A system can insert new modules into an imported emitter.
 
 [NiagaraKeyConcepts @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/NiagaraKeyConcepts/index.html)  
 
@@ -49,11 +72,16 @@ Expose everything, every piece of data that flows through the system.
 Can be changed or acted upon.
 Both built-in and user defined data.
 All data is part of a namespace, a container for hierarchical data.
+Uses namespace paradigm, hierarchical containers.
+`Emitter.` namespace, `Particle.` namespace.
 A container contains attributes.
 A container may contain multiple data items for each attribute, one per particle for example.
 The build-in organized conceptually in groups such as Emitter and Particle.
 A Parameter Map is used to read and write the attributes.
+Read from and write to parameter map.
+Parameter map is the particle payload, the data we have asked to come along.
 Data can be added to, changed, or removed from the Parameter Map arbitrarily.
+Can add arbitrary data to payload.
 Produces a flow of data transformations and aggregation.
 
 ## Modules
@@ -241,14 +269,19 @@ The Material's Blend Mode should be set to Masked.
 Some tweaking in the material may be required to make it readable.
 For example, the Sprite Size binding can be bound to a dedicated debug sprite attribute to control the size of the debug rendering independent of the souce particle's size.
 
-[Diving Into Niagara: Intelligent Particle Effects | Unreal Fest Online 2020 by Unreal Engine @ youtube.com](https://youtu.be/oX6uiPWXJDY?t=1654)  
 
 
 
 [Niagara/Overview @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/Overview/index.html)  
-[VFX and Particle Systems @ learn.unrealengine.com](https://learn.unrealengine.com/course/2547426/module/5502400)  
-[Advanced Niagara Effects | Inside Unreal by Unreal Engine @ youtube.com](https://www.youtube.com/watch?v=31GXFW-MgQk)  
 [Events and Event Handlers Overview @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/EventHandlerOverview/index.html)  
-[Niagara by tharlevfx @ youtube.com](https://www.youtube.com/playlist?list=PLHjQE2fLIZu97z7Iwf-PjV2e1Y4_k2GKL)  
 [Niagara how-to @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/HowTo/index.html)
+[VFX and Particle Systems @ learn.unrealengine.com](https://learn.unrealengine.com/course/2547426/module/5502400)  
+
+[Diving Into Niagara: Intelligent Particle Effects | Unreal Fest Online 2020 by Unreal Engine @ youtube.com](https://youtu.be/oX6uiPWXJDY?t=1654)
+[Advanced Niagara Effects | Inside Unreal by Unreal Engine @ youtube.com](https://www.youtube.com/watch?v=31GXFW-MgQk)  
+[Introduction to Niagara | Unreal Fest Europe 2019 by Unreal Engine @ youtube.com](https://www.youtube.com/watch?v=2CtBa3zEaYU)  
+[Building Effects with Niagara and Blueprint | GDC 2019 by Unreal Engine @ youtube.com](https://www.youtube.com/watch?v=etSfYfIIoSE)
+[Programmable VFX with Unreal Engine's Niagara | GDC 2018 by Unreal engine @ youtube.com](https://www.youtube.com/watch?v=mNPYdfRVPtM)
+
+[Niagara by tharlevfx @ youtube.com](https://www.youtube.com/playlist?list=PLHjQE2fLIZu97z7Iwf-PjV2e1Y4_k2GKL)  
 
