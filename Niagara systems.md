@@ -11,6 +11,9 @@ The emitters are choreographed using emitter sequencing in a timeline.
 Can set which emitters loops and bursts and so on.
 Systems have global variables that are available to the contained emitters.
 
+Systems control timing between emitters.
+Systems have their own Spawn and Update stacks, in blue.
+
 There is a system editor in which emitters are added and configured.
 The System Editor is very similar to the emitter editor.
 There is one more Module Stack section, colored in blue, which contain the system level modules.
@@ -20,6 +23,7 @@ New emitters are added using the `+ Track` button in the Timeline Panel.
 Or through the System Overview context menu.
 All emitters are listed as separate tracks in the Timeline Panel.
 Here we control the relative timing between the emitters.
+The system timeline show all emitters and renderers.
 
 The added emitters can be modified to tweak the effect.
 We can add and remove modules.
@@ -32,12 +36,21 @@ Click the top-right corner of the Emitter in the System Overview Panel to jump t
 One can hide particles from an Emitter by unchecking the checkbox in the lop-left of the emitter or in the Timeline Panel.
 The Isolate button, the standing man, on each Emitter hides the particles from all the other emitters.
 
+The attribute spreadsheet shows all the data in the system.
+
 System can inherit from each other.
 Inherited modules can be disabled.
 New modules can be added.
 Module parameter input values can be changed, both setting a new value and create a new binding.
 
+Systems have a render stack.
+Simulation decoupled from rendering.
+Simulate once, render in multple ways.
+
 [[2020-11-18_17:39:27]] [Niagara](./Niagara.md)  
+[[2020-12-03_21:34:16]] [Niagara emitters](./Niagara%20emitters.md)  
+[[2020-12-03_21:41:31]] [Niagara modules](./Niagara%20modules.md)  
+
 
 
 [Niagara @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Niagara/index.html)  
