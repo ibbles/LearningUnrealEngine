@@ -7,10 +7,12 @@ Emitters are single-purpose, reusable components.
 Emitters are building blocks for Systems.
 Systems are containers for emitters, which it combines to create an effect.
 We only set defaults on the Emitter. An emitter instance in a System can be tweaked.
+Systems have their own set of global user variables.
 Emitter parameters are set by the system they belong to or become parameters of the system.
 Emitters are containers for modules.
 Emitter are containers for modules that are stacked on each other.
 They contain modules that provide the intended behavior of the particles.
+Modules listed in the stacks are all optional, even very basic stuff such as age or velocity/position integration.
 Parameters on modules bubble up to become parameters on the emitter unless set by the emitter itself.
 The modules are stacked, so that one run after the other.
 Theses phases are called groups, as they are a group of modules.
@@ -22,6 +24,11 @@ The module stacks are grouped into:
 - Event Handlers: When the source event is triggered.
 - Render: Every frame.
 
+Spawn vs Update. First frame versus all subsequent frames.
+(
+_No Update on first frame?
+)
+
 Parameters on the modules bubble up and can be modified on the emitter.
 The module stacks of the emitters can be modified by the system.
 
@@ -31,9 +38,42 @@ The Emitter Editor consists of the following parts:
 - Sequencer timeline: Controls looping loop count, spawning, etc.
 - Top Tool Bar: Just some buttons.
 
+The parameter pane list particle-emitter-system-user parameters.
+Can just drag them into the stack.
+Can be shared between multiple emitters.
+
+The sequencer timeline controls looping, loop count, bursts, random start/stop, spawn rate.
+
 In the Top Tool Bar:
 - Compile: Compiles the system so that we can see the result in the Preview Panel.
 - Apply: Apply the latest changes to all Systems that use this Emitter.
+
+The Emitter GUI contains the viewport, the modules, and a timeline.
+On the right, every block is called a module.
+It's a series of instructions that get run at that point in the system.
+`Emitter Spawn`: When the emitter is first created, do this stuff.
+`Emitter Update`: On every tick.
+Green blocks are per-particle instructions.
+Niagara modules are blueprint scripts.
+In scripts, everything works in namespaces.
+Uses default values if the variable doesn't exist.
+Can have dependencies between modules, i.e., `Gravity Force` and `Solve Forces and Velocity`.
+Used to build bigger systems with several modules.
+Various ways to spawn particles.
+Sphere, cylinder, ...
+Orthgraphic projection viewport can be used as a ruler by holding middle mouse button.
+Niagara systems can be created from an emitter by right-clicking the emitter.
+The position of the system can be copy/pasted from another object by right-click on Location.
+We can add new data to the particle system by clickig `+` in `Particle Spawn` and selecting e.g., `Vector 2D`.
+We can see the data for every particle in the `Window` → `Attribute Spreadsheet`.
+Can set spawn position direction by adding a `Particles.position` setting to `Particle Spawn`.
+Can write code directly by setting the value type to `Make new expression`.
+Can add `Sample Texture` to `Particle Update.`
+Set `UV` to be `Particle.UV` to get the per-particle random value.
+Now each new particle "own" a texel in the texture, and in this case each texel is a 3D space coordinate.
+By setting the position of the particle to the sampled texture data we can create shapes.
+Texture sampling can only be done with GPUSim particles.
+
 
 ## Emitter spawn
 
@@ -69,7 +109,7 @@ The following modules intended for `Emitter Update` are included in Unreal Engin
 Use-created custom modules can also be added.
 
 The `Beam` module provide settings for beam emitters.
-`Create New Parameter` works the same in Emitter Update as it does in `Emitter Spawn`.
+`Create New Parameter` works the same in Emitter Update as it does in Emitter Spawn.
 The `Emitter Lice Cycle` module control how the emitter loops.
 There are four `Spawning` modules:
 
