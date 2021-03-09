@@ -2,6 +2,8 @@
 
 # Abbreviations
 
+- `CDO`: Class Default Object.
+  A default constructed, i.e., with the default C++ constructor, instance of a class that Unreal Engine uses as a template when creating new instances of that class.
 - `SCS`: Simple Construction Script.  
     A graph of Actor Components to instantiate.
     A Blueprint has one of these to represent all the ActorComponents that has been added in the Blueprint Editor or inherited from the parent class.  
@@ -10,3 +12,4 @@
 - `UCS`: User Construction Script.  
     A function in Actor.  
     Construction script, the place to spawn components and do other setup.
+- `BPGC`: Blueprint Generated Class.
