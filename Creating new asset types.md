@@ -244,4 +244,5 @@ You can find examples of how to create Styles in  `Engine/Source/Editor/EditorSt
 [TextAsset @ github.com](https://github.com/ue4plugins/TextAsset)  
 [C++ Extending the Editor | Live Training | Unreal Engine by Unreal Engine @ youtube.com](https://youtu.be/zg_VstBxDi8?t=1731)
 [Writing a Custom Asset Editor for Unreal Engine 4](http://cairansteverink.nl/cairansteverink/blog/writing-a-custom-asset-editor-for-unreal-engine-4-part-1/)  
-[Asset Editor -Development of asset editor in Unreal Engine](https://easycomplex-tech.com/blog/Unreal-AssetEditor/)  
+[Asset Editor - Development of asset editor in Unreal Engine](https://easycomplex-tech.com/blog/Unreal-AssetEditor/)  
+[How to make tools in UE4](https://lxjk.github.io/2019/10/01/How-to-Make-Tools-in-U-E.html)  
