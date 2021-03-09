@@ -417,6 +417,24 @@ To build only for the host platform, pass `-Set:HostPlatformOnly=true`.
 To disable Derived Data Cache build, pass `-Set:WithDDC=false`.
 To select which configuration to build, pass `-Set:GameConfiguration=Development`.
 
+The above command will produce a build that is quite large, 100 GiB or so.
+The below is supposed to produce a smaller build, but I haven't tested yet. I don't see which part is supposed to make it smaller…
+Perhaps not passing `Development` will exclude debug information. I _think_ that part was required to export/package plugins.
+```
+./Engine/Build/BatchFiles/RunUAT.sh BuildGraph
+    -script=Engine/Build/InstalledEngineBuild.xml
+    -target="Make Installed Build Linux"
+    -nosign
+    -set:HostPlatformEditorOnly=true
+    -set:WithDDC=false
+    -set:WithIOS=false
+    -set:WithTVOS=false
+    -set:WithMac=false
+    -set:WithWin64=false
+    -set:WithWin32=false
+    -clean
+```
+
 Unreal Engine creates a BuildID for each build.
 The BuildID prevents dynamic libraries from being used with the wrong build of the engine.
 The purpose is to prevent stale and outdated dynamic libraries from being accidentally loaded, which is a common source of difficult-to-diagnose problems.
