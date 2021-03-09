@@ -3,11 +3,11 @@
 # Detail Customization
 
 The Details Panel contains a list of categories and two columns.
-Categories are collapsable collections of rows.
+Categories are collapsible collections of rows.
 Each row holds and Item.
 Each item consists of a name column and a value column.
 The name, value, or even the entire Item, can by any Slate widget.
-The Category contains helper functions for adding commong widgets.
+The Category contains helper functions for adding common widgets.
 Such as property editors.
 
 An instance of `IDetailLayoutBuilder` is used to build the Details Panel.
@@ -34,8 +34,7 @@ Create a new class that inherit from `IDetailCustomization`.
 There should be one of these for each type you wish to customize the Details Panel for.
 ```c++
 #pragma once
-#include "CoreMinimal.h"
-#include "Input/Reply.h"
+
 #include "IDetailCustomization.h"
 
 class FMyClassCustomization : public IDetailCustomization
@@ -52,6 +51,11 @@ public:
 
 Implement as follows:
 ```c++
+#include "MyClassCustomization.h"
+
+#include "DetailCategoryBuilder.h"
+#include "DetailLayoutBuilder.h"
+
 #define LOCTEXT_NAMESPACE "MyEditorModule"
 
 TSharedRef<IDetailCustomization> FMyClassCustomization::MakeInstance()
@@ -69,8 +73,10 @@ void FMyClassCustomization::CustomizeDetails(
 }
 ```
 
-In the `StartupModule` member function for your new Editor Module:
+In the `StartupModule` member function for your Editor Module:
 ```c++
+#include "MyClassCustomization.h"
+
 void FMyEditorModule::StartupModule()
 {
     FPropertyEditorModule& PropertyModule = 
@@ -78,7 +84,7 @@ void FMyEditorModule::StartupModule()
             "PropertyEditor");
     
     PropertyModule.RegisterCustomClassLayout(
-        UMyClass:StaticClass()->GetFName(),
+        UMyClass::StaticClass()->GetFName(),
         FOnGetDetailCustomizationInstance::CreateStatic(
             &FMyClassCustomization::MakeInstance));
     
@@ -92,7 +98,7 @@ void FMyEditorModule::ShutdownModule()
             "PropertyEditor");
     
     PropertyModule.UnregisterCustomClassLayout(
-        UMyClass:StaticClass()->GetFName());
+        UMyClass::StaticClass()->GetFName());
 }
 ```
 
@@ -121,7 +127,7 @@ public:
 
 When a Details Panel for a type for which a `CustomClassLayout` has been registered is opened in Unreal Editor the editor will call the corresponding `CustomizeDetails` member function.
 `CustomizeDetails` is only called once per selection change.
-This means that any dynamic updates must be handled either with Properties or Attributes.
+This means that any dynamic updates must be handled either with Properties, Attributes, or `DetailBuilder.ForceRefreshDetails()`.
 More on these below.
 
 ## Categories
@@ -406,7 +412,7 @@ PersonCategory.AddCustomRow(LOCTEXT("FilterKey", "FilterVaue"))
     ];
 ```
 
-To update the Details Panel after changing something that affects it, e.g., from a button callback, or when a change is detected by `OnEditChangePropeperty`, try calling `DetailBuilder.ForceRefreshDetails();`.
+To update the Details Panel after changing something that affects it, e.g., from a button callback, or when a change is detected by `OnEditChangePropeperty`, try calling `DetailBuilder::ForceRefreshDetails`.
 This is a heavy operation, so use sparingly and with caution.
 
 ## Complete example
