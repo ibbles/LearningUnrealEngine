@@ -13,7 +13,7 @@ bool ShouldTheThingBeDone(const FText& Title, const FText& Message, const FStrin
     FSuppressableWarningDialog::FSetupInfo Info(Message, Title, IniSetting);
     Info.ConfirmText = LOCTEXT("DoTheThingYes", "Do The Thing!");
     Info.CancelText = LOCTEXT("DoTheThingNo", "Don't do the thing");
-    Info.CheckBoxText = FText::GetEmpty();	// not suppressible
+    Info.CheckBoxText = FText::GetEmpty();	// By setting this to Empty we prevent suppressing.
 
     FSuppressableWarningDialog ReparentBlueprintDlg(Info);
     return ReparentBlueprintDlg.ShowModal() != FSuppressableWarningDialog::Cancel;
