@@ -27,11 +27,23 @@ Unreal Engine has a few different types of lights.
 - Attenuation radius [cm]: Culling distance.
     Objects farther than the attenuation radius away will ignore this light. Has no effect on objects well within the attenuation radius. There seems to be some form of interpolation near the edge of the attenuation radius.
 
+## Baked lights
+
+Lighting can be baked into so-called lightmaps.
+It's a packaging/cooking stage that does the lighting calculation and stores it in textures.
+This can give high quality lighting, but it can't changes to the scene.
+Move an object in Unreal Editor and all baked light we act as-if the object was still at the old location.
+No shadows move.
+The editor will inform you about this with the `LIGHTING NEEDS TO BE REBUILT` message in the top-left of the Level Editor viewport.
+
+
 ## Light mobility
 
 - Static: Cannot move or change intensity or color during runtime.
-- Stationary: Cannot move. Can change intensity and color.
+- Stationary: Cannot move. Can change intensity and color. Will bake shadows.
 - Movable: Can move and change color and intensity during runtime.
+
+The default mobility is Stationary.
 
 Light mobility can have a large impact on performance, so chose the most restrictive possible for each light.
 
@@ -43,3 +55,6 @@ Inverse square falloff is more realistic but requires large luminance and radius
 Linear square falloff (which I assume the alternative is) can be easier to control.
 
 [[2020-04-11_08:47:51]] [~Collection Lighting](./~Collection%20Lighting.md)  
+
+
+[# Unreal Engine 4 Tutorial - Game Art - Lighting - How it Works by Ryan Laley @ youtube.com](https://www.youtube.com/watch?v=32r28R-ktDA)
