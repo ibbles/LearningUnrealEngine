@@ -23,7 +23,7 @@ void UMySpawner::DoSpawn()
 {
     Vector Location = /* Compute position*/;
     FActorSpawnParameters Parameters;
-    AActory* SpawnedActor =
+    AActor* SpawnedActor =
         GetWorld()->SpawnActor<AActor>(TypeToSpawn, Location, Parameters);
 }
 ```
