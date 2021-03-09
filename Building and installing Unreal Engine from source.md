@@ -376,12 +376,27 @@ Can define tagged collections of files.
 
 For Linux:
 ```
-RunUAT.sh BuildGraph -Target="Make Installed Build Linux" -Script=Engine/Build/InstalledEngineBuild.xml -Set:HostPlatformOnly=true -Set:WithDDC=false -Set:WithLinuxAArch64=false -Set:HostPlatformDDCOnly=false -Set:GameConfigurations=Development -Clean
+RunUAT.sh BuildGraph
+    -Target="Make Installed Build Linux"
+    -Script=Engine/Build/InstalledEngineBuild.xml
+    -Set:HostPlatformOnly=true
+    -Set:WithDDC=false
+    -Set:WithLinuxAArch64=false
+    -Set:HostPlatformDDCOnly=false
+    -Set:GameConfigurations=Development
+    -Clean
 ```
 
 For Windows (untested, just following the pattern):
 ```
-RunUAT.bat BuildGraph -Target="Make Installed Build Win64" -Script=Engine/Build/InstalledEngineBuild.xml -Set:HostPlatformOnly=true -Set:WithDDC=false -Set:HostPlatformDDCOnly=false -Set:GameConfigurations=Development -Clean
+RunUAT.bat BuildGraph
+    -Target="Make Installed Build Win64"
+    -Script=Engine/Build/InstalledEngineBuild.xml
+    -Set:HostPlatformOnly=true
+    -Set:WithDDC=false
+    -Set:HostPlatformDDCOnly=false
+    -Set:GameConfigurations=Development
+    -Clean
 
 ```
 
