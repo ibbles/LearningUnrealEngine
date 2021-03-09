@@ -22,7 +22,16 @@ Initial build of Unreal Engine:
 
 Creating a binare release of Unreal Engine:
 ```
-RunUAT.sh BuildGraph -Target="Make Installed Build Linux" -Script=Engine/Build/InstalledEngineBuild.xml -Set:HostPlatformOnly=true -Set:WithDDC=false -Set:WithLinuxAArch64=false -Set:HostPlatformDDCOnly=false -Set:GameConfigurations=Development;Shipping -Clean
+RunUAT.sh
+    BuildGraph
+    -Target="Make Installed Build Linux"
+    -Script=Engine/Build/InstalledEngineBuild.xml
+    -Set:HostPlatformOnly=true
+    -Set:WithDDC=false
+    -Set:WithLinuxAArch64=false
+    -Set:HostPlatformDDCOnly=false
+    -Set:GameConfigurations=Development;Shipping
+    -Clean
 ```
 I think it's possible to pass multiple `GameConfigurations`. Shipping is good to have because the `BuildPlugin` `RunUAT` command require it.
 
@@ -36,12 +45,20 @@ I think it's possible to pass multiple `GameConfigurations`. Shipping is good to
 
 Generating build system project files for a C++ Unreal Engine project using wrapper script:
 ```
-eval $UE_ROOT/GenerateProjectFiles.sh <PATH>/<PROJECT>.uproject -Game -Makefile -CMakefile
+$UE_ROOT/GenerateProjectFiles.sh
+    <PATH>/<PROJECT>.uproject
+    -Game
+    -Makefile
+    -CMakefile
 ```
 
 Generating build system project files for a C++ Unreal Engine project using `Build.sh`:
 ```
-eval $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh ProjectFiles -Project=<PATH>/<PROJECT>.uproject -Game -Makefile
+$UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh
+    ProjectFiles
+    -Project=<PATH>/<PROJECT>.uproject
+    -Game
+    -Makefile
 ```
 
 ### Building a C++ project
@@ -58,10 +75,23 @@ make <ProjectName>
 
 Build a project with `Build.sh`:
 ```
-eval $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh <PROJECT> Linux Development -project=<PATH>/<PROJECT>.uproject -Game -Progress -buildscw"`
+$UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh
+    <PROJECT>
+    Linux
+    Development
+    -project=<PATH>/<PROJECT>.uproject
+    -Game
+    -Progress
+    -buildscw"`
 ```
+
+Build the Editor target for a project:
 ```
-eval $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh <PROJECT>Editor Linux Development -Project=<PATH>/<PROJECT>.uproject
+$UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh
+    <PROJECT>Editor
+    Linux
+    Development
+    -Project=<PATH>/<PROJECT>.uproject
 ```
 
 Not sure what the `-buildscw` part does. Possibly related to Shader Compiler Workers. Not sure why it's on the `<PROJECT>` build but not the `<PROJECT>Editor` build.
@@ -142,7 +172,7 @@ RunUAT.bat
     -CrashReporter
 ```
 
-Another variant, not sure what it does.
+Another variant, not sure what it does:
 ```
 RunUAT.bat BuildCookRun -project="Path/To/Project.uproject" -clientConfig=Shipping -installed -noP4 -platform=Win64 -cook -build -allmaps -stage -pak -archive
 ```
