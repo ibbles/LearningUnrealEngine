@@ -204,6 +204,18 @@ One can set Project Settings > Cooker > Cooker Progress Display Mode to get more
 UE4Editor "path to uproject" -run=DerivedDataCache -fill -projectonly
 ```
 
+
+### Compiling Blueprints
+
+```
+$UE_ROOT/Engine/Binaries/Linux/UE4Editor
+    $MY_PROJECT/$MY_PROJECT.uproject
+    -run=CompileAllBlueprints
+    -VeryVerbose
+```
+
+This is useful for debugging cooking crashes since it's one of the steps that the cooking process takes.
+
 ## Plugin stuff
 
 ### Exporting a plugin
