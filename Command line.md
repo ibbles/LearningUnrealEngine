@@ -177,6 +177,27 @@ Another variant, not sure what it does:
 RunUAT.bat BuildCookRun -project="Path/To/Project.uproject" -clientConfig=Shipping -installed -noP4 -platform=Win64 -cook -build -allmaps -stage -pak -archive
 ```
 
+Another variant I copied from somewhere. Maybe the same:
+```
+$UE_ROOT/Engine/Build/BatchFiles/RunUAT.sh
+    -ScriptsForProject=$MY_PROJECT/$MY_PROJECT.uproject
+    BuildCookRun
+    -project=$MY_PROJECT/$MY_PROJECT.uproject
+    -noP4
+    -clientconfig=Development
+    -utf8output
+    -platform=Linux
+    -targetplatform=Linux
+    -cook
+    -allmaps
+    -compressed
+    -archive
+    -unversionedcookedcontent
+    -archivedirectory="$TARGET_DIRECTORY/$MY_PROJECT"
+```
+
+One can set Project Settings > Cooker > Cooker Progress Display Mode to get more or less information from the cooker.
+
 ### Compiling shaders (I think)
 
 ```
