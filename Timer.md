@@ -22,3 +22,4 @@ The link is remembered in `Handle`, so we can sever the link later if we wish.
 
 [[2020-09-30_13:13:51]] [Callbacks](./Callbacks.md)  
 [[2020-06-29_13:29:35]] [Events](./Events.md)  
+[[2021-03-10_10:42:34]] [Delegate](./Delegate.md)  

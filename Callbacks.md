@@ -44,5 +44,6 @@ vid UMyClass::MyFunction()
 [[2020-08-22_13:21:00]] [RF_Transactional](./RF_Transactional.md)  
 [[2021-03-10_10:35:35]] [Timer](./Timer.md)  
 [[2020-06-29_13:29:35]] [Events](./Events.md)  
+[[2021-03-10_10:42:34]] [Delegate](./Delegate.md)  
 
 [Delegates@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Programming/UnrealArchitecture/Delegates/index.html)
