@@ -23,3 +23,6 @@ Used in 3 Prong Gaming's RTS tutorial to make construction proxies aware of chan
 
 There are Event Dispatchers which are used to trigger events.
 These are called `Delegates` in C++.
+
+[[2020-09-30_13:13:51]] [Callbacks](./Callbacks.md)  
+[[2021-03-10_10:35:35]] [Timer](./Timer.md)  
