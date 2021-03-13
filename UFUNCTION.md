@@ -17,75 +17,15 @@ public:
 
 A number of function specifiers can be added to set properties on the function.
 - `BlueprintCallable`: The function can be called from a Blueprint Visual Script.
+- `BlueprintPure`: The function can be called from a Visual Script, will note have an execution pin.
 - `BlueprintImplementableEvent`: The function is only declared and not implemented in C++, the function definition is provided by a Blueprint class inheriting from the C++ class. I assume `Blueprintable` must be provided on the C++ class for this to make sense.
 - `BlueprintNativeEvent`: Like `BlueprintImplementableEvent`, but with a fallback C++ definition in case no Blueprint implementation is made. A separate C++ function with the same name but with `_Implementation` at the end is declared automatically and this is where the C++ implementation should be written. I assume `Blueprintable` must be provided on the class for this to make sense.
 
-[[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
+A non-C++-`const` `BlueprintCallable` function will have an execution pin.
+A C++-`const` `BlueprintCallable` function will not have an execution pin.
 
-A `BlueprintImplementableEvent` is implemented in a Blueprint subclass by right-click in the Event Graph add selecting `Add Event` > `Event <FUNCTION_NAME>`.
-This will create a red event start node with an output execution pin.
+The only difference between `BlueprintPure` and `BlueprintCallable` is that `BlueprintCallable` only updates its outputs once when the execution runs through it. `BlueprintPure` will rerun the function and update the output for every single thing that tries to get a value from it.
 
-
-A complete example of a Blueprint configurable C++ Actor class.
-
-Declaration:
-```c++
-UCLASS(Blueprintable)
-class AMyActor : public AActor
-{
-    GENERATED_BODY()
-public:
-    UFUNCTION(BlueprintCallable)
-    void MyFunction();
-    
-    UFUNCTION(BlueprintImplementableEvent)
-    void MyBlueprintFunction();
-    
-    UFUNCTION(BlueprintNativeEvent)
-    void MyOptionalBlueprintFunction();
-}
-```
-
-Implementation:
-```c++
-void AMyActor::MyFunction()
-{
-    UE_LOG(
-        LogTemp, Display,
-        TEXT("This function can be called from a Blueprint Visual Script."));
-}
-
-/*
-This function should not be implemented in C++, it should be implemented in Blueprint by a Blueprint class having this class as its parent.
-void AMyActor::MyBlueprintFunction()
-{
-}
-*/
-
-void MyActor::MyOptionalBlueprintFunction_Implementation()
-{
-    UE_LOG(
-        LogTemp, Display,
-        TEXT("The Blueprint subclass can chose to override this."));
-}
-```
-
-
-Parameters can be passed by reference to a `UFUNCTION`.
-Such parameters become output pins in Visual Scripts.
-```cpp
-UFUNCTION(BlueprintCallable)
-void Add(FMyNumeric Lhs, FMyNumeric Rhs, FMyNumeric& Result);
-```
-
-We can add `UPARAM(ref)` to make the parameter an InOut parameter.
-Such parameters become input pins in Visual Scripts.
-```cpp
-UFUNCTION(BlueprintCallable)
-void InitializeMyStruct(UPARAM(ref) FMyStruct& MyStruct);
-```
-
-
-
+[[2021-03-13_11:48:31]] [Blueprint events in C++](./Blueprint%20events%20in%20C++.md)  
 [[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
 [[2020-03-09_21:43:36]] [UPROPERTY](./UPROPERTY.md)  
