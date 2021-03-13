@@ -12,7 +12,7 @@ where
 - `<CATEGORY>` is one of the registered logging categories. See below.
 - `<VERBOSITY>` is one of `Display`, `Log`, `Warning`, `Error`, `Fatal`.
 - `<MESSAGE>` is the message to print to the log. Can contain `printf` style `%` format specifiers.
-- `<VALUE>` is a value whos type matches the corresponding format specifier.
+- `<VALUE>` is a value whose type matches the corresponding format specifier.
 
 For example:
 ```cpp
@@ -30,3 +30,15 @@ Source file:
 ```cpp
 DEFINE_LOG_CATEGORY(LogMyGame);
 ```
+
+Each log entry is prepended with some numbers.
+The first `[]` contains the date and time.
+In `Year`.`Month`.`Day`-`Hour`.`Minute`.`Second`:`Millisecond` format.
+At least for me, there may be locale-related differences here.
+I don't know what the second `[]` contains. Possibly a thread or ID.
+Example:
+```
+[2021.03.12-08.05.50:875][ 98]
+```
+
+[Logging @ ue4community.wiki](https://www.ue4community.wiki/logging-lgpidy6i)  
