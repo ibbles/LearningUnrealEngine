@@ -77,6 +77,7 @@ enum class EMyScopedEnum : uint8
 
 An enum can be a UPROPERTY on a U-class.
 Unscoped enum must be wrapped in a `TEnumAsByte<E>`.
+Therefore, prefer scoped enums, i.e., `UENUM(BlueprintType) enum class EMyScopedEnum : uint8 {}`.
 
 ```cpp
 UCLASS()
