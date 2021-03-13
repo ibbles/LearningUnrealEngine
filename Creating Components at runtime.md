@@ -6,35 +6,46 @@ Cannot use `CreateDefaultSubobject` outside of a constructor.
 Instead use `NewObject` and add/register manually.
 
 ```c++
-UChunkBlocksComponent* ChunkBlocksComponent = NewObject<UChunkBlocksComponent>(
-    this, *FString::Printf(TEXT("Chunk Z: %d"), ChunkID.Location.Z)); ChunkBlocksComponent->SetRelativeLocation(
-    FVector(0, 0, ChunkID.Location.ToEngineLocation().Z)); ChunkBlocksComponent->SetFlags(RF_NoFlags);
-ChunkBlocksComponent->RegisterComponent();
-ChunkBlocksComponent->AttachToComponent(
-    RootComponent, FAttachmentTransformRules::KeepRelativeTransform,
-    NAME_None); 
-AddInstanceComponent(ChunkBlocksComponent);
+void AMyActor::CreateMyComponent()
+{
+    UMyComponent* MyComponent = NewObject<UMyComponent>(
+        this, TEXT("MyComponent"));
+    MyComponent->SetRelativeLocation(
+        FVector(0, 0, 0.0));
+    MyComponent->SetFlags(RF_NoFlags);
+    MyComponent->RegisterComponent();
+    MyComponent->AttachToComponent(
+        RootComponent,
+        FAttachmentTransformRules::KeepRelativeTransform,
+        NAME_None)
+    AddInstanceComponent(MyComponent);
+}
 ```
 
-Worrying comment in the Unreal Slackers Discort:
-
+Worrying comment in the Unreal Slackers Discord:
 
 > For anyone interested in a solution to what I was working on yesterday: it turns out using `NewObject<>` blindly is insufficient for creating sub-objects in editor assets. To set the proper flags for UE4 to treat new instances as if they were created by the editor, use `SetFlags(GetMaskedFlags(RF_PropagateToSubObjects))`. For example:
 
 ```c++
-    virtual void PostEditChangeChainProperty(FPropertyChangedChainEvent& PropertyChangedEvent) override
-        {
-            UBBSIntAttributeNode* IntNode = NewObject<UBBSIntAttributeNode>(this);
-            IntNode->SetFlags(GetMaskedFlags(RF_PropagateToSubObjects));
-            IntNode->intValue = value;
-            Attributes.Add(AttributeClass, IntNode);
-        }
+virtual void PostEditChangeChainProperty(
+    FPropertyChangedChainEvent& PropertyChangedEvent) override
+{
+    UBBSIntAttributeNode* IntNode = NewObject<UBBSIntAttributeNode>(this);
+    IntNode->SetFlags(GetMaskedFlags(RF_PropagateToSubObjects));
+    IntNode->intValue = value;
+    Attributes.Add(AttributeClass, IntNode);
+}
 ```
+I don't understand anything of the above.
+
 
 If you want to create Components in C++ then the Root Component must also be created in C++, not the Blueprint.
 Otherwise there's no Root Component to add the newly created Component to.
 Blueprint initialization happens after the C++ object has been fully constructed.
 Delayed Component creation should be in `BeginPlay`.
+(
+I don't think the above is quite true. Seems odd to me. There are many places in which Components can be created. I guess...
+)
 
 
 The relationship between `AttachTo`(`Compoent`?) and `SetupAttachment` is unclear to me.
@@ -78,14 +89,19 @@ void ASomeActor::MakeSomeComponent() {
 
 Optional Components are created with something along the lines of
 ```c++
-    AParent::AParent(const FObjectInitializer& OI)
-        Super(OI)
-    {
-        MyCompA = OI.CreateOptionalDefaultSubobject<UMyComponentA>(this, UMyComponentA::MyComponentAName);
-        MyCompB = OI.CreateOptionalDefaultSubobject<UMyComponentB>(this, UMyComponentB::MyComponentAName);
-    }
+AParent::AParent(const FObjectInitializer& OI)
+    Super(OI)
+{
+    MyCompA = OI.CreateOptionalDefaultSubobject<UMyComponentA>(
+        this, UMyComponentA::MyComponentAName);
+    MyCompB = OI.CreateOptionalDefaultSubobject<UMyComponentB>(
+        this, UMyComponentB::MyComponentAName);
+}
     
-    AChild::AChild(const FObjectInitializer& OI)
-        : Super(OI.DoNotCreateDefaultSubobject(UMyComponentA::MyComponentAName).DoNotCreateDefaultSubobject(UMyComponentB::MyComponentBName))
+AChild::AChild(const FObjectInitializer& OI)
+    : Super(
+        OI
+        .DoNotCreateDefaultSubobject(UMyComponentA::MyComponentAName)
+        .DoNotCreateDefaultSubobject(UMyComponentB::MyComponentBName))
     {}
 ```
