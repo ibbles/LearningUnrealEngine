@@ -9,7 +9,6 @@ Errors can be reported with the following:
 - Show a modal dialog box. Not sure how.
 - Show a notification dialog, like the "compiling shaders" message. Not sure how.
 
-
-Errors can be reported from the following locations:
-- `BeginPlay`.
-- `PostEditChangeProperty`.
+[[2020-12-30_19:20:58]] [Log](./Log.md)  
+[[2021-03-09_20:03:05]] [Confirmation dialog](./Confirmation%20dialog.md)  
+[[2021-03-25_09:06:36]] [Message dialog](./Message%20dialog.md)  
