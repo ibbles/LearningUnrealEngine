@@ -38,10 +38,11 @@ void UMyClass::MoveActor()
     // one on the Actor it has a pointer to.
     
     // Mark this object as about to be modified.
-    this->Modify();
+    Modify();
     
     // Make the modification. NumMoves is a `UPROPERTY` on an objects on
-    // which Modify has been called so it will be included in the 
+    // which Modify has been called so it will be included in the undo
+    // history.
     ++NumMoves;
     
     // Next we do the move. First mark the Actor for modification and then
@@ -55,7 +56,10 @@ void UMyClass::MoveActor()
 }
 ```
 
-```
+I believe undo only applies to objects with the `RF_Transactional` flag set.
+A pattern I've seen is that the undo management is handled by GUI-level code such as Component Visualizers and Details Customizations, not by the modified object itself.
+
+```c++
 FScopedTransaction transaction(); // will open up a slot in for data in GEditor
 Modify(); // On what should this be called? The FScopedTransaction? Or is `Modify` a stand-in name for any modification on any object?
 // Do you modifications.
