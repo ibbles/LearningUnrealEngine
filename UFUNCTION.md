@@ -15,6 +15,8 @@ public:
 }
 ```
 
+`UFUNCTION` does not support overloading, i.e., function member names must be unique.
+
 A number of function specifiers can be added to set properties on the function.
 - `BlueprintCallable`: The function can be called from a Blueprint Visual Script.
 - `BlueprintPure`: The function can be called from a Visual Script, will note have an execution pin.
