@@ -36,7 +36,7 @@ The Unreal Insights GUI is split into three parts:
 - New Connection.  
     Experimental, do not use. Start Unreal Insights before the target application, and pass `-tracehost=<IP of Unreal Insights machine>` to the target application.
 
-Each recorde trace session corresponds to a `.utrace` file in the Trace Store Directory.
+Each recorded trace session corresponds to a `.utrace` file in the Trace Store Directory.
 A trace session is opened by double-clicking it in the Trace Sessions list.
 A currently running target application instance has `LIVE` in the Status column.
 These update in real-time while open.
