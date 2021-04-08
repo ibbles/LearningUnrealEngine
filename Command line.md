@@ -216,6 +216,8 @@ $UE_ROOT/Engine/Binaries/Linux/UE4Editor
     -VeryVerbose
 ```
 
+It might need to be a `-Cmd` at the end of `UE4Editor`.
+
 This is useful for debugging cooking crashes since it's one of the steps that the cooking process takes.
 
 ## Plugin stuff
