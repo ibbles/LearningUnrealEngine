@@ -245,6 +245,9 @@ public:
 		FEditorViewportClient* InViewportClient, HComponentVisProxy* VisProxy,
 		const FViewportClick& Click) override;
 
+    /** Called when the visualized Component is deselected. */
+    virtual void EndEditing() override;
+
 private:
     // The currently selected sub-object. Can be INDEX_NONE.
     int32 SelectedObjectIndex = INDEX_NONE;
@@ -350,11 +353,195 @@ bool FMyComponentVisualizer::VisProxyHandleClick(
         return false;
     }
 }
+
+void FMyComponentVisualizer::EndEditing()
+{
+	SelectedObjectIndex = INDEX_NONE;
+}
 ```
 
 ### Object location manipulation
 
+Sub-objects are made movable by implementing two virtual member functions.
+The first, `GetWidgetLocation`, tell Unreal Editor where to render the object manipulation widget.
+The second, `HandleInputDelta`, is called when the object manipulation widget is moved by the user.
+In order to access the selected Component from these member functions we need to store a pointer to it in the click callback.
 
+(
+I'm not sure how to best handle storing a pointer to the selected Component.
+We need to be able to manipulate the Component in `HandleInputDelta` so it must be a non-`const` pointer.
+But the only place we're given access to the Component is in `VisProxyHandleClick` through the Hit Proxy, which has a `const` pointer to the Component.
+Here I hack it with a `const_cast` but I assume there is a better solution.
+`FSplineComponentVisualizer` uses a `FComponentPropertyPath` to store the Component, in 4.25.
+In 4.26 water splines was added and the `FComponentProperty` path was moved to a shared `USplineComponentVisualizerSelectionState`.
+But it's still there.
+)
+
+This code example builds on the one from the previous subsection.
+
+`MyComponentVisualizer.h`:
+```cpp
+#pragma once
+#include "ComponentVisualizer.h"
+
+class UMyComponent;
+
+class MYEDITORMODULE_API FMyComponentVisualizer : public FComponentVisualizer
+{
+public:
+    /** Called when one of this Component Visualizer's Hit Proxies is clicked. */
+	virtual bool VisProxyHandleClick(
+		FEditorViewportClient* InViewportClient,
+        HComponentVisProxy* VisProxy,
+		const FViewportClick& Click) override;
+
+    /** Called when Unreal Editor is about to render the object manipulation widget. */
+    virtual bool GetWidgetLocation(
+		const FEditorViewportClient* ViewportClient,
+        FVector& OutLocation) const override;
+
+    /** Called when the user has interacted with the object manipulation widget. */
+	virtual bool HandleInputDelta(
+		FEditorViewportClient* ViewportClient,
+        FViewport* Viewport,
+        FVector& DeltaTranslate,
+		FRotator& DeltaRotate,
+        FVector& DeltaScale) override;
+
+private:
+    /** The currently selected sub-object. Can be INDEX_NONE. */
+    int32 SelectedObjectIndex = INDEX_NONE;
+
+    /**
+     * The UMyComponent that was most recently draw, i.e., the UMyComponent for
+     * which we have active Hit Proxes.
+     */
+    UMyComponent* SelectedMyComponent;
+};
+```
+
+`MyComponentVisualizer.cpp`:
+```cpp
+#include "MyComponentVisualizer.h"
+#include "MyComponent.h"
+
+#include "Editor.h"
+
+bool FMyComponentVisualizer::VisProxyHandleClick(
+    FEditorViewportClient* InViewportClient,
+    HComponentVisProyx* VisProxy,
+    const FViewportClick& Click)
+{
+    // Only accept the click if the VisProxy has a valid Component.
+    const UMyComponent* MyComponent = Cast<const UMyComponent(VisProxy->Component);
+    if (MyComponent == nullptr)
+    {
+        return false;
+    }
+
+    // Check if the Hit Proxy is one of the types that we care about. There
+    // may be many chained 'else if' tests here.
+    if (HMySelectProxy* SelectProxy = HitProxyCast<HMySelectProxy>(VisProxy))
+    {
+        // Determine if we clicked on the same sub-object as last time, or a
+        // new one.
+        if (SelectProxy->ObjectIndex == SelectedObjectIndex)
+        {
+            // If the selected object is clicked then it is deselected by setting
+            // the selection index to INDEX_NONE.
+            SelectedObjectIndex = INDEX_NONE;
+            SelectedMyComponent = nullptr;
+        }
+        else
+        {
+            // If an unselected object is clicked then it becomes the selected object.
+            /// \todo Remove const_cast and instead use a FComponentPropertyPath to
+            /// store the Component.
+            SelectedObjectIndex = SelectProxy->ObjectIndex;
+            SelectedMyComponent = const_cast<UMyComponent*>(MyComponent);
+        }
+        // We did handle the click, so return true.
+        return true;
+    }
+    // Can add additional 'if (HMyProxyType* MyProxyType = ...)' tests here.
+    else
+    {
+        // We did not handle the click, so return false.
+        return false;
+    }
+}
+
+/**
+ * Assign the location of the currently selected sub-object, if any, to OutLocation.
+ */
+bool FMyComponentVisualizer::GetWidgetLocation(
+	const FEditorViewportClient* ViewportClient,
+    FVector& OutLocation) const
+{
+    // We can only find the sub-object location if we have access to the actual Component.
+	if (SelectedMyComponent == nullptr)
+	{
+		return false;
+	}
+    // We can only find the sub-object location if we have a valid sub-object index.
+	if (!SelectedMyComponent->ObjectLocations.IsValidIndex(SelectedObjectIndex))
+	{
+		return false;
+	}
+
+    // Tell Unreal Editor where we would like to place the object manipulation widget.
+    OutLocation = SelectedMyComponent->ObjectLocations[SelectedObjectIndex];
+	return true;
+}
+
+/**
+ * Move the selected sub-object, if any, according to DeltaTranslate.
+ */
+bool FMyComponentVisualizer::HandleInputDelta(
+	FEditorViewportClient* ViewportClient,
+    FViewport* Viewport,
+    FVector& DeltaTranslate,
+	FRotator& DeltaRotate,
+    FVector& DeltaScale)
+{
+    // We can only move the sub-object if we have access to the actual Component.
+	if (SelectedMyComponent == nullptr)
+	{
+		return false;
+	}
+    // Don't try to move anything if no sub-object is selected.
+	if (SelectedObjectIndex == INDEX_NONE)
+	{
+		return false;
+	}
+    // Reset the selection if it has become invalid for some reason.
+    // The user must click a Hit Proxy again to produce a new selection.
+	if (!SelectedMyComponent->ObjectLocations.IsValidIndex(SelectedObjectIndex))
+	{
+		SelectedObjectIndex = INDEX_NONE;
+		SelectedMyComponent = nullptr;
+		return false;
+	}
+
+    // No need to do anything if the translation is zero. However, since we could
+    // have done an actual move we still return true.
+	if (DeltaTranslate.IsZero())
+	{
+		return true;
+	}
+
+    // Mark the Component as modified, for the undo history.
+	SelectedMyComponent->Modify();
+
+    // Do the actual move.
+    SelectedMyComponent->ObjectLocations[SelectedObjectIndex] + DeltaTranslate;
+
+    // Request a redraw with the new sub-object location.
+	GEditor->RedrawLevelEditingViewports();
+
+	return true;
+}
+```
 
 [[2020-12-03_10:41:49]] [Editor mode](./Editor%20mode.md)  
 [[2021-02-19_08:26:26]] [Editor module](./Editor%20module.md)  
