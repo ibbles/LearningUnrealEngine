@@ -108,4 +108,9 @@ TFuture<void> future = Async(EAsyncExecution::ThreadPool, [/*captures*/]() {
 });
 ```
 
+
+[[2021-04-28_13:14:13]] [Editor progress bar](./Editor%20progress%20bar.md)  
+
+
 [Unreal 4 Threading - Running a Task on a Worker Thread @ YouTube](https://www.youtube.com/watch?v=1lBadANnJaw)  
+
