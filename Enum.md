@@ -9,7 +9,6 @@ The number of elements is returned by the `Get number of entries in <ENUM>` node
 Select a random enum element with `Random Integer in Range` and `Get number of entries in <ENUM>` - 1, convert the random Integer to Byte, then finally `Literal enum <ENUM>`.
 Enum elements can be converted to String. 
 
-
 Enums can be printed in C++ with:
 
 ```c++
@@ -32,7 +31,23 @@ static FString EnumToString(const T Value)
 }
 ```
 
-`FindObject<UEnum>;` is the old way to do it.
+This can be used to read all the names of an enum's possible values, for example to populate a combo box.
+I think this only works for consecutive 0 to N-1 enums, i.e., no fancy `=` in the enum definition.
+```cpp
+TArray<TSharedPtr<FString>> ComboBoxEntries;
+UEnum* MyEnum = StaticEnum<EMyEnum>();
+check(MyEnum);
+for (int32 EnumIndex = 0; EnumIndex < MyEnum->NumEnums() - 1; ++EnumIndex)
+{
+    ComboBoxEntries.Add(
+        MakeShareable(new FString(MyEnum->GetNameStringByIndex(EnumIndex))));
+}
+```
+
+Not sure why it does `-1` in the `for`-loop.
+
+`FindObject<UEnum>;` is the old way to do `StaticEnum`.
+Don't know why it was replaced, or when.
 
 
 ## Creating new enums
@@ -86,10 +101,10 @@ class UMyClass : public UObject
     GENERATED_BODY()
     
     UPROPERTY()
-    TEnumAsByte<EMyUnscopedEnum> MyUnscopedEnum;
+    TEnumAsByte<EMyUnscopedEnum> MyUnscopedEnumBad;
     
     UPROPERTY()
-    EMyScopedEnum MyScopedEnum
+    EMyScopedEnum MyScopedEnumGood;
 }
 ```
 
