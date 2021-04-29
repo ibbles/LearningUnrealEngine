@@ -490,6 +490,78 @@ Also `PropertyCustomizationHelpers.h`.
 [FPropertyEditorModule @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/API/Editor/PropertyEditor/FPropertyEditorModule/index.html)
 
 
+## FVector
+
+An `FVector` can be displayed in a Detals Panel with the `SVectorInputBox`.
+
+In this example, assume that `UMyComponent` contains an `UPROPERTY() FVector MyVector`.
+
+`FMyClassCustomization.h`
+```cpp
+class MYEDITORMODULE_API FMyClassCustomization : public IDetailCustomization
+{
+public:
+    void CustomizeDetails(IDetailLaoutBuilder& DetailBuilder);
+    
+    TOptional<float> GetVectorX() const { return X; }
+    TOptional<float> GetVectorY() const { return Y; }
+    TOptional<float> GetVectorZ() const { return Z; }
+
+    void OnSetVector(float NewValue, ETextCommit::Type CommitInfo, int32 Axis);
+
+private:
+    TOptional<float> X;
+    TOptional<float> Y;
+    TOptoinal<float> Z;
+    
+    UMyComponent* MyComponent;
+};
+```
+```cpp
+void FMyClassCustomization::CustomizeDetails(
+    IDetailLayoutBuilder& DetailBuilder)
+{
+    IDetailCategoryBuilder& MyCategory = DetailBuilder.EditCategory(TEXT("MyCategory"));
+    MyCategory.AddCustomRow()
+    .HeaderContent()
+    [
+        // Fill with whatever you want here, an STextBlock for example.
+    ]
+    .ValueContent()
+    [
+        SNew(SVectorInputBox)
+        .X(this&, &FMyClassCustomization::GetVectorX)
+        .Y(this&, &FMyClassCustomization::GetVectorY)
+        .Z(this&, &FMyClassCustomization::GetVectorZ)
+        .OnXCommitted(this, &FMyClassCustomization::OnSetVector, 0)
+        .OnYCommitted(this, &FMyClassCustomization::OnSetVector, 1)
+        .OnZCommitted(this, &FMyClassCustomization::OnSetVector, 2)
+    ];
+}
+
+void FMyClassCustomization::OnSetVector(
+    float NewValue, ETextCommitType::CommitInfo, int32 Axis)
+{
+    if (MyComponent == nullptr)
+    {
+        return;
+    }
+    
+    const FScopedTransaction Transaction(LOCTEXT("Set vector"));
+    MyComponent->Modify();
+    MyComponent->MyVector.Component(Axis) = NewValue;
+    FComponentVisualizer::NotifyPropertyModified(
+        MyComponent,
+        FindFProperty<FProperty>(
+          UMyComponent::StaticClass(),
+          GET_MEMBER_NAME_CHECKED(UMyComponent, MyVector)));
+}
+```
+
+The three `GetVector*` member functions should return `TOptional<float>`
+
+We can also call `AllowResponsiveLayout` and `AllowSpin` on the `SVectorInputBox`.
+I don't know what that would do.
 
 [[2020-09-30_13:13:51]] [Callbacks](./Callbacks.md)  
 
