@@ -1,6 +1,6 @@
 2020-05-10_11:07:00
 
-## Interface
+# Interface
 
 An interface is a set of functions.
 Other entities, such as an `Actor`, can implement the interface.
@@ -43,5 +43,21 @@ I take that to mean that the `Cast` approach can't dispatch into a Blueprint Vis
 Some recommend the `Cast` approach because it checks for `nullptr`.
 Some say that the `Implements` approach works on both C++ and Blueprint implementations.
 Some say that the `UKismetSystemLibrary` approach is the most robust. Unsure in what way.
+
+## Creating new interfaces
+
+### Blueprint
+
+Right-click in the Content Browser > Blueprint > Blueprint Interface.
+Add function names with the Add Function button.
+These functions cannot have implementations, since this is just an interface.
+Add implementations in the Blueprint classes that implement the interface.
+
+Add an interface to a Blueprint class in the class' Class Settings.
+Add interface function implementations in the Add Function part of the Blueprint Class Editor, but click Interface instead of the `+`.
+
+### C++
+
+
 
 [[2020-03-10_21:29:17]] [Actor](./Actor.md)  
