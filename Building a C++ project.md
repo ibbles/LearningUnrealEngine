@@ -4,7 +4,19 @@
 
 How a project is built depends on the type of project files that has been generated for it.
 `Makefile` projects are built by running `make <ProjectName>Editor` for an editor build and `make <ProjectName>` for a game build.
+Debug builds are built by adding `-Linux-Debug` to the end.
 `CMake` projects are built by first creating a new directory for the project files, `cmake-build` for example, and in that directory run`cmake ..`.  After that you have a `Makefile` that can be used as above.
+
+```
+make <ProjectName>
+make <ProjectName>Editor
+make <ProjectName>-Linux-Debug
+make <ProjectName>Editor-Linux-Debug
+```
+We clean the project from build files by passing `ARGS="-clean"'` to make.
+```
+make <ProjectName> ARGS="-clean"
+```
 
 All the variants above all ultimately reach the build scripts shipped with Unreal Engine.
 These can be invoked manually.
