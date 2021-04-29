@@ -563,6 +563,68 @@ The three `GetVector*` member functions should return `TOptional<float>`
 We can also call `AllowResponsiveLayout` and `AllowSpin` on the `SVectorInputBox`.
 I don't know what that would do.
 
+## IDetailCustomNodeBuilder
+
+From the documentation:
+
+> A custom node that can be given to a details panel category to customize widgets.
+
+I don't know what that means.
+I don't know what a "node" is.
+Is it another word for a Row?
+What can this do that can't be done with the regular Slate widgets?
+
+Can have a pointer to the corresponding `FComponentVisualizer`.
+We can find the `FComponentVisualizer` with
+```cpp
+TSharedPtr<FComponentVisualizer> Visualizer = 
+    GUnrealEd->FindComponentVisualizer(UMyComponent::GetStaticClass());
+FMyComponentVisualizer* MyComponentVisualizer = (FMyComponentVisualizer*)Visualizer.Get();
+check(MyComponentVisualizer);
+```
+That C-cast doesn't look safe...
+
+`IDetailCustomNodeBuilder` has a `GenerateChildContent` member function.
+Is given a `IDetailChildrenBuilder` parameter.
+
+From the documentation for `IDetailChildrenBuilder`:
+> Builder for adding children to a detail customization.
+
+Not that much wiser…
+
+On a `IDetailChildrenBuilder` we can call `AddCustomRow` just as we can on a `IDetailCategoryBuilder`.
+We get a `FDetailWidgetRow` back here as well.
+So we can build our Node as-if it was a Category.
+
+A `IDetailChildrenBuilder` can contain groups.
+```cpp
+class FMyNodeBuilder : public IDetailCustomNodeBuilder
+{
+    void GenerateChildContent(IDetailChildrenBuilder& ChildrenBuilder)
+    {
+        IDetailGroup& Group = ChildrenBuilder.AddGroup();
+        // Add stuff to the Group.
+    }
+};
+```
+
+`IDetailCustomNodeBuilder` has a `Tick` function that is called if `RequiresTick` returns `true`.
+Can be used to update the displayed values.
+
+The Custom Node Builder is added to a Details Panel from a `IDetailLayoutBuilder`:
+```cpp
+class FMyClassCustomization : public IDetailCustomization
+{
+public:
+    void CustomizeDetails(IDetailLayoutBuilder& DetailBuilder)
+    {
+        IDetailCategoryBuilder& Category = DetailBuilder.EditCategory("My Category");
+        TSharedRef<FMyNodeBuilder> MyNodeBuilder = MakeShareable(new FMyNoeBuilder());
+        Category.AddCustomBuilder(MyNodeBuilder);
+    }
+};
+```
+
 [[2020-09-30_13:13:51]] [Callbacks](./Callbacks.md)  
 
 
