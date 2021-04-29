@@ -535,6 +535,12 @@ bool FMyComponentVisualizer::HandleInputDelta(
 
     // Do the actual move.
     SelectedMyComponent->ObjectLocations[SelectedObjectIndex] + DeltaTranslate;
+    
+    FComponentVisualizer::NotifyPropertyModified(
+        SelectedMyComponent,
+        FindFProperty<FProperty>(
+          UMyComponent::StaticClass(),
+          GET_MEMBER_NAME_CHECKED(UMyComponent, ObjectLocations)));
 
     // Request a redraw with the new sub-object location.
 	GEditor->RedrawLevelEditingViewports();
