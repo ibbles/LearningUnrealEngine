@@ -70,9 +70,14 @@ Build a C++ Unreal Engine project with the generated project files. Here assumin
 make <ProjectName>Editor
 ```
 The above builds for use in the editor.
-The below builds for use in an cooked/exported project.
+The below builds for use in an cooked/exported project. (Is this really true? I don't think this does a full cook.)
 ```
 make <ProjectName>
+```
+
+To clean the build files, i.e., prepare for a full rebuild, pass `ARGS="-clean"` to `make`.
+```
+make <ProjectName>Editor ARGS="-clean"
 ```
 
 Build a project with `Build.sh`:
@@ -81,7 +86,7 @@ $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh
     <PROJECT>
     Linux
     Development
-    -project=<PATH>/<PROJECT>.uproject
+    -Project=<PATH>/<PROJECT>.uproject
     -Game
     -Progress
     -buildscw"`
@@ -98,7 +103,7 @@ $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh
 
 Not sure what the `-buildscw` part does. Possibly related to Shader Compiler Workers. Not sure why it's on the `<PROJECT>` build but not the `<PROJECT>Editor` build.
 
-Building with Unreal Build Tool directory.
+Building with Unreal Build Tool directly:
 ```
 # A source SetupMono.sh or similar is required here. Find the note and update here.
 $UE_ROOT/Engine/Binaries/DotNET/UnrealBuildTool.exe Development Linux -Project="<PATH>/<PROJECT>.uproject" -TargetType=Editor -Progress -NoEngineChanges -NoHotReloadFromIDE
@@ -210,13 +215,11 @@ UE4Editor "path to uproject" -run=DerivedDataCache -fill -projectonly
 ### Compiling Blueprints
 
 ```
-$UE_ROOT/Engine/Binaries/Linux/UE4Editor
+$UE_ROOT/Engine/Binaries/Linux/UE4Editor-Cmd
     $MY_PROJECT/$MY_PROJECT.uproject
     -run=CompileAllBlueprints
     -VeryVerbose
 ```
-
-It might need to be a `-Cmd` at the end of `UE4Editor`.
 
 This is useful for debugging cooking crashes since it's one of the steps that the cooking process takes.
 
