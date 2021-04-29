@@ -25,6 +25,9 @@ Some examples:
 Pretty much everything visible in Unreal Editor is a Slate widget.
 Slate is used to implement custom asset editor for new asset types.
 
+There is a Slate Test Suite that demonstrates a bunch of Slate features.
+- [ ] Open it with Unreal Editor > Top Menu > Window > Developer Tools > Debug Tools > Test Suite.
+
 ## Slate features and attributes
 
 Entirely C++.
