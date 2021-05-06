@@ -9,6 +9,8 @@ Classes, structs, and other types in an Unreal Engine projects should be prefixe
 - `F`: Other classes and structs.
 - `E`: Enum
 
+ [Unreal trivia: What does the ‘F’ prefix on classes and structs stand for @ forums.unrealengine.com](https://forums.unrealengine.com/t/unreal-trivia-what-does-the-f-prefix-on-classes-and-structs-stand-for/21894)
+
 Assets should be follow the following naming convention:
 
 Template: `<type>_<name>[_<revision>][_variant]`
