@@ -51,84 +51,84 @@ A new Blueprint class is created with`FKismetEditorUtilities::CreateBlueprint`:
 
 void CreateBlueprint(UClass* ParentClass)
 {
-	// Get the Asset Tools module, which is used to work with assets.
-	// A Blueprint class is an asset.
-	FAssetToolsModule& AssetToolsModule =
+    // Get the Asset Tools module, which is used to work with assets.
+    // A Blueprint class is an asset.
+    FAssetToolsModule& AssetToolsModule =
         FModuleManager::GetModuleChecked<FAssetToolsModule>("AssetTools");
 
-	// The name of the Blueprint we are about to create.
-	FName Name = []() -> FName {
-		// The name we would like to give the new Blueprint class.
-		FString Name = "BP_TestBlueprint";
-		
-		// Sanitize the name so that it doesn't contain any illegal characters for use in package names.
-		Name = UPackageTools::SanitizePackageName(Name);
-		
-		// Sanitize it again, this time removing characters illegal for use in object names.
-		Name = ObjectTools::SanitizeObjectName(Name);
-		
-		// Create an FName from the string.
-		return *Name;
-	}();
+    // The name of the Blueprint we are about to create.
+    FName Name = []() -> FName {
+        // The name we would like to give the new Blueprint class.
+        FString Name = "BP_TestBlueprint";
+        
+        // Sanitize the name so that it doesn't contain any illegal characters for use in package names.
+        Name = UPackageTools::SanitizePackageName(Name);
+        
+        // Sanitize it again, this time removing characters illegal for use in object names.
+        Name = ObjectTools::SanitizeObjectName(Name);
+        
+        // Create an FName from the string.
+        return *Name;
+    }();
 
-	// Decide where to place the asset on disk / in the Content Browser.
-	FString PackagePath = "/Game/Test/" + Name;
-	
-	// Create a Package to put the Blueprint in.
-	UPackage* OuterForAsset = CreatePackage(nullptr, *PackagePath);
+    // Decide where to place the asset on disk / in the Content Browser.
+    FString PackagePath = "/Game/Test/" + Name;
+    
+    // Create a Package to put the Blueprint in.
+    UPackage* OuterForAsset = CreatePackage(nullptr, *PackagePath);
 
-	// Declare the types for the Blueprint and its generated class.
-	// Don't know what this is.
-	UClass* BlueprintClass = nullptr;
-	UClass* BlueprintGeneratedClass = nullptr;
+    // Declare the types for the Blueprint and its generated class.
+    // Don't know what this is.
+    UClass* BlueprintClass = nullptr;
+    UClass* BlueprintGeneratedClass = nullptr;
 
-	// Load the compiler module.
-	IKismetCompilerInterface& KismetCompilerModule =
+    // Load the compiler module.
+    IKismetCompilerInterface& KismetCompilerModule =
         FModuleManager::LoadModuleChecked<IKismetCompilerInterface>("KismetCompiler");
-	
-	// Fill in BlueprintClass and BlueprintGeneratedClass.
-	// I don't know what YourClassType is/should be. The parent class of our new Blueprint class?
-	KismetCompilerModule.GetBlueprintTypesForClass(
-		ParentClass, // The class to get the Blueprint classes for.
-		BlueprintClass, // Pointer that will be set to the class' Blueprint class.
-		BlueprintGeneratedClass); // Pointer that will be set to the class' Blueprint generated class.
-	
-	// Create the new Blueprint class.
-	UBlueprint* NewBlueprint = FKismetEditorUtilities::CreateBlueprint(
-		// The class that the new Blueprint will inherit from.
-		ParentClass,
-		// The Package that the Blueprint will be created in.
-		OuterForAsset,
-		// The name to give to the new Blueprint class.
-		Name,
-		// The type of Blueprint class to create.
+    
+    // Fill in BlueprintClass and BlueprintGeneratedClass.
+    // I don't know what YourClassType is/should be. The parent class of our new Blueprint class?
+    KismetCompilerModule.GetBlueprintTypesForClass(
+        ParentClass, // The class to get the Blueprint classes for.
+        BlueprintClass, // Pointer that will be set to the class' Blueprint class.
+        BlueprintGeneratedClass); // Pointer that will be set to the class' Blueprint generated class.
+    
+    // Create the new Blueprint class.
+    UBlueprint* NewBlueprint = FKismetEditorUtilities::CreateBlueprint(
+        // The class that the new Blueprint will inherit from.
+        ParentClass,
+        // The Package that the Blueprint will be created in.
+        OuterForAsset,
+        // The name to give to the new Blueprint class.
+        Name,
+        // The type of Blueprint class to create.
         // Some examples are Normal, Const, MacroLibrary, Interface,
         // LevelScript and FunctionLibrary.
-		BPTYPE_Normal,
-		// The class of the new Blueprint class.
-		// Don't understand why we need to supply this.
-		// I thought this is what we are creating.
-		BlueprintClass,
-		// The generated class of the new Blueprint class.
-		// Don't understand why we need to supply this.
-		// I thought this is what we are creating.
-		BlueprintGeneratedClass,
-		// A name used for analytics.
-		FName("GeneratingBlueprintTest"));
+        BPTYPE_Normal,
+        // The class of the new Blueprint class.
+        // Don't understand why we need to supply this.
+        // I thought this is what we are creating.
+        BlueprintClass,
+        // The generated class of the new Blueprint class.
+        // Don't understand why we need to supply this.
+        // I thought this is what we are creating.
+        BlueprintGeneratedClass,
+        // A name used for analytics.
+        FName("GeneratingBlueprintTest"));
 
     // Tell the engine about the new Blueprint.
-	FAssetRegistryModule::AssetCreated(NewBlueprint);
+    FAssetRegistryModule::AssetCreated(NewBlueprint);
     
     // Open the Blueprint in the Blueprint Editor.
     // This has been deprecated in Unreal Engine 4.25.
     // Instead use the matching function on AssetEditorSubsystem.
-	FAssetEditorManager::Get().OpenEditorForAsset(NewBlueprint);
+    FAssetEditorManager::Get().OpenEditorForAsset(NewBlueprint);
 
     // Save the Package, and thus the Blueprint, to disk.
-	OuterForAsset->SetDirtyFlag(true);
-	TArray<UPackage*> PackagesToSave;
-	PackagesToSave.Add(OuterForAsset);
-	FEditorFileUtils::PromptForCheckoutAndSave(PackagesToSave, false, false);
+    OuterForAsset->SetDirtyFlag(true);
+    TArray<UPackage*> PackagesToSave;
+    PackagesToSave.Add(OuterForAsset);
+    FEditorFileUtils::PromptForCheckoutAndSave(PackagesToSave, false, false);
 }
 ```
 

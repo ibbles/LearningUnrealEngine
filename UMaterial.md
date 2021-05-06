@@ -6,7 +6,7 @@ Class inheritance tree:
 ```
 UMaterialInterface
     UMaterial
-	UMaterialInstance
+    UMaterialInstance
         UMaterialInstanceConstant
         UMaterialInstanceDynamic
 ```

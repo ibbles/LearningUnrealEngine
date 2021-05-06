@@ -17,9 +17,9 @@ In this example we create an Editor module, but the process is similar for other
 Add an entry similar to the following to the `"modules"` array.
 ```json
 {
-	"Name": "MyProjectEditor",
-	"Type": "Editor",
-	"LoadingPhase": "PostEngineInit"
+    "Name": "MyProjectEditor",
+    "Type": "Editor",
+    "LoadingPhase": "PostEngineInit"
 }
 ```
 `name` is the name of the new module.
@@ -51,19 +51,19 @@ using UnrealBuildTool;
 
 public class MyProjectEditor : ModuleRules
 {
-	public MyProjectEditor(ReadOnlyTargetRules Target) : base(Target)
-	{
-		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
-		PublicDependencyModuleNames.AddRange(new string[] {
-			"Core", "CoreUObject", "Engine", "InputCore"
-		});
-		PublicDependencyModuleNames.AddRange(new string[] {
-			"UDN_FallbackPointer"
-		});
-		PrivateDependencyModuleNames.AddRange(new string[] {
+    public MyProjectEditor(ReadOnlyTargetRules Target) : base(Target)
+    {
+        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+        PublicDependencyModuleNames.AddRange(new string[] {
+            "Core", "CoreUObject", "Engine", "InputCore"
+        });
+        PublicDependencyModuleNames.AddRange(new string[] {
+            "UDN_FallbackPointer"
+        });
+        PrivateDependencyModuleNames.AddRange(new string[] {
             "Slate", "SlateCore"
         });
-	}
+    }
 }
 ```
 
@@ -82,14 +82,14 @@ using System.Collections.Generic;
 
 public class MyProjectEditorTarget : TargetRules
 {
-	public UDN_FallbackPointerEditorTarget( TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Editor;
-		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.AddRange( new string[] {
+    public UDN_FallbackPointerEditorTarget( TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Editor;
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+        ExtraModuleNames.AddRange( new string[] {
             "MyProject", "MyProjectEditor"
         });
-	}
+    }
 }
 ```
 
@@ -110,8 +110,8 @@ This allows it to register things such as Detail Customizations and Editor Modes
 class MyProjectEditorModule : public IModuleInterface
 {
 public:
-	virtual void StartupModule() override;
-	virtual void ShutdownModule() override;
+    virtual void StartupModule() override;
+    virtual void ShutdownModule() override;
 };
 ```
 

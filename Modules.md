@@ -19,9 +19,9 @@ A `Module` element contains at least `Name`, `Type`, and `LoadingPhase`.
 Can also have `WhitelistPlatforms` and `BlacklistPlatforms`.
 ```
 {
-	"Name": "MyModule",
-	"Type": "Editor",
-	"LoadingPhase": "PostEngineInit"
+    "Name": "MyModule",
+    "Type": "Editor",
+    "LoadingPhase": "PostEngineInit"
 },
 ```
 
@@ -79,8 +79,8 @@ Has two virtual methods:
 class FMyModule : public IModuleInterface
 {
 public:
-	virtual void StartupModule() override;
-	virtual void ShutdownModule() override;
+    virtual void StartupModule() override;
+    virtual void ShutdownModule() override;
 };
 ```
 

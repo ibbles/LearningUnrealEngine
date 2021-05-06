@@ -26,16 +26,16 @@ class UInputComponent;
 UCLASS()
 class MyModule_API AMyCharacter : public ACharacter
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
 public:
-	void OnInteractStart();
-	void OnInteractEnd();
+    void OnInteractStart();
+    void OnInteractEnd();
 
-	void MoveForward(float AxisValue);
-	void MoveRight(float AxisValue);
+    void MoveForward(float AxisValue);
+    void MoveRight(float AxisValue);
 
-	virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
+    virtual void SetupPlayerInputComponent(UInputComponent* Input) override;
 };
 ```
 
@@ -47,14 +47,14 @@ public:
 
 void AMyCharacter::MoveForward(float AxisValue)
 {
-	const FVector Forward = GetActorForwardVector();
-	AddMovementInput(Forward, AxisValue);
+    const FVector Forward = GetActorForwardVector();
+    AddMovementInput(Forward, AxisValue);
 }
 
 void AMyCharacter::MoveRight(float AxisValue)
 {
-	const FVector Right = GetActorRightVector();
-	AddMovementInput(Right, AxisValue);
+    const FVector Right = GetActorRightVector();
+    AddMovementInput(Right, AxisValue);
 }
 
 void AMainCharacter::OnInteractStart()
@@ -66,13 +66,13 @@ void AMainCharacter::OnInteractEnd()
 }
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent* Input)
 {
-	Super::SetupPlayerInputComponent(Input);
+    Super::SetupPlayerInputComponent(Input);
     
-	Input->BindAction("Interact", IE_Pressed, this, &AMainCharacter::OnInteractStart);
-	Input->BindAction("Interact", IE_Released, this, &AMainCharacter::OnInteractEnd);
+    Input->BindAction("Interact", IE_Pressed, this, &AMainCharacter::OnInteractStart);
+    Input->BindAction("Interact", IE_Released, this, &AMainCharacter::OnInteractEnd);
 
-	Input->BindAxis(TEXT("MoveForward"), this, &AMyCharacter::MoveForward);
-	Input->BindAxis(TEXT("MoveRight"), this, &AMyCharacter::MoveRight);
+    Input->BindAxis(TEXT("MoveForward"), this, &AMyCharacter::MoveForward);
+    Input->BindAxis(TEXT("MoveRight"), this, &AMyCharacter::MoveRight);
 }
 ```
 
@@ -82,21 +82,21 @@ Here is one where Forward is in the direction which the Character is facing:
 AMyCharacter::AMyCharacter()
 {
     bUseControllerRotationPitch = true;
-	bUseControllerRotationYaw = true;
-	bUseControllerRotationRoll = true;
-	GetCharacterMovement()->bOrientRotationToMovement = false;
+    bUseControllerRotationYaw = true;
+    bUseControllerRotationRoll = true;
+    GetCharacterMovement()->bOrientRotationToMovement = false;
 }
 
 void AMyCharacter::MoveForward(float AxisValue)
 {
-	const FVector Forward = GetActorForwardVector();
-	AddMovementInput(Forward, AxisValue);
+    const FVector Forward = GetActorForwardVector();
+    AddMovementInput(Forward, AxisValue);
 }
 
 void AMyCharacter::MoveRight(float AxisValue)
 {
-	const FVector Right = GetActorRightVector();
-	AddMovementInput(Right, AxisValue);
+    const FVector Right = GetActorRightVector();
+    AddMovementInput(Right, AxisValue);
 }
 ```
 
@@ -105,22 +105,22 @@ Here is one where Forward is in the direction which the Controller is facing:
 AMyCharacter::AMyCharacter()
 {
     bUseControllerRotationPitch = false;
-	bUseControllerRotationYaw = false;
-	bUseControllerRotationRoll = false;
-	GetCharacterMovement()->bOrientRotationToMovement = true;
+    bUseControllerRotationYaw = false;
+    bUseControllerRotationRoll = false;
+    GetCharacterMovement()->bOrientRotationToMovement = true;
     GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f);
 }
 
 void AMyCharacter::MoveForward(float AxisValue)
 {
-	const FVector Forward = GetActorForwardVector();
-	AddMovementInput(Forward, AxisValue);
+    const FVector Forward = GetActorForwardVector();
+    AddMovementInput(Forward, AxisValue);
 }
 
 void AMyCharacter::MoveRight(float AxisValue)
 {
-	const FVector Right = GetActorRightVector();
-	AddMovementInput(Right, AxisValue);
+    const FVector Right = GetActorRightVector();
+    AddMovementInput(Right, AxisValue);
 }
 ```
 They assume Character setup with the Camera on a Spring Arm configured as follows:

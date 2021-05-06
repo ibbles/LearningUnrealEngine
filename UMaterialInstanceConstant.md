@@ -84,8 +84,8 @@ FString matPath =
 // Material Instance.
 UMaterialInstanceConstant* material = 
     Cast<UMaterialInstanceConstant>(
-    	StaticLoadObject(
-        	UMaterialInstanceConstant::StaticClass(),
+        StaticLoadObject(
+            UMaterialInstanceConstant::StaticClass(),
             nullptr,
             *matPath));
 
@@ -93,7 +93,7 @@ TArray<UStaticMeshComponent*> MaterialComps;
 Actor->GetComponents(MaterialComps);
 for (int32 Index = 0; Index != MaterialComps.Num(); ++Index)
 {
-	UStaticMeshComponent* targetComp = MaterialComps[Index];
+    UStaticMeshComponent* targetComp = MaterialComps[Index];
     int32 mCnt = targetComp->GetNumMaterials();
     for (int i = 0; i < mCnt; i++)
     {

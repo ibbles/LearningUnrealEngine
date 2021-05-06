@@ -41,14 +41,14 @@ int CurrentProduct = -1;
 
 void On3()
 {
-	print("Got key event");
-	while (LastProduct == CurrentProduct)
-	{
-		CurrentProduct = RandomInteger(3);
-		print("Comparing " + ToString(LastProduct) + " and " + ToString(CurentProduct));
-	}
-	LastProduct = CurrentProduct;
-	print("Decided on product " + ToString(LastProduct));
+    print("Got key event");
+    while (LastProduct == CurrentProduct)
+    {
+        CurrentProduct = RandomInteger(3);
+        print("Comparing " + ToString(LastProduct) + " and " + ToString(CurentProduct));
+    }
+    LastProduct = CurrentProduct;
+    print("Decided on product " + ToString(LastProduct));
 }
 
 ```

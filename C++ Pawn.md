@@ -21,7 +21,7 @@ class USpringArmComponent;
 UCLASS()
 class AMyPawn : public APawn
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
     // VisibleAnywhere means shown in the Details Panel both in the Blueprint Editor and when
     // a particular instance is selected in the Level Editor.
@@ -29,33 +29,33 @@ class AMyPawn : public APawn
     // Scripts, but Set nodes are not.
     // AllowPrivateAccess means that the Get nodes are only available in the class' own Visual
     // Scripts, not in scripts that has a reference to an instance of this type.
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	UStaticMeshComponent* Mesh;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+    UStaticMeshComponent* Mesh;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	USpringArmComponent* Arm;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+    USpringArmComponent* Arm;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	UCameraComponent* Camera;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+    UCameraComponent* Camera;
 
 public:
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
-	float Speed {500.0f};
+    UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+    float Speed {500.0f};
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-	FVector2D Direction;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+    FVector2D Direction;
 
-	AMyPawn();
+    AMyPawn();
     
     virtual void Tick(float DeltaTime) override;
 
-	void OnInteractStart();
-	void OnInteractEnd();
-	void OnForward(float Value);
+    void OnInteractStart();
+    void OnInteractEnd();
+    void OnForward(float Value);
     void OnRight(float Value);
 
-	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
+    virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 };
 ```
 
@@ -70,29 +70,29 @@ Implementation:
 
 AMyPawn::AMyPawn()
 {
-	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-	SetRootComponent(Mesh);
+    Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
+    SetRootComponent(Mesh);
 
-	Arm = CreateDefaultSubobject<USpringArmComponent>(TEXT("Arm"));
-	Arm->SetupAttachment(Mesh);
+    Arm = CreateDefaultSubobject<USpringArmComponent>(TEXT("Arm"));
+    Arm->SetupAttachment(Mesh);
 
-	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
-	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+    Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
+    FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 }
 
 void AMyPawn::OnInteractStart()
 {
-	// Called when the user starts pressing the Interact button.
+    // Called when the user starts pressing the Interact button.
 }
 
 void AMyPawn::OnInteractEnd()
 {
-	// Called when the user reelases the Interact button.
+    // Called when the user reelases the Interact button.
 }
 
 void AMyPawn::OnForward(float Value)
 {
-	// Called every frame, where Value is the amount the thumb stick has been moved, 0 to 1.
+    // Called every frame, where Value is the amount the thumb stick has been moved, 0 to 1.
 }
 
 void AMyPawn::OnRight(float Value)
@@ -118,18 +118,18 @@ namespace AMyPawn_helpers
 void AMyPawn::Tick(float DeltaTime)
 {
     using namespace AMyPawn_helpers;
-	SetActorLocation(IntegrateLocation(GetActorLocation(), Direction, Speed));
+    SetActorLocation(IntegrateLocation(GetActorLocation(), Direction, Speed));
 }
 
 void AMyPawn::SetupPlayerInputComponent(UInputComponent* Input)
 {
-	Super::SetupPlayerInputComponent(Input);
+    Super::SetupPlayerInputComponent(Input);
 
-	Input->BindAction("Interact", IE_Pressed, this, &AMyPawn::OnInteractStart);
-	Input->BindAction("Interact", IE_Released, this, &AMyPawn::OnInteractEnd);
+    Input->BindAction("Interact", IE_Pressed, this, &AMyPawn::OnInteractStart);
+    Input->BindAction("Interact", IE_Released, this, &AMyPawn::OnInteractEnd);
 
-	Input->BindAxis("Forward", this, &AMyPawn::OnForward);
-	Input->BindAxis("Right", this, &AMyPawn::OnRight);
+    Input->BindAxis("Forward", this, &AMyPawn::OnForward);
+    Input->BindAxis("Right", this, &AMyPawn::OnRight);
 }
 
 ```

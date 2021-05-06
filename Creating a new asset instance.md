@@ -51,7 +51,7 @@ FString AssetName = TEXT("MyAsset");
 FString PackagePath = TEXT("/Game/MyFolder/");
 
 IAssetTools& AssetTools =
-		FModuleManager::LoadModuleChecked<FAssetToolsModule>("AssetTools").Get();
+        FModuleManager::LoadModuleChecked<FAssetToolsModule>("AssetTools").Get();
 AssetTools.CreateUniqueAssetName(PackagePath, AssetName, PackagePath, AssetName);
 
 // Asset name may now be something other than what we set it to previously,

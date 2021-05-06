@@ -46,9 +46,9 @@ class MYEDITORMODULE_API FMyComponentVisualizer : public FComponentVisualizer
 {
 public:
     //~ Begin FComponentVisualizer Interface
-	virtual void DrawVisualization(
-		const UActorComponent* Component, const FSceneView* View,
-		FPrimitiveDrawInterface* PDI) override;
+    virtual void DrawVisualization(
+        const UActorComponent* Component, const FSceneView* View,
+        FPrimitiveDrawInterface* PDI) override;
     //~ End FComponentVisualizer Interface
 };
 ```
@@ -196,13 +196,13 @@ class MYEDITORMODULE_API FMyComponentVisualizer : public FComponentVisualizer
 public:
     //~ Begin FComponentVisualizer Interface
     
-	virtual void DrawVisualization(
-		const UActorComponent* Component, const FSceneView* View,
-		FPrimitiveDrawInterface* PDI) override;
+    virtual void DrawVisualization(
+        const UActorComponent* Component, const FSceneView* View,
+        FPrimitiveDrawInterface* PDI) override;
         
     virtual bool VisProxyHandleClick(
-		FEditorViewportClient* InViewportClient, HComponentVisProxy* VisProxy,
-		const FViewportClick& Click) override;
+        FEditorViewportClient* InViewportClient, HComponentVisProxy* VisProxy,
+        const FViewportClick& Click) override;
     
     //~ End FComponentVisualizer Interface
 };
@@ -211,10 +211,10 @@ public:
 `MyComponentVisualizer.cpp`:
 ```cpp
 bool FMyComponentVisualizer::VisProxyHandleClick(
-	FEditorViewportClient* InViewportClient, HComponentVisProxy* VisProxy,
-	const FViewportClick& Click)
+    FEditorViewportClient* InViewportClient, HComponentVisProxy* VisProxy,
+    const FViewportClick& Click)
 {
-	return true;
+    return true;
 }
 ```
 
@@ -237,13 +237,13 @@ class MYEDITORMODULE_API FMyComponentVisualizer : public FComponentVisualizer
 public:
     /** Called when a UMyComponent is to be visualized. */
     virtual void DrawVisualization(
-		const UActorComponent* Component, const FSceneView* View,
-		FPrimitiveDrawInterface* PDI) override;
+        const UActorComponent* Component, const FSceneView* View,
+        FPrimitiveDrawInterface* PDI) override;
 
     /** Called when one of this Component Visualizer's Hit Proxies is clicked. */
-	virtual bool VisProxyHandleClick(
-		FEditorViewportClient* InViewportClient, HComponentVisProxy* VisProxy,
-		const FViewportClick& Click) override;
+    virtual bool VisProxyHandleClick(
+        FEditorViewportClient* InViewportClient, HComponentVisProxy* VisProxy,
+        const FViewportClick& Click) override;
 
     /** Called when the visualized Component is deselected. */
     virtual void EndEditing() override;
@@ -356,7 +356,7 @@ bool FMyComponentVisualizer::VisProxyHandleClick(
 
 void FMyComponentVisualizer::EndEditing()
 {
-	SelectedObjectIndex = INDEX_NONE;
+    SelectedObjectIndex = INDEX_NONE;
 }
 ```
 
@@ -390,22 +390,22 @@ class MYEDITORMODULE_API FMyComponentVisualizer : public FComponentVisualizer
 {
 public:
     /** Called when one of this Component Visualizer's Hit Proxies is clicked. */
-	virtual bool VisProxyHandleClick(
-		FEditorViewportClient* InViewportClient,
+    virtual bool VisProxyHandleClick(
+        FEditorViewportClient* InViewportClient,
         HComponentVisProxy* VisProxy,
-		const FViewportClick& Click) override;
+        const FViewportClick& Click) override;
 
     /** Called when Unreal Editor is about to render the object manipulation widget. */
     virtual bool GetWidgetLocation(
-		const FEditorViewportClient* ViewportClient,
+        const FEditorViewportClient* ViewportClient,
         FVector& OutLocation) const override;
 
     /** Called when the user has interacted with the object manipulation widget. */
-	virtual bool HandleInputDelta(
-		FEditorViewportClient* ViewportClient,
+    virtual bool HandleInputDelta(
+        FEditorViewportClient* ViewportClient,
         FViewport* Viewport,
         FVector& DeltaTranslate,
-		FRotator& DeltaRotate,
+        FRotator& DeltaRotate,
         FVector& DeltaScale) override;
 
 private:
@@ -475,63 +475,63 @@ bool FMyComponentVisualizer::VisProxyHandleClick(
  * Assign the location of the currently selected sub-object, if any, to OutLocation.
  */
 bool FMyComponentVisualizer::GetWidgetLocation(
-	const FEditorViewportClient* ViewportClient,
+    const FEditorViewportClient* ViewportClient,
     FVector& OutLocation) const
 {
     // We can only find the sub-object location if we have access to the actual Component.
-	if (SelectedMyComponent == nullptr)
-	{
-		return false;
-	}
+    if (SelectedMyComponent == nullptr)
+    {
+        return false;
+    }
     // We can only find the sub-object location if we have a valid sub-object index.
-	if (!SelectedMyComponent->ObjectLocations.IsValidIndex(SelectedObjectIndex))
-	{
-		return false;
-	}
+    if (!SelectedMyComponent->ObjectLocations.IsValidIndex(SelectedObjectIndex))
+    {
+        return false;
+    }
 
     // Tell Unreal Editor where we would like to place the object manipulation widget.
     OutLocation = SelectedMyComponent->ObjectLocations[SelectedObjectIndex];
-	return true;
+    return true;
 }
 
 /**
  * Move the selected sub-object, if any, according to DeltaTranslate.
  */
 bool FMyComponentVisualizer::HandleInputDelta(
-	FEditorViewportClient* ViewportClient,
+    FEditorViewportClient* ViewportClient,
     FViewport* Viewport,
     FVector& DeltaTranslate,
-	FRotator& DeltaRotate,
+    FRotator& DeltaRotate,
     FVector& DeltaScale)
 {
     // We can only move the sub-object if we have access to the actual Component.
-	if (SelectedMyComponent == nullptr)
-	{
-		return false;
-	}
+    if (SelectedMyComponent == nullptr)
+    {
+        return false;
+    }
     // Don't try to move anything if no sub-object is selected.
-	if (SelectedObjectIndex == INDEX_NONE)
-	{
-		return false;
-	}
+    if (SelectedObjectIndex == INDEX_NONE)
+    {
+        return false;
+    }
     // Reset the selection if it has become invalid for some reason.
     // The user must click a Hit Proxy again to produce a new selection.
-	if (!SelectedMyComponent->ObjectLocations.IsValidIndex(SelectedObjectIndex))
-	{
-		SelectedObjectIndex = INDEX_NONE;
-		SelectedMyComponent = nullptr;
-		return false;
-	}
+    if (!SelectedMyComponent->ObjectLocations.IsValidIndex(SelectedObjectIndex))
+    {
+        SelectedObjectIndex = INDEX_NONE;
+        SelectedMyComponent = nullptr;
+        return false;
+    }
 
     // No need to do anything if the translation is zero. However, since we could
     // have done an actual move we still return true.
-	if (DeltaTranslate.IsZero())
-	{
-		return true;
-	}
+    if (DeltaTranslate.IsZero())
+    {
+        return true;
+    }
 
     // Mark the Component as modified, for the undo history.
-	SelectedMyComponent->Modify();
+    SelectedMyComponent->Modify();
 
     // Do the actual move.
     SelectedMyComponent->ObjectLocations[SelectedObjectIndex] + DeltaTranslate;
@@ -543,9 +543,9 @@ bool FMyComponentVisualizer::HandleInputDelta(
           GET_MEMBER_NAME_CHECKED(UMyComponent, ObjectLocations)));
 
     // Request a redraw with the new sub-object location.
-	GEditor->RedrawLevelEditingViewports();
+    GEditor->RedrawLevelEditingViewports();
 
-	return true;
+    return true;
 }
 ```
 

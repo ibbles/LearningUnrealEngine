@@ -1370,71 +1370,71 @@ My test:
 
 struct FState
 {
-	int32 CurrentUpdate = 0;
-	int32 MaxUpdates = 10;
-	float TimeAtFirstUpdate;
-	float TimeAtLastUpdate;
-	float Duration;
-	UWorld* World;
+    int32 CurrentUpdate = 0;
+    int32 MaxUpdates = 10;
+    float TimeAtFirstUpdate;
+    float TimeAtLastUpdate;
+    float Duration;
+    UWorld* World;
 
-	bool Update()
-	{
-		++CurrentUpdate;
-		if (CurrentUpdate == 1)
-		{
-			TimeAtFirstUpdate = World->GetTimeSeconds();
-		}
-		if (CurrentUpdate > MaxUpdates)
-		{
-			TimeAtLastUpdate = World->GetTimeSeconds();
-			Duration = TimeAtLastUpdate - TimeAtFirstUpdate;
-			return true;
-		}
-		return false;
-	}
+    bool Update()
+    {
+        ++CurrentUpdate;
+        if (CurrentUpdate == 1)
+        {
+            TimeAtFirstUpdate = World->GetTimeSeconds();
+        }
+        if (CurrentUpdate > MaxUpdates)
+        {
+            TimeAtLastUpdate = World->GetTimeSeconds();
+            Duration = TimeAtLastUpdate - TimeAtFirstUpdate;
+            return true;
+        }
+        return false;
+    }
 };
 
 DEFINE_LATENT_AUTOMATION_COMMAND_ONE_PARAMETER(FWaitForTicking, FState&, State);
 bool FWaitForTicking::Update()
 {
-	bool bDone = State.Update();
-	UE_LOG(LogTemp, Warning, TEXT("After %d updates, time is %f."),
-		   State.CurrentUpdate, State.World->GetTimeSeconds());
-	if (bDone)
-	{
-		UE_LOG(
+    bool bDone = State.Update();
+    UE_LOG(LogTemp, Warning, TEXT("After %d updates, time is %f."),
+           State.CurrentUpdate, State.World->GetTimeSeconds());
+    if (bDone)
+    {
+        UE_LOG(
             LogTemp, Warning,
             TEXT("Ending test after %d updates. World time is now %f and we spent %f seconds."),
-			State.CurrentUpdate, State.TimeAtLastUpdate, State.Duration);
-	}
-	return bDone;
+            State.CurrentUpdate, State.TimeAtLastUpdate, State.Duration);
+    }
+    return bDone;
 }
 
 
 UWorld* GetTestWorld()
 {
-	const TIndirectArray<FWorldContext>& Contexts = GEngine->GetWorldContexts();
-	for (const FWorldContext& Context : Contexts)
-	{
-		if (Context.WorldType == EWorldType::Game && Context.World() != nullptr)
-		{
-			return Context.World();
-		}
-	}
-	return nullptr;
+    const TIndirectArray<FWorldContext>& Contexts = GEngine->GetWorldContexts();
+    for (const FWorldContext& Context : Contexts)
+    {
+        if (Context.WorldType == EWorldType::Game && Context.World() != nullptr)
+        {
+            return Context.World();
+        }
+    }
+    return nullptr;
 }
 
 
 IMPLEMENT_SIMPLE_AUTOMATION_TEST(
-		FTickingTest, "AutomationTick.Ticking",
-		EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
+        FTickingTest, "AutomationTick.Ticking",
+        EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter)
 bool FTickingTest::RunTest(const FString&)
 {
-	static FState State;
-	State.World = GetTestWorld();
-	UE_LOG(LogTemp, Warning, TEXT("Test is running."));
-	ADD_LATENT_AUTOMATION_COMMAND(FWaitForTicking(State));
-	return true;
+    static FState State;
+    State.World = GetTestWorld();
+    UE_LOG(LogTemp, Warning, TEXT("Test is running."));
+    ADD_LATENT_AUTOMATION_COMMAND(FWaitForTicking(State));
+    return true;
 }
 ```
 

@@ -242,11 +242,11 @@ For example:
         <Format>CMake</Format>
     </ProjectFileGenerator>
     <LocalExecutor>
-		<ProcessorCountMultiplier>2</ProcessorCountMultiplier>
-	</LocalExecutor>
-	<ParallelExecutor>
-		<ProcessorCountMultiplier>2</ProcessorCountMultiplier>
-	</ParallelExecutor>
+        <ProcessorCountMultiplier>2</ProcessorCountMultiplier>
+    </LocalExecutor>
+    <ParallelExecutor>
+        <ProcessorCountMultiplier>2</ProcessorCountMultiplier>
+    </ParallelExecutor>
 </Configuration>
 ```
 

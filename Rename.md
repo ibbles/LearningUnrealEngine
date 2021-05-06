@@ -12,22 +12,22 @@ If successfull then an immediately following non-test `Rename` is guaranteed to 
 ```
 if (MyObject.Rename(TEXT("NewName"), nullptr, REN_TEST))
 {
-	MyObject.Rename(TEXT("NewName"));
+    MyObject.Rename(TEXT("NewName"));
 }
 else
 {
-	// The new name is not allowed, pick another name.
+    // The new name is not allowed, pick another name.
 }
 ```
 We can ask for a generated name that is guaranteed to work using `MakeUniqueObjectName`.
 ```
 if (MyObject.Rename(TEXT("NewName"), nullptr, REN_TEST))
 {
-	MyObject.Rename(TEXT("NewName"));
+    MyObject.Rename(TEXT("NewName"));
 }
 else
 {
-	FName SafeName = MakeUniqueObjectName(MyObject.GetOwner(), MyObject.GetClass(), FName(TEXT("NewName")));
+    FName SafeName = MakeUniqueObjectName(MyObject.GetOwner(), MyObject.GetClass(), FName(TEXT("NewName")));
  MyObject.Rename(*SafeName.ToString());
 }
 ```

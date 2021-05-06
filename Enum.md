@@ -27,7 +27,7 @@ A helper:
 template<typename T>
 static FString EnumToString(const T Value)
 {
-	return StaticEnum<T>()->GetNameStringByValue((int64)Value);
+    return StaticEnum<T>()->GetNameStringByValue((int64)Value);
 }
 ```
 

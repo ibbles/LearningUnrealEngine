@@ -33,9 +33,9 @@ const FEditorModeID FMyEdMode::EM_MyEdModeId = TEXT("EM_MyEdMode");
 class MYMODULE_API FMyEdMode : public FEdMode
 {
 public:
-	bool UsesToolkits() const override;
-	virtual void Enter() override;
-	virtual void Exit() override;
+    bool UsesToolkits() const override;
+    virtual void Enter() override;
+    virtual void Exit() override;
 }
 ```
 

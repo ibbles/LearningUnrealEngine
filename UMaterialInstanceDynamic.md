@@ -15,13 +15,13 @@ The alternative is a Constant Material Instance (`UMaterialInstanceConstant`), w
 UCLASS()
 class  MATTEST_API AMyActor : public  AActor
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 public:
-	AMyActor();
+    AMyActor();
 public:
-	UStaticMeshComponent* MeshComp;
-	UMaterial* StoredMaterial;
-	UMaterialInstanceDynamic* DynamicMaterialInst;
+    UStaticMeshComponent* MeshComp;
+    UMaterial* StoredMaterial;
+    UMaterialInstanceDynamic* DynamicMaterialInst;
 };
 
 // MyActor.cpp:
@@ -30,27 +30,27 @@ public:
 
 AMyActor::AMyActor()
 {
-	PrimaryActorTick.bCanEverTick = true;
-	MeshComp = CreateDefaultSubobject<UStaticMeshComponent>(
+    PrimaryActorTick.bCanEverTick = true;
+    MeshComp = CreateDefaultSubobject<UStaticMeshComponent>(
         TEXT("Mesh"));
-	
+    
     static  ConstructorHelpers::FObjectFinder<UStaticMesh> FoundMesh(
         TEXT("/Engine/EditorMeshes/EditorSphere.EditorSphere"));
-	if (FoundMesh.Succeeded())
-	{
-		MeshComp->SetStaticMesh(FoundMesh.Object);
-	}
+    if (FoundMesh.Succeeded())
+    {
+        MeshComp->SetStaticMesh(FoundMesh.Object);
+    }
 
-	static  ConstructorHelpers::FObjectFinder<UMaterial> FoundMaterial(
-		TEXT("/Engine/EditorMaterials/BasicMeshes/M_Floor.M_Floor"));
-	if (FoundMaterial.Succeeded())
-	{
-		StoredMaterial = FoundMaterial.Object;
-	}
+    static  ConstructorHelpers::FObjectFinder<UMaterial> FoundMaterial(
+        TEXT("/Engine/EditorMaterials/BasicMeshes/M_Floor.M_Floor"));
+    if (FoundMaterial.Succeeded())
+    {
+        StoredMaterial = FoundMaterial.Object;
+    }
 
-	DynamicMaterialInst = UMaterialInstanceDynamic::Create(
+    DynamicMaterialInst = UMaterialInstanceDynamic::Create(
         StoredMaterial, MeshComp);
-	MeshComp->SetMaterial(0, DynamicMaterialInst);
+    MeshComp->SetMaterial(0, DynamicMaterialInst);
 }
 ```
 

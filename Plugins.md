@@ -32,34 +32,34 @@ Plug-ins can also depend on, call functions, and use types in other plug-ins.
 Example `<PluginName>.uplugin`:
 ```
 {
-	"FileVersion": 3,
-	"Version": 1.2.3,
-	"VersionName": "1.2.3",
-	"FriendlyName": "Name of the plugin",
-	"Description": "Description of the plugin.",
-	"Category": "Other",
-	"CreatedBy": "",
-	"CreatedByURL": "",
-	"DocsURL": "",
-	"MarketplaceURL": "",
-	"SupportURL": "",
-	"CanContainContent": true,
-	"IsBetaVersion": true,
-	"Installed": false,
-	"Modules": [
-		{
-			"Name": "PluginName",
-			"Type": "Runtime",
-			"LoadingPhase": "Default",
-			"WhitelistPlatforms": [
-				"Win64",
-				"Linux"
-			],
-			"BlacklistPlatforms": [
-				"IOS",
-				"Win32"
-			]
-		}
+    "FileVersion": 3,
+    "Version": 1.2.3,
+    "VersionName": "1.2.3",
+    "FriendlyName": "Name of the plugin",
+    "Description": "Description of the plugin.",
+    "Category": "Other",
+    "CreatedBy": "",
+    "CreatedByURL": "",
+    "DocsURL": "",
+    "MarketplaceURL": "",
+    "SupportURL": "",
+    "CanContainContent": true,
+    "IsBetaVersion": true,
+    "Installed": false,
+    "Modules": [
+        {
+            "Name": "PluginName",
+            "Type": "Runtime",
+            "LoadingPhase": "Default",
+            "WhitelistPlatforms": [
+                "Win64",
+                "Linux"
+            ],
+            "BlacklistPlatforms": [
+                "IOS",
+                "Win32"
+            ]
+        }
     ]
 }
 ```

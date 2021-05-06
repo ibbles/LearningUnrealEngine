@@ -21,9 +21,9 @@ make: *** [Makefile:50: MyUtilities] Error 6
 `Modules` in `MyProject.uproject`:
 ```json
 {
-	"Name": "MyUtilities",
-	"Type": "Runtime",
-	"LoadingPhase": "Default"
+    "Name": "MyUtilities",
+    "Type": "Runtime",
+    "LoadingPhase": "Default"
 }
 ```
 
@@ -34,14 +34,14 @@ using System.Collections.Generic;
 
 public class MyUtilitiesTarget : TargetRules
 {
-	public MyUtilitiesTarget( TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Client;
-		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.AddRange( new string[] {
-			"MyUtilities"
-		});
-	}
+    public MyUtilitiesTarget( TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Client;
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+        ExtraModuleNames.AddRange( new string[] {
+            "MyUtilities"
+        });
+    }
 }
 ```
 
@@ -52,16 +52,16 @@ using UnrealBuildTool;
 
 public class MyUtilities : ModuleRules
 {
-	public MyUtilities(ReadOnlyTargetRules Target) : base(Target)
-	{
-		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+    public MyUtilities(ReadOnlyTargetRules Target) : base(Target)
+    {
+        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
-		PublicDependencyModuleNames.AddRange(new string[] {
-			"Core", "CoreUObject", "Engine", "InputCore"
-		});
+        PublicDependencyModuleNames.AddRange(new string[] {
+            "Core", "CoreUObject", "Engine", "InputCore"
+        });
 
-		PrivateDependencyModuleNames.AddRange(new string[] {  });
-	}
+        PrivateDependencyModuleNames.AddRange(new string[] {  });
+    }
 }
 ```
 
@@ -76,13 +76,13 @@ public class MyUtilities : ModuleRules
 class FMyUtilitiesModule : public IModuleInterface
 {
 public:
-	virtual void StartupModule() override;
-	virtual void ShutdownModule() override;
+    virtual void StartupModule() override;
+    virtual void ShutdownModule() override;
 };
 
 namespace MyUtilities
 {
-	void Log();
+    void Log();
 }
 ```
 
@@ -106,7 +106,7 @@ void FMyUtilitiesModule::ShutdownModule()
 
 void MyUtilities::Log()
 {
-	UE_LOG(LogTemp, Error, TEXT("MyUtilities is logging."));
+    UE_LOG(LogTemp, Error, TEXT("MyUtilities is logging."));
 }
 
 #undef LOCTEXT_NAMESPACE

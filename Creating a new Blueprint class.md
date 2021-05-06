@@ -4,8 +4,8 @@
 
 Building from scratch in the Blueprint Editor:
 - One of:
-	- Right-click in Content Browser, select New Blueprint Class.
-	- Click the green Add New button at the top-left of the Content Browser, select Blueprint Class.
+    - Right-click in Content Browser, select New Blueprint Class.
+    - Click the green Add New button at the top-left of the Content Browser, select Blueprint Class.
 - Select a parent class.
 - Give the new Blueprint class a name.
 - Open it in the Blueprint Editor.

@@ -27,17 +27,17 @@ Full example:
 `Lighting.uproject`:
 ```
 {
-	"FileVersion": 3,
-	"EngineAssociation": "{AA2FBE50-FCF6-4DF1-95D0-14B3372BA99D}",
-	"Category": "",
-	"Description": "Project where I experiment with ligting, InfinityBladeGrasslands, and the exercises given out by Making Games With Katie."
-	"Modules": [
-		{
-			"Name": "Lighting",
-			"Type": "Runtime",
-			"LoadingPhase": "Default"
-		}
-	]
+    "FileVersion": 3,
+    "EngineAssociation": "{AA2FBE50-FCF6-4DF1-95D0-14B3372BA99D}",
+    "Category": "",
+    "Description": "Project where I experiment with ligting, InfinityBladeGrasslands, and the exercises given out by Making Games With Katie."
+    "Modules": [
+        {
+            "Name": "Lighting",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+        }
+    ]
 }
 ```
 
@@ -63,12 +63,12 @@ using System.Collections.Generic;
 
 public class LightingEditorTarget : TargetRules
 {
-	public LightingEditorTarget(TargetInfo Target) : base(Target)
-	{
-		Type = TargetType.Editor;
-		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.AddRange(new string[] {"Lighting"});
-	}
+    public LightingEditorTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Editor;
+        DefaultBuildSettings = BuildSettingsVersion.V2;
+        ExtraModuleNames.AddRange(new string[] {"Lighting"});
+    }
 }
 
 ```

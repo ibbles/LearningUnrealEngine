@@ -147,12 +147,12 @@ Then a collection of Asset Actions can be collected in a submenu of the Content 
 ```cpp
 virtual void StartupModule() override
 {
-	IAssetTools& AssetTools =
-		FModuleManager::LoadModuleChecked<FAssetToolsModule>("AssetTools").Get();
+    IAssetTools& AssetTools =
+        FModuleManager::LoadModuleChecked<FAssetToolsModule>("AssetTools").Get();
 
-	EAssetTypeCategories::Type MyAssetCategoryBit =
+    EAssetTypeCategories::Type MyAssetCategoryBit =
         AssetTools.RegisterAdvancedAssetCategory(
-        	FName(TEXT("MyCategoryName")),
+            FName(TEXT("MyCategoryName")),
             LOCTEXT("MyCategoryLabel", "MyCategoryLabel"));
     
     // Repeat for each IAssetTypeActions class.

@@ -78,10 +78,10 @@ void UMyComponent::OnRegister()
     Super::OnRegister();
 #if  WITH_EDITORONLY_DATA
     if (SpriteComponent)
-	{
-		SpriteComponent->SetSprite(LoadObject<UTexture2D>(
+    {
+        SpriteComponent->SetSprite(LoadObject<UTexture2D>(
             nullptr, TEXT("/Game/EditorResources/Icons/S_MyIcon.S_MyIcon")));
-	}
+    }
 #endif
 }
 ```
@@ -107,8 +107,8 @@ public:
     
 private:
 #if WITH_EDITORONLY_DATA
-	UPROPERTY(Transient)
-	UTexture2D* EditorSpriteTexture;
+    UPROPERTY(Transient)
+    UTexture2D* EditorSpriteTexture;
 #endif
 }
 ```
@@ -133,9 +133,9 @@ void UMyComponent::OnRegister()
     Super::OnRegister();
 #if  WITH_EDITORONLY_DATA
     if (SpriteComponent)
-	{
-		SpriteComponent->SetSprite(EditorSpriteTexture);
-	}
+    {
+        SpriteComponent->SetSprite(EditorSpriteTexture);
+    }
 #endif
 }
 ```
