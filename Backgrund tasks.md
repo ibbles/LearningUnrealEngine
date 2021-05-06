@@ -40,7 +40,7 @@ private:
 private:
     // What should the pointer type be? Should it be marked UPROPERTY?
     FMyWorker* MyWorker;
-    
+
     FTimerHandle WorkerTimerHandle;
 }
 
@@ -77,7 +77,7 @@ public:
     virtual void Stop() override;
 private:
     static FMyWorker* Runnable;
-    
+
     // What should the pointer type be? Should it be marked UPROPERTY?
     FRunnableThread* Thread;
 }

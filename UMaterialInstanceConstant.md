@@ -18,7 +18,7 @@ CreateUniqueAssetName(
 UMaterialInstanceConstantFactoryNew* Factory =
     NewObject<UMaterialInstanceConstantFactoryNew>();
 Factory->InitialParent = ParentMaterial;
-    
+
 FContentBrowserModule& ContentBrowserModule =
     FModuleManager::LoadModuleChecked<FContentBrowserModule>(
         "ContentBrowser");
@@ -42,7 +42,7 @@ UMaterial* Template = ...;
 UMaterialInstanceConstantFactoryNew* MaterialFactory =
     NewObject<UMaterialInstanceConstantFactoryNew>();
 MaterialFactory->InitialParent = Template;
-    
+
 FAssetToolsModule& AssetToolsModule =
     FModuleManager::Get().LoadModuleChecked<FAssetToolsModule>(
         "AssetTools");

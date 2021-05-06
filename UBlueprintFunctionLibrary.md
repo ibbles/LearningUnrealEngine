@@ -10,7 +10,7 @@ class YOURPROJECT_API UYourLibrary :
         public UBlueprintFunctionLibrary
 {
     GENERATED_BODY()
-    
+
     UFUNCTION(BlueprintCallable)
     void Blah(<PARAMETERS>);
 };

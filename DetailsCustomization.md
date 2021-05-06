@@ -45,12 +45,12 @@ class FMyClassCustomization : public IDetailCustomization
 {
 public:
     static TSharedRef<IDetailCustomization> MakeInstance();
-    
+
     // ~Begin IDetailCustomization interface.
-    
+
     /** Called when a Details Panel for our associated type is to be built. */
     virtual void CustomizeDetails(IDetailLayoutBuilder& DetailBuilder) override;
-    
+
     // ~End IDetailCustomization interface.
 
 private:
@@ -94,12 +94,12 @@ void FMyEditorModule::StartupModule()
     FPropertyEditorModule& PropertyModule = 
         FModuleManager::LoadModuleChecked<FPropertyEditorModule>(
             "PropertyEditor");
-    
+
     PropertyModule.RegisterCustomClassLayout(
         UMyClass::StaticClass()->GetFName(),
         FOnGetDetailCustomizationInstance::CreateStatic(
             &FMyClassCustomization::MakeInstance));
-    
+
     PropertyModule.NotifyCustomizationModuleChanged();
 }
 
@@ -108,7 +108,7 @@ void FMyEditorModule::ShutdownModule()
     FPropertyEditorModule& PropertyModule = 
         FModuleManager::LoadModuleChecked<FPropertyEditorModule>(
             "PropertyEditor");
-    
+
     PropertyModule.UnregisterCustomClassLayout(
         UMyClass::StaticClass()->GetFName());
 }
@@ -122,14 +122,14 @@ UCLASS()
 class UMyClass : public UObject
 {
     GENERATED_BODY()
-    
+
 public:
     UPROPERTY(EditAnywhere, Category = "Person")
     FString FavoriteFood;
 
     UPROPERTY(EditAnywhere, Category = "Person")
     int32 MaxServings;
-    
+
     UPROPERTY(VisibleAnywhere, Category = "Pets")
     TArray<FString> PetNames;
 };
@@ -186,18 +186,18 @@ void FMyClassCustomization::CustomizeDetails(
     // Hide the entire Pet category. We will put the parts we're interested
     // in in the Person category instead.
     DetailBuilder.HideCategory(TEXT("Pets"));
-    
+
     // Get a reference to the Person category so we can edit its contents.
     IDetailCategoryBuilder& PersonCategory =
         DetailBuilder.EditCategory(TEXT("Person"));
-    
+
     // Get a handle to the FavoriteFood property and hide it.
     TSharedRef<IPropertyHandle> FavoriteFoodProperty =
         DetailBuilder.GetProperty(
             GET_MEMBER_NAME_CHECKED(UMyClass, FavoriteFood));
     check(FavoriteFoodProperty.IsValidHandle());
     PersonCategory.HideProperty(FavoriteFoodProperty);
-    
+
     // Get a handle to the PetNamess property and add it to the Person category.
     TSharedRef<IPropertyHandle> PetProperty =
         DetailBuilder.GetProperty(
@@ -221,13 +221,13 @@ void FMyClassCustomization::CustomizeDetails(
     // Get a reference to the Person category.
     IDetailCategoryBuilder& PersonCategory =
         DetailBuilder.EditCategory(TEXT("Person"));
-    
+
     // Get a handle to the PetNames property.
     TSharedRef<IPropertyHandle> PetNamesProperty =
         DetailBuilder.GetProperty(
             GET_MEMBER_NAME_CHECKED(UMyClass, PetNames));
     check(PetNamesProperty.IsValidHandle());
-    
+
     // Lambda that determines if the PetNames property should
     // be visible or not.
     auto IsPetVisibleFun = []
@@ -280,7 +280,7 @@ void FMyClassCustomization::CustomizeDetails(
         // to the default Details Panel.
         return;
     }
-    
+
     TWeakObjectPtr<UMyClass> MyObject = Cast<UMyClass>(Objects[0].Get());
     if (!MyObject.IsValid())
     {
@@ -311,7 +311,7 @@ void FMyClassCustomization::CustomizeDetails(
 {
     IDetailCategoryBuilder& PersonCategory =
         DetailBuilder.EditCategory(TEXT("Person"));
-    
+
     PersonCategory.AddCustomRow(
         LOCTEXT("FilterKeywords", "Keywords used when filtering"));
 }
@@ -504,11 +504,11 @@ class FMyClassCustomization : public IDetailCustomization
 {
 public:
     static TSharedRef<IDetailCustomization> MakeInstance();
-    
+
     // ~Begin IDetailCustomization interface.
     virtual void CustomizeDetails(IDetailLayoutBuilder& DetailBuilder) override;
     // ~End IDetailCustomization interface.
-    
+
     FReply ButtonCallback();
 };
 ```
@@ -527,7 +527,7 @@ void FMyClassCustomization::CustomizeDetails(
 {
     TArray<TWeakObjectPtr<UOBject>> ObjectsToEdit;
     DetailBuilder.GetObjectsBeingCustomized(ObjectsToEdit);
-    
+
     IDetailCategoryBuilder& Category = 
         DetailBuilder.EditCategory("FirstCategory|SecondCategory");
 
@@ -580,7 +580,7 @@ class MYEDITORMODULE_API FMyClassCustomization : public IDetailCustomization
 {
 public:
     void CustomizeDetails(IDetailLaoutBuilder& DetailBuilder);
-    
+
     TOptional<float> GetVectorX() const { return X; }
     TOptional<float> GetVectorY() const { return Y; }
     TOptional<float> GetVectorZ() const { return Z; }
@@ -591,7 +591,7 @@ private:
     TOptional<float> X;
     TOptional<float> Y;
     TOptoinal<float> Z;
-    
+
     UMyComponent* MyComponent;
 };
 ```
@@ -624,7 +624,7 @@ void FMyClassCustomization::OnSetVector(
     {
         return;
     }
-    
+
     const FScopedTransaction Transaction(LOCTEXT("Set vector"));
     MyComponent->Modify();
     MyComponent->MyVector.Component(Axis) = NewValue;

@@ -33,7 +33,7 @@ AMyActor::AMyActor()
     PrimaryActorTick.bCanEverTick = true;
     MeshComp = CreateDefaultSubobject<UStaticMeshComponent>(
         TEXT("Mesh"));
-    
+
     static  ConstructorHelpers::FObjectFinder<UStaticMesh> FoundMesh(
         TEXT("/Engine/EditorMeshes/EditorSphere.EditorSphere"));
     if (FoundMesh.Succeeded())

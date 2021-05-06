@@ -9,7 +9,7 @@ void FMyModule::StartupModule()
     {
         return;
     }
-    
+
     IConsoleManager::Get().RegisterConsoleCommand(
         TEXT("MyCommand")
         TEXT("Description for MyCommand."),
@@ -19,7 +19,7 @@ void FMyModule::StartupModule()
 
 void FMyModule::MyConsoleCommand()
 {
-    
+
 }
 
 ```

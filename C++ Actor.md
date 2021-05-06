@@ -71,7 +71,7 @@ class AMyActor : public AActor
 {
 public:
     GENERATED_BODY()
-    
+
     // A member variable decorated with the UPROPERTY macro is exposed to the reflection
     // system. BlueprintReadWrite means that we can both read and write this value from
     // a Blueprint Visual Script. EditAnywhere means that we can edit this value in the
@@ -81,45 +81,45 @@ public:
     // property will show up.
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "MyGame")
     float MyFloat;
-    
+
     // BlueprintReadOnly means that Blueprint Visual Scripts can read the value of this
     // property, but not change it. VisibleAnywhere means that we can see the value in
     // the Details Panel, but not change it, in both the Blueprint Editor and for specific
     // instances in the Level Editor.
     UPROPERTY(BlueprintReadOnly, VisibleAnywhere, Category = "MyGame")
     int32 MyInt;
-    
+
     // EditInstanceOnly means that we cannot set a default value in the Blueprint Editor,
     // but we can set the value on each instance of the class.
     UPROPERTY(EditInstanceOnly, Category = "MyGame")
     AMyActor* Next;
-    
+
     // We can own components with raw pointeres as long as we marked it with UPROPERTY. The
     // garbage collection system will keep the pointed-to object alive only for as long as
     // it's needed.
     UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
     UStaticMeshComponent* Mesh;
-    
+
     // UFUNCTION exposes the member function to the reflection system.
     // BlueprintCallable exposes the member function to Blueprint Visual Scripts.
     UFUNCTION(BlueprintCallable)
     void LinkAfter(AMyActor* Predecessor);
-    
+
     // BlueprintPure signals that the member function does not affect the owning object in
     // any way. Consider making such functions C++ const as well. They become expression
     // nodes, as opposed to execution nodes, in Blueprint Visual Scripts.
     UFUNCTION(BlueprintPure)
     int32 RoundedMyFloat() const;
-    
+
     // BlueprintImplementableEvent means that a Blueprint subclass will implement the member
     // function, there is no C++ implementation.
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnNewNext();
-    
+
     // The Tick function is called on every tick, i.e., frame, if PrimaryActorTick.bCanEverTick
     // has been set to true.
     virtual void Tick(float DeltaTime) override;
-    
+
     // BeginPlay is called at the start of each instance's lifetime, either at the start of
     // the game, or when the instance is spawned during runtime.
     virtual void BeginPlay() override;
@@ -138,13 +138,13 @@ AMyActor::AMyActor()
     // By setting bCanEverTick to true we request that the Tick callback is called.
     // This comes with a performance penaly, so try to avoid it.
     PrimaryActorTick.bCanEverTick = true;
-    
+
     // Create a new mesh component. We use CreateDefaultSubobject because we are in the
     // constructor and we assing the returned pointer to a UPROPERTY member variable of
     // this class. The parameter is the label for the component, the name it will have
     // in the Blueprint Editor.
     Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
-    
+
     // Make the new component the root of the USceneComponent hierarchy for this Actor.
     SetRootComponent(Mesh);
 }
@@ -155,7 +155,7 @@ void AMyActor::Tick(float DeltaTime)
     // as well. If you get an error message similar to "Could not route call to ..." during
     // runtime then you probably forgot a Super::-call.
     Super::Tick(DeltaTime);
-    
+
     // Do your per-tick work here.
 }
 

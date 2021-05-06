@@ -40,7 +40,7 @@ struct FInputMap
     float INPUT.SpawnTime = 0.0f;
     float INPUT.Age = EMITTER.LoopedAge;
     int32 INPUT.SpawnGroup = 0;
-    
+
     float ENGINE.DeltaTime;
     float EMITTER.LoopedAge = 0.0f;
     bool TRANSIENT.SpawningbCanEverSpawn = false;
@@ -78,7 +78,7 @@ void SpawnBurstInstantaneous(FInputMap& InputMap, FOutputMap& OutputMap)
         SpawnBurst.NiagaraInt32 = InputMap.SpawnGroup;
         OutputMap.SpawnBurst = SpawnBurst;
     }
-    
+
     bool bHaveNotYetSpawned = InputMap.LoopedAge <= InputMap.SpawnTime;
     bool bCanEverSpawn = InputMap.SpawningbCanEverSpawn;
     bCanEverSpawn = bCanEverSpawn || bHaveNotYetSpawned;
@@ -101,9 +101,9 @@ struct FInputMap
     int32 INPUT.SpawnCount = 1;
     int32 INPUT.SpawnGroup = 0;
     bool INPUT.Spawn = true;
-    
+
     float ENGINE.DeltaTime;
-    
+
     bool TRANSIENT.SpawningbCanEverSpawn = false;
 };
 
@@ -134,7 +134,7 @@ void SpawnPerFrame(FInputMap& InputMap, FOutputMap& OutputMap)
         SpawnBurst.NiagaraInt32 = InputMap.SpawnGroup;
         OutputMap.SpawnBurst = SpawnBurst;
     }
-    
+
     bool bCanEverSpawn = InputMap.SpawningbCanEverSpawn;
     bCanEverSpawn = bCanEverSpawn || bDoSpawn;
     OutputMap.SpawningbCanEverSpawn = bCanEverSpawn;
@@ -151,10 +151,10 @@ Spawn a certain number of particles per second.
 struct FInputMap
 {
     float INPUT.SpawnRate = 0.0f;
-    
+
     float EMITTER.LoopedAge = 0.0f;
     float EMITTER.MODULE.SpawnRemainder = 0.0f;
-    
+
     float ENGINE.DeltaTime;
 };
 
@@ -167,7 +167,7 @@ void SpawnRate(FInputMap& InputMap, FOutputMap& OutputMap)
     float SpawnRate = InputMap.SpawnRate;
     float IntervalDT = 1.0f / SpawnRate;
     float InterpStartDT = IntervalDT * (1.0f - InputMap.SpawnRemainder);
-    
+
     float DeltaTime = InputMap.DeltaTime;
     float Remainder = InputMap.SpawnRemainder;
     float LoopedAge = InputMap.LoopedAge;
@@ -175,10 +175,10 @@ void SpawnRate(FInputMap& InputMap, FOutputMap& OutputMap)
     float ToSpawn = SpawnRate * DeltaTime + Remainder;
     int32 SpawnCount = floor(ToSpawn);
     Remainder = ToSpawn - SpawnCount;
-    
+
     OutputMap.SpawnRemainder = Remainder;
-    
-    
+
+
 }
 ```
 

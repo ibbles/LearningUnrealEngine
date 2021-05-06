@@ -97,7 +97,7 @@ AParent::AParent(const FObjectInitializer& OI)
     MyCompB = OI.CreateOptionalDefaultSubobject<UMyComponentB>(
         this, UMyComponentB::MyComponentAName);
 }
-    
+
 AChild::AChild(const FObjectInitializer& OI)
     : Super(
         OI

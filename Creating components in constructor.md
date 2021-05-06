@@ -42,14 +42,14 @@ UCLASS()
 class AMyActor : public AActor
 {
     GENERATED_BODY()
-    
+
 public:
     UPROPERTY()
     UStaticMeshComponent* Mesh;
-    
+
     UPROPERTY()
     USpringArmComponent* Arm;
-    
+
     UPROPERTY()
     UCameraComponent* Camera;
 };
@@ -61,10 +61,10 @@ AMyActor::AMyActor()
 {
     Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
     SetRootComponent(Mesh);
-    
+
     Arm = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Arm"));
     Arm->SetupAttachment(Mesh);
-    
+
     Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
     Camera->SetupAttachment(Arm, USpringArmComponent::SocketName);
 }

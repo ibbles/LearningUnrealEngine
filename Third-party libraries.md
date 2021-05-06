@@ -264,7 +264,7 @@ cmake
     -DCMAKE_C_COMPILER=clang 
     -DCMAKE_C_FLAGS="-ffunction-sections -fdata-sections"
     "$BASE_DIR"
-    
+
 make -j4
 cp -v libfreetype.a "$BASE_DIR/lib/Linux/$ARCH/libfreetype_fPIC.a"
 ```

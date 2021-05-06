@@ -132,7 +132,7 @@ The Hit Proxy class names are prefixed with `H`. Not sure why, not part of the C
 struct HMyComponentProxy : public HComponentVisProxy
 {
     DECLARE_HIT_PROXY();
-    
+
     HMyComponentProxy(const UActorComponent* InComponent)
         : HComponentVisProxy(InComponent, HPP_Wireframe)
     {
@@ -171,7 +171,7 @@ void FMyComponentVisualizer::DrawVisualization(
     const Radius = 100.0f;
     const int32 NumSegments = 32;
     const uint8 DepthPriority = SDPG_Foreground;
-    
+
     PDI->SetHitProxy(new HMyComponentProxy(Component));
     DrawCircle(
         PDI, Center, PlaneTangentX, PlaneTangentY,
@@ -195,15 +195,15 @@ class MYEDITORMODULE_API FMyComponentVisualizer : public FComponentVisualizer
 {
 public:
     //~ Begin FComponentVisualizer Interface
-    
+
     virtual void DrawVisualization(
         const UActorComponent* Component, const FSceneView* View,
         FPrimitiveDrawInterface* PDI) override;
-        
+
     virtual bool VisProxyHandleClick(
         FEditorViewportClient* InViewportClient, HComponentVisProxy* VisProxy,
         const FViewportClick& Click) override;
-    
+
     //~ End FComponentVisualizer Interface
 };
 ```
@@ -267,13 +267,13 @@ private:
 class HMySelectProxy : public HComponentVisProxy
 {
     DECLARE_HIT_PROXY();
-    
+
     HMySelectProxy(const UMyComponent* InComponent, int32 InObjectIndex)
         : HComponentVisProxy(InComponent, HPP_Wireframe)
         , ObjectIndex(InObjectIndex)
     {
     }
-    
+
     int32 ObjectIndex;
 };
 
@@ -290,13 +290,13 @@ void FMyComponentVisualizer::DrawVisualization(
     {
         return;
     }
-    
+
     // Some settings. These can be made properties of UMyComponent, to
     // provide improved customization for the user.
     const float ObjectSize = 10.0f;
     const FLinearColor ObjectColor = FLinearColor::White;
     const FLinearColor SelectedColor = FLinearColor::Ref;
-    
+
     // Draw each sub-object.
     for (int32 I = 0; I < MyComponent->ObjectLocations.Num(); ++I)
     {
@@ -325,7 +325,7 @@ bool FMyComponentVisualizer::VisProxyHandleClick(
     {
         return false;
     }
-    
+
     // Check if the Hit Proxy is one of the types that we care about. There
     // may be many chained 'else if' tests here.
     if (HMySelectProxy* SelectProxy = HitProxyCast<HMySelectProxy>(VisProxy))
@@ -535,7 +535,7 @@ bool FMyComponentVisualizer::HandleInputDelta(
 
     // Do the actual move.
     SelectedMyComponent->ObjectLocations[SelectedObjectIndex] + DeltaTranslate;
-    
+
     FComponentVisualizer::NotifyPropertyModified(
         SelectedMyComponent,
         FindFProperty<FProperty>(

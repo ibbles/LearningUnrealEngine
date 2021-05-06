@@ -17,10 +17,10 @@ class AMyActor : public AActor
 public:
     UFUNCTION(BlueprintCallable)
     void MyFunction();
-    
+
     UFUNCTION(BlueprintImplementableEvent)
     void MyBlueprintFunction();
-    
+
     UFUNCTION(BlueprintNativeEvent)
     void MyOptionalBlueprintFunction();
 }

@@ -154,7 +154,7 @@ virtual void StartupModule() override
         AssetTools.RegisterAdvancedAssetCategory(
             FName(TEXT("MyCategoryName")),
             LOCTEXT("MyCategoryLabel", "MyCategoryLabel"));
-    
+
     // Repeat for each IAssetTypeActions class.
     TSharedPtr<IAssetTypeActions> MyAssetActions =
         MakeShareable(new FMyAssetActions(MyAssetCategoryBit));
@@ -187,7 +187,7 @@ For each object, create and initialize a new `FMyAssetEditorToolkit`:
 ```
 TSharedRef<FTextAssetEditorToolkit> EditorToolkit = MakeShareable(
     new FMyAssetEditorToolkit(Style));
-   
+
 EditorToolkit->Initialize(MyAsset, Mode, EditWithinLevelEditor);
 ```
 

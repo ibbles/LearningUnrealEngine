@@ -64,7 +64,7 @@ void AMyActor::Serialize(FArchive& Archive)
 {
     // Store all the properties, meta-data, and whatever else the engine needs.
     Super::Serialize(Archive);
-    
+
     // Alias to the version series ID, just to cut down on the typing.
     FGUID& GUID = FMyCustomVersion::GUID;
 
@@ -73,7 +73,7 @@ void AMyActor::Serialize(FArchive& Archive)
 
     // Ask the archive for which version it was created with.
     int32 ArchiveVersion = Archive.CustomVer(GUID);
-    
+
     /// \todo I don't quite understand this part yet.
     /// What are Feature1, Feature2, and Feature3?
     if (ArchiveVersion >= FMyCustomVersion::Feature1Added)

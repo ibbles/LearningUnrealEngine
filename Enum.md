@@ -99,10 +99,10 @@ UCLASS()
 class UMyClass : public UObject
 {
     GENERATED_BODY()
-    
+
     UPROPERTY()
     TEnumAsByte<EMyUnscopedEnum> MyUnscopedEnumBad;
-    
+
     UPROPERTY()
     EMyScopedEnum MyScopedEnumGood;
 }

@@ -15,7 +15,7 @@ std::optional<FVector> AMyPlayerController::ProjectMouseLocationToPawn() const
 
     FVector WorldLocation;
     FVector WorldDirection;
-    
+
     if (!DeprojectMousePositionToWorld(WorldLocation, WorldDirection))
     {
         return std::nullopt;

@@ -67,7 +67,7 @@ void AMainCharacter::OnInteractEnd()
 void AMyCharacter::SetupPlayerInputComponent(UInputComponent* Input)
 {
     Super::SetupPlayerInputComponent(Input);
-    
+
     Input->BindAction("Interact", IE_Pressed, this, &AMainCharacter::OnInteractStart);
     Input->BindAction("Interact", IE_Released, this, &AMainCharacter::OnInteractEnd);
 

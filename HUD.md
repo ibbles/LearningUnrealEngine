@@ -36,7 +36,7 @@ void AMyHud::BeginPlay()
     {
         error
     }
-    
+
     MyWidget = SNew(SMyWidget).OwningHud(this);
     GEngine->GameViewport->AddViewportWidgetContent(
         SAssignNew(WidgetContainer, SWeakWidget)
@@ -56,7 +56,7 @@ void AMyHud::ShowWidget()
     {
         error
     }
-    
+
     MyWidget = SNew(SmyWidget).OwningHud(this);
     GEngine->GameViewport->AddViewportWidgetContent(
         SAssignNew(WidgetContainer, SWeakWidget)
@@ -74,7 +74,7 @@ void AMyHud::HideWidget()
     {
         error
     }
-    
+
     GEngine->GameViewport->RemoveViewportWidgetContent(
         WidgetContainer.ToSharedRef());
     if (PlayerOwner)

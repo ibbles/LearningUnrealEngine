@@ -67,7 +67,7 @@ Has two virtual methods:
     Called when the editor or game is starting, really when the module is loaded into memory. Do initialization here.
 - `ShutdownModule`
     Called when the editor or game is shutting down, really when the module is unloaded from memory.
-    
+
 `MyModule.h`:    
 ```cpp
 #pragma once

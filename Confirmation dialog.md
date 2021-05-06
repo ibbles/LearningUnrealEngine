@@ -17,12 +17,12 @@ bool ShouldTheThingBeDone(const FText& Title, const FText& Message, const FStrin
 
     FSuppressableWarningDialog ReparentBlueprintDlg(Info);
     return ReparentBlueprintDlg.ShowModal() != FSuppressableWarningDialog::Cancel;
-    
+
     // ShowModal return either Suppressed, Cancel, eller Confirm.
     // It's unclear to me how Suppressed is supposed to be handled.
     // This example takes Suppressed to mean Confirm, following a comment in the Engine source:
     // > User previously suppressed dialog, in most cases this should be treated as confirm.
-    
+
 }
 ```
 

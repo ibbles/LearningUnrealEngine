@@ -47,7 +47,7 @@ public:
     FVector2D Direction;
 
     AMyPawn();
-    
+
     virtual void Tick(float DeltaTime) override;
 
     void OnInteractStart();

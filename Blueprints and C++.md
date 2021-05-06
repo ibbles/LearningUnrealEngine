@@ -60,20 +60,20 @@ void CreateBlueprint(UClass* ParentClass)
     FName Name = []() -> FName {
         // The name we would like to give the new Blueprint class.
         FString Name = "BP_TestBlueprint";
-        
+
         // Sanitize the name so that it doesn't contain any illegal characters for use in package names.
         Name = UPackageTools::SanitizePackageName(Name);
-        
+
         // Sanitize it again, this time removing characters illegal for use in object names.
         Name = ObjectTools::SanitizeObjectName(Name);
-        
+
         // Create an FName from the string.
         return *Name;
     }();
 
     // Decide where to place the asset on disk / in the Content Browser.
     FString PackagePath = "/Game/Test/" + Name;
-    
+
     // Create a Package to put the Blueprint in.
     UPackage* OuterForAsset = CreatePackage(nullptr, *PackagePath);
 
@@ -85,14 +85,14 @@ void CreateBlueprint(UClass* ParentClass)
     // Load the compiler module.
     IKismetCompilerInterface& KismetCompilerModule =
         FModuleManager::LoadModuleChecked<IKismetCompilerInterface>("KismetCompiler");
-    
+
     // Fill in BlueprintClass and BlueprintGeneratedClass.
     // I don't know what YourClassType is/should be. The parent class of our new Blueprint class?
     KismetCompilerModule.GetBlueprintTypesForClass(
         ParentClass, // The class to get the Blueprint classes for.
         BlueprintClass, // Pointer that will be set to the class' Blueprint class.
         BlueprintGeneratedClass); // Pointer that will be set to the class' Blueprint generated class.
-    
+
     // Create the new Blueprint class.
     UBlueprint* NewBlueprint = FKismetEditorUtilities::CreateBlueprint(
         // The class that the new Blueprint will inherit from.
@@ -118,7 +118,7 @@ void CreateBlueprint(UClass* ParentClass)
 
     // Tell the engine about the new Blueprint.
     FAssetRegistryModule::AssetCreated(NewBlueprint);
-    
+
     // Open the Blueprint in the Blueprint Editor.
     // This has been deprecated in Unreal Engine 4.25.
     // Instead use the matching function on AssetEditorSubsystem.

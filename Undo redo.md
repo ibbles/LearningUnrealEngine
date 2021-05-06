@@ -16,13 +16,13 @@ class UActorMover : public UObject
 {
 public:
     GENERATED_BODY();
-    
+
     UPROPERTY()
     AActory* MyActor;
-    
+
     UPROPERTY()
     int32 NumMoves;
-    
+
     void MoveActor();
 }
 
@@ -33,18 +33,18 @@ void UMyClass::MoveActor()
     // operation in the undo history.
     FScopedTransaction Transaction(
         LOCTEXT("MoveActor", "Move actor."));
-    
+
     // This member function will make two changes, one to itself and
     // one on the Actor it has a pointer to.
-    
+
     // Mark this object as about to be modified.
     Modify();
-    
+
     // Make the modification. NumMoves is a `UPROPERTY` on an objects on
     // which Modify has been called so it will be included in the undo
     // history.
     ++NumMoves;
-    
+
     // Next we do the move. First mark the Actor for modification and then
     // do the actual modification. AActor is responsible for doing any
     // propagation of the Modify to sub-objects that may be necessary in
@@ -52,7 +52,7 @@ void UMyClass::MoveActor()
     // modifies a sub-object.
     MyActor->Modify();
     MyActor->SetActorLocation();
-    
+
 }
 ```
 

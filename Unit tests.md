@@ -38,7 +38,7 @@ Use FAutomationTestBase and latent commands.
  - `FEditorLoadMap`: To load a map.
  - `FStartPIECommand`: To start a PIE run 
  - `FEndPlayMapCommand`: To end a PIE run 
- 
+
  The other latent commands are used to spawn actors in PIE and prepare them to check what you expect
 
 ## A Collection of links

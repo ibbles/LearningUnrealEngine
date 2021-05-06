@@ -80,7 +80,7 @@ public:
         SLATE_ATTRIBUTE(FText, Text)
         SLATE_EVENT(FOnClicked, OnClicked)
     SLATE_END_ARGS()
-    
+
     // The Construct function is called when the widget is created.
     void Construct(const FArguments& InArgs);
 }
@@ -140,7 +140,7 @@ public:
     SLATE_BEGIN_ARGS(SMyWidget) {}
     SLATE_ARGUMENT(TWeakObjectPtr<class AMyHud>, OwningHud)
     SLATE_END_ARGS()
-    
+
 private:
     TWeakObjPtr<class AMyHud> OwningHud;
 }

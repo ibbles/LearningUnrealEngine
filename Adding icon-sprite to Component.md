@@ -104,7 +104,7 @@ public:
     //~ Begin ActorComponent Interface.
     virtual void OnRegister() override;
     //~ End ActorComponent Interface.
-    
+
 private:
 #if WITH_EDITORONLY_DATA
     UPROPERTY(Transient)

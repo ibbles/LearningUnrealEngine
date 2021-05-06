@@ -29,7 +29,7 @@ class MYMODULE_API UMySender : public UObject
 public:
     UPROPERTY(EditAnywhere, Category = "My Category")
     float MyProperty;
-    
+
     // ~Begin UObject interface.
 #if WITH_EDITOR
     virtual void PostEditChangeProperty(FPropertyChangedEvent& Event) override;
@@ -60,15 +60,15 @@ UCLASS()
 class MYMODULE_API UMyReceiver : public UObject
 {
     GENERATED_BODY()
-    
+
 public:
     UMyReceiver();
-    
+
     UPROPERTY(VisibleAnywhere, Category = "My Category")
     UMySender* MySender;
-    
+
     void SetMySender(UMySender* InMySender);
-    
+
     void MyPropertyChanged();
 };
 ```

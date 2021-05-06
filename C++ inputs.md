@@ -35,9 +35,9 @@ class AMyPawn : public APawn
 {
 public:
     GENERATED_BODY()
-    
+
     virtual void SetupPlayerInputComponent(UInputComponent* Input);
-    
+
     void OnInteractStart();
     void OnInteractEnd();
     void OnForward(float Value);
@@ -47,10 +47,10 @@ public:
 void AMyPawn::SetupPlayerInputComponent(UInputComponent* Input)
 {
     Super::SetupPlayerInputComponent(Input);
-    
+
     Input->BindAction("Interact", IE_Pressed, this, &AMyPawn::OnInteractStart);
     Input->BindAction("Interact", IE_Released, this, &AMyPawn::OnInteractEnd);
-    
+
     Input->BindAxis("Forward", this, &AMyPawn::OnForward);
     Input->BindAxis("Right", this, &AMyPawn::OnRight);
 }

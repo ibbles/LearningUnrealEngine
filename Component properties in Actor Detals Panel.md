@@ -22,9 +22,9 @@ class AMyActor : public AActor
 {
 public:
     GENERATED_BODY()
-    
+
     AMyActor();
-    
+
     UPROPERTY(VisibleAnywhere)
     UStaticMeshComponent* Mesh;
 }
