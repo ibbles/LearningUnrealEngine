@@ -28,3 +28,7 @@ Each channel can have each own name.
 [[2020-05-08_22:05:51]] [Static Mesh](./Static%20Mesh.md)  
 [[2020-12-26_21:50:52]] [Skeletal Mesh](./Skeletal%20Mesh.md)  
 [[2020-12-28_15:11:08]] [Material shading model inputs](./Material%20shading%20model%20inputs.md)  
+
+[[2020-08-11_11:13:52]] [UMaterialInstance](./UMaterialInstance.md)  
+[[2020-08-11_13:53:42]] [UMaterialInstanceConstant](./UMaterialInstanceConstant.md)  
+[[2020-08-11_13:53:57]] [UMaterialInstanceDynamic](./UMaterialInstanceDynamic.md)  

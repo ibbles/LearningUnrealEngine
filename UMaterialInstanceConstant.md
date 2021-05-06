@@ -29,7 +29,7 @@ ContentBrowserModule.Get().CreateNewAsset(
 
 The list of parameters provided by the parent material is found by calling `GetStaticParameterValues` on the Material Instance.
 
-The FBX importer may do something similar to what we want to do.
+The FBX importer does stuff with Materials.
 At least according to [https://github.com/gildor2/UEViewer/issues/118](https://github.com/gildor2/UEViewer/issues/118) (2019).
 Check `Engine/Source/Editor/UnrealEd/Private/Fbx/FbxMaterialImport.cpp`.
 `UnFbx::FFbxImporter::CreateUnrealMaterial`.
@@ -43,7 +43,7 @@ UMaterialInstanceConstantFactoryNew* MaterialFactory =
     NewObject<UMaterialInstanceConstantFactoryNew>();
 MaterialFactory->InitialParent = Template;
     
-FAssetToolsModule &AssetToolsModule =
+FAssetToolsModule& AssetToolsModule =
     FModuleManager::Get().LoadModuleChecked<FAssetToolsModule>(
         "AssetTools");
 UObject* Asset = AssetToolsModule.Get().CreateAsset(
@@ -107,3 +107,9 @@ So a new one is not created, we re-use one that already exists.
 Can `StaticLoadObject` be used outside of constructors?
 Can `StaticLoadObject` be used during Play?
 Think it's "yes" to both of these. The documentation doesn't forbid it, at least.
+
+
+[[2020-05-10_11:01:04]] [Materials](./Materials.md)  
+[[2021-05-06_08:51:54]] [UMaterial](./UMaterial.md)  
+[[2020-08-11_11:13:52]] [UMaterialInstance](./UMaterialInstance.md)  
+[[2020-08-11_13:53:57]] [UMaterialInstanceDynamic](./UMaterialInstanceDynamic.md)  

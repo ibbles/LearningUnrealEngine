@@ -10,5 +10,9 @@ There are two subclasses of of `UMaterialInstance`:
 
 Use the `Set.+ParameterValue` family of functions to set parameter values.
 Always call `PostEditChange` after calling a `Set.+ParameterValue` function.
-Examples for `.+`: `Scalar`, `Vector`, `Scalar`.
+Examples for `.+`: `Scalar`, `Vector`.
 
+[[2020-05-10_11:01:04]] [Materials](./Materials.md)  
+[[2021-05-06_08:51:54]] [UMaterial](./UMaterial.md)  
+[[2020-08-11_13:53:42]] [UMaterialInstanceConstant](./UMaterialInstanceConstant.md)  
+[[2020-08-11_13:53:57]] [UMaterialInstanceDynamic](./UMaterialInstanceDynamic.md)  

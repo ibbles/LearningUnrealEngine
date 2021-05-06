@@ -2,6 +2,9 @@
 
 # UMaterialInstanceDynamic
 
+A Dynamic Material Instance (`UMaterialInstanceDynamic`) is one where the parameters can be changed during Play.
+The alternative is a Constant Material Instance (`UMaterialInstanceConstant`), which can only have its parameters changed from the Editor.
+
 [https://answers.unrealengine.com/questions/560119/setting-material-and-material-instance-in-c-withou.html](https://answers.unrealengine.com/questions/560119/setting-material-and-material-instance-in-c-withou.html)
 
 ```c++
@@ -62,3 +65,8 @@ if (DynamicMaterial)
 ```
 
 At least I think the type of `DynamicMaterial` here is `UMaterialInstanceDynamic`.
+
+[[2020-05-10_11:01:04]] [Materials](./Materials.md)  
+[[2021-05-06_08:51:54]] [UMaterial](./UMaterial.md)  
+[[2020-08-11_11:13:52]] [UMaterialInstance](./UMaterialInstance.md)  
+[[2020-08-11_13:53:42]] [UMaterialInstanceConstant](./UMaterialInstanceConstant.md)  
