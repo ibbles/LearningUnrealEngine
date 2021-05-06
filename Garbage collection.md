@@ -32,7 +32,7 @@ void FMyAssetAction::GetActions(
     TArray<TWeakObjectPtr<UTextAsset>> TextAssets =
         GetTypedWeakObjectPtrs<UTextAsset>(InObjects);
     MenuBuilder.AddMenuEntry([=] {
-        // Safe to use TextAssets elements here, but check for validity first.
+        // Safe to use TextAssets elements here, but check IsValid first.
     })
 }
 ```
@@ -47,3 +47,7 @@ FReferenceFinder ObjectReferenceCollector = FReferenceFinder(
 ObjectReferenceCollector.FindReferences(Obj);
 ```
 
+## Owners that aren't UObject
+
+The normal way to hold an owning reference is to have an `UObject` owner with a `UPROPERTY` member that is a pointer to an `UObject` instance.
+It is possible to hold an owning reference in something not an `UObject` be inheriting from `FGCObject` and implementing `AddReferencedObjects`.
