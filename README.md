@@ -50,6 +50,10 @@ See the links in each document.
   https://docs.unrealengine.com/en-US/API/index.html
 - Unreal Engine YouTube channel
   https://www.youtube.com/user/UnrealDevelopmentKit
+- AnswerHub
+  https://answers.unrealengine.com/index.html
+- Forums
+  https://forums.unrealengine.com/
 - The Unreal Engine Community Wiki
   https://www.youtube.com/user/UnrealDevelopmentKit
 - Unreal Slackers Discord
