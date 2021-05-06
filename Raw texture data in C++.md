@@ -9,7 +9,7 @@ This entire note is just guesses.
 To read data from a texture one must first force the data to be resident and then lock it.
 These operations must be performed on the render thread.
 
-[[2020-08-31_16:29:29]] [Render commands](Render%20commands.md)
+[[2020-08-31_16:29:29]] [Render commands](./Render%20commands.md)  
 
 To get a pointer to texture data do the following:
 ```cpp

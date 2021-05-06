@@ -11,7 +11,7 @@ Are Editor only, and must be in an Editor module.
 
 Create a new class in an Editor Module inheriting from `FComponentVisualizer`.
 
-[[2021-02-19_08:26:26]] [Editor module](Editor%20module.md)
+[[2021-02-19_08:26:26]] [Editor module](./Editor%20module.md)  
 
 `MyComponentVisualizer.h`:
 ```cpp

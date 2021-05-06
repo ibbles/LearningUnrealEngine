@@ -1,3 +1,5 @@
+2021-05-06_21:33:14
+
 # Adding icon/sprite to Actor
 
 Some Actors use an icon to be visible in the Editor Viewport even when they don't contain any visible Components.
@@ -41,4 +43,4 @@ AMyActor::AMyActor(const FObjectInitializer& ObjectInitializer)
 Examples of Actors that do are `AInfo` and `DecalActor`.
 
 
-[[2021-04-03_18:13:02]] [Adding icon to Component](Adding%20icon%20to%20Component.md)  
+[[2021-04-03_18:13:02]] [Adding icon-sprite to Component](./Adding%20icon-sprite%20to%20Component.md)  

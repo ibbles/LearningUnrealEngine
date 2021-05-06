@@ -26,10 +26,10 @@ Add an entry similar to the following to the `"modules"` array.
 For the primary Editor module in a project it should, by convention, be the name of the project followed by `Editor`.
 
 `Type` is the type of the module (duh) and is often `Runtime` or `Editor`.
-[[2020-09-15_21:10:32]] [Module types](./Module%20types.md)
+[[2020-09-15_21:10:32]] [Module types](./Module%20types.md)  
 
 `LoadingPhase` is when during the startup process that this module should be loaded.
-[[2021-02-19_19:49:10]] [Module loading phase](./Module%20loading%20phase.md)
+[[2021-02-19_19:49:10]] [Module loading phase](./Module%20loading%20phase.md)  
 
 I'm a bit unsure on the `LoadingPhase`/`PostEngineInit` part.
 

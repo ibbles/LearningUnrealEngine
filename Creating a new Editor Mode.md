@@ -52,7 +52,7 @@ class MYMODULE_API FMyEdModeToolkit : public FModeToolkit
 There is also `FBaseToolkit` as an even more low-level base class.
 `FModeToolkit` gives you an UI panel for selectable tools and a Details Panel for the selected tool.
 
-[[2020-12-03_10:41:49]] [Editor Mode](./Editor%20Mode.md)  
+[[2020-12-03_10:41:49]] [Editor Mode](./Editor%20mode.md)  
 [[2021-02-19_08:26:26]] [Editor module](./Editor%20module.md)  
 
 

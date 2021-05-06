@@ -143,7 +143,7 @@ void UMyComponent::OnRegister()
 I don't know why the the first version repeats the asset name in the path while the second version don't.
 Also don't know why the second version checks `IsRunningCommandlet()` while the first version don't.
 The first version is based on [`AudioComponent`](https://github.com/EpicGames/UnrealEngine/blob/4.25.3-release/Engine/Source/Runtime/Engine/Private/Components/AudioComponent.cpp#L862).
-The second version is based on (`CameraShakeSourceComponent`)[https://github.com/EpicGames/UnrealEngine/blob/4.25.3-release/Engine/Source/Runtime/Engine/Private/Camera/CameraShakeSourceComponent.cpp#L47].
+The second version is based on [`CameraShakeSourceComponent`](https://github.com/EpicGames/UnrealEngine/blob/4.25.3-release/Engine/Source/Runtime/Engine/Private/Camera/CameraShakeSourceComponent.cpp#L47).
 
-[[Adding icon to Actor]] [Adding icon to Actor](./Adding%20icon%20to%20Actor.md)  
+[[2021-05-06_21:33:14]] [Adding icon-sprite to Actor](./Adding%20icon-sprite%20to%20Actor.md)  
 

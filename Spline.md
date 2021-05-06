@@ -21,6 +21,6 @@ The forward direction at a point on the spline, as reported by the Get Rotation 
 
 
 
-[[2020-04-11_08:29:46]] [Object placement and positioning](./Object%20placement%@0and%20positioning.md)  
+[[2020-04-11_08:29:46]] [Object placement and positioning](./Object%20placement%20and%20positioning.md)  
 [[2021-03-20_09:31:05]] [Timeline](./Timeline.md)  
 [[2021-03-20_10:46:45]] [Spline mesh](./Spline%20mesh.md)  
