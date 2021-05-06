@@ -15,7 +15,7 @@ for (int32 I = 0; I < NumWorkItems; ++i)
     {
         break;
     }
-    EnterProgressFrame(WorkPerItem); // Can be any fraction of AmountOfWork.
+    MyTask.EnterProgressFrame(WorkPerItem); // Can be any fraction of AmountOfWork.
     // Do some work here.
 }
 ```
