@@ -14,7 +14,7 @@ There is also something called proxy archives (`FObjectAndNameAsStringProxyArchi
 - Can use the same outer archive to both save and load.
 
 ```cpp
-TArray<uint8> BinaryData;    
+TArray<uint8> BinaryData;
 FMemoryWriter Writer(BinaryData);
 FObjectAndNameAsStringProxyArchive Archive(Writer, true);
 Object->Serialize(Archive);

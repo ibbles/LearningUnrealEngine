@@ -68,7 +68,7 @@ Has two virtual methods:
 - `ShutdownModule`
     Called when the editor or game is shutting down, really when the module is unloaded from memory.
 
-`MyModule.h`:    
+`MyModule.h`:
 ```cpp
 #pragma once
 
