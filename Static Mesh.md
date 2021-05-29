@@ -76,3 +76,36 @@ When creating the mesh, keep it centered around the origin in the DCC.
 It may be possible to move it in Static Mesh Editor in Unreal Editor.
 
 
+## Level of detail - LOD
+
+A collection of meshes for the same model with decreasing triangle count and material complexity.
+No need to render a high-poly mesh for a model that is very small on screen.
+Higher LOD numbers mean cruder mesh, with 0 being the original, full detail mesh.
+Lower LOD meshes often try to preserve the silhouette.
+There is a trade-off between the number of LOD meshes and the visual impact of switching between them.
+The reduction in rendering cost should offset the cost of having additional meshes.
+A guideline is to have one with 75%, 35%, and 12% of the triangles or vertices.
+
+The Tool Bar in the Static Mesh Editor has a combo box for switching between LODs.
+When set the Auto the mesh rendered in the Viewport will switch automatically based on screen size.
+The current LOD is printed in the status text in the top-left of the viewport.
+
+The Details Panel in the Static Mesh Editor contains a category for each LOD level.
+And a category for LOD Settings in general.
+Selecting something in the Details Panel > LOD Settings > LOD Group combo box will cause a collection of LOD meshes to be created.
+Settings for each type of automatic LOD creation is set in the engine settings / `Engine.ini`.
+
+
+When importing an FBX with multiple LODs, enable FBX Import Options > Mesh > Import Mesh LODs.
+Not sure how the importer decides which triangle belong to which LOD, and what the order of the LODs are.
+
+[[2021-05-29_07:58:52]] [Import meshes](./Import%20meshes.md)  
+
+Nanite is a separate way to handle level of detail.
+
+[[2020-12-26_21:50:52]] [Skeletal Mesh](./Skeletal%20Mesh.md)  
+[[2020-05-10_11:01:04]] [Materials](./Materials.md)  
+[[2021-05-28_23:06:53]] [Lightmaps](./Lightmaps.md)  
+[[2021-05-29_07:58:52]] [Import meshes](./Import%20meshes.md)  
+[[2020-11-10_08:30:07]] [Collision shapes](./Collision%02shapes.md)  
+[[2021-05-29_10:13:01]] [FBX](./FBX)  
