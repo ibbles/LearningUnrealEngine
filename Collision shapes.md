@@ -3,9 +3,10 @@
 # Collision shapes
 
 A Static Mesh can have collision shapes.
-Collision shapes are what are sent to the physics engine.
 Because doing collision detection on the high-polygon mesh is often not necessary and too expensive.
+Collision shapes are what are sent to the physics engine.
 A collision shape on the Static Mesh is required for enabling Simulate Physics on a Static Mesh Component.
+
 
 ## Simple collision
 
@@ -52,6 +53,21 @@ Therefore we set a single LOD to use for collisions in Details Panel > General S
 
 The `UStaticMesh` class has the two properties `UStaticMesh* ComplexCollisionMesh` and `int32 LODForCollision`.
 
+
+## Create in digital content creation (DCC) software
+
+The complex collision can be created in a mesh creation software, such as 3D Studio Max, together with the visual mesh.
+The collision mesh must be named `UCX_<FULL_NAME_OF_MESH>_/d+/`.
+For example, a model that contains the two meshes named Container and Lid can have collision meshes named
+- UCX_Container_00
+- UCX_Container_01
+- UCX_Lid_00
+
+When importing a mesh that has collision shapes included, disable Auto Generate Collision in the FBX Import Options.
+
+The collision will show up as a Simplified Collision, using a Convex.
+At least in the tutorial at [Building Better Pipelines - Static Meshes @ learn.unrealengine.com](https://learn.unrealengine.com/course/2436634/module/5372262).
+Don't know what will happen if the collision mesh isn't convex.
 
 ## Convex decomposition
 
