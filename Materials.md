@@ -22,6 +22,36 @@ The Dynamic Parameter node is used to pass per-frame state to the material.
 Each Dynamic Parameter can accommodate four floats.
 Each channel can have each own name.
 
+### Normals
+
+The default normal in a material i (0, 0, 1).
+This represents the normal in the mesh.
+We can scale normals from a normal map by lerping between (0, 0, 1) and a texture sample from the normal texture.
+When we are close to (0, 0, 1) the effect of the normal map is very weak.
+When we are close to the texture sample the effect of the normal map is very strong.
+
+The computed normal passed to the material output node is available to other parts of the material using the PixelNormalWS node.
+WS stands for World Space.
+
+### Sphere mask
+
+Produce a fall-off based on where two vectors overlap.
+Can be used to produce a circular fall-off at the half-way point of a texture.
+
+Another way to do a circular fall-off with with
+```
+Camera Vector > TransformVector World Space to Tangent Space > Mask(B)
+```
+On a sphere this produces white in the center and black around the perimeter.
+The distribution between "center" and "perimeter" can be controlled by passing the output of `Mask(b)` into the Base input of a Power node.
+
+### Motion_4WayChaos
+
+Continuously distort a texture in multiple layers.
+
+[Shaders in UE4 | Live Training | Unreal Engine Lievestream @ YouTube](https://www.youtube.com/watch?v=mig6EF17mR8)
+
+
 [[2020-08-24_10:55:42]] [Material Editor](./Material%20Editor.md)  
 [[2020-08-11_11:11:52]] [Material instance](./Material%20instance.md)  
 [[2020-08-11_19:05:49]] [Material parameter collection](./Material%20parameter%20collection.md)  
