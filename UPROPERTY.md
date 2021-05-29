@@ -50,7 +50,28 @@ An execution node is created with the variables new value as its only input pin 
 ## EditInline
 
 The point of the "Instanced" keyword and "EditInlineNew" is that you create them in-place.
-Not sure what I mean by this.
+(
+Not sure what I mean by this. Trying a different forumulation:
+)
+
+An array of pointers to class instances, such as `TArrach<UMyClass*>`, can be configured to create actual instances when manipulated in Unreal Editor, instead of just a collection of `nullptr`. We do this by marking the array with the `Instanced` Property Specifier and the class that the array holds with `EditInlineNew`.
+
+```cpp
+UCLASS(EditInlineNew)
+class MYMODULE_API UMyClass : public UObject
+{
+    GENERATED_BODY();
+};
+
+UCLASS()
+class MYMODULE_API UMyManager : public UObject
+{
+    GENERATED_BODY();
+public:
+    UPROPERT(EditAnywhere, Instanced)
+    TArray<UMyClass*> ManagedThings;
+};
+```
 
 
 [[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
