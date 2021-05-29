@@ -3,6 +3,11 @@
 ## Static Mesh
 
 A `StaticMesh` is a mesh in which the triangles and vertices don't move in relation to each other.
+The vertex positions are expressed in centimeters.
+A cube with one corner vertex at (0.0, 0.0, 0.0) and the opposite corner vertex at (100.0, 100.0, 100.0) is a 1 meter cube.
+Most 3D digital content creation (DCC) software can be set to use this unit in its settings.
+To prevent scaling issues.
+
 A `StaticMesh` is either imported, often from an `.fbx` file, or generated from a `RawMesh`.
 A `RawMesh` is created from a list of shared vertex positions and per wedge positing index, normal, tangents, and texture coordinate.
 Three wedges make up a triangles and is anchored at a vertex.
