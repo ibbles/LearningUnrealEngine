@@ -67,3 +67,12 @@ In the instance's Details Panel, search for Overridden Light Map Res.
 [[2021-05-28_23:06:53]] [Lightmaps](./Lightmaps.md)  
 
 
+## Pivot point
+
+The Static Mesh's local origin.
+The point that the Static Mesh will rotate/scale around.
+The pivot point is defined by the digital content creation (DCC) software.
+When creating the mesh, keep it centered around the origin in the DCC.
+It may be possible to move it in Static Mesh Editor in Unreal Editor.
+
+
