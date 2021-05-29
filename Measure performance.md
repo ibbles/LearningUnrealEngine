@@ -5,6 +5,7 @@
 ## Level editor viewport
 
 Shader complexity view.
+Level Editor > Viewport > View Mode > Optimization Viewmodes > Shader Complexity.
 
 ## Console commands
 
