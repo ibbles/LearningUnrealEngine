@@ -19,6 +19,11 @@ It also has a `Set Static Mesh` function, but it doesn't work in Unreal Engine 4
 Instead select the `Add Spline Mesh Component` node and set the Static Mesh in the Details Panel.
 This makes it impossible to pass a mesh from an Actor variable to the Spline Mesh Component.
 
+The Material assigned to a Spline Mesh must have `Use with Spline Mesh` checked in the Details Panel.
+(
+TODO: Find out where the checkbox really is, and describe better.
+)
+
 Add a Spline Component to an Actor.
 In the Actor's Construction Script loop over the spline.
 The loop can be either over control points or spline length divided by mesh length.
