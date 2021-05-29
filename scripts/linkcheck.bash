@@ -32,7 +32,7 @@ for source in *.md ; do
             if [[ ! "${link}" =~ ^./ ]] ; then
                 echo "${source}" "No ./ prefix in link '${link}'."
             fi
-            target=$(echo "$link" | sed 's,%20, ,g')
+            target=$(echo "$link" | sed 's,%20, ,g' | sed 's,%7E,~,g')
             if [ ! -f "${target}" ] ; then
                 echo "${source}: Broken link '$link'."
             fi
