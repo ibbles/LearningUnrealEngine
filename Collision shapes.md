@@ -52,5 +52,16 @@ Therefore we set a single LOD to use for collisions in Details Panel > General S
 
 The `UStaticMesh` class has the two properties `UStaticMesh* ComplexCollisionMesh` and `int32 LODForCollision`.
 
+
+## Convex decomposition
+
+Convex decomposition is the process of approximating a mesh using a collection convex shapes.
+Multiple simple convex shapes are often more performant than a single complicated highly detailed mesh.
+A collection of convex shapes can often approximate a arbitrary shape quite well.
+
+The Static Mesh Editor has a Convex Decomposition Panel.
+If not, enable it in Top Menu Bar > Window > Convex Decomposition.
+
+
 [[2020-07-04_15:24:50]] [Collisions](./Collisions.md)  
 [[2020-11-10_08:30:07]] [Collision presets](./Collision%20presets.md)  
