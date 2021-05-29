@@ -213,5 +213,15 @@ Component->RegisterComponent();
 Component->PostEditChange()
 ```
 
+## Inspecting a Blueprint
+```cpp
+void PrintNodes(UBlueprint* BP)
+{
+    for (auto SCSNode : BP->SimpleConstructionScript->GetAllNodes())
+    {
+        UE_LOG(LogTemp, Log, TEXT(" - %s"), *SCSNode->ComponentClass->GetFName().ToString());
+    }
+}
+```
 
 [[2020-06-16_09:19:36]] [Rename](./Rename.md)  
