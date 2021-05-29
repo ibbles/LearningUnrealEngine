@@ -53,3 +53,17 @@ These are very flexible materials that use parameters, vertex properties, or tex
 
 [[2020-05-10_11:01:04]] [Materials](./Materials.md)  
 
+
+## Lightmaps
+
+A Static Mesh can have a lightmap associated with it.
+A lightmap is precomputed lighting information.
+The properties for that lightmap are set in the Details Panel in the Static Mesh Editor.
+Can set Light Map Resolution.
+Can set Light Map Coordinate Index.
+The light map resolution set on the Static Mesh Asset, in the Static Mesh Editor, can be override on a particular instance.
+In the instance's Details Panel, search for Overridden Light Map Res.
+
+[[2021-05-28_23:06:53]] [Lightmaps](./Lightmaps.md)  
+
+
