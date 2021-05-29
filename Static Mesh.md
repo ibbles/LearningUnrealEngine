@@ -107,5 +107,5 @@ Nanite is a separate way to handle level of detail.
 [[2020-05-10_11:01:04]] [Materials](./Materials.md)  
 [[2021-05-28_23:06:53]] [Lightmaps](./Lightmaps.md)  
 [[2021-05-29_07:58:52]] [Import meshes](./Import%20meshes.md)  
-[[2020-11-10_08:30:07]] [Collision shapes](./Collision%02shapes.md)  
-[[2021-05-29_10:13:01]] [FBX](./FBX)  
+[[2020-11-10_08:30:07]] [Collision shapes](./Collision%20shapes.md)  
+[[2021-05-29_10:13:01]] [FBX](./FBX.md)  
