@@ -3,6 +3,10 @@
 ## Static Mesh
 
 A `StaticMesh` is a mesh in which the triangles and vertices don't move in relation to each other.
+
+
+## Triangles
+
 The vertex positions are expressed in centimeters.
 A cube with one corner vertex at (0.0, 0.0, 0.0) and the opposite corner vertex at (100.0, 100.0, 100.0) is a 1 meter cube.
 Most 3D digital content creation (DCC) software can be set to use this unit in its settings.
@@ -18,6 +22,13 @@ The alternative is a `SkeletalMesh`
 A static mesh has a number of material slots.
 Each material slot maps to a set of triangles.
 When a Material is assigned to a material slot the triangles mapped to that slot is given that material.
+(
+The following part is from before Nanite.
+Still unclear what the guidelines for Nanite meshes are.
+)
 
+The number of triangles has a big impact on the rendering cost of a Static Mesh.
+Avoid modeling small details with triangles.
+Game models often have triangle budgets.
 
 [[2020-12-26_21:50:52]] [Skeletal Mesh](./Skeletal%20Mesh.md)  
