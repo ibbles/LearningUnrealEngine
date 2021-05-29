@@ -28,13 +28,18 @@ The system:
 `DefaultsOnly` vs `InstanceOnly`: Whether the `Editor` or `Visible` part applies to defaults or a particular instance.
 `Anywhere`: Both defaults and instance.
 
-The `Blueprint(ReadOnly)|(ReadWrite)` and `(Edit)|(Visible)(DefaultsOnly)|(InstanceOnly)|(Anywhere)` specifiers are independent. One is about Blueprint scripts and the other is about the property windows in the Unreal Editor.
+The `Blueprint(ReadOnly)|(ReadWrite)` and `(Edit)|(Visible)(DefaultsOnly)|(InstanceOnly)|(Anywhere)` specifiers are independent. One is about Blueprint Visual Scripts and the other is about the property windows in the Unreal Editor.
 
 Components created with `CreateDefaultSubobject` should never be `Edit<something>`, only `Visible<something`.
 Components created with `CreateDefaultSubobject` should never be `BlueprintReadWrite`, only `BlueprintReadOnly`.
+The Components are still editable even though they are set to Read Only.
+It is the Component pointer that is Read Only, not the Component itself.
+So  Read Only Component cannot be replaced with another Component.
+Setting Read Write and then replacing the Component afterwards will mess up serialization.
+It is safe to replace Components created by a parent class in the child class' constructor.
 ```cpp
 UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
-UMyComponent* MyComponent;
+UMyComponent* MyComponent; // Possible to edit the Component, but not the pointer.
 ```
 
 To read the value of a `UPROPERTY` in a Blueprint Visual Script, right-click the Visual Script background and type `get <NAME>`.
