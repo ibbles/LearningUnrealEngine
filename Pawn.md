@@ -26,6 +26,7 @@ It is passed a `UInputComponent` on which we create input mapping bindings.
 Call `BindAction` and/or `BindAxis` on the `UInputcomponent` to setup input event > member function bindings.
 
 ## Spawning
+
 The main Pawn in a level is either one placed in a level or created by the Game Mode.
 If the Pawn is placed in the level then set its Details Panel > Pawn > Auto Possess Player property to one of the players.
 If created by the Game Mode then:
@@ -41,6 +42,7 @@ I don't know what will happen if the project is packaged and run stand-alone.
 Unreal Engine has a Default Pawn class that is used if no Pawn has been selected.
 The Default Pawn is a spectator type Pawn that can fly around the level.
 
+
 ## Possessing
 
 The initial possession happens when the default Pawn is spawned by the game.
@@ -50,6 +52,9 @@ The Pawn knows which Controller is currently controlling it, if any.
 Set to the `AController* Controller` property.
 
 `TODO:` Write about how to move the Player Controller from Pawn to Pawn here.
+
+[[2021-05-30_18:44:11]] [Possessing](./Possessing.md)  
+
 
 ## Movement
 
@@ -76,3 +81,4 @@ I don't know what the purpose of the StaticMesh is.
 [[2020-04-11_11:18:18]] [Controller](./Controller.md)  
 [[2020-04-11_11:26:21]] [Game mode](./Game%20mode.md)  
 [[2021-01-01_16:41:46]] [C++ Pawn](./C++%20Pawn.md)  
+[[2021-05-30_18:44:11]] [Possessing](./Possessing.md)  
