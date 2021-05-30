@@ -20,6 +20,8 @@ The Character Movement Component is "hidden".
 Not really hidden, but used through high-level input member functions on Pawn.
 Functions such as `AddMovementInput`.
 
+[[2021-05-30_19:28:15]] [Character Movement Component](./Character%20Movement%20Component.md)  
+
 
 
 [[2020-03-10_21:29:17]] [Actor](./Actor.md)  
@@ -28,3 +30,4 @@ Functions such as `AddMovementInput`.
 [[2020-12-26_21:50:52]] [Skeletal Mesh](./Skeletal%20Mesh.md)  
 [[2020-04-10_21:46:17]] [Inputs](./Inputs.md)  
 [[2021-01-03_17:40:41]] [C++ Character](./C++%20Character.md)  
+[[2021-05-30_19:28:15]] [Character Movement Component](./Character%20Movement%20Component.md)  
