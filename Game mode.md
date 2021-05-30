@@ -2,10 +2,34 @@
 
 # Game Mode
 
-The rules for the game.
-Which Pawn to use for the player, `Default Pawn Class`.
-Which PlayerController to use, `Player Controller Class`.
+The rules for the game, such as win states and lose states.
+
+The Game Mode is a Blueprint.
+Create a new Game Mode by Content Browser > right-click > New Class > Game Mode Base.
+Set the project's default Game Mode in Project Settings > Project > Maps & Modes > Default Modes > Default Game Mode.
+This value can be overridden on a per-level basis.
+The Game Mode is created when a level is loaded, and destroyed with the level.
+
+
+The Game Mode contains the following important settings:
+- Game Session Class.
+- Game State Class.
+- Player Controller Class. Which Player Controller to use,
+- Player State Class.  
 Holds any data or functionality that transcends all the levels.
+(
+Not sure if this should be on Player Controller or Player State.
+)
+(
+How can anything survive between levels if the entire Game Mode is destroyed and recreated on level transitions?
+)
+- HUD Class.
+- Default Pawn Class. Which Pawn to use for the player, unless override for a particular level.
+- Spectator Class.
+- Replay Spectator Player Controller
+- Server Stat Replicator Class.
+
+
 
 The selected Pawn should probably contain a `Camera`
 
