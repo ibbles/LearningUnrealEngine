@@ -42,13 +42,14 @@ It is common to display data from the player character, which can be fetched wit
 ## Instantiating root widgets
 
 Root Widgets must be instantiated before they are seen.
-This can be done from BeginPlay, for example in a PlayerController of the Level Blueprint.
-An instance if create with Create Widget.
+This can be done from BeginP lay, for example in a Player Controller, Pawn or the Level Blueprint.
+An instance is created with the Create Widget node.
 Select your Widget class from the drop down.
+Next add it to the viewport with the Add to Viewport node.
 The created Widget is often promoted to a variable.
-Next add it to the viewport.
 
-The default-created root of the Widget, a Canvas Panel, can be removed, making a new Widget component the new root. Do this when creating sub-Widgets, but keep the Canvas Panel when creating the Widget that will be added to the viewport.
 
-[[2020-08-10_20:32:35]] UMG
-[[2020-08-10_20:34:24]] Widget Blueprint
+
+
+[[2020-08-10_20:32:35]] [UMG](./UMG.md)  
+[[2020-08-10_20:34:24]] [Widget Blueprint](./Widget%20Blueprint.md)  
