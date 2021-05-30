@@ -2,7 +2,7 @@
 
 # Character
 
-A type of pawn.
+A type of Pawn.
 Used for humanoid things that walk, run, jump, and similar.
 Has a Capsule, used for collision detection, as its Root Component.
 Has an Arrow, to show the forward direction which is along the X axis.
@@ -12,6 +12,9 @@ The Character Movement Component controls how the character can walk/run/jump/et
 Controller inputs are forwarded to the Character Movement Component.
 Knows if it is walking/running/swimming/falling/etc.
 The Character has a Player Controller. Not sure what this means.
+
+To make a particular Character class the main player Pawn type, selected it as the Default Pawn Class in the project's or level's Game Mode.
+Or create an instance of the Character class in the level and select one of the players in Details Panel > Pawn > Auto Possess Player.
 
 The Character Movement Component is "hidden".
 Not really hidden, but used through high-level input member functions on Pawn.
