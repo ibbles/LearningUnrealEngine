@@ -55,3 +55,9 @@ void AMyAttachment::DetachFromOwner()
     DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
 }
 ```
+
+A Camera can be attached to a socket.
+Make the Camera Component a child to a Mesh Component that as a socket, select the camera, and select the socket for Details Panel > Sockers > Parent Socker.
+The camera will now follow as the mesh moves.
+
+[[2020-05-08_21:50:52]] [Camera](./Camera.md)  
