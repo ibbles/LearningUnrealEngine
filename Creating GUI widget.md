@@ -18,7 +18,10 @@ Variables held by Actors can be displayed in the GUI Widget.
 Widgets are added by dragging them from the Palette panel into either the Design Board or the Hierarchy panel.
 Widgets are renamed in the top of the widget's Details panel.
 
-Many widets display data.
+Widgets can be dragged to any location on the screen.
+It is recommended to set an anchor point for each widget.
+The anchor point can be any of the sides, corner, center point, row, or column, or the entire canvas.
+Not sure when this matters. When using different screen ratios, perhaps.
 
 ## Displaying data
 
