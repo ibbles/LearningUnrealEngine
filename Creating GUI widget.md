@@ -2,6 +2,8 @@
 
 # Creating GUI widget
 
+## Creating new Widget asset
+
 A widget is an asset, so it exists within the Content Browser.
 Right-click > User Interface > Widget Blueprint.
 Double-clicking a Widget Blueprint opens the Widget Editor.
@@ -10,15 +12,23 @@ Switch tabs in the upper right corner.
 GUI Widgets are used both for in-game HUD elements and for full-screen menus.
 Variables held by Actors can be displayed in the GUI Widget.
 
+
+## Adding sub-widgets
+
 Widgets are added by dragging them from the Palette panel into either the Design Board or the Hierarchy panel.
 Widgets are renamed in the top of the widget's Details panel.
 
 Many widets display data.
+
+## Displaying data
+
 Such widgets can have a binding.
 A bindings is a function that fetch and format that data.
 Create a binding for a data field in a Widget's Detals panel by clicking Bind > Create New Binding next to the data field in the Details panel.
 A new function is created.
 The functions can be renamed.
+
+## Instantiating root widgets
 
 Root Widgets must be instantiated before they are seen.
 This can be done from BeginPlay, for example in a PlayerController of the Level Blueprint.
