@@ -23,6 +23,10 @@ It is recommended to set an anchor point for each widget.
 The anchor point can be any of the sides, corner, center point, row, or column, or the entire canvas.
 Not sure when this matters. When using different screen ratios, perhaps.
 
+The default-created root of the Widget, a Canvas Panel, can be removed, making a new Widget component the new root.
+Do this when creating sub-Widgets, but keep the Canvas Panel when creating the Widget that will be added to the viewport.
+
+
 ## Displaying data
 
 Such widgets can have a binding.
