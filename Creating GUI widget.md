@@ -29,11 +29,15 @@ Do this when creating sub-Widgets, but keep the Canvas Panel when creating the W
 
 ## Displaying data
 
+Many widgets display data.
 Such widgets can have a binding.
 A bindings is a function that fetch and format that data.
-Create a binding for a data field in a Widget's Detals panel by clicking Bind > Create New Binding next to the data field in the Details panel.
+Create a binding for a data field in a Widget's Details panel by clicking Bind > Create New Binding next to the data field in the Details panel.
 A new function is created.
 The functions can be renamed.
+The function need an object reference to read the data from.
+It is common to display data from the player character, which can be fetched with the Get Player Character node.
+
 
 ## Instantiating root widgets
 
