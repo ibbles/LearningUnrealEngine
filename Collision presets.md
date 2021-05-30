@@ -13,7 +13,7 @@ Response can be either Ignore, Overlap, or Block.
 - Overlap: The collision is detected and events generated, but the physics engine is not notified. So game logic can happen in response to the collision but there will be no bounce or any other physical effect.
 - Block: Notify the physics engine about the collision. I assume that events are generated as well.
 
-So one can imagine the collision preset as the folloring struct:
+So one can imagine the collision preset as the following struct:
 ```c++
 struct CollisionPreset
 {
