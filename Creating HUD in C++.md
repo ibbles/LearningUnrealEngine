@@ -3,11 +3,23 @@
 # Creating HUD in C++
 
 ```c++
-AMainHUD::AMainHUD() { static ConstructorHelpers::FClassFinder<UUserWidget> Widget_BP(TEXT("/CivilFXCore/UI_BPs/BP_MainHUDWidget")); MainHUDWidgetClass = Widget_BP.Class; }
+AMyHUD::AMyHUD()
+{
+    static ConstructorHelpers::FClassFinder<UUserWidget> Widget_BP(
+        TEXT("/MyHUD/BP_MyHUDWidget"));
+    MyHUDWidgetClass = Widget_BP.Class;
+}
 ```
 
 ```c++
-void AMainHUD::BeginPlay() { Super::BeginPlay(); check(MainHUDWidgetClass); UUserWidget* MainHUDWidget = CreateWidget(GetWorld(), MainHUDWidgetClass); check(MainHUDWidget); MainHUDWidget->AddToViewport(); }
+void AMyHUD::BeginPlay()
+{
+    Super::BeginPlay();
+    check(MyHUDWidgetClass);
+    UUserWidget* MyHUDWidget = CreateWidget(GetWorld(), MyHUDWidgetClass);
+    check(MyHUDWidget);
+    MyHUDWidget->AddToViewport();
+}
 ```
 
 
