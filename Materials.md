@@ -12,10 +12,16 @@ A `Material` is a blueprint and all `Materials` have a `Result Node` that define
 
 Component Mask is used to pick out a subset of the channels of color. Often to drop alpha.
 Wires can be moved between pin by holding Ctrl and click+drag.
-Colors are made darker by multiplying by a scalar < 1.0. Not sure how to avoid also scaling alpha.
 Constants and parameters are created by holding 1, 2, or 3 and clicking in the graph.
 Constants are converted to parameters by right-click > Convert to Parameter.
-Materials are made double-sided, or two sided, using a checkbox in Details Panel > Material > Two Sided.
+
+By default triangles in Unreal Engine are one-sided, meaning that back-face culling is enabled.
+The effect of this is that objects become invisible when viewed from the inside or backside for single-sided objects.
+We can make them two-sided, also called two sided, double-sided, or double sided.
+Check the checkbox in Material > Output Node > Details Panel > Material > Two Sided.
+
+Colors are made darker by multiplying by a scalar < 1.0. Not sure how to avoid also scaling alpha.
+
 There is a node named GeneratedBand. Useful for creating sliding band effects when combined with a Panner.
 
 The Dynamic Parameter node is used to pass per-frame state to the material.
