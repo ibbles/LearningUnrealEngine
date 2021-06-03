@@ -16,7 +16,7 @@ Select the socket in the Camera's Details Panel > Sockets > Parent Socket.
 [[2020-08-06_22:51:24]] [Sockets](./Sockets.md)  
 
 A Camera that is part of a Pawn can use the Pawn's (Player?) Controller for it's view direction.
-To enable, check Camera > Details Panel > Camera Settings > Use Pawn Controller Rotation.
+To enable, check Camera > Details Panel > Camera Settings > Use Pawn Control Rotation.
 
 [[2020-04-11_09:21:04]] [Pawn](./Pawn.md)  
 [[2020-04-11_09:24:51]] [Character](./Character.md)  
