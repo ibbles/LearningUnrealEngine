@@ -5,6 +5,7 @@
 Events are like callbacks. They are triggered and when triggered a Blueprint script is run.
 Common events are BeginPlay and EventTick.
 Other events are OnComponentOverlap(?).
+Events are red nodes in the event graph.
 Events have inputs, but no outputs. Because they are asynchronous.
 Events have an execution pin that connect to the graph that implements some functionality.
 Events have an Output Delegate. I don't know what that is yet.
