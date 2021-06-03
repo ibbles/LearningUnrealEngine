@@ -64,6 +64,7 @@ Recommended to disable these [Building Better Pipelines - Exporting and Importin
 
 - Disable Mesh > Auto Generate Collision if the mesh contains collision.
 - Disable Mesh > Generate Lightmap UVs if the mesh contains lightmap UVs.
+- Set Mesh > Vertex Color Import to Replace if the mesh contains vertex colors.
 - Enable Mesh > Import Mesh LODS if the mesh contains multiple LODs.
 - Enable Material > Import Materials if the mesh contains materials.
 - Enable Material > Import Textures if the mesh contains textures.
