@@ -245,4 +245,4 @@ The following is from the [Unreal Engine 4.25 release notes](https://docs.unreal
 RunUAT.bat BuildCMakeLib -TargetLib=ExampleLib -TargetLibVersion=examplelib-0.1 -TargetConfigs=relase+debug -TargetPlatform=PlatformName -LibOutputPath=lib -CMakeGenerator=Makefile -CMakeAdditionalArguments="-DEXAMPLE_CMAKE_DEFINE=1" -MakeTarget=all -SkipSubmit
 ```
 
-[[20200827122445]] Third-party libraries
+[[20200827122445]] [Third-party libraries](./Third-party%20libraries.md)  
