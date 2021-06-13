@@ -2,6 +2,17 @@
 
 # Creating Components at runtime
 
+## Blueprint
+
+Create new Components in an Actor Blueprint with the Add COMPONENT_NAME Component function.
+For example: Add Static Mesh Component.
+
+This doesn't seem to work when not within the Actor Blueprint itself.
+One cannot create Components in an Actor that one has a reference to.
+
+
+## C++
+
 Cannot use `CreateDefaultSubobject` outside of a constructor.
 Instead use `NewObject` and add/register manually.
 
