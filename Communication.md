@@ -23,6 +23,28 @@ Both functions and events can be called repeatedly using Set Timer By Function N
 There is also Set Timer By Event. Not sure why By Function can call an event when there is a By Event timer type.
 This is used frequently by tutorials.
 
+## Blueprint Interface
+
+A Blueprint Interface is a set of functions that Blueprint classes implementing the interface must provide.
+
+
+Blueprint Interfaces can be used to send messages between a sender and a receiver.
+The sender has a variable holding one or more references to instances of the Blueprint Interface.
+The receiver implements the Blueprint Interface.
+(
+In this Unreal Engine live stream they make the variable hold Actors instead of using the Blueprint Interface.
+Why?
+[Oct 4, 2018 Unreal Livestream Makeup video by Zak Parrish @ youtube.com](https://youtu.be/M0MpyfFaPsA?t=4414)
+)
+When there is a new message to transmit the sender call one of the functions listed in the Blueprint Interface.
+A Blueprint Interface call node in a Visual Script is blue and decorated with an open envelope symbol.
+
+
+[[2021-06-05_16:16:53]] [Blueprint interface](./Blueprint%20interface.md)
+
+
+## Twin stick shooter
+
 The communication flow for AI movement in the TwinStickShooter is as follows:
 There is an EnemyCharacter class inheriting from BaseCharacter inheriting from Character.
 There is an EnemyAI Blueprint class inheriting from AIController.
@@ -42,4 +64,4 @@ It is a built-in Component that will pick up the Add Movement Input and Set Cont
 
 [BlueprintCommsUsage@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Blueprints/UserGuide/BlueprintCommsUsage/index.html)
 
-[[2020-04-10_21:40:28]] [col] TwinStickShooter
+[[2020-04-10_21:40:28]] [~Collection Twin stick shooter](./%E7Collection%20Twin%20stick%20shooter.md)  
