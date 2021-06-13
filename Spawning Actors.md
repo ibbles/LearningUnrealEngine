@@ -3,6 +3,17 @@
 
 # Spawning Actors
 
+
+## Blueprint
+
+New Actor instances are spawned with Spawn Actor from Class.
+The inverse, despawning an Actor, is done with the Destroy Actor function.
+
+It does not seem to be possible to used deferred spawning from a Blueprint.
+
+## C++
+
+A new Actor is spawned/created by calling `SpawnActor` on the world in which we wish the new Actor to appear.
 ```cpp
 AMyActor* MyActor = GetWorld()->SpawnActor<AMyActor>(
     // The type of Actor to spawn. Should be the same
