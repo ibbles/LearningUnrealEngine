@@ -7,4 +7,4 @@ The level designer can manipulate these variables to configure the selected obje
 This is accomplished by creating a regular variable, checking the Instance Editable checkbox, and creating nodes in the Construction Script to do the necessary changes/configuration to the Blueprint class instances to achive the desired effect.
 The Construction Script is executed when anything changes in the Blueprint class while in the Unreal Editor.
 
-[[2020-08-08_16:47:45]] Blueprint construction script
+[[2020-08-08_16:47:45]] [Blueprint construction script](./Blueprint%20construction%20script.md)  
