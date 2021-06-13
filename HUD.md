@@ -91,4 +91,10 @@ FSlateApplication::Get().GetPlatformApplication().Get()->Cursor->Show(false);
 ```
 Not sure how this interacts with `bShowMouseCursor`.
 
+
+HUD has a Receive Draw HUD event.
+
+To render a texture on the HUD, use the Draw Texture function.
+
+
 [[2020-11-04_18:53:51]] [Slate](./Slate.md)  
