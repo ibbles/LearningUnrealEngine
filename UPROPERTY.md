@@ -30,7 +30,7 @@ The system:
 
 The `Blueprint(ReadOnly)|(ReadWrite)` and `(Edit)|(Visible)(DefaultsOnly)|(InstanceOnly)|(Anywhere)` specifiers are independent. One is about Blueprint Visual Scripts and the other is about the property windows in the Unreal Editor.
 
-Components created with `CreateDefaultSubobject` should never be `Edit<something>`, only `Visible<something`.
+Components created with `CreateDefaultSubobject` should never be `Edit<something>`, only `Visible<something>`.
 Components created with `CreateDefaultSubobject` should never be `BlueprintReadWrite`, only `BlueprintReadOnly`.
 The Components are still editable even though they are set to Read Only.
 It is the Component pointer that is Read Only, not the Component itself.
