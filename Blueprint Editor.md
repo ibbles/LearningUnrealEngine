@@ -16,20 +16,29 @@ Uncompiled changes are visible in the Blueprint Editor only, and not on any inst
 After a successful compile the question mark will change to a check mark and the changes are applied to the instances.
 All uncompiled Blueprints are automatically compiled when starting a Play session or when packaging the game.
 
+## Construction script
+
 Construction Script customizable parameters for the Blueprint.
 For example to provide parameters that are visible outside of the Blueprint Editor, for use by artists.
 For example a light color or intensity.
 The Construction Script is executed every time any change is made to the Blueprint, and when the game begins.
 
+
+## Event graph
+
 The Event Graph contains the moment to moment script this is run during gameplay.
 
-My Blueprint panel shows graphs, functions, macros, variables, including Components, and event dispatchers.
+The My Blueprint panel shows graphs, functions, macros, variables including Components, and event dispatchers.
 Event dispatchers are a way to communicate between Blueprints.
 
 Types of nodes that can be added:
 - Event. Execution of a network always start at an event.
-- Execution. Exection moves from one exeuction node to the next.
+- Execution. Execution moves from one execution node to the next.
 - Expression. Execution nodes can take inputs, which are computed with expression nodes.
+
+Nodes are added by right-click on the node graph background and selecting a node type from the list.
+The list will include functions that can be called on the Component currently selected in the Components Panel.
+Some node types have shortcuts, such as holding B and left-click to create a Branch node.
 
 The list of `EditAnywhere` and `EditDefaultsOnly` `UPROPERTY` C++ class members can be shown in the Details Panel by clicking `Class Defaults` in the tool bar.
 The `UPROPERTY` is accessed by right-clicking on the Blueprint grid and typing the name of the `UPROPERTY`.
