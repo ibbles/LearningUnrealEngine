@@ -9,10 +9,12 @@ Z: Up.
 
 Each object with a transformation has both a global/world and a local/object space.
 Switch mode with the Cycle Transform Gizmo Coordinate System button in the top-right of the viewport.
+The button icon is either a globe (global/world space) or a box (local/object space).
 
 We can find the current transformation of an `Actor` using `GetActorTransform`.
 We can find the current transformation of a `Component` with `GetComponentTransform`.
 We can find the local/relative transformation of a Component with `GetRelativeTransform`.
+`GetReltiveTransform` answers the question "Where am I relative to the argument?".
 With a `Transform` we can do `TransformDirection`.
 
 
