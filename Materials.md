@@ -5,8 +5,9 @@
 A `Material`, or a set of materials, is what defines the colors an object has and how light interacts with the object.
 Materials define the look of a surface or volume.
 This can be a `StaticMesh` or a sprite.
-
-A `Material` is a blueprint and all `Materials` have a `Result Node` that define the properties of the material.
+A `Material` is a node graph and all `Materials` have a `Result Node` that define the properties of the material.
+Materials are assets, and can be found in the Content Browser.
+A Material can be assigned to a mesh by dragging it from the Content Browser either onto the mesh in the viewport or to one of the material slots in the mesh instance's Detals Panel.
 
 ## Common nodes and tips-and-tricks
 
