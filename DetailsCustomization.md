@@ -2,6 +2,7 @@
 
 # Detail Customization
 
+The Details Panel is built with [[2020-11-04_18:53:51]] [Slate](./Slate.md).
 The Details Panel contains a list of categories and two columns.
 Categories are collapsible collections of rows.
 Each row holds and Item.
@@ -10,8 +11,19 @@ The name, value, or even the entire Item, can by any Slate widget.
 The Category contains helper functions for adding common widgets.
 Such as property editors.
 
+There are two types of builders for the Details Panel: `IDetailCustomization`, and `IPropertyTypeCustomization`.
+`IDetailCustomization`.
+`IDetailCustomization` is used to build the Details Panel itself for one or more selected objects.
+`IPropertyTypeCustomization` is used to build a part of a Details Panel that display a single Property.
+See [Property Customization (To be created)](./404.html).
+
+There is also `IDetailCustomNodeBuilder`.
+It creates a sub-tree of widgets.
+It is added to a Category.
+
 An instance of `IDetailLayoutBuilder` is used to build the Details Panel.
 It builds and edits Categories, and creates Item rows.
+
 
 ## Module setup
 
@@ -703,6 +715,7 @@ public:
 };
 ```
 
+[[2020-11-04_18:53:51]] [Slate](./Slate.md)  
 [[2020-09-30_13:13:51]] [Callbacks](./Callbacks.md)  
 
 
