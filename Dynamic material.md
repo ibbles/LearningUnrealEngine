@@ -2,8 +2,13 @@
 
 # Dynamic material
 
-A Material that can be changed during runtime. I think.
+A Material that can be changed during runtime.
 Could also be one that is created at runtime.
+(
+I think one of the above implies the other. Only materials created at runtime can be changed at runtime.
+And only Material Instances can be turned into a Dynamic Material Instance.
+Or rather, a Dynamic Material Instance is created from a Material Instance.
+)
 Is created for a `StaticMesh` by calling `Create Dynamic Material Instance`.
 A Dynamic Material is created from a Material Instance.
 The Material Instance should have at least one parameter 
