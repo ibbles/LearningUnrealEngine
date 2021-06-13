@@ -27,3 +27,15 @@ There are a few built-in channels that are not listed in the settings:
 - Vehicle
 - Destructible
 
+Static Mesh assets has collision settings that are applied to the Static Mesh instances that doesn't override it.
+
+
+There are many Components designed to act as collision shapes, such as boxes and spheres.
+Some functionality in the engine (which?) require that the collision shape is the Root Component in the Actor.
+
+[[2020-11-10_08:30:07]] [Collision shapes](./Collision%20shapes.md)  
+
+
+
+[[2020-11-10_08:30:07]] [Collision shapes](./Collision%20shapes.md)  
+[[2020-05-08_22:05:51]] [Static Mesh](./Static%20Mesh.md)  
