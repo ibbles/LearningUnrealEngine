@@ -25,6 +25,10 @@ There are no execution nodes in a Material Graph. Or rather, the main material n
 Hold `Alt` and click on a node pin to disconnect the wire from it.
 Nodes can be duplicated with `Ctrl`+`w`.
 
+Create scalars, two-component vectors, or three-component vectors by holding 1, 2, or 3 and click.
+The created nodes are constant nodes, with a value set in their Details Panel.
+The created nodes can be converted to parameters from the right-click menu.
+
 ## Viewport
 
 Shows a preview of the material on one of a few types of meshes.
