@@ -103,6 +103,17 @@ Not sure how the importer decides which triangle belong to which LOD, and what t
 
 Nanite is a separate way to handle level of detail.
 
+
+## Collisions
+
+A Static Mesh asset has a default collision preset that is applied when new Static Mesh Actors are created from the asset.
+Changing the collision preset on the asset will update all Static Mesh instances that doesn't override the default.
+
+[[2020-07-04_15:24:50]] [Collisions](./Collisions.md)  
+
+
+
+
 [[2020-12-26_21:50:52]] [Skeletal Mesh](./Skeletal%20Mesh.md)  
 [[2020-05-10_11:01:04]] [Materials](./Materials.md)  
 [[2021-05-28_23:06:53]] [Lightmaps](./Lightmaps.md)  
