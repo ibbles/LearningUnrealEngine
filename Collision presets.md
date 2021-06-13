@@ -2,7 +2,7 @@
 
 # Collision presets
 
-Collision presets define a Static Mesh interacts with other Static Meshes.
+Collision presets define how a Static Mesh interacts with other Static Meshes.
 The collision preset settings can be found on a Static Mesh's Details Panel > Collision > Collision Presets.
 There are two dimensions to a collision preset: channel and response.
 Channel specify to which type of objects the associated response should apply.
@@ -23,6 +23,11 @@ struct CollisionPreset
 }
 ```
 
+Ignore =  `false, false`  
+Overlap = `true, false`  
+Block = `true, true`  
+
+For some reason there is no `false, true`, which would mean "generate contact points in the physics, but don't trigger overlap callbacks".
 
 
 [[2020-07-04_15:24:50]] [Collisions](./Collisions.md)  
