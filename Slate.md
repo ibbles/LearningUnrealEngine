@@ -3,7 +3,9 @@
 # Slate
 
 Slate is used to implement both editor and game UIs.
-Is a collection of widgets.
+For game UIs consider using UMG, which is built on top of Slate.
+
+Slate is a collection of widgets.
 Some examples:
 - Buttons.
 - List boxes.
@@ -24,9 +26,10 @@ Some examples:
 - 
 Pretty much everything visible in Unreal Editor is a Slate widget.
 Slate is used to implement custom asset editor for new asset types.
+Is used for [[2020-11-09_16:56:34]] [DetailsCustomization](./DetailsCustomization.md).
 
 There is a Slate Test Suite that demonstrates a bunch of Slate features.
-- [ ] Open it with Unreal Editor > Top Menu > Window > Developer Tools > Debug Tools > Test Suite.
+Open it with Unreal Editor > Top Menu > Window > Developer Tools > Debug Tools > Test Suite.
 
 ## Slate features and attributes
 
@@ -54,6 +57,7 @@ Contains a layout system with support for user-driven layouts.
 ## Slots
 
 I've seen these mentioned a few times. What are they?
+A place in a widget where other widgets can be placed.
 
 ## Programming in Slate
 
@@ -299,4 +303,6 @@ Be inspired of how things are done in Unreal Editor for you own interfaces.
 
 
 
-[Slate UI Framework & Widget Reflector@learn.unrealengine.com](https://learn.unrealengine.com/course/2436528/module/5372750?moduletoken=UHxxnDLPW8ROFOnyLDf7jjbvPXNNq87ggNL8wMEpkQQHzQdQWvEjA6Oj8XBxlAHD)
+[Slate UI Framework & Widget Reflector@learn.unrealengine.com](https://learn.unrealengine.com/course/2436528/module/5372750?moduletoken=UHxxnDLPW8ROFOnyLDf7jjbvPXNNq87ggNL8wMEpkQQHzQdQWvEjA6Oj8XBxlAHD)  
+
+[[2020-11-09_16:56:34]] [DetailsCustomization](./DetailsCustomization.md)  
