@@ -56,8 +56,12 @@ Add implementations in the Blueprint classes that implement the interface.
 Add an interface to a Blueprint class in the class' Class Settings.
 Add interface function implementations in the Add Function part of the Blueprint Class Editor, but click Interface instead of the `+`.
 
+[[2021-06-05_16:16:53]] [Blueprint interface](./Blueprint%20interface.md)  
+
+
 ### C++
 
 
 
 [[2020-03-10_21:29:17]] [Actor](./Actor.md)  
+[[2021-06-05_16:16:53]] [Blueprint interface](./Blueprint%20interface.md)  
