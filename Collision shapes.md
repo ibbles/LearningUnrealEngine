@@ -7,6 +7,8 @@ Because doing collision detection on the high-polygon mesh is often not necessar
 Collision shapes are what are sent to the physics engine.
 A collision shape on the Static Mesh is required for enabling Simulate Physics on a Static Mesh Component.
 
+Some functionality in the engine (which?) require that the collision shape is the Root Component in the Actor.
+
 
 ## Simple collision
 
