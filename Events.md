@@ -28,3 +28,4 @@ These are called `Delegates` in C++.
 [[2020-09-30_13:13:51]] [Callbacks](./Callbacks.md)  
 [[2021-03-10_10:35:35]] [Timer](./Timer.md)  
 [[2021-03-10_10:42:34]] [Delegate](./Delegate.md)  
+[[2020-05-10_18:32:07]] [Custom event](./Custom%20event.md)  
