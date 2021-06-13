@@ -19,6 +19,10 @@ If multiple device inputs bound to the same input event is held then their value
 
 Input events are bound to `callbacks`.
 The callbacks can be in the currently possessed Pawn, the Player Controller, the Level Blueprint, or an input-enabled/accepts-input Actor.
+Enable input for an Actor instance by calling the Enable Input function.
+
+[[2021-06-05_12:17:19]] [Enable input](./Enable%20input.md)  
+
 So the order is hardware device input > input event > callback function.
 The callback function owners are considered in the following order:
 - Input-enabled / accepts-input Actor.
@@ -45,5 +49,6 @@ The Movement Component is usually accessed through the Pawn member function fami
 [[2020-04-11_09:21:04]] [Pawn](./Pawn.md)  
 [[2020-04-11_09:24:51]] [Character](./Character.md)  
 [[2020-12-31_17:03:18]] [C++ inputs](./C++%20inputs.md)  
+[[2021-06-05_12:17:19]] [Enable input](./Enable%20input.md)  
 [[2020-04-10_21:40:28]] [~TwinStickShooter](./%E7TwinStickShooter.md)  
 [[2020-03-09_21:54:48]] [~Blueprints](./%E7Blueprints.md)  
