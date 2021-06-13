@@ -30,3 +30,5 @@ std::optional<FVector> AMyPlayerController::ProjectMouseLocationToPawn() const
 ```
 
 ![Graph_MouseClickLineTrace.png](Images/Graph_MouseClickLineTrace.png)
+
+[[2021-06-05_20:39:15]] [Math tips and tricks](./Math%20tips%20and%20tricks.md)  
