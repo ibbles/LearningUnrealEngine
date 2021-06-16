@@ -37,6 +37,7 @@ I think this only works for consecutive 0 to N-1 enums, i.e., no fancy `=` in th
 TArray<TSharedPtr<FString>> ComboBoxEntries;
 UEnum* MyEnum = StaticEnum<EMyEnum>();
 check(MyEnum);
+ComboBoxEntries.Reserve(MyEnum->NumEnums);
 for (int32 EnumIndex = 0; EnumIndex < MyEnum->NumEnums() - 1; ++EnumIndex)
 {
     ComboBoxEntries.Add(
