@@ -15,7 +15,7 @@ There are two types of builders for the Details Panel: `IDetailCustomization`, a
 `IDetailCustomization`.
 `IDetailCustomization` is used to build the Details Panel itself for one or more selected objects.
 `IPropertyTypeCustomization` is used to build a part of a Details Panel that display a single Property.
-See [Property Customization (To be created)](./404.html).
+See [[2021-06-16_10:48:57]] [Property Customization](./Property%20Customization.html).
 
 There is also `IDetailCustomNodeBuilder`.
 It creates a sub-tree of widgets.
@@ -464,7 +464,7 @@ PersonCategory.AddCustomRow(LOCTEXT("FilterKey", "FilterVaue"))
         // IDetailCustomization subclass that we're executing inside.
         // Not sure how reactive this is to changes in Options, if we can
         // add and remove items and have that immediately reflected in the
-        // combo box. May after a open/close cycle.
+        // combo box. Maybe after a open/close cycle.
         .OptionsSource(&Options)
         // Function that is called for every element in the OptionsSource.
         // Creates the SWidgets that is shown when the combo box is opened.
@@ -719,6 +719,6 @@ public:
 [[2020-09-30_13:13:51]] [Callbacks](./Callbacks.md)  
 
 
-
+[Details Panel Customization @ docs.unrealengine.com](https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/Slate/DetailsCustomization/)  
 ["Unreal Engine 4 Customizing the Details Panel" by Markus Ort @ youtube.com](https://www.youtube.com/watch?v=x5_lILi6LpI)  
 [Details Panel Customization @ kantandev.com](http://kantandev.com/articles/details-panel-customization)  
