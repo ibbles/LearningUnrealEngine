@@ -15,7 +15,13 @@ public:
 }
 ```
 
-`UFUNCTION` does not support overloading, i.e., function member names must be unique.
+`UFUNCTION` does not support *overloading*, i.e., function member names must be unique.
+`UFUNCTION` does not support *template*, but there might be a work-around based on custom thunks and/or wildcards.
+`UFUNCTION` does not support *reference return* types. Us an in/out parameter instead.
+```cpp
+UFUNCTION(BlueprintCallable, Category = "MyCategory")
+void MyFunction(UPARAM(Ref) FMyType& InOutMyParameter);
+```
 
 A number of function specifiers can be added to set properties on the function.
 - `BlueprintCallable`: The function can be called from a Blueprint Visual Script.
