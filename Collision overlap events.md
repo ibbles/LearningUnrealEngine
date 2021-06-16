@@ -9,4 +9,4 @@ We can bind hook up Visual Scripting Graph Nodes to such events in a Blueprint.
 
 [[2020-07-04_15:24:50]] [Collisions](./Collisions.md)  
 [[2020-11-10_08:30:07]] [Collision shapes](./Collision%20shapes.md)  
-[[2020-11-10_09:17:53]] [Collision presets](./Collision%@0presets.md)  
+[[2020-11-10_09:17:53]] [Collision presets](./Collision%20presets.md)  

@@ -50,5 +50,5 @@ The Movement Component is usually accessed through the Pawn member function fami
 [[2020-04-11_09:24:51]] [Character](./Character.md)  
 [[2020-12-31_17:03:18]] [C++ inputs](./C++%20inputs.md)  
 [[2021-06-05_12:17:19]] [Enable input](./Enable%20input.md)  
-[[2020-04-10_21:40:28]] [~TwinStickShooter](./%E7TwinStickShooter.md)  
-[[2020-03-09_21:54:48]] [~Blueprints](./%E7Blueprints.md)  
+[[2020-04-10_21:40:28]] [~Collection TwinStickShooter](./%7ECollection%20TwinStickShooter.md)  
+[[2020-03-09_21:54:48]] [~Collection Blueprints](./%7ECollection%20Blueprints.md)  

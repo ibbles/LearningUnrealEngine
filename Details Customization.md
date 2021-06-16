@@ -15,7 +15,7 @@ There are two types of builders for the Details Panel: `IDetailCustomization`, a
 `IDetailCustomization`.
 `IDetailCustomization` is used to build the Details Panel itself for one or more selected objects.
 `IPropertyTypeCustomization` is used to build a part of a Details Panel that display a single Property.
-See [[2021-06-16_10:48:57]] [Property Customization](./Property%20Customization.html).
+See [[2021-06-16_10:48:57]] [Property Customization](./Property%20Customization.md).
 
 There is also `IDetailCustomNodeBuilder`.
 It creates a sub-tree of widgets.

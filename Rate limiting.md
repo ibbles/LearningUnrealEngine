@@ -17,5 +17,4 @@ Now execution will pass the Do Once node only once every `Delay` seconds.
 *Timer*
 For actions that should be taken at a steady rate a Timer can be used.
 
-[[2021-03-10_10:35:35]] [Timer](./Timer.md)
-
+[[2021-03-10_10:35:35]] [Timer](./Timer.md)  

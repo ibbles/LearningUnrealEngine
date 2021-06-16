@@ -39,6 +39,6 @@ Individual instances can be placed with the *Single* tool from the Tool Bar.
 Individual instances can also be removed with this tool by holding Shift and clicking.
 One must click on the ground where the instances was spawned, not on the mesh itself.
 
-[[2020-12-03_10:41:49]] [Mode](./Mode.md)  
+[[2020-12-03_10:41:49]] [Editor mode](./Editor%20mode.md)  
 [[2020-05-08_22:05:51]] [Static Mesh](./Static%20Mesh.md)  
 [[2021-05-31_20:28:03]] [Instanced Static Mesh](./Instanced%20Static%20Mesh.md)  

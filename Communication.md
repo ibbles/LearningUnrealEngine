@@ -40,7 +40,7 @@ When there is a new message to transmit the sender call one of the functions lis
 A Blueprint Interface call node in a Visual Script is blue and decorated with an open envelope symbol.
 
 
-[[2021-06-05_16:16:53]] [Blueprint interface](./Blueprint%20interface.md)
+[[2021-06-05_16:16:53]] [Blueprint interface](./Blueprint%20interface.md)  
 
 
 ## Twin stick shooter
@@ -64,4 +64,4 @@ It is a built-in Component that will pick up the Add Movement Input and Set Cont
 
 [BlueprintCommsUsage@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Engine/Blueprints/UserGuide/BlueprintCommsUsage/index.html)
 
-[[2020-04-10_21:40:28]] [~Collection Twin stick shooter](./%E7Collection%20Twin%20stick%20shooter.md)  
+[[2020-04-10_21:40:28]] [~Collection Twin stick shooter](./%7ECollection%20TwinStickShooter.md)  

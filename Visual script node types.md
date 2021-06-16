@@ -4,7 +4,7 @@
 
 ## AI
 
-[[2020-07-04_19:50:49]] [~AI](./%E7Collection%20AI.md)  
+[[2020-07-04_19:50:49]] [~Collection AI](./%7ECollection%20AI.md)  
 
 ## Animation
 
