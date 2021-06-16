@@ -54,7 +54,7 @@ The point of the "Instanced" keyword and "EditInlineNew" is that you create them
 Not sure what I mean by this. Trying a different forumulation:
 )
 
-An array of pointers to class instances, such as `TArrach<UMyClass*>`, can be configured to create actual instances when manipulated in Unreal Editor, instead of just a collection of `nullptr`. We do this by marking the array with the `Instanced` Property Specifier and the class that the array holds with `EditInlineNew`.
+An array of pointers to class instances, such as `TArray<UMyClass*>`, can be configured to create actual instances when manipulated in Unreal Editor, instead of just a collection of `nullptr`. We do this by marking the array with the `Instanced` Property Specifier and the class that the array holds with `EditInlineNew`.
 
 ```cpp
 UCLASS(EditInlineNew)
