@@ -6,8 +6,8 @@
 
 ```cpp
 return FText::Format(
-		LOCTEXT("TextID", "Text before number. {0} Text after number."),
-		FText::AsNumber(MyNumber));
+        LOCTEXT("TextID", "Text before number. {0} Text after number."),
+        FText::AsNumber(MyNumber));
 ```
 
 ```cpp
