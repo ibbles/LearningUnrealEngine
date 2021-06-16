@@ -3,6 +3,7 @@
 # Command line
 
 A collection of command line actions.
+These are printed with newlines between each parameter to make them easier to read.
 
 ## Engine stuff
 
@@ -91,6 +92,7 @@ $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh
     -Progress
     -buildscw"`
 ```
+Not sure what the `-buildscw` part does. Possibly related to Shader Compiler Workers. Not sure why it's on the `<PROJECT>` build but not the `<PROJECT>Editor` build.
 
 Build the Editor target for a project:
 ```
@@ -101,7 +103,15 @@ $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh
     -Project=<PATH>/<PROJECT>.uproject
 ```
 
-Not sure what the `-buildscw` part does. Possibly related to Shader Compiler Workers. Not sure why it's on the `<PROJECT>` build but not the `<PROJECT>Editor` build.
+The recommended (on the [Unreal Slackers](https://discord.com/channels/187217643009212416/375022233875382274) Discord Linux channel) way to build a project to fix the `module missing or incompatible` error at Unreal Editor startup:
+```
+$UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh
+    Linux
+    Development
+    -Project=<PROJECT_PATH>/<PROJECT>.uproject
+    -TargetType=Editor
+```
+This replaces the old recommendation, which was `BatchFiles/Linux/Build.sh <PROJECTNAME>Editor Linux` but that doesn't work for Blueprint-only projects.
 
 Building with Unreal Build Tool directly:
 ```
