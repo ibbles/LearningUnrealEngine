@@ -58,3 +58,5 @@ After copying a Custom Install Build to a new machine, run `Setup.bat`.
 
 [Managing Multiple UE4 Projects @ wiseengineering.com](https://wisengineering.com/downloads/ManagingUE4Projects.pdf)   
 [UnrealGameSync (UGS) @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/ProductionPipelines/DeployingTheEngine/UnrealGameSync/index.html)  
+
+[[2021-06-17_18:27:56]] [Engine association](./Engine%20association.md)  
