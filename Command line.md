@@ -113,6 +113,8 @@ $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh
 ```
 This replaces the old recommendation, which was `BatchFiles/Linux/Build.sh <PROJECTNAME>Editor Linux` but that doesn't work for Blueprint-only projects.
 
+If the command above builds nothing and you still get `LogInit: Warning: Incompatible or missing module` then run the same command again but with `-Clean` appended at the end. **WARNING** This will rebuild a whole chunk of the engine and take a long time. 
+
 Building with Unreal Build Tool directly:
 ```
 # A source SetupMono.sh or similar is required here. Find the note and update here.
