@@ -1,7 +1,7 @@
 2020-03-09_21:43:36
 
 # UPROPERTY
-The `UPROPERTY` decorator macro exposes a `UCLASS` member variable to the Unreal Engine type system, possibly, depending of the specifiers given, making the member variable editable from the Unreal Editor GUI tools and the Blueprint visual scripting language.
+The `UPROPERTY` decorator macro exposes a `UCLASS` or `USTRUCT` member variable to the Unreal Engine type system, possibly, depending of the specifiers given, making the member variable editable from the Unreal Editor GUI tools and the Blueprint visual scripting language.
 `UPROPERTIES` can be primitive types, structs declared with the `USTRUCT(BlueprintType)` specifier, or pointers to classes declared with the `UCLASS(BlueprintType)` specifier and that inherit, ultimately, from `UObject`.
 I'm not sure if we can have pointers to `USTRUCT` structures or embedded `UCLASS` objects.
 Pointers to `UCLASS` classes (and possibly `USTRUCT` structs) participate in garbage collection / reference counting.
@@ -51,7 +51,7 @@ An execution node is created with the variables new value as its only input pin 
 
 The point of the "Instanced" keyword and "EditInlineNew" is that you create them in-place.
 (
-Not sure what I mean by this. Trying a different forumulation:
+Not sure what I mean by this. Trying a different formulation:
 )
 
 An array of pointers to class instances, such as `TArray<UMyClass*>`, can be configured to create actual instances when manipulated in Unreal Editor, instead of just a collection of `nullptr`. We do this by marking the array with the `Instanced` Property Specifier and the class that the array holds with `EditInlineNew`.
@@ -74,6 +74,7 @@ public:
 ```
 
 
+[[2021-06-18_08:51:45]] [Property specifiers](./Property%20specifiers.md)  
 [[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
 [[2020-03-09_21:48:56]] [UFUNCTION](./UFUNCTION.md)  
 [[2020-03-09_21:54:48]] [Blueprints](./Blueprints.md)  
