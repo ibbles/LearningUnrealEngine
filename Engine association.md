@@ -6,7 +6,7 @@ Each project is associated with an Unreal Engine version or installation.
 This is stored in the project's `.uproject` file as `EngineAssociation`.
 This is what makes it possible to double-click a `.uproject` file and have it open to correct version of Unreal Editor.
 It is either an UUID string, such as `"{000438DA-08D8-E173-2322-DD9C4256781A}"` or a version string, such as `"4.25"`.
-On Linux, a list of all installed engines are kept in `~/.config/Epic/UnrealEngine/Install.ini~/.config/Epic/UnrealEngine/Install.ini`.
+On Linux, a list of all installed engines are kept in `~/.config/Epic/UnrealEngine/Install.ini`.
 There is likely a similar file on other platforms as well.
 It can look something like the following:
 ```
