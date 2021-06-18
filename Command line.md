@@ -81,6 +81,9 @@ To clean the build files, i.e., prepare for a full rebuild, pass `ARGS="-clean"`
 make <ProjectName>Editor ARGS="-clean"
 ```
 
+** We may want `-NoEngineChanges` on a bunch of these, to avoid editing stuff in the engine installation.
+EXPERIMENTATION NEEDED.
+
 Build a project with `Build.sh`:
 ```
 $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh
