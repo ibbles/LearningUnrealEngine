@@ -54,6 +54,7 @@ A Custom Install Build doesn't include everything you need.
 The page lists `UnrealVersionSelector`, `Setup.bat`, and `GITDependencies` as missing.
 After copying a Custom Install Build to a new machine, run `Setup.bat`.
 
+The file `$UE_ROOT/Engine/Build/Build.version` holds some information about that particular engine installation.
 
 
 [Managing Multiple UE4 Projects @ wiseengineering.com](https://wisengineering.com/downloads/ManagingUE4Projects.pdf)   
