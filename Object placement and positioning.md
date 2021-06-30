@@ -23,7 +23,10 @@ Not snap to the nearest world coordinate evenly divisible by ten.
 ```
 new_pos = old_pos + n*snap_size
 ```
-where `n` is the number of `snap_size` that the cursor is moved.
+where the integer `n` is the number of `snap_size` that the cursor is moved.
+
+Next to Grid Snapping there is a button labeled Surface Snapping.
+This will make the moved object align its Z axis (I think) along the normal of the object it's placed on.
 
 When dragging in Actors from the Content Browser or the Place Actors Panel the Actor will snap to the world grid but not while still moving, only when released.
 
