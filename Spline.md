@@ -10,6 +10,8 @@ The `Get Rotation at Distance Along Spline` returns a world or local location gi
 
 A common way to use a spline is to have a 0..1 value, for example from a Timeline, multiply that with the spline length, and feed the result to the get location or get rotation method.
 
+Another common usage is as a path for a [[2021-03-20_10:46:45]] [Spline mesh](./Spline%20mesh.md) sequence.
+
 The shape of the spline is defined by control points.
 Gray points are location points.
 Orange points are tangent points that define the spline's curvature.
