@@ -23,9 +23,9 @@ Initial build of Unreal Engine:
 
 [[2020-08-22_22:55:03]] [Building and installing Unreal Engine from source](./Building%20and%20installing%20Unreal%20Engine%20from%20source.md)  
 
-Creating a binare release of Unreal Engine:
+Creating a binary release of Unreal Engine:
 ```
-RunUAT.sh
+./Engine/Build/BatchFiles/RunUAT.sh
     BuildGraph
     -Target="Make Installed Build Linux"
     -Script=Engine/Build/InstalledEngineBuild.xml
@@ -33,10 +33,29 @@ RunUAT.sh
     -Set:WithDDC=false
     -Set:WithLinuxAArch64=false
     -Set:HostPlatformDDCOnly=false
-    -Set:GameConfigurations=Development;Shipping
+    -Set:GameConfigurations="Development;Shipping"
     -Clean
 ```
-I think it's possible to pass multiple `GameConfigurations`. Shipping is good to have because the `BuildPlugin` `RunUAT` command require it.
+Multiple `GameConfigurations` can be passed, separated by `';'`.
+I know of Shipping and Development.
+There is probably Debug as well.
+This flag is for what you are doing with the engine itself.
+If you are working on a project, and not the engine, then use Shipping.
+I think one can build projects in Development using a Shipping engine.
+Both Development and Shipping is required to export plugins with `RunUAT BuildPlugin`.
+See `BuildPluginCommand.Automation.cs` in the engine source, an excerpt:
+```cpp
+CompilePluginWithUBT(
+    HostProjectFile, HostProjectPluginFile, Plugin, "UE4Game", TargetType.Game,
+    TargetPlatform, UnrealTargetConfiguration.Development, // Hard coded development.
+    ManifestFileNames, AdditionalTargetArgs);
+
+CompilePluginWithUBT(
+    HostProjectFile, HostProjectPluginFile, Plugin, "UE4Game", TargetType.Game,
+    TargetPlatform, UnrealTargetConfiguration.Shipping,  // Hard-coded shipping.
+    ManifestFileNames, AdditionalTargetArgs);
+```
+
 
 ### Benchmarks
 
@@ -55,6 +74,17 @@ $UE_ROOT/GenerateProjectFiles.sh
     -CMakefile
 ```
 
+This will generate a `CMakeLists.txt` that can be used to open the project in any C++ IDE that supports CMake projects.
+A bunch of settings, such as include paths, are stored in `<PROJECT>/Intermediate/ProjectFiles/`.
+When using an Installed Build of the engine a massive number of include paths are listed.
+So many that  CLion errors out with 
+```
+g++: fatal error: cannot execute '/usr/lib/gcc/x86_64-linux-gnu/9/cc1plus': execv: Argument list too long
+```
+while parsing the project.
+I "fixed" it by deleting a bunch of stuff from the end of the list  in `<PROJECT>/Intermediate/ProjectFiles/cmake-includes.cmake`.
+I found what could be deleted by generating parallel project using a source build of the engine and comparing the two files.
+
 Generating build system project files for a C++ Unreal Engine project using `Build.sh`:
 ```
 $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh
@@ -63,6 +93,8 @@ $UE_ROOT/Engine/Build/BatchFiles/Linux/Build.sh
     -Game
     -Makefile
 ```
+
+
 
 ### Building a C++ project
 
