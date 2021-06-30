@@ -7,3 +7,5 @@ Ctrl toggles selection of the clicked object, while Shift always selects.
 Select a range of objects in the World Outliner by selecting the first in the range, then holding Shift while clicking the last in the range.
 Select all BSP geometries with the same material with:
 Details Panel → Geometry → Select → Select Matching Material.
+
+Select by area in viewport with Ctrl + Alt + left-click-drag.
