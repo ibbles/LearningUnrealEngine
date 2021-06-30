@@ -52,7 +52,22 @@ Direct
 SNew(SComboBox<>)
 ```
 
+## SComboButton
+
+A button that also has a drop-down menu.
+The menu is built with `FMenuBuilder`.
+See `ComponentTransformDetails` in the engine.
+
 
 ## SNumericEntryBox
 
-For numeric types, using`SNumericEntryBox`is recommended which allows you to optionally return no value in its value attribute. It will then display a label you provide instead. See`SNumericEntryBox.h`.
+For numeric types using`SNumericEntryBox`is recommended which allows you to optionally return no value in its value attribute. It will then display a label you provide instead. See`SNumericEntryBox.h`.
+It has the following configuration points:
+- `Value`, `TOptional<T>()`
+The value that should be displayed.
+- `OnValueChanged`, `void(T)`
+Called when the value is changed. Is called repeatedly when the slider is dragged.
+- `OnValueCommitted`, `void(T, ETextCommit::Type)`
+Called when editing stops. The type tells you how, such as enter, tab, or escape, was pressed or focus moved to another widget.
+- `AllowSpin`:
+Whether or not to allow click-and-drag editing. (I guess)
