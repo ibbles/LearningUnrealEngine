@@ -376,7 +376,8 @@ Can define tagged collections of files.
 
 For Linux:
 ```
-RunUAT.sh BuildGraph
+./Engine/Build/BatchFiles/RunUAT.sh
+    BuildGraph
     -Target="Make Installed Build Linux"
     -Script=Engine/Build/InstalledEngineBuild.xml
     -Set:HostPlatformOnly=true
@@ -399,6 +400,8 @@ RunUAT.bat BuildGraph
     -Clean
 
 ```
+The Installed Build is created at `<UE4Root>/LocalBuilds/Engine`.
+
 
 Longer description:
 
@@ -435,11 +438,11 @@ Perhaps not passing `Development` will exclude debug information. I _think_ that
     -clean
 ```
 
-Unreal Engine creates a BuildID for each build.
-The BuildID prevents dynamic libraries from being used with the wrong build of the engine.
+Unreal Engine creates a Build ID for each build.
+The Build ID prevents dynamic libraries from being used with the wrong build of the engine.
 The purpose is to prevent stale and outdated dynamic libraries from being accidentally loaded, which is a common source of difficult-to-diagnose problems.
 At build time a `.modules` JSON file is written to each output directory that has at least one compiled dynamic library.
-This files lists the modules, their associated dynamic library, and the BuildID for the current build.
+This files lists the modules, their associated dynamic library, and the Build ID for the current build.
 The `.modules` files should be included in binary releases of the engine.
 
 [UsinganInstalledBuild@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Programming/Deployment/UsinganInstalledBuild/index.html)  
