@@ -46,6 +46,12 @@ or with a Movement Component.
 The Character class comes with an Character Movement Component that handles a bunch of movement related tasks.
 The Movement Component is usually accessed through the Pawn member function families `AddControllerInput` and `AddMovementInput`.
 
+Unreal Engine can simulate touch events from a mouse.
+To enable, check Project Settings > Input > Use Mouse for Touch.
+This will make clicks send touch events instead of click events.
+If your click callbacks doesn't fire when you expect make sure that this check box is not checked.
+
+
 [[2020-04-11_09:21:04]] [Pawn](./Pawn.md)  
 [[2020-04-11_09:24:51]] [Character](./Character.md)  
 [[2020-12-31_17:03:18]] [C++ inputs](./C++%20inputs.md)  
