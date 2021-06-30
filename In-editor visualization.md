@@ -11,7 +11,7 @@ This note contains both how to enable visualizations already in Unreal Editor an
 **Component Visualizer**  
 Simple line drawing in the Level Viewport that is enabled when an Actor containing that type of Component is selected.
 
-[[2020-08-06_18:48:41]] [Component visualizer](Component%20visualizer.md)  
+[[2020-08-06_18:48:41]] [Component visualizer](./Component%20visualizer.md)  
 
 
 **Component Sprite**  

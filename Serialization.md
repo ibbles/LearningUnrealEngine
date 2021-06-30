@@ -37,5 +37,5 @@ Object->Serialize(Archive);
 ```
 
 [[2021-01-26_11:00:02]] [Save game](./Save%20game.md)  
-[[2020-03-09_21:43:36]] [UPROPERTY](UPROPERTY.md)  
-[[2021-06-22_08:34:55]] [UObject Properties](./UObject%20Properties.md)  
+[[2020-03-09_21:43:36]] [UPROPERTY](./UPROPERTY.md)  
+[[2021-06-22_08:34:55]] [UProperties](./UProperties.md)  

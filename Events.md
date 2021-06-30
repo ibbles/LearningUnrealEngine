@@ -27,7 +27,7 @@ These are called `Delegates` in C++.
 
 Unreal Editor contains a whole bunch of global Editor Events that can be listened for.
 
-[[2021-06-29_16:07:25]] [Useful events](./Useful events.md)  
+[[2021-06-29_16:07:25]] [Useful events](./Useful%20events.md)  
 
 
 
@@ -35,4 +35,4 @@ Unreal Editor contains a whole bunch of global Editor Events that can be listene
 [[2021-03-10_10:35:35]] [Timer](./Timer.md)  
 [[2021-03-10_10:42:34]] [Delegate](./Delegate.md)  
 [[2020-05-10_18:32:07]] [Custom event](./Custom%20event.md)  
-[[2021-06-29_16:07:25]] [Useful events](./Useful events.md)  
+[[2021-06-29_16:07:25]] [Useful events](./Useful%20events.md)  

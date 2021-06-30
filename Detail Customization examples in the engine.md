@@ -1,11 +1,11 @@
 2021-06-28_09:12:50
 
 # Detail Customization examples in the engine
- 
+
 When I first started learning about Detail Customization I used the Spline Component as an example.
 That may have been a bad idea because the Spline Component does a bunch of custom stuff not often done in the engine.
 Such as using `FComponentPropertyPath` and tight integration with the Spline Component Visualizer.
- 
+
 This note is a survey of a few other Detail Customization implementations that will hopefully give a better intuition for what a "normal" implementation looks like.
 There is very little thought behind the selection of Detail Customizations being surveyed.
 Anything that I can find the resulting widgets within Unreal Editor is fair game.
@@ -26,7 +26,7 @@ The UProperty is stored as a member variable and is declared as
 ```cpp
 TSharedPtr<IPropertyHandle> MobilityProperty;
 ```
-The UProperty is fetched with 
+The UProperty is fetched with
 ```cpp
 MobilityProperty = DetailBuilder.GetProperty(
     "Mobility", USceneComponent::StaticClass());
@@ -77,9 +77,9 @@ I'm looking at this one because it does customization of both per -instance and 
 The customization is registered as a Class Layout in `NiagaraEditorModule.cpp`:
 ```cpp
 PropertyModule.RegisterCustomClassLayout(
-		UNiagaraComponent::StaticClass()->GetFName(),
-		FOnGetDetailCustomizationInstance::CreateStatic(
-            &FNiagaraComponentDetails::MakeInstance));
+    UNiagaraComponent::StaticClass()->GetFName(),
+    FOnGetDetailCustomizationInstance::CreateStatic(
+        &FNiagaraComponentDetails::MakeInstance));
 ```
 
 The header file contains
@@ -187,7 +187,7 @@ FUIAction(
     FExecuteAction::CreateSP(
         const_cast<FComponentTransformDetails*>(this),
         &FComponentTransformDetails::OnCopy, TransformField),
-	FCanExecuteAction::CreateSP(
+    FCanExecuteAction::CreateSP(
         const_cast<FComponentTransformDetails*>(this),
         &FComponentTransformDetails::OnCanCopy, TransformField)
 );
@@ -294,9 +294,9 @@ Do the two pointers point to the same object?
 
 
 
- 
+
 ## `FCollisionProfileDetails` in `CollisionProfileDetails.(h|cpp)`
- 
+
 The Collision Profiles are part of the Project Settings.
 The can be found under Engine > Collisions.
 The fact that it's a Project Settings Panel and not a Panel for something in the level may influence how it is implemented.
@@ -402,7 +402,7 @@ WidgetWindow->SetContent(
 ```
 With the window created and filled we display it by giving it to `GEditor`.
 ```cpp
-		GEditor->EditorAddModalWindow(WidgetWindow);
+GEditor->EditorAddModalWindow(WidgetWindow);
 ```
 I think execution will pause here until the modal window is closed.
 When we continue the change, if any, is applied to the Collision Profile singleton and `UpdateChannel` is called.
@@ -427,10 +427,10 @@ Editor/DetailCustomizations/Private/DirectionalLightComponentDetails.cpp:
 
 20 {
 
-  
-  
-  
-  
+
+
+
+
 
 Editor/DetailCustomizations/Private/ActorComponentDetails.cpp:
 
@@ -440,7 +440,7 @@ Editor/DetailCustomizations/Private/ActorComponentDetails.cpp:
 
 29 {
 
-  
+
 
 Editor/DetailCustomizations/Private/ActorDetails.cpp:
 
@@ -450,7 +450,7 @@ Editor/DetailCustomizations/Private/ActorDetails.cpp:
 
 69 {
 
-  
+
 
 Editor/DetailCustomizations/Private/AmbientSoundDetails.cpp:
 
@@ -460,7 +460,7 @@ Editor/DetailCustomizations/Private/AmbientSoundDetails.cpp:
 
 38 {
 
-  
+
 
 Editor/DetailCustomizations/Private/AnimationAssetDetail.cpp:
 
@@ -470,7 +470,7 @@ Editor/DetailCustomizations/Private/AnimationAssetDetail.cpp:
 
 24 {
 
-  
+
 
 Editor/DetailCustomizations/Private/BodyInstanceCustomization.cpp:
 
@@ -480,7 +480,7 @@ Editor/DetailCustomizations/Private/BodyInstanceCustomization.cpp:
 
 1311 {
 
-  
+
 
 Editor/DetailCustomizations/Private/BodySetupDetails.cpp:
 
@@ -490,7 +490,7 @@ Editor/DetailCustomizations/Private/BodySetupDetails.cpp:
 
 24 {
 
-  
+
 
 99
 
@@ -498,8 +498,8 @@ Editor/DetailCustomizations/Private/BodySetupDetails.cpp:
 
 101 {
 
-  
-  
+
+
 
 Editor/DetailCustomizations/Private/CameraDetails.cpp:
 
@@ -509,8 +509,8 @@ Editor/DetailCustomizations/Private/CameraDetails.cpp:
 
 42 {
 
-  
-  
+
+
 
 Editor/DetailCustomizations/Private/FbxImportUIDetails.cpp:
 
@@ -520,7 +520,7 @@ Editor/DetailCustomizations/Private/FbxImportUIDetails.cpp:
 
 220 {
 
-  
+
 
 Editor/DetailCustomizations/Private/FbxSceneImportDataDetails.cpp:
 
@@ -530,7 +530,7 @@ Editor/DetailCustomizations/Private/FbxSceneImportDataDetails.cpp:
 
 34 {
 
-  
+
 
 Editor/DetailCustomizations/Private/LightComponentDetails.cpp:
 
@@ -540,8 +540,8 @@ Editor/DetailCustomizations/Private/LightComponentDetails.cpp:
 
 22 {
 
-  
-  
+
+
 
 Editor/DetailCustomizations/Private/LocalLightComponentDetails.cpp:
 
@@ -551,7 +551,7 @@ Editor/DetailCustomizations/Private/LocalLightComponentDetails.cpp:
 
 19 {
 
-  
+
 
 61
 
@@ -559,7 +559,7 @@ Editor/DetailCustomizations/Private/LocalLightComponentDetails.cpp:
 
 63 {
 
-  
+
 
 Editor/DetailCustomizations/Private/MeshComponentDetails.cpp:
 
@@ -569,8 +569,8 @@ Editor/DetailCustomizations/Private/MeshComponentDetails.cpp:
 
 17 {
 
-  
-  
+
+
 
 Editor/DetailCustomizations/Private/PhysicsConstraintComponentDetails.cpp:
 
@@ -580,7 +580,7 @@ Editor/DetailCustomizations/Private/PhysicsConstraintComponentDetails.cpp:
 
 852 {
 
-  
+
 
 Editor/DetailCustomizations/Private/PrimitiveComponentDetails.cpp:
 
@@ -590,7 +590,7 @@ Editor/DetailCustomizations/Private/PrimitiveComponentDetails.cpp:
 
 57 {
 
-  
+
 
 Editor/DetailCustomizations/Private/ReflectionCaptureDetails.cpp:
 
@@ -600,7 +600,7 @@ Editor/DetailCustomizations/Private/ReflectionCaptureDetails.cpp:
 
 26 {
 
-  
+
 
 Editor/DetailCustomizations/Private/SceneComponentDetails.cpp:
 
@@ -610,7 +610,7 @@ Editor/DetailCustomizations/Private/SceneComponentDetails.cpp:
 
 145 {
 
-  
+
 
 Editor/DetailCustomizations/Private/SkyLightComponentDetails.cpp:
 
@@ -620,7 +620,7 @@ Editor/DetailCustomizations/Private/SkyLightComponentDetails.cpp:
 
 29 {
 
-  
+
 
 105
 
@@ -628,7 +628,7 @@ Editor/DetailCustomizations/Private/SkyLightComponentDetails.cpp:
 
 107 {
 
-  
+
 
 Editor/DetailCustomizations/Private/SoundBaseDetails.cpp:
 
@@ -638,7 +638,7 @@ Editor/DetailCustomizations/Private/SoundBaseDetails.cpp:
 
 15 {
 
-  
+
 
 Editor/DetailCustomizations/Private/SoundSourceBusDetails.cpp:
 
@@ -648,7 +648,7 @@ Editor/DetailCustomizations/Private/SoundSourceBusDetails.cpp:
 
 23 {
 
-  
+
 
 Editor/DetailCustomizations/Private/SoundWaveDetails.cpp:
 
@@ -658,7 +658,7 @@ Editor/DetailCustomizations/Private/SoundWaveDetails.cpp:
 
 25 {
 
-  
+
 
 Editor/DetailCustomizations/Private/SplineComponentDetails.cpp:
 
@@ -668,7 +668,7 @@ Editor/DetailCustomizations/Private/SplineComponentDetails.cpp:
 
 749 {
 
-  
+
 
 Editor/DetailCustomizations/Private/StaticMeshActorDetails.cpp:
 
@@ -678,7 +678,7 @@ Editor/DetailCustomizations/Private/StaticMeshActorDetails.cpp:
 
 32 {
 
-  
+
 
 Editor/DetailCustomizations/Private/StaticMeshComponentDetails.cpp:
 
@@ -688,7 +688,7 @@ Editor/DetailCustomizations/Private/StaticMeshComponentDetails.cpp:
 
 23 {
 
-  
+
 
 Editor/DetailCustomizations/Private/WorldSettingsDetails.cpp:
 

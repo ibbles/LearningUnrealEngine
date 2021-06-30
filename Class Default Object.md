@@ -15,7 +15,7 @@ Consider the following pseudo-code example:
 Blueprint UBase1
 {
     UProperty P;
-    
+
     FBase1()
     {
         P = 1;
@@ -33,7 +33,7 @@ UDerived Derived;
 Blueprint Base2
 {
     Property P;
-    
+
     Base2()
     {
         P = 2;

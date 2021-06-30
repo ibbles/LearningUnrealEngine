@@ -16,7 +16,7 @@ void CastExample(UMyBase* Base)
     {
         // Cast failed, the passed object wasn't a UMyDerived instance.
     }
-    
+
     // Cast succeeded, use Derived.
 }
 ```

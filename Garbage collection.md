@@ -23,7 +23,7 @@ A raw C++ `UObject*` will not be included.
 
 [[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
 [[2020-03-09_21:43:36]] [UPROPERTY](./UPROPERTY.md)  
-[[2021-06-22_08:34:55]] [UProperties](UProperties.md)  
+[[2021-06-22_08:34:55]] [UProperties](./UProperties.md)  
 
 An instance can also be explicitly *flagged for destruction*.
 That will set all UProperty pointers and TWeakObjectPtrs to that instance to `nullptr`.
@@ -102,7 +102,7 @@ It is possible to hold an owning reference in something not an `UObject` be inhe
 
 [[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
 [[2020-03-09_21:43:36]] [UPROPERTY](./UPROPERTY.md)  
-[[2021-06-22_08:34:55]] [UProperties](UProperties.md)  
+[[2021-06-22_08:34:55]] [UProperties](./UProperties.md)  
 
 
 [Objects @ docs.unrealengine.com](https://docs.unrealengine.com/4.26/en-US/ProgrammingAndScripting/ProgrammingWithCPP/UnrealArchitecture/Objects/)  

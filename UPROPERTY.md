@@ -75,7 +75,7 @@ public:
 
 
 [[2021-06-18_08:51:45]] [Property specifiers](./Property%20specifiers.md)  
-[[2021-06-22_08:34:55]] [UObject Properties](./UObject%20Properties.md)  
+[[2021-06-22_08:34:55]] [UProperties](./UProperties.md)  
 [[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
 [[2020-03-09_21:48:56]] [UFUNCTION](./UFUNCTION.md)  
 [[2020-03-09_21:54:48]] [Blueprints](./Blueprints.md)  

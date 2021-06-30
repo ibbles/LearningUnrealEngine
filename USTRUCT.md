@@ -34,24 +34,24 @@ The alternative is to create a Blueprint Function Library containing functions t
 UCLASS()
 class MYMODULE_API UMyStruct_FL : public UBlueprintFunctionLibrary
 {
-	GENERATED_BODY()
+    GENERATED_BODY()
 
-	UFUNCTION(BlueprintCallable, Category = "My Struct")
-	static bool MyFunction(UPARAM(ref) FMyStruct& MyStruct, float MyFloat);
+    UFUNCTION(BlueprintCallable, Category = "My Struct")
+    static bool MyFunction(UPARAM(ref) FMyStruct& MyStruct, float MyFloat);
 };
 ```
 
 ```cpp
 bool UMyStruct_FL::MyFunction(
-	UPARAM(ref) FMyStruct& MyStruct, float MyFloat)
+    UPARAM(ref) FMyStruct& MyStruct, float MyFloat)
 {
-	if (MyFloat <= 0.0)
-	{
-		UE_LOG(LogTemp, Error, TEXT("MyStruct::MyProperty must be positive."));
-		return false;
-	}
-	MyStruct.MyProperty = MyFloat;
-	return true;
+    if (MyFloat <= 0.0)
+    {
+        UE_LOG(LogTemp, Error, TEXT("MyStruct::MyProperty must be positive."));
+        return false;
+    }
+    MyStruct.MyProperty = MyFloat;
+    return true;
 }
 ```
 
