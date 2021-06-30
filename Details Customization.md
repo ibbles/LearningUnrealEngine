@@ -413,6 +413,30 @@ MyCategory.AddCustomRow(LOCTEXT("FilterKey", "FilterValue"))
 ];
 ```
 
+
+## Arrays
+
+This example demonstrates how to do custom rendering of the elements of an array.
+This code should be in a class named `FMyDetails`.
+Not sure what base classes `FMyDetails` could have.
+At least `IDetailCustomization`, but maybe also `IDetailCustomNodeBuilder`.
+The type of the parameter to `FMyDetails::GenerateArrayElementWidget` is important.
+From the example I only know that it's named `DetailBuilder` so it may be a `IDetailLayoutBuilder`.
+Could it also be a `IDetailChildrenBuilder`?
+
+```cpp
+TSharedRef<IPropertyHandle> MyHandle =
+    DetailBuilder.GetProperty(GET_MEMBER_NAME_CHECKED(UMyClass, MyArrayProperty));
+IDetailCategoryBuilder& MyCategory = DetailBuilder.EditCategory("MyCategory"); TSharedRef<FDetailArrayBuilder> MyArrayBuilder =
+    MakeShareable(new  FDetailArrayBuilder(MyHandle.ToSharedRef()));
+MyArrayBuilder->OnGenerateArrayElementWidget(
+    FOnGenerateArrayElementWidget::CreateSP(
+        this, &FMyDetails::GenerateArrayElementWidget, &DetailBuilder)); MyCategory.AddCustomBuilder(MyArrayBuilder, false);
+```
+
+[Detail customization examples @ ikrima.dev](https://ikrima.dev/ue4guide/editor-extensions/detail-customization/detail-customization-examples/)
+
+
 ## Interactivity
 
 Buttons and other input widgets can be added to custom rows.
