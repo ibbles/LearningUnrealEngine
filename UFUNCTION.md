@@ -34,6 +34,9 @@ A C++-`const` `BlueprintCallable` function will not have an execution pin.
 
 The only difference between `BlueprintPure` and `BlueprintCallable` is that `BlueprintCallable` only updates its outputs once when the execution runs through it. `BlueprintPure` will rerun the function and update the output for every single thing that tries to get a value from it.
 
+A UFunction cannot return a pointer to an FStruct.
+
 [[2021-03-13_11:48:31]] [Blueprint events in C++](./Blueprint%20events%20in%20C++.md)  
 [[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
 [[2020-03-09_21:43:36]] [UPROPERTY](./UPROPERTY.md)  
+[[2020-03-10_21:12:12]] [USTRUCT](./USTRUCT.md)  
