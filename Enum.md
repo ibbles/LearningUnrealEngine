@@ -58,14 +58,14 @@ A scoped enum is also called a class enum.
 A scoped enum places its enum literals in a separate scope.
 
 ```cpp
-UENUM(BlueprintType)
+UENUM()
 enum EMyUnscopedEnum : uint8
 {
     FirstMember,
     SecondMember
 };
 
-UENUM(BlueprintType)
+UENUM()
 enum class EMyScopedEnum : uint8
 {
     FirstMember,
@@ -78,13 +78,23 @@ void Demo()
     std::cout << "Accessing a scoped enum: " << EMyScopedEnum::FirstMember;
 }
 ```
-We can add meta-data to our enum literals:
+
+We can add meta data to our enum:
+```cpp
+UENUM(BlueprintType, Meta=(Bitflags))
+```
+
+- BlueprintType: The enum can be used as a variable in a Blueprint.
+- Bitflags: Not sure what the effect is, but used to indicate that individual bits have meaning and not the entire value.
+
+We can add meta-data to our enum literals as well:
 ```cpp
 UENUM(BlueprintType)
 enum class EMyScopedEnum : uint8
 {
     FirstMember UMETA(DisplayName="First member"),
-    SecondMember UMETA(DisplayName="Second member")
+    SecondMember UMETA(ToolTip="My tool tip text.")
+    ThirdMember UMETA(Hidden)
 };
 ```
 
