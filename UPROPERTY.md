@@ -6,15 +6,42 @@ The `UPROPERTY` decorator macro exposes a `UCLASS` or `USTRUCT` member variable 
 I'm not sure if we can have pointers to `USTRUCT` structures or embedded `UCLASS` objects.
 Pointers to `UCLASS` classes (and possibly `USTRUCT` structs) participate in garbage collection / reference counting.
 
+A UProperty cannot be a pointer to an FStruct.
+
+```cpp
+UCLASS()
+class MYMODULE_API UMyClass : public UObject
+{
+    GENERATED_BODY()
+public:
+    UPROPERTY()
+    int32 MyProperty;
+}
+```
+
+
 Specifiers can be added to the `UPROPERTY` macro to change the way it behaves within Unreal Editor.
 The following are some of the specifiers available to the `UPROPERTY` macro:
 
 - `BlueprintReadOnly` Blueprint Visual Scripts can read, but not write, the property.
 - `BlueprintReadWrite` Blueprint Visual Scripts can both read and write the property.
+- `EditAnywhere` The Property can be modified from the Details Panel.
 - `Category` The category/section/submenu to put the property in in the property editor / Details Panel.
 - `EditFixedSize` Only for arrays. The elements can be edited, but the number of elements if fixed.
 - `EditInline` Only for pointers. The properties of the pointed-to object is shown instead of the pointer. See more below.
 
+```cpp
+UCLASS()
+class MYMODULE_API UMyClass : public UObject
+{
+    GENERATED_BODY()
+public:
+    UPROPERTY(
+        EditAnywhere, BlueprintReadWrite,
+        Category = "My Category|Sub-category")
+    int32 MyProperty;
+}
+```
 
 - `EditAnywhere` Both the default value set in the Blueprint editor and per-instance values can be edited in the property windows.
 - `VisibleAnywhere` The value can be seen, but not edited, both in the Blueprint editor and per-instance in the Level Editor.
@@ -34,7 +61,7 @@ Components created with `CreateDefaultSubobject` should never be `Edit<something
 Components created with `CreateDefaultSubobject` should never be `BlueprintReadWrite`, only `BlueprintReadOnly`.
 The Components are still editable even though they are set to Read Only.
 It is the Component pointer that is Read Only, not the Component itself.
-So  Read Only Component cannot be replaced with another Component.
+So Read Only Component cannot be replaced with another Component.
 Setting Read Write and then replacing the Component afterwards will mess up serialization.
 It is safe to replace Components created by a parent class in the child class' constructor.
 ```cpp
@@ -46,6 +73,55 @@ To read the value of a `UPROPERTY` in a Blueprint Visual Script, right-click the
 An expression node with the variable's current value as its only output pin is created.
 To set the value of a `UPROPERTY` in a Blueprint Visual Script, right-click the Visual Script background and type `set <NAME>`.
 An execution node is created with the variables new value as its only input pin is created.
+
+
+There is a Meta Specifier that can contain even more settings.
+```cpp
+UCLASS()
+class MYMODULE_API UMyClass : public UObject
+{
+    GENERATED_BODY()
+public:
+    UPROPERTY(
+        EditAnywhere, BlueprintReadWrite,
+        Category = "My Category|Sub-category",
+        Meta = (
+            DisplayName = "Custom Name"))
+    int32 MyProperty;
+}
+```
+
+- `DisplayName`
+- `ClampMin`
+- `ClampMax`
+- `UIMin`
+- `UIMax`
+- `EditCondition`
+Set to a C++ expression using the other Properties of this class. This Property is only editable if the expression evaluates to true. Otherwise it is grayed out.
+- `InlineEditConditionToggle`
+Only for bool and single-bit bitfields. Used to put a toggle next to another Property. The toggle will set or clear this Property, which the other Property typically uses as an `EditCondition`.
+- `EditConditionHides`
+Used together with `EditCondition`. Not only is uneditable Properties grayed out, they are completely hidden. What Slate calls Collapsed.
+- `TitleProperty` Don't know what this is.
+- `MakeEditWidget` Only for FVector. Create a octahedron in the Viewport.
+- `ScriptName` Don't know what this is.
+- `MultiLine="true"` Only for FString.
+- `PinHiddenByDefault`
+- `ExposeOnSpawn`
+
+```cpp
+UCLASS()
+class MYMODULE_API UMyClass : public UObject
+{
+    GENERATED_BODY()
+public:
+    UPROPERTY(Meta = (InlineEditConditionToggle))
+    bool bAllowEditMyProperty;
+
+    UPROPERTY(Meta = (EditConditionHides, EditCondition = "bAllowEditMyProperty"))
+    int32 MyProperty;
+}
+```
 
 ## EditInline
 
