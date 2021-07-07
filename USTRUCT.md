@@ -55,6 +55,9 @@ bool UMyStruct_FL::MyFunction(
 }
 ```
 
+A UProperty cannot be a pointer to an FStruct.
+A UFunction cannot return a pointer to an FStruct.
+
 [[2020-10-14_18:31:53]] [UBlueprintFunctionLibrary](./UBlueprintFunctionLibrary.md)  
 
 [Structs specifiers @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/ProgrammingAndScripting/GameplayArchitecture/Structs/Specifiers/index.html)  
