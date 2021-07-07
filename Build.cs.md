@@ -27,8 +27,16 @@ TODO: Paste some code into here.
 ```
 
 
-The `Build.cs` file has sligthly different semantics for modules that represetnt third-party libraries.
+The `Build.cs` file has slightly different semantics for modules that represetnt third-party libraries.
 Third-party library modules are not compiled by Unreal Buid Tool, but they can provide compiler settings that are inherited by other modules that depend on the third-party library module.
+
+We  can detect monolithic builds and add preprocessor definitions  based on that:
+```csharp
+if (Target.LinkType != TargetLinkType.Monolithic)
+{
+    PrivateDefinitions.Add("MyFlag=1");
+}
+```
 
 [[2020-08-27_12:24:45]] [Third-party libraries](./Third-party%20libraries.md)  
 [[2020-09-10_19:55:50]] [Modules](./Modules.md)  
