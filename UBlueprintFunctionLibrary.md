@@ -1,6 +1,6 @@
 2020-10-14_18:31:53
 
-#     UBlueprintFunctionLibrary
+# UBlueprintFunctionLibrary
 
 Free functions and UStruct "member" function are exported to Blueprints using a Blueprint Function Library.
 The library is a class inheriting from `UBlueprintFunctionLibrary` that contains a bunch of static UFunctions.
