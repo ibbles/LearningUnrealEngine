@@ -41,4 +41,14 @@ Example:
 [2021.03.12-08.05.50:875][ 98]
 ```
 
+One can also write on-screen messages:
+```cpp
+GEngine->AddOnScreenDebugMessage(
+    INDEX_NONE, // Used for deduplication, i.e. to avoid spam.
+    15.0f,  // Time to display, in seconds.
+    FColor::Green, // The color of the text.
+    TEXT("My message.")); // The text to display.
+```
+
 [Logging @ ue4community.wiki](https://www.ue4community.wiki/logging-lgpidy6i)  
+[AddOnScreenDebugMessage @ docs.unrealengine.com](https://docs.unrealengine.com/4.26/en-US/API/Runtime/Engine/Engine/UEngine/AddOnScreenDebugMessage/1/)  
