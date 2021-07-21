@@ -3,6 +3,7 @@
 # UFUNCTION
 
 The `UFUNCTION` decorator macro exposes a C++ function to the Unreal Engine reflection system.
+It turns the function into a UFunction.
 
 ```c++
 UCLASS()
@@ -15,13 +16,13 @@ public:
 }
 ```
 
-`UFUNCTION` does not support *overloading*, i.e., function member names must be unique.
-`UFUNCTION` does not support *template*, but there might be a work-around based on custom thunks and/or wildcards.
-`UFUNCTION` does not support *reference return* types. Us an in/out parameter instead.
-```cpp
-UFUNCTION(BlueprintCallable, Category = "MyCategory")
-void MyFunction(UPARAM(Ref) FMyType& InOutMyParameter);
-```
+UFunction does not support *overloading*, i.e., function member names must be unique.
+UFunction does not support *template*, but there might be a work-around based on custom thunks and/or wildcards. More research needed.
+UFunction does not support *reference return* types. 
+UFunction does not support *FStruct pointer return* types.
+Some of the limitations may be for UFunctions exposed to Blueprint only.
+
+[[2020-03-10_21:12:12]] [USTRUCT](./USTRUCT.md)  
 
 A number of function specifiers can be added to set properties on the function.
 - `BlueprintCallable`: The function can be called from a Blueprint Visual Script.
@@ -34,7 +35,20 @@ A C++-`const` `BlueprintCallable` function will not have an execution pin.
 
 The only difference between `BlueprintPure` and `BlueprintCallable` is that `BlueprintCallable` only updates its outputs once when the execution runs through it. `BlueprintPure` will rerun the function and update the output for every single thing that tries to get a value from it.
 
-A UFunction cannot return a pointer to an FStruct.
+Most types that can be used in Blueprints can be used for parameters and return types.
+A parameter taken by reference becomes an output pin on the Visual Script node.
+If you want it to be an input pin instead then add `UPARAM(Ref)` before the parameter type.
+This is useful for modifying the state of a UStruct variable.
+```cpp
+UFUNCTION(BlueprintCallable, Category = "MyCategory")
+void MyFunction(UPARAM(Ref) FMyType& InOutMyParameter);
+```
+
+To return a pointer to a UObject, make a parameter that is a reference to a pointer.
+```cpp
+UFUNCTION(BlueprintCallable, Category = "MyCategory")
+void MyFunction(UMyType*& OutReturn);
+```
 
 [[2021-03-13_11:48:31]] [Blueprint events in C++](./Blueprint%20events%20in%20C++.md)  
 [[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
