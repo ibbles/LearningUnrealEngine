@@ -15,6 +15,9 @@ Works with multiple selected objects as well.
 - `Ctrl`+`RMB`: Move/rotate/scale selected object along Y.
 - `Ctrl`+`LMB`+`RMB`: Move/rotate scale selected object along Z.
 
+
+## Snapping
+
 Grid snapping is enabled in the top-right corner of the viewport.
 There are multiple snapping grid sizes to chose from.
 Snapping happens in local space, not world space.
@@ -35,6 +38,27 @@ World building is easier if tileable building blocks match one of the available 
 Each object with a transformation has both a global/world and a local/object space.
 Switch mode with the Cycle Transform Gizmo Coordinate System button in the top-right of the viewport.
 `Ctrl`+`\`.
+
+Movable visualizations created with a Component Visualizer does not snap to the grid automatically.
+The following snippet demonstrate how one can get the grid size and snap a Location to it.
+```cpp
+#include "Settings/LevelEditorViewportSettings.h"
+
+FVector SnapToGrid(const FVector& Location)
+{
+    if (GetDefault<ULevelEditorViewportSettings>()->GridEnabled)
+    {
+        return Location.GridSnap(GEditor->GetGridSize());
+    }
+    else
+    {
+        return Location;
+    }
+}
+```
+
+
+## Grouping
 
 Multiple objects can be grouped together with `Ctrl`+`g`.
 Grouped objects are selected and transformed together.
