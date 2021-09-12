@@ -18,6 +18,18 @@ To get more control over the serialization process override the `UObject::Serial
 FName must be serialized with `FNameAsStringArchive`.
 
 
+## Serializing to memory
+
+```cpp
+FSaveMyStruct MyStructInstance;
+MyStructInstance.AnyInt32 = 77;
+FBufferArchive Buffer(true);
+StaticStruct<FSaveMyStruct>()->SerializeBin(Buffer, &MyStructInstance);
+TArray<uint8> Bytes = Buffer;
+```
+
+
+
 ## Save games
 
 We can restrict it to only store UProperties marked with the SaveGame UProperty Specifier.
@@ -39,3 +51,6 @@ Object->Serialize(Archive);
 [[2021-01-26_11:00:02]] [Save game](./Save%20game.md)  
 [[2020-03-09_21:43:36]] [UPROPERTY](./UPROPERTY.md)  
 [[2021-06-22_08:34:55]] [UProperties](./UProperties.md)  
+
+
+[Uobject ustruct serialization @ ikrima.dev](https://ikrima.dev/ue4guide/engine-programming/uobject-serialization/uobject-ustruct-serialization/)  
