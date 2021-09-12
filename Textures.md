@@ -85,5 +85,11 @@ Without alpha support: A bunch of them.
 
 HDR format for cube maps do not need to obey the power of two rule.
 
+
+## Use in UMG widgets
+
+To add a texture to an UMG widget, add an Image widget from the Palette.
+To update the texture, call Set Brush From Texture on the Image widget.
+
 [[2020-05-10_11:01:04]] [Materials](./Materials.md)  
 [[2020-03-10_21:23:32]] [Naming convention](./Naming%20convention.md)  
