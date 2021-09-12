@@ -2,6 +2,7 @@
 
 # Foliage
 
+## Foliage tool
 Foliage is a tool to quickly and semi-randomly place a large number of Static Meshes.
 Often used to place trees, bushes, flowers, and grass.
 Can also be used to place other types of clutter.
@@ -38,6 +39,17 @@ If multiple mesh assets are selected in the mesh asset list then one of each wil
 Individual instances can be placed with the *Single* tool from the Tool Bar.
 Individual instances can also be removed with this tool by holding Shift and clicking.
 One must click on the ground where the instances was spawned, not on the mesh itself.
+
+
+## Grass Landscape layer
+
+Another way to create grass is to make it part of a Landscape material.
+The Landscape material can have a Grass output node.
+Input to the Grass output node can be a sample from a Grass layer on the Landscape.
+The grass layer contains a collection of Grass Types, each of which has a Landscape Grass Type, which in turn has a Grass Mesh.
+Wherever the Grass layer has been painted on the Landscape, the Grass mesh will be rendered.
+The Landscape Grass Type also has information such as density and size and such.
+Good for performance because the grass mesh will use pre-baked lighting information from the Landscape.
 
 [[2020-12-03_10:41:49]] [Editor mode](./Editor%20mode.md)  
 [[2020-05-08_22:05:51]] [Static Mesh](./Static%20Mesh.md)  
