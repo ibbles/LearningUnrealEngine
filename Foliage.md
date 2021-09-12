@@ -51,6 +51,14 @@ Wherever the Grass layer has been painted on the Landscape, the Grass mesh will 
 The Landscape Grass Type also has information such as density and size and such.
 Good for performance because the grass mesh will use pre-baked lighting information from the Landscape.
 
+
+## Procedural Foliage Volume
+
+Automatic placement of foliage within a volume.
+Has rules for how plants spread and while types of plants does or doesn't grow next to other types.
+Such as only some kinds of flowers grow in that shadow of some kind of trees.
+
+
 [[2020-12-03_10:41:49]] [Editor mode](./Editor%20mode.md)  
 [[2020-05-08_22:05:51]] [Static Mesh](./Static%20Mesh.md)  
 [[2021-05-31_20:28:03]] [Instanced Static Mesh](./Instanced%20Static%20Mesh.md)  
