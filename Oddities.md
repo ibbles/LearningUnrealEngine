@@ -9,6 +9,8 @@ Here I list behavior that surprised me, explain why I was surprised, and hopeful
 The Play button in the Level Editor Toolbar has been grayed out.
 I don't know why.
 I don't see any compiler errors in my Blueprints.
+
+**solution**  
 It was because lighting has finished building and a small dialog in the lower-left corner of my screen, far away from the editor, wanted me to click "Apply".
 Play button active again.
 
@@ -20,6 +22,8 @@ I can click the maximize/unmaximize in the top right corner which causes the tit
 Clicking and draging the titlebar does nothing, and the same for all edges and corner.
 My Windows Manager has a window menu that I can open with Alt+Space. Unmaximize is grayed out.
 I tried forcing it with `wmctrl -b remove,maximized(_vert)|(_horz)|()`, didn't help.
+
+**Solution**:
 Opening another project I also get a fullscreen window, but this time I can Alt+Space > Unmaximize.
 I hope the new window size will be carried over to the first project.
 Back in original project, no Window Manager Unmaximize works and I get a free-floating window. :D
@@ -55,6 +59,5 @@ void On3()
 
 It's as if the While Loop node remain active and get re-run as it detects that I changed one of the parts of the condition.
 
-**Solution**
-
+**Solution**  
 Brain fart. I have an execution wire from the end of the `Loob Body` path back to the while loop. That doesn't mean "I'm done with this iteration", it means "Start a new While Loop inside the body of the outer one." That's not what I want. The solution is to simply remove that wire. Doing the next iteration is built into the While Loop node when the execution path of the `Loop Body` ends.
