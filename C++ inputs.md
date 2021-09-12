@@ -71,6 +71,17 @@ void AMyPawn::SetupPlayerInputComponent(UInputComponent* Input)
 }
 ```
 
+# Input Processor
+
+There is something called an Input Processor.
+Don't know much about it, but it is created and registered with
+```cpp
+auto InputProcessor = MakeShareable(new FMyInputProcessor(this)); FSlateApplication::Get().RegisterInputPreProcessor(InputProcessor);
+```
+
+where `MyInputProcessor` implements `IInputProcessor`.
+
+
 [[2020-04-10_21:46:17]] [Inputs](./Inputs.md)  
 [[2021-01-01_16:41:46]] [C++ Pawn](./C++%20Pawn.md)  
 [[2021-01-03_17:40:41]] [C++ Character](./C++%20Character.md)  
