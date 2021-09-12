@@ -1,6 +1,6 @@
 2021-02-18_20:36:29
 
-# Compile errors
+# C++ Build Compile Link errors
 
 ## Undefined symbol on StaticEnum
 ```
@@ -34,3 +34,16 @@ And then a reference to the `GENERATED_BODY()` line in the Component's header fi
 
 The `MYMODULE_API` tag/marker/decorator is missing from the Component's class declaration.
 This solution is applicable to a number of `undefined symbol` related errors.
+
+## Most other linker errors
+
+Often one of the following reasons:
+- A required module hasn't been added to your `.Build.cs` `Add(Public|Private)DependencyMOduleNames`.
+  Read the linker error message to determine which function it doesn't find and use [docs.unrealengine.com](docs.unrealengine.com) to learn what module to add.
+  If there is no documentation for what you need then open the header file you got the symbol from and check what `.*_API` macro it uses.
+- You forgot to implement a function in one of your classes.
+  The function is listed in the header file so the source can be compiled, but at link time the code for the function wasn't found.
+- The function/class you're using isn't exported from its module.
+  Functions and classes are exported with the `MYMODULE_API` macros place before the symbol name.
+
+[[2020-09-18_08:51:49]] [Build.cs](./Build.cs)  
