@@ -12,3 +12,4 @@ This is a collection of notes related to lighting.
 [[2020-04-11_09:04:45]] [Exposure](./Exposure.md)  
 [[2021-01-22_22:09:22]] [Indirect lighting methods](./Indirect%20lighting%20methods.md)  
 [[2021-05-28_23:06:53]] [Lightmaps](./Lightmaps.md)  
+[[2021-09-12_20:04:15]] [Light scenarios](./Light%20scenarios.md)  
