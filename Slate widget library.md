@@ -71,3 +71,7 @@ Called when the value is changed. Is called repeatedly when the slider is dragge
 Called when editing stops. The type tells you how, such as enter, tab, or escape, was pressed or focus moved to another widget.
 - `AllowSpin`:
 Whether or not to allow click-and-drag editing. (I guess)
+
+## SNullWidget
+
+An empty widget that can be added when you want to remove everything from an already populated compound widget.
