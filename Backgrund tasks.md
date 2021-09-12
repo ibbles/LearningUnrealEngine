@@ -108,6 +108,37 @@ TFuture<void> future = Async(EAsyncExecution::ThreadPool, [/*captures*/]() {
 });
 ```
 
+```cpp
+void Example()
+{
+    // Create an Async Task defined in MyAsyncTask
+    FAsyncTask<ExampleAsyncTask>* MyTask = new FAsyncTask<MyAsyncTask>(5);
+
+    // Do either...
+
+    // Start in a background thread:
+    MyTask->StartBackgroundTask();
+
+    // ...or...
+
+    // Run in this thread
+    MyTask->StartSynchronousTask();
+
+    // Check if the task is done:
+    if (MyTask->IsDone())
+    {
+    }
+
+    // Spinning on IsDone is not acceptable (see EnsureCompletion), but it is ok to check once a frame.
+
+    // Ensure the task is done, doing the task on the current thread if it has not been started, waiting until completion in all cases.
+    MyTask->EnsureCompletion();
+
+    // We're done, delete the task.
+    delete Task;
+}
+```
+
 [[2021-04-28_13:14:13]] [Editor progress bar](./Editor%20progress%20bar.md)  
 
 
