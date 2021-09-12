@@ -44,6 +44,12 @@ UFUNCTION(BlueprintCallable, Category = "MyCategory")
 void MyFunction(UPARAM(Ref) FMyType& InOutMyParameter);
 ```
 
+`UPARAM(Ref)` Can also be put on the return value:
+```cpp
+UFUNCTION(BlueprintCallable, Category = "MyCategory")
+UPARAM(Ref) FMyType& MyGetterFunction();
+```
+
 To return a pointer to a UObject, make a parameter that is a reference to a pointer.
 ```cpp
 UFUNCTION(BlueprintCallable, Category = "MyCategory")
