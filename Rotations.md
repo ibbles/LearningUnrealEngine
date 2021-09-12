@@ -17,8 +17,15 @@ Instead it takes them in
 
 The Blueprint `Make Rotator` node follows the traditional (roll, pitch, yaw) order.
 
-We can find the principal axes after a rotation by an `FRotator` using `FRotationMatrix`.
-Example:
+We can find the principal axes after a rotation by an `FRotator` using `RotateVector`:
+```cpp
+const FRotator Rotation = ...;
+const FVector NewForward = Rotation.RotateVector(FVector::ForwardVector);
+const FVector NewRight = Rotation.RotateVector(FVector::RightVector);
+const FVector NewUp = Rotation.RotateVector(FVector::UpVector);
+```
+
+The same result can be produced with  `FRotationMatrix`:
 ```cpp
 const FRotator Rotation = ...;
 const FRotationMatrix Matrix(Rotation);
@@ -27,12 +34,17 @@ const FVector NewRight = Matrix.GetUnitAxis(EAxis::Y);
 const FVector NewUp = Matrix.GetUnitAxis(EAxis::Z);
 ```
 
-The same result can be produced with `RotateVector`:
+We can convert a vector holding a direction to a rotator that rotates the X axis to that direction with
 ```cpp
-const FRotator Rotation = ...;
-const FVector NewForward = Rotation.RotateVector(FVector::ForwardVector);
-const FVector NewRight = Rotation.RotateVector(FVector::RightVector);
-const FVector NewUp = Rotation.RotateVector(FVector::UpVector);
+FVector Direction = ...;
+FRotator Rotation = Direction.Rotation();
 ```
+
+We can find the rotation that rotates one vector to another with:
+```cpp
+??? Figure out how to do this.
+```
+
+`UKismetMathLibrary::MakeRotFromXZ` and friends is probably good. Figure out what it is and how to use it.
 
 [[2020-04-11_08:23:56]] [Coordinate system](./Coordinate%20system.md)  
