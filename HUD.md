@@ -3,10 +3,10 @@
 # HUD
 
 The HUD class acts as a manager for widgets.
-Subclass it to create your specifi HUD.
+Subclass it to create your specific HUD.
 The HUD base class inherits from `AActor`, so class names should be prefixed with `A`.
 The `AHUD` subclass typically contains member variables for the various root widgets it contains.
-By "root widgets" I mean widgets that may contain other widgest and that are added directly to the HUD.
+By "root widgets" I mean widgets that may contain other widgets and that are added directly to the HUD.
 Widgets can be (are? how does UMG fit into this?) Slate classes which don't participate in garbage collection.
 We therefore use `TSharedPtr` instead of raw pointers.
 
