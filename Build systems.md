@@ -35,7 +35,7 @@ This doesn't work.
 
 ## Fixing red squiggles
 
-A bug introduced in Unreal Engine 4.25 broke IDE, e.g. CLion, integration. Someone has prepared engine source fixes for it:
+A bug introduced in Unreal Engine 4.25 broke IDE, e.g. CLion, integration. Someone has prepared engine source fixes patch patches for it:
 - 4.25: https://gist.github.com/ericwomer/142650e65473087073f30e5fb97fd6e8 
 - 4.26: https://gist.github.com/jerobarraco/92839db6e6305fb04a04bab415ec8ae4  
 
