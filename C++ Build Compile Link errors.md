@@ -46,4 +46,4 @@ Often one of the following reasons:
 - The function/class you're using isn't exported from its module.
   Functions and classes are exported with the `MYMODULE_API` macros place before the symbol name.
 
-[[2020-09-18_08:51:49]] [Build.cs](./Build.cs)  
+[[2020-09-18_08:51:49]] [Build.cs](./Build.cs.md)  

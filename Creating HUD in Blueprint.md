@@ -28,4 +28,4 @@ Begin Play > Create Widget (Class=MyWidget) >
 
 [[2020-08-06_13:52:59]] [Creating HUD in C++](./Creating%20HUD%20in%20C++.md)  
 [[2020-11-08_15:42:25]] [HUD](./HUD.md)  
-[[2020-05-10_10:35:51]] [GUI-HUD](GUI-HUD.md)  
+[[2020-05-10_10:35:51]] [GUI-HUD](./GUI-HUD.md)  

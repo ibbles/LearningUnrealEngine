@@ -23,7 +23,7 @@ There is also `ISCSEditorCustomization` which seem related but I know nothing ab
 
 ```cpp
 bool FMyVisualizer::GetWidgetLocation(
-	const FEditorViewportClient* ViewportClient, FVector& OutLocation) const
+    const FEditorViewportClient* ViewportClient, FVector& OutLocation) const
 {
     UMyComponent* MyComponent = GetEditedMy();
     if (MyComponent == nullptr)

@@ -7,17 +7,17 @@ When you have determined that a change is going to happen (all checks passed) th
 
 ```cpp
 bool FMyVisualizer::HandleInputDelta(
-	FEditorViewportClient* ViewportClient,
+    FEditorViewportClient* ViewportClient,
     FViewport* Viewport,
     FVector& DeltaTranslate,
-	FRotator& DeltaRotate,
+    FRotator& DeltaRotate,
     FVector& DeltaScale)
 {
     UMyComponent* My = GetSelectedMy();
     if (My == nullptr)
-	{
-		return false;
-	}
+    {
+        return false;
+    }
     if (DeltaTranslate.IsZero())
     {
         return true;
