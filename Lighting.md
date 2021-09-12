@@ -55,6 +55,7 @@ Inverse square falloff is more realistic but requires large luminance and radius
 Linear square falloff (which I assume the alternative is) can be easier to control.
 
 [[2020-04-11_08:47:51]] [~Collection Lighting](./~Collection%20Lighting.md)  
+[[2021-09-12_20:04:15]] [Light scenarios](./Light%20scenarios.md)  
 
 
 [# Unreal Engine 4 Tutorial - Game Art - Lighting - How it Works by Ryan Laley @ youtube.com](https://www.youtube.com/watch?v=32r28R-ktDA)
