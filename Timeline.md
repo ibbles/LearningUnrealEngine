@@ -3,6 +3,9 @@
 # Timeline
 
 A Timeline is a node in a Blueprint Visual Script, specifically the Event Graph.
+Used to simple time-scoped per-tick updates, such as doors, moving platforms, levers, things like that.
+
+Create a Timeline node by right-click > Add Timeline....
 A Timeline is a repeated callback that for each call pass one or more values to the callback.
 Each value is a called a track.
 Each value appear as an output pin on the Timeline node.
