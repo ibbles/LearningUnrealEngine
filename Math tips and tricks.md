@@ -103,6 +103,40 @@ The function we need is named Inverse Transform Location.
 (Slider → Target, Clamped Target → New Location) Set Relative Location ()
 ```
 
+## Deproject from screen
+
+Use `APlayerController::DeprojectMousePositionToWorld` to get a world position from a screen coordinate.
+
+## Project to screen
+
+```cpp
+
+/**
+ * Project a world position to screen space.
+ * The returned
+ *   X and Y: Normalized screen coordinates.
+ *   Z: In front (>0) or behind (<0) the camera.
+ *   W: Distance from the camera.
+ *
+ * @param Complete model-view-projection matrix.
+ * @param The world position to compute the screen space position for.
+ */
+FVector4 ProjectToScreen(const FMatrix& Matrix, const FVector& WorldPos)
+{
+    FVector4 Result = Matrix.TransformFVector4(FVector4(WorldPos, 1.0f));
+    float ResultW = Result.W;
+    if(FMath::IsNearlyZero(ResultW))
+    {
+        // Avoid division by 0.
+        ResultW = (1.e-6f);
+    }
+    
+    // Reciprocal of the Homogeneous W, to get the perspetive effect.
+    const float RHW = 1.0f / ResultW;
+
+    return {Result.X * RHW, Result.Y * RHW, Result.Z * RHW, Result.W};
+}
+```
 
 From [Building Better Blueprints by Unreal Engine @ youtube.com](https://www.youtube.com/watch?v=WA8ihra87cM)  
 Part 2: [Oct 4, 2018 Unreal Livestream Makeup video by Zak Parrish @ youtube.com](https://www.youtube.com/watch?v=M0MpyfFaPsA)
