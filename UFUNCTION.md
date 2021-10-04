@@ -20,6 +20,7 @@ UFunction does not support *overloading*, i.e., function member names must be un
 UFunction does not support *template*, but there might be a work-around based on custom thunks and/or wildcards. More research needed.
 UFunction does not support *reference return* types. 
 UFunction does not support *FStruct pointer return* types.
+UFunction does not support *UObject reference* parameters.
 Some of the limitations may be for UFunctions exposed to Blueprint only.
 
 [[2020-03-10_21:12:12]] [USTRUCT](./USTRUCT.md)  
