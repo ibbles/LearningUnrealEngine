@@ -4,7 +4,9 @@
 
 Components are objects that belong to other objects, most often an Actor.
 Components are the pieces that make up an Actor.
-Components are added to Actors to give them behaviors/functionality.
+Components are added to Actors to give them behaviors/functionality.  
+[[2020-11-30_10:36:27]] [Creating components in constructor](./Creating%20components%20in%20constructor.md)  
+[[2020-08-14_09:32:03]] [Creating Components at runtime](./Creating%20Components%20at%20runtime.md)  
 They are building blocks.
 Using a mesh to give an Actor a visual representation is one use of a Component.
 A Component must have the `BlueprintSpawnableComponent` metadata specifier in order to be added to an Actor in Unreal Editor.
@@ -19,5 +21,7 @@ TODO: Describe how to do that.
 Component instances are destroyed by calling the Destroy Component function.
 
 [[2020-12-31_12:14:21]] [Creating objects](./Creating%20objects.md)  
+[[2020-11-30_10:36:27]] [Creating components in constructor](./Creating%20components%20in%20constructor.md)  
+[[2020-08-14_09:32:03]] [Creating Components at runtime](./Creating%20Components%20at%20runtime.md)  
 [[2020-03-10_21:29:17]] [Actor](./Actor.md)  
 [[2021-06-05_12:05:01]] [Scene Component](./Scene%20Component.md)  
