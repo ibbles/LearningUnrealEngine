@@ -43,6 +43,11 @@ We can also have the timer call a member function:
 GetWorldTimerManager().SetTimer(Handle, this, &UMyClass::MyCallback, 5.0f, false);
 ```
 
+The timer is cleared with
+```cpp
+GetWorld()->GetTimerManager().ClearTimer(Handle);
+```
+
 [[2020-09-30_13:13:51]] [Callbacks](./Callbacks.md)  
 [[2020-06-29_13:29:35]] [Events](./Events.md)  
 [[2020-05-10_18:32:07]] [Custom event](./Custom%20event.md)  
