@@ -139,6 +139,60 @@ void Example()
 }
 ```
 
+
+## FEvent
+
+This is an example of a background task that does some work on a set of Actors when asked to.
+The asking is done by signaling a Start Event.
+
+Header:
+```cpp
+class MYMODULE_API FMyRunnable final : public FRunnable
+{
+private:
+    bool bKeepRunning = true;
+    FRunnableThread* Thread = nullptr;
+
+public:
+    FEvent* StartEvent = nullptr;
+    TArray<TWeakObjectPtr<AMyActor>> MyActors;
+
+    FMyRunnable(const TArray<TWeakObjectPtr<AMyActor>>& InMyActors)
+        : MyActors(InMyActors)
+    {
+        StartEvent = FGenericPlatformProcess::GetSynchEventFromPool(false);
+        Thread = FRunnableThread::Create(this, TEXT("yRunnable"), 0, TPri_Normal);
+    }
+};
+```
+
+Implementation:
+```cpp
+uint32 FMyRunnable::Run()
+{
+    // This explicit pinning stuff might not be necessary, pin while operating
+    // on a particular instance instead. Not sure what's better.
+    TArray<TSharedObjectPtr<AMyActor>> PinnedActors;
+    PinnedActors.Reserve(MyActors.Num());
+    for (TWeakPtr<AArmyManagerNEW> MyActor : MyActors)
+    {
+        PinnedActors.Add(MyActor.Pin());
+    }
+
+    while (bKeepRunning)
+    {
+        StartEvent->Wait();
+
+        for (TSharedObjectPtr<AMyActor> MyActor : PinnedActors)
+        {
+            // Do something with MyActor.
+        }
+    }
+
+    return 0;
+}
+```
+
 [[2021-04-28_13:14:13]] [Editor progress bar](./Editor%20progress%20bar.md)  
 
 
