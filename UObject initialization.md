@@ -2,6 +2,10 @@
 
 # UObject initialization
 
+`UObject` has a bunch of callbacks that are called during different parts of the initialization.
+
+- `PostInitProperties`: Called immediately after the UProperties has been given their values.
+- `PostLoad`: Called when the object is loaded from something. Not called when created with an Actor' Add Component button.
 
 ## Play In Editor session
 
