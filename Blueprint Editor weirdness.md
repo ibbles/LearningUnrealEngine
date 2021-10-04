@@ -1,6 +1,6 @@
 2021-06-21_19:13:03
 
-# Blueprint Editor weirdness
+# Blueprint class / Editor weirdness
 
 Editing components inside the Blueprint Editor is weird.
 
@@ -27,4 +27,23 @@ If using the click-to-track approach in the Component Visualizer, like the Splin
 It may be possible to track multiple selected Components in the Component Visualizer and do some kind of look-up in the Detail Panel's `Tick` function so that the correct Component is always used.
 Not sure how one would know that it's safe to remove stuff from that map/cache.
 
+## Blueprint Reconstruction
+
+When a UProperty on a Blueprint instance is edited in the Details Panel the Actor is serialized, Component Instance Data gathered, all Components destroyed, new Components created, the Construction Script run, the serialization deserialized, and the gathered Component Instance Data applied.
+This process must be considered everywhere you are modifying Components, or parts of Components, that may be part of a Blueprint.
+
+## Details Panel
+
+During Blueprint Reconstruction, when Components are destroyed and recreated, new Details Panels are also created.
+These new Details Panel are given new Property Handles pointing to the new objects.
+A Details Customization may contain callbacks, for example for handling a button click or a new selection in a combo box.
+The Details Panels for the destroyed Components live on for a bit and the callbacks associated with them may be called during this time.
+We call these Zombie Details Panels.
+That means that in the callbacks for a Details Panel created for some object we may not rely on the object still existing.
+We can detect this by inspecting our Property Handle, which will be cleared (`GetNumPerObjectValues` returns 0) during the Blueprint Reconstruction.
+
+In particular, calling Set Value on an Property Handle when the Handle points to a UProperty on a Component in a Blueprint instance will cause the Component to be destroyed and the very Property Handle we called Set Value on to become cleared.
+
+
 [[2020-08-06_18:48:41]] [Component visualizer](./Component%20visualizer.md)  
+[[2021-06-16_10:48:57]] [Property Customization](./Property%20Customization.md)  
