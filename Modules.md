@@ -2,6 +2,9 @@
 
 # Modules
 
+Modules are used to group C++ code.
+Each module should have a particular purpose and responsibility.
+A module bundle type declarations and implementations.
 A module is a collection of C++ files that are compiled together with the same compiler flags.
 One or more modules are linked together as part of a Target into a dynamically linked library.
 The C++ files are stored in a directory for the module along with a `<ModuleName>.Build.cs` file.
@@ -10,7 +13,7 @@ The `Build.cs` file describe how the module is to be compiled.
 The engine is built up from a large collection of modules.
 Projects and plugins can also contain modules.
 
-A module is declared in the owning project's or plugin's `.upoject` or `.uplugin` file.
+A module is **declared** in the owning project's or plugin's `.upoject` or `.uplugin` file.
 The `Modules` attribute is an array that contains `Module` elements.
 A `Module` element contains at least `Name`, `Type`, and `LoadingPhase`.
 `Name` can be any string.
@@ -30,8 +33,10 @@ Can also have `WhitelistPlatforms` and `BlacklistPlatforms`.
 A module consists of a private part and public part.
 The private part can only be used by the module itself.
 The public part can be used by other modules as well.
-The public part is a collection of header files.
-The public part can contain both header and source files.
+The public part is a collection of header files, containing interfaces and exported types.
+The private part can contain both header and source files, containing function implementations and module initialization.
+Module initialization is done by `MyModule.cpp`, which contains a class inheriting from `IModuleInterface` and the `IMPLEMENT_MODULE` macro.
+A module has a `.Build.cs` file that describe the module to the Unreal Build Tool.
 A module using functionality provided by another module is called a dependency.
 The public part is stored in the `<ModuleName>/Public` directory.
 The private part is stored in the `<ModuleName>/Private` directory.
