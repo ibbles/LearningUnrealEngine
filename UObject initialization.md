@@ -16,6 +16,7 @@ The following steps are taken when a `UObject` is created as part of world dupli
 I don't know much about the memory handling strategy employed by Unreal Engine, but in some way a bunch of bytes are allocated for the new object.
 - **Zeroing**  
 All the bytes of the allocated memory are are set to zero. This means that all `bool` will be `false`, all integers will be `0`, all floating points will be `0.0`, and all pointers will be `nullptr` when the constructor starts.
+This is not something that's done universally in Unreal Engine, so don't mindlessly assume that all members of all classes are zeroed.
 - **Construction**  
 The constructor for the object is run. The constructor is responsible for setting up the default state of the object.
 - **`FObjectInitializer::InitProperties`**  
