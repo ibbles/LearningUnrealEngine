@@ -4,7 +4,8 @@
 
 `UObject` has a bunch of callbacks that are called during different parts of the initialization.
 
-- `PostInitProperties`: Called immediately after the UProperties has been given their values.
+- `PostInitProperties`: Called immediately after the UProperties has been given their default values from the Class Default Object.
+  Is it always the Class Default Object, or is it whatever template the object has? I.e., will the UProperties get values set in a Blueprint?
 - `PostLoad`: Called when the object is loaded from something. Not called when created with an Actor' Add Component button.
 
 ## Play In Editor session
@@ -37,5 +38,7 @@ Not sure what this is.
 The last callback for the object creation process.
 
 ## Blueprint Reconstruction
+
+When created as part of Blueprint Reconstruction
 
 [[2020-10-03_10:52:02]] [UObject](./UObject.md)  
