@@ -4,18 +4,22 @@
 
 Editing components inside the Blueprint Editor is weird.
 
+(
 Read `FComponentVisualizer::NotifyPropertiesModified` in `ComponentVisualizer.cpp` line 237 in Unreal Engine 4.25.
+)
 
 When editing a Blueprint Actor class in the Blueprint Editor there are multiple representations of the class simultaneously.
 When selecting one of the Components in there are multiple representations of that as well.
 The Details Panel owns one of them. That Component instance is named `MyVariable_GEN_VARIABLE` and does not have an owning Actor.
-The Viewport owns the other. That Compnent instance is named `MyVariable` and is owned by an Actor named `MyBlueprint_C_0`.
+The Viewport owns the other. That Component instance is named `MyVariable` and is owned by an Actor named `MyBlueprint_C_0`.
 I guess that in addition to these two there are also Blueprint-specific types representing the same thing, such as `UBlueprint` and `USCSNode`.
 - Details Panel: `MyVariable_GEN_VARIABLE` in owner `nullptr`.
 - Visualizer: `MyVariable` in owner `MyBlueprint_C_0`.
 
 If you have a Component Visualizer with Hit Proxies then the Component owned by the `_C_0` Actor will be provided.
 If you ask ask Detail Layout Builder for the customized object then it will return the `GEN_VARIABLE` one without an owning Actor.
+
+The `MyVariable_GEN_VARIABLE` object is the template, the object that instances of the Blueprint will be initialized from and the yellow UProperty reset button will be shown if the instance's UProperty has a value different from that on `MyVariable_GEN_VARIABLE`.
 
 There can be multiple Details Panel open at the same time, but only a single Component Visualizer.
 Each frame all Details Panels have their `Tick` function called.
