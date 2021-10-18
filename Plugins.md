@@ -8,7 +8,7 @@ There are templates for various types of plugins.
 Plugins can exist either in the engine installation or in the project directory.
 Engine plugins are in `<UE_ROOT>/Engine/Plugins`.
 Project plugins are in `<PROJECT_ROOT>/Plugins`.
-Creating the plugin will create a bunch of files and folders in the `Plugins` direc
+Creating the plugin will create a bunch of files and folders in the `Plugins` directory.
 
 Plugins can also be created by hand.
 - Create `Plugins` directory in the project's directory.
@@ -17,13 +17,14 @@ Plugins can also be created by hand.
     - `Binaries`. Will contain compiled binaries/dynamically linked library for our plugin.
     - `Content`. Assets and other content we wish to ship with the plugin.
     - `Intermediate`. Temporary build artifacts created by the build system.
-    - `Resources`. Have only ever seen this contain an icon.
+    - `Resources`. Have only ever seen this contain an icon. When put something in `Resources` and when in `Content`?
     - `Source/<PluginName>`. The source code for our plugin.
 - Create `<PluginName>.uplugin` in the plugin's directory.
 
 A plugin consists of one or more modules.
 By default there is a module with the same name as the plugin, hence the `<PluginName>` directory in `Source`.
-Additional modules may be created. It's recommended.
+Additional modules may be created. It's recommended if it helps structure the plugin's functionality.
+If you want to provide Editor integration in addition to in-game functionality you must have a separate Editor module.
 
 There is no specific plugin-in API in Unreal Engine.
 The entirety of the public interface surface of all module is available to plug-ins.
