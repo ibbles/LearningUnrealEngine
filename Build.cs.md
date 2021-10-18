@@ -11,8 +11,13 @@ In the class' constructor we define a number of properties, for example:
 - Linker library search paths.
 - Additional library dependencies.
 - `<Visibility>DependencyModuleNames`
-    Modules this module vishes to import/use. This is how `public` build properties of other modules are inherited into this module.
+    Modules this module wishes to import/use. This is how `public` build properties of other modules are inherited into this module.
+    `PublicModuleNames` is propagated to modules that depend on this module.
+    `PrivateModuleNames` are included only when building this module.
 - `<Visibility>IncludePaths`
+  Directories that the compiler should look for header files in.
+  `PublicIncludePaths` should only contain directories within the module's `Public` subdirectory.
+  `PrivateIncludePaths` should only contain directories within the module's `Private` subdirectory.
     For `PrivateIncludePaths` the given paths are relative to the module's `Private` directory. Directories in the `Public` subdirectory are found and added automatically by Unreal Build Tool, so no need to list them.
 
 Most of these settings can have either public or private visbility.
