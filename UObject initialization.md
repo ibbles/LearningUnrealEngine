@@ -40,6 +40,13 @@ The last callback for the object creation process.
 
 ## Blueprint Reconstruction
 
-When created as part of Blueprint Reconstruction
+When a Component is created as part of Blueprint Reconstruction the order of callbacks is different for some reason.
+
+- **PostInitProperties**
+- **PostDuplicate
+- **PostLoad**
+- **Copy UProperties from the reconstructed Component**
+- **OnRegister**
+
 
 [[2020-10-03_10:52:02]] [UObject](./UObject.md)  
