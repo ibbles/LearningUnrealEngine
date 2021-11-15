@@ -23,14 +23,15 @@ No idea what would happen if other Blueprints have references to this one, would
 
 ## Vulkan memory defragmentation
 
+Unreal Engine 4.26.1 (I think) added Vulkan memory defrag.
 Not had this one myself, but some people have frequent crashes on Unreal Engine versions around 4.25, 4.26, 4.26 due to Vulkan memory defragmentation.
-Vulkan memory defragmentation can be disabled.
-Edit `Config/DefaultEngine.ini`:
+It can be enabled or disabled with the `r.Vulkan.EnableDefrag` flag, e.g.:
+`-dpcvars=r.Vulkan.EnableDefrag=1`
+or by editing `Config/DefaultEngine.ini`:
 ```
 [SystemSettings]
 r.Vulkan.EnableDefrag=0
 ```
-
 
 ## Vulkan SDK
 
