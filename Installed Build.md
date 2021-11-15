@@ -4,6 +4,21 @@
 
 An engine Installed Build is an export of sorts from a source build to a distributable package that can be shared among developers on a team.
 
+Command I found somewhere:
+```
+Engine/Build/BatchFiles/RunUAT.sh
+    BuildGraph
+    -Target="Make Installed Build Linux"
+    -Script=Engine/Build/InstalledEngineBuild.xml
+    -Set:HostPlatformEditorOnly=true
+    -Set:WithDDC=false
+    -Set:BuiltDirectory="/path/to/output/directory"
+```
+Not sure if the above is some official command line or something that someone just does.
+The `BuiltDirectory` part was added after 4.26. When not set the output directory is set to `./LocalBuilds/Engine/Linux`.
+
+Below are some more variants.
+
 
 For Linux:
 ```
@@ -33,6 +48,8 @@ RunUAT.bat BuildGraph
 ```
 The Installed Build is created at `<UE4Root>/LocalBuilds/Engine`.
 
+The default setting doesn't include support for dedicated servers.
+To add that, include `-set:WithClient=true -set:WithServer=true` in the command.
 
 Longer description:
 
@@ -89,4 +106,5 @@ Read
 - https://docs.unrealengine.com/en-US/Programming/Deployment/UsinganInstalledBuild/index.html
 
 [[2021-07-09_09:54:02]] [Build ID](./Build%20ID.md)  
-
+[[2020-08-22_22:55:03]] [Building and installing Unreal Engine from source](./Building%20and%20installing%20Unreal%20Engine%20from source.md)  
+[[2020-09-28_07:47:55]] [Command line](./Command%20line.md)  
