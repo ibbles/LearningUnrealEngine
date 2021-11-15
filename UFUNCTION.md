@@ -38,6 +38,7 @@ The only difference between `BlueprintPure` and `BlueprintCallable` is that `Blu
 
 Most types that can be used in Blueprints can be used for parameters and return types.
 A parameter taken by reference becomes an output pin on the Visual Script node.
+To create an output pin pass a by-reference parameter to the function.
 If you want it to be an input pin instead then add `UPARAM(Ref)` before the parameter type.
 This is useful for modifying the state of a UStruct variable.
 ```cpp
