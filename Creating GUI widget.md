@@ -38,11 +38,13 @@ The functions can be renamed.
 The function need an object reference to read the data from.
 It is common to display data from the player character, which can be fetched with the Get Player Character node.
 
+This type of function binding isn't recommended for data that isn't updated every frame since the binding function is called every frame.
+Better to have a variable in the Widget, bind to that, and have some other communication mechanism for updating the variable when the data changes.
 
 ## Instantiating root widgets
 
 Root Widgets must be instantiated before they are seen.
-This can be done from BeginP lay, for example in a Player Controller, Pawn or the Level Blueprint.
+This can be done from Begin Play, for example in a Player Controller, Pawn or the Level Blueprint.
 An instance is created with the Create Widget node.
 Select your Widget class from the drop down.
 Next add it to the viewport with the Add to Viewport node.
