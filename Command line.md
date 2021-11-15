@@ -22,6 +22,7 @@ Initial build of Unreal Engine:
 ### Creating a binary release of the engine
 
 [[2020-08-22_22:55:03]] [Building and installing Unreal Engine from source](./Building%20and%20installing%20Unreal%20Engine%20from%20source.md)  
+[[2021-10-01_16:04:08]] [Installed Build](./Installed20Build.md)  
 
 Creating a binary release of Unreal Engine:
 ```
