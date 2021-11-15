@@ -52,7 +52,7 @@ The EnemyCharacter has the EnemyAI class as its AI Controller Class.
 The EnemyAI BeginPlay event calls Set Timer by Function Name for the TrackPlayer event.
 The TrackPlayer event in EnemyAI calls AI MoveTo, passing in the EnemyCharacter and the Player Character.
 
-The communication flow for player movement in the TwinStickShotter is as follows:
+The communication flow for player movement in the TwinStickShooter is as follows:
 There is a HeroCharacter class inheriting from BaseCharacter inheriting from Character.
 In Project Settings → Project → Maps & Modes Default Pawn Class is set to HeroCharacter.
 In Project Settings → Engine → Input a number of Axis Mappings are made.
