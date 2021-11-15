@@ -27,7 +27,7 @@ Unreal Engine 4.26.1 (I think) added Vulkan memory defrag.
 Not had this one myself, but some people have frequent crashes on Unreal Engine versions around 4.25, 4.26, 4.26 due to Vulkan memory defragmentation.
 It can be enabled or disabled with the `r.Vulkan.EnableDefrag` flag, e.g.:
 `-dpcvars=r.Vulkan.EnableDefrag=1`
-or by editing `Config/DefaultEngine.ini`:
+or by editing `Config/DefaultEngine.ini` in the Unreal Engine installation:
 ```
 [SystemSettings]
 r.Vulkan.EnableDefrag=0
