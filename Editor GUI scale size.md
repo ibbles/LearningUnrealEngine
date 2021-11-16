@@ -2,7 +2,7 @@
 
 # Editor GUI scale size
 
-There is a DPI-aware checkbox in Top Menu Bar > Edit > Edit Preferences > Appearance > High DPI Awareness.
+There is a DPI-aware checkbox in Top Menu Bar > Edit > Edit Preferences > Appearance > Enable High DPI Support.
 Checking this will make Unreal Editor guess how large the GUI elements in the editor should me.
 
 The scale / size / DPI of the Unreal Editor GUI and Slate widgets can be set from the Widget Reflector.
