@@ -17,7 +17,7 @@ The build steps are:
 The last step is to build shaders.
 The full process about an hour on my 2017 machine.
 
-Unreal Engine uses UnrealBuildTool to build itself and Unreal Engine projects.
+Unreal Engine uses Unreal Build Tool to build itself and Unreal Engine projects.
 `BuildConfiguration.cs` is the ground-truth for user-configurable build options.
 Stored at `./Engine/Source/Programs/UnrealBuildTool/Configuration/BuildConfiguration.cs`.
 
