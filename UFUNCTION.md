@@ -41,6 +41,10 @@ A parameter taken by reference becomes an output pin on the Visual Script node.
 To create an output pin pass a by-reference parameter to the function.
 If you want it to be an input pin instead then add `UPARAM(Ref)` before the parameter type.
 This is useful for modifying the state of a UStruct variable.
+(
+Though be aware that the Blueprint VM will still copy the instance in and out of the VM's memory, so it only looks like a reference in that we can update the source struct.
+This matters if the struct has members that aren't copied by the assignment operator / copy constructor / and/or whatever else the Blueprint VM may decide to do the copy with.
+)
 ```cpp
 UFUNCTION(BlueprintCallable, Category = "MyCategory")
 void MyFunction(UPARAM(Ref) FMyType& InOutMyParameter);
