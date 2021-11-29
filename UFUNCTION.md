@@ -56,6 +56,11 @@ UFUNCTION(BlueprintCallable, Category = "MyCategory")
 UPARAM(Ref) FMyType& MyGetterFunction();
 ```
 
+Using `UPARAM`we can also set the name of the output pin:
+```cpp
+UPARAM(DisplayName = "Num Widgets") int32 GetNumWidgets();
+```
+
 To return a pointer to a UObject, make a parameter that is a reference to a pointer.
 ```cpp
 UFUNCTION(BlueprintCallable, Category = "MyCategory")
