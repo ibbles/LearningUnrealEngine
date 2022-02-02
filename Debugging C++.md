@@ -32,4 +32,4 @@ In KDE, try Alt+Space, which should open KRunner and give it focus.
 In Gnome, try Super+Tab.
 In Gnome, it may also help to enable Gnome Tweaks > Windows > Window Focus > Focus on Hover.
 You can also create a script that uses `xdotool` to move `windowfocus` to you IDE and bind that to a global hotkey.
-Another alternative is a script with `xdotool kex UF86Ungrab` and bind that to a global hotkey.
+Another alternative is a script with `xdotool key XF86Ungrab` and bind that to a global hotkey.
