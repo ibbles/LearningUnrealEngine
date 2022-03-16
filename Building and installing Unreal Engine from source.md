@@ -12,7 +12,7 @@ The build steps are:
     - `git clone https://github.com/EpicGames/UnrealEngine.git .`
     - `git checkout <VERSION>-release`
   - or
-    - git clone --single-branch -b <VERSION> git@github.com:EpicGames/UnrealEngine.git .
+    - `git clone --single-branch -b <VERSION> git@github.com:EpicGames/UnrealEngine.git .`
 - `./Setup.sh`
 - `./GenerateProjectFiles.sh`
   - Update `Engine/Build/Build.version` with the correct `Changelist`. [[2022-03-16_12:06:49]][Build.version.md](./Build.version.md)
