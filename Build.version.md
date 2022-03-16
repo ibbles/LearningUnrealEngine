@@ -1,3 +1,7 @@
+2022-03-16_12:06:49
+
+# Build.version
+
 The Unreal Engine directory contains `UE_ROOT/Engine/Build/Build.version`.
 This file contains a bunch of version information about the current version.
 It should contain a value for `Changelist`, but git working copies doesn't.
