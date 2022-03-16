@@ -7,10 +7,16 @@
 The build steps are:
 - `mkdir UnrealEngine_<VERSION>`
 - `cd UnrealEngine_<VERSION>`
-- `git clone https://github.com/EpicGames/UnrealEngine.git .`
-- `git checkout <VERSION>-release`
+- Clone the git repository
+  - Either
+    - `git clone https://github.com/EpicGames/UnrealEngine.git .`
+    - `git checkout <VERSION>-release`
+  - or
+    - git clone --single-branch -b <VERSION> git@github.com:EpicGames/UnrealEngine.git .
 - `./Setup.sh`
 - `./GenerateProjectFiles.sh`
+  - Update `Engine/Build/Build.version` with the correct `Changelist`. (Need more text on this.)
+  - Patch `UEBuildModuleCPP.cs`. See below.
 - `make`
 - `./Engine/Binaries/Linux/UE4Editor`
 
