@@ -14,7 +14,7 @@ The build steps are:
   - or
     - `git clone --single-branch -b <VERSION> https://github.com/EpicGames/UnrealEngine.git .`
   - or
-    - `git clone --depth 1 https://github.com/EpicGames/UnrealEngine.git -b <VERSION> .`
+    - `git clone --depth 1 https://github.com/EpicGames/UnrealEngine.git -b <VERSION> .`  
       I believe this gives the smallest working copy size.
   - `<VERSION>` is e.g. `4.25.4-release` or `4.27.0-preview-4`.
 - `./Setup.sh`
