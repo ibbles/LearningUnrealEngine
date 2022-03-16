@@ -7,7 +7,7 @@
 The build steps are:
 - `mkdir UnrealEngine_<VERSION>`
 - `cd UnrealEngine_<VERSION>`
-- Clone the git repository
+- Clone the git repository. To do this you must have [linked](https://www.unrealengine.com/en-US/ue4-on-github) you GitHub account and you Epic Games account, and you must have a [GitHub access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
   - Either
     - `git clone https://github.com/EpicGames/UnrealEngine.git .`
     - `git checkout <VERSION>-release`
