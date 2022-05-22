@@ -18,6 +18,7 @@ If triangles overlap in the lightmap texture then a shadow that falls on one tri
 The lightmap UVs are often stored in the second UV channel.
 Some call this Channel 1 (0-based indexing) while others call this Channel 2 (1-based indexing).
 Unreal Engine uses 0-based indexing, so the lightmap UVs are at index 1.
+This can be set per mesh in Mesh Editor > General Settings > Advanced > Light Map Coordinate Index.
 The Editor can generate lightmap UVs for your meshes.
 
 Each Static Mesh has its own lightmap texture.
