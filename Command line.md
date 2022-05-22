@@ -186,6 +186,19 @@ mono AutomationTool.exe
 
 I expect there to be a fairly straightforward conversion to a `RunUAT.sh` command line from this.
 
+Maybe like this?
+```bash
+$UE_ROOT/Engine/Build/BatchFiles/RunUAT.sh
+    BuildCookRun
+    -project=$PROJECT_ROOT/$PROJECT_NAME.uproject
+    -stage
+    -package
+    -build
+    -cook
+    -pak
+    -compressed
+```
+
 An example RunUAT line to build a server:
 ```
 RunUAT
@@ -252,6 +265,37 @@ $UE_ROOT/Engine/Build/BatchFiles/RunUAT.sh
 ```
 
 One can set Project Settings > Cooker > Cooker Progress Display Mode to get more or less information from the cooker.
+
+This builds something, not sure what. From https://discord.com/channels/187217643009212416/375022233875382274/935265408053809224
+```
+$UE_ROOT/Engine/Build/BatchFiles/RunUAT.sh
+    -ScriptsForProject=$PROJECT_ROOT/$PROJECT_NAME.uproject
+    BuildCookRun
+    -project=$PROJECT_ROOT/$PROJECT_NAME.uproject
+    -noP4
+    -clientconfig=$([[ "$CI_COMMIT_BRANCH" == "master" ]] && echo "Shipping" || echo "Development")
+    -serverconfig=$([[ "$CI_COMMIT_BRANCH" == "master" ]] && echo "Shipping" || echo "Development")
+    -nocompileeditor
+    -ue4exe=$UE_ROOT/Engine/Binaries/Linux/UE4Editor
+    -utf8output
+    -platform=Linux
+    -server
+    -serverplatform=Linux
+    -targetplatform=Linux
+    -build
+    -cook
+    -allmaps
+    -unversionedcookedcontent
+    -createreleaseversion=
+    -basedonreleaseversion=1.0.0
+    -compressed
+    -prereqs
+    -stage
+    -package
+    -stagingdirectory=$BUILD_ROOT/staging/$PROJECT_NAME
+    -archive
+    -archivedirectory=$BUILD_ROOT/builds/$PROJECT_NAME
+```
 
 ### Compiling shaders (I think)
 
