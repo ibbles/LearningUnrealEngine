@@ -175,6 +175,28 @@ A search for `must be installed in order` in `${UE_ROOT}/Engine/Source/Programs`
 [ Compiling libraries in Linux@answers.unrealengine.com](https://answers.unrealengine.com/questions/674473/compiling-libraries-in-linux.html)
 
 
+### Some command used by someone
+
+```bash
+InstallClangDir="$EngineDir/Extras/ThirdPartyNotUE/SDKs/HostLinux/Linux_x64/$ToolChainVersion/$TARGET_ARCH/"
+    PATH="$InstallClangDir/bin:$PATH"
+    LibCxx="$EngineDir/Source/ThirdParty/Linux/LibCxx/lib/Linux/$TARGET_ARCH/libc++.a"
+    LibCxxAbi="$EngineDir/Source/ThirdParty/Linux/LibCxx/lib/Linux/$TARGET_ARCH/libc++abi.a"
+    LibCxxInclude="$EngineDir/Source/ThirdParty/Linux/LibCxx/include/c++/v1"
+
+    cmake $ModuleDir/Source/ $Options \
+        -DCMAKE_SYSROOT=${InstallClangDir}\
+        -DCMAKE_C_COMPILER=${InstallClangDir}/bin/clang \
+        -DCMAKE_CXX_COMPILER=${InstallClangDir}/bin/clang++ \
+        -DCMAKE_AR=${InstallClangDir}/bin/llvm-ar \
+        -DCMAKE_NM=${InstallClangDir}/bin/llvm-nm \
+        -DCMAKE_RANLIB=${InstallClangDir}/bin/$TARGET_ARCH-ranlib \
+        -DCMAKE_EXE_LINKER_FLAGS="-nostdinc++ -nostdlib++ -L$LibCxx --sysroot=${InstallClangDir} -fuse-ld=lld" \
+        -DCMAKE_C_FLAGS="--sysroot=${InstallClangDir}" \
+        -DCMAKE_CXX_FLAGS="-nostdlib++ --sysroot=${InstallClangDir} -isystem $LibCxxInclude"
+
+```
+
 ## BuildCMakeLib
 
 `BuildCMakeLib` is an Unreal Automation Tool that helps with building CMake libraries for Unreal Engine.
