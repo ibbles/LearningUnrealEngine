@@ -50,4 +50,36 @@ Can select Actors from the table rows.
 Built-in visual profiler.
 
 
+## System profiler
+
+
+### Linux
+
+##### Perf
+
+`perf` is a sampling profiler.
+On Ubuntu, install one of the `linux-toolslinux-tools` packages.
+If you don't have it already, then running `perf` will tell you which one you need to install.
+
+For security reasons Ubuntu doesn't allow processes to attach to each other arbitrarily so we must disable this check to allow sampling.
+```
+echo 0 | sudo tee /proc/sys/kernel/perf_event_paranoid
+```
+See also [Perf Security @ kernel.org](https://www.kernel.org/doc/html/latest/admin-guide/perf-security.html).
+
+Run one of the following, depending on what version of Unreal Engine your are using.
+```
+perf record -g -p (pidof UE4Editor) sleep 30
+perf record -g -p (pidof UnrealEditor) sleep 30
+```
+
+This will record samples for 30 seconds, so what whatever it is you want to measure.
+
+After the 30 seconds has passed, run
+```
+perf report -g --no-children
+```
+
+
+
 [[2020-10-08_08:42:31]] [Unreal Insights](./Unreal%20Insights.md)  
