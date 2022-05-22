@@ -45,6 +45,20 @@ In short, the problem is in `Engine/Source/Programs/UnrealBuildTool/Configuratio
 
 Symptoms are Unreal Engine macros not being recognized, missing class definitions, undeclared definitions.
 
+## Parallel compilation
+
+From https://discord.com/channels/187217643009212416/375022233875382274/971258915906007040
+```
+If you want to control the number of jobs then you need to configure UBT by setting the appropriate options in its XML config file (which is called `BuildConfiguration.xml` and can exist in multiple locations: https://docs.unrealengine.com/4.27/en-US/ProductionPipelines/BuildTools/UnrealBuildTool/BuildConfiguration/) (edited)
+    
+    
+Hmmm, that docs page looks to have a mistake:
+    
+On Linux and Mac, the following paths are used instead: - /Users//.config//Unreal Engine/UnrealBuildTool/BuildConfiguration.xml - /Users//Unreal Engine/UnrealBuildTool/BuildConfiguration.xml
+    
+The `/Users//` prefix there should be `/Users/$USER/` under macOS and `/home/$USER/` under Linux.
+```
+
 ## Listing compiler commands
 
 Unreal Build Tool is supposed to be able to generate a list of native compiler invocations with `UnrealBuildTool.exe -mode=GenerateClangDatabase`, but I have not been able to get it to work.
