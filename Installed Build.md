@@ -4,73 +4,91 @@
 
 An engine Installed Build is an export of sorts from a source build to a distributable package that can be shared among developers on a team.
 
-Command I found somewhere:
+Epic Games provide Linux Docker images that can be downloaded to run Unreal Engine.
+Use e.g. [Epic Asset Manager](https://github.com/AchetaGames/Epic-Asset-Manager) to download and unpack the Unreal Engine installation from the Docker image to the local machine.
+The build scripts for the Docker images are available on GitHub: https://github.com/adamrehn/ue4-docker
+On Linux the build command becomes
+```shell
+./Engine/Build/BatchFiles/RunUAT.sh
+    BuildGraph
+    -target="Make Installed Build Linux"
+    -script=Engine/Build/InstalledEngineBuild.xml
+    -set:WithDDC=false
+    -set:HostPlatformOnly=true
 ```
-Engine/Build/BatchFiles/RunUAT.sh
+
+
+Command I found somewhere:
+```shell
+.Engine/Build/BatchFiles/RunUAT.sh
     BuildGraph
     -Target="Make Installed Build Linux"
     -Script=Engine/Build/InstalledEngineBuild.xml
-    -Set:HostPlatformEditorOnly=true
     -Set:WithDDC=false
+    -Set:HostPlatformEditorOnly=true
     -Set:BuiltDirectory="/path/to/output/directory"
 ```
 Not sure if the above is some official command line or something that someone just does.
-The `BuiltDirectory` part was added after 4.26. When not set the output directory is set to `./LocalBuilds/Engine/Linux`.
+The `BuiltDirectory` parameter was added in Unreal Engine 4.27.
+When not set the output directory is set to `./LocalBuilds/Engine/`.
+`Linux` will be appended to the `BuildDirectory`.
 
 Below are some more variants.
 
 
 For Linux:
-```
+```shell
 ./Engine/Build/BatchFiles/RunUAT.sh
     BuildGraph
     -Target="Make Installed Build Linux"
     -Script=Engine/Build/InstalledEngineBuild.xml
-    -Set:HostPlatformOnly=true
     -Set:WithDDC=false
-    -Set:WithLinuxAArch64=false
-    -Set:HostPlatformDDCOnly=false
+    -Set:HostPlatformOnly=true
+    # Additions:
+    -Set:WithLinuxArm64=false # Pre UE5: -Set:WithLinuxAArch64=false
     -Set:GameConfigurations=Development
-    -Clean
 ```
 
+`GameConfigurations` is `DebugGame;Development;Shipping` by default.
+Not sure what the valid values are.
+
+
 For Windows (untested, just following the pattern):
-```
+```shell
 RunUAT.bat BuildGraph
     -Target="Make Installed Build Win64"
     -Script=Engine/Build/InstalledEngineBuild.xml
-    -Set:HostPlatformOnly=true
     -Set:WithDDC=false
-    -Set:HostPlatformDDCOnly=false
+    -Set:HostPlatformOnly=true
     -Set:GameConfigurations=Development
-    -Clean
-
 ```
-The Installed Build is created at `<UE4Root>/LocalBuilds/Engine`.
+The Installed Build is created at `<UE_ROOT>/LocalBuilds/Engine`.
 
 The default setting doesn't include support for dedicated servers.
 To add that, include `-set:WithClient=true -set:WithServer=true` in the command.
 
-Longer description:
+# Longer description
 
 There is a Build Graph script that creates an install version of Unreal Engine.
-The script is `<UE4Root>/Engine/Build/InstalledBuild.xml`.
+The script is `<UE_ROOT>/Engine/Build/InstalledBuild.xml`.
 Run with
 ```
-RunUAT BuildGraph -Target="Make Installed Build <PLATFORM>" -Script="Engine/Build/InstalledEngineBuild.xml" -Clean
+RunUAT BuildGraph -Target="Make Installed Build <PLATFORM>" -Script="Engine/Build/InstalledEngineBuild.xml"
 ```
-Why the `-Clean` part?
+
 Platform can be either `Win64`, `Mac`, or `Linux`.
-The Installed Build is created at `<UE4Root>/LocalBuilds/Engine`.
-Can be changed somehow, but the docs don't say how.
+The Installed Build is created at `<UE_ROOT>/LocalBuilds/Engine`.
+Can be changed with `-Set:BuildDirectory="/path.to/output/directory"` in Unreal Engine 4.27 and later.
 
 To build only for the host platform, pass `-Set:HostPlatformOnly=true`.
 To disable Derived Data Cache build, pass `-Set:WithDDC=false`.
 To select which configuration to build, pass `-Set:GameConfiguration=Development`.
+Multiple Game Configurations can be separated with `;`.
 
 The above command will produce a build that is quite large, 100 GiB or so.
-The below is supposed to produce a smaller build, but I haven't tested yet. I don't see which part is supposed to make it smaller…
-Perhaps not passing `Development` will exclude debug information. I _think_ that part was required to export/package plugins.
+The below is supposed to produce a smaller build, but I haven't tested yet.
+Is the `WithDDC=false` part the important bit?
+I don't see why all the `With<PLATFORM>` bits are required when passing `HostPlatformEditorOnly=true`.
 ```
 ./Engine/Build/BatchFiles/RunUAT.sh BuildGraph
     -script=Engine/Build/InstalledEngineBuild.xml
