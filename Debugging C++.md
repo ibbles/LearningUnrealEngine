@@ -33,3 +33,17 @@ In Gnome, try Super+Tab.
 In Gnome, it may also help to enable Gnome Tweaks > Windows > Window Focus > Focus on Hover.
 You can also create a script that uses `xdotool` to move `windowfocus` to you IDE and bind that to a global hotkey.
 Another alternative is a script with `xdotool key XF86Ungrab` and bind that to a global hotkey.
+May need to run `setxkbmap -option grab:break_actions` before any of the above commands.
+
+I have the following script bound to Super+U, for Ungrab.
+```bash
+#!/bin/bash
+
+# This script tries to abort a mouse cursor grab action. For example, when
+# debugging GUI applications with a debugger attached in a click callback we may
+# end up in a state where the current halted click prevent any new clicks from
+# registering making it difficult to use IDE-integrated debuggers.
+
+setxkbmap -option grab:break_actions
+xdotool key XF86Ungrab
+```
