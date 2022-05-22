@@ -36,6 +36,7 @@ Move an object in Unreal Editor and all baked light we act as-if the object was 
 No shadows move.
 The editor will inform you about this with the `LIGHTING NEEDS TO BE REBUILT` message in the top-left of the Level Editor viewport.
 
+[[2022-03-15_16:22:35]] [Building lighting.md](./Building%20lighting.md)
 
 ## Light mobility
 
