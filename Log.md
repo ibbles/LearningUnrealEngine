@@ -35,7 +35,7 @@ Each log entry is prepended with some numbers.
 The first `[]` contains the date and time.
 In `Year`.`Month`.`Day`-`Hour`.`Minute`.`Second`:`Millisecond` format.
 At least for me, there may be locale-related differences here.
-I don't know what the second `[]` contains. Possibly a thread or ID.
+The second `[]` contains the current frame.
 Example:
 ```
 [2021.03.12-08.05.50:875][ 98]

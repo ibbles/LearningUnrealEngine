@@ -12,10 +12,20 @@ You also need a GitHub account to clone to Unrela Engine repository, and the two
 The build steps are:
 - `mkdir UnrealEngine_<VERSION>`
 - `cd UnrealEngine_<VERSION>`
-- `git clone https://github.com/EpicGames/UnrealEngine.git .`
-- `git checkout <VERSION>-release`
+- Clone the git repository. To do this you must have [linked](https://www.unrealengine.com/en-US/ue4-on-github) you GitHub account and you Epic Games account, and you must have a [GitHub access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+  - Either
+    - `git clone https://github.com/EpicGames/UnrealEngine.git .`
+    - `git checkout <VERSION>-release`
+  - or
+    - `git clone --single-branch -b <VERSION> https://github.com/EpicGames/UnrealEngine.git .`
+  - or
+    - `git clone --depth 1 https://github.com/EpicGames/UnrealEngine.git -b <VERSION> .`  
+      I believe this gives the smallest working copy size.
+  - `<VERSION>` is e.g. `4.25.4-release` or `4.27.0-preview-4`.
 - `./Setup.sh`
 - `./GenerateProjectFiles.sh`
+  - Update `Engine/Build/Build.version` with the correct `Changelist`. [[2022-03-16_12:06:49]][Build.version.md](./Build.version.md)
+  - Patch `UEBuildModuleCPP.cs`. See below.
 - `make`
 - `./Engine/Binaries/Linux/UE4Editor`
 
