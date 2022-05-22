@@ -2,6 +2,11 @@
 
 # Building and installing Unreal Engine from source
 
+## Account setup
+
+To use Unreal Engine you must agree to Epic Games' EULA.
+This is done by creation an Epic Games account.
+You also need a GitHub account to clone to Unrela Engine repository, and the two accounts must be linked.
 
 ## Building step-by-step
 The build steps are:
@@ -17,9 +22,18 @@ The build steps are:
 The last step is to build shaders.
 The full process about an hour on my 2017 machine.
 
+If you know that you will use a particular version of Unreal Engine then some disk space can be saved by clone a single release of the Unreal Engine repository.
+```
+git clone --depth 1 https://github.com/EpicGames/UnrealEngine.git -b 4.25.3-release .
+```
+The version name should be one of the engine tags listed on [GitHub](https://github.com/EpicGames/UnrealEngine/tags).
+
 Unreal Engine uses Unreal Build Tool to build itself and Unreal Engine projects.
 `BuildConfiguration.cs` is the ground-truth for user-configurable build options.
 Stored at `./Engine/Source/Programs/UnrealBuildTool/Configuration/BuildConfiguration.cs`.
+
+
+
 
 
 ## Modules
