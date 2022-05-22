@@ -67,6 +67,14 @@ UFUNCTION(BlueprintCallable, Category = "MyCategory")
 void MyFunction(UMyType*& OutReturn);
 ```
 
+
+If you have a Function with an Array parameter that you often want to pass an empty array to then you can add the `AutoCreateRefTerm="MyParameter"` Meta Specifier to the function. Then that pin can be left unconnected in a Blueprint graph.
+For example:
+```cpp
+UFUNCTION(BlueprintCallable, Category = "MyCategory", Meta=(AutoCreateRefTerm="MyArray")
+float Sum(const TArray<float>& MyArray)
+```
+
 [[2021-03-13_11:48:31]] [Blueprint events in C++](./Blueprint%20events%20in%20C++.md)  
 [[2020-03-09_21:34:05]] [UCLASS](./UCLASS.md)  
 [[2020-03-09_21:43:36]] [UPROPERTY](./UPROPERTY.md)  
