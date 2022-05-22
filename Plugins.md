@@ -8,7 +8,14 @@ There are templates for various types of plugins.
 Plugins can exist either in the engine installation or in the project directory.
 Engine plugins are in `<UE_ROOT>/Engine/Plugins`.
 Project plugins are in `<PROJECT_ROOT>/Plugins`.
-Creating the plugin will create a bunch of files and folders in the `Plugins` directory.
+
+Engine plugins can be disabled for a project by adding
+```json
+"DisableEnginePluginsByDefault": true
+```
+to the projct's `.uproject` file.
+
+Creating the plugin will create a bunch of files and folders in one of the `Plugins` directories.
 
 Plugins can also be created by hand.
 - Create `Plugins` directory in the project's directory.
