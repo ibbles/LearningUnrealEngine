@@ -18,6 +18,8 @@ Select the socket in the Camera's Details Panel > Sockets > Parent Socket.
 A Camera that is part of a Pawn can use the Pawn's (Player?) Controller for it's view direction.
 To enable, check Camera > Details Panel > Camera Settings > Use Pawn Control Rotation.
 
+A selected Camera can be previewed as a picture-in-picture (PiP) overlay in the main viewport by enabling Edit > Editor Preferences > Level Editor > Look and Feel > Preview Selected Cameras. Disabling it will hide the camera preview.
+
 [[2020-04-11_09:21:04]] [Pawn](./Pawn.md)  
 [[2020-04-11_09:24:51]] [Character](./Character.md)  
 [[2020-04-11_11:26:21]] [Game mode](./Game%20mode.md)  
