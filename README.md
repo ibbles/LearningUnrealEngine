@@ -1,5 +1,11 @@
 # Learning Unreal Engine
 
+
+This repository is more or less on pause while I evaluate another note taking style.
+Those notes are in the [LearningUnreal](https://github.com/ibbles/LearningUnreal) GitHub repository.
+If you found these notes useful then perhaps you will find something interesting there as well.
+
+
 This is a collection of notes that I write while learning how to use Unreal Engine.
 They are incomplete, sometimes incorrect, and meant more for recollection than instruction.
 You are not the target audience, I am.
