@@ -48,6 +48,7 @@ Can select Actors from the table rows.
 ## Unreal Insights
 
 Built-in visual profiler.
+[[2020-10-08_08:42:31]] Unreal Insights
 
 
 ## System profiler
