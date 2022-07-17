@@ -24,7 +24,7 @@ A stand-alone application is probably best. Haven't tested much yet.
 
 ## Frontend and session management
 Called Browser Mode.
-Start the target application with `-tracehost=<IP of Unreal Insights machine>`.
+Start the target application, i.e. the game or Unreal Editor, with `-tracehost=<IP of Unreal Insights machine>`.
 Unreal Insights must be started before the target application because the target application will try to connect during startup.
 Not sure if this means the entire Unreal Editor, or just when pressing Play.
 Supports user-provided samplings points for application-specific code.
