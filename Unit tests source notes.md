@@ -180,18 +180,8 @@ The former handles the case where no tests were found, so `-TextExit` never acti
 However, `;Quit` leads raises `CriticalError` and an non-zero exit code from the process.
 I way want to run without it... maybe. Not sure.
 
-I had hoped to be able to run multiple test by just listing them one after another, but that didn't work.
-It thought the entire list was a single test name.
-I tried with ',' between, but that didn't work either.
-I tried with `;RunTests <pretty-name>` after the first, but then it didn't run
-the first test and ran the second one twice.
-I tried with `;Automation RunTests <pretty-name>` after the first, but gives
-`Incorrect automation command syntax!` and then it runs only the first test.
-Trying a space-separated list with `"` around each test name, but now I get
-`Found 0 Automation Tests, based on ''\`. Where did the empty string come from?
-I give up...
-
-You can do + seperated test lists. Ex: Pretty.TestName+Pretty.TestNameTwo
+Multiple tests can be run in sequence by listing them separated by `+`.
+For example `-ExecCmds="Automation RunTests MyGame.MyClass.Test1+MyGame.MyClass.Test2"`
 
 # Automation System Overview
 
