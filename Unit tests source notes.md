@@ -106,7 +106,14 @@ bool FMyCommand::Update()
     // Use <Parameter name>, now a class member variable, to determine wheter to return true or false.
 }
 ```
-Pass the `this` `FGameTest*` get access to the `TestEqual` and so on helper functions.
+Pass the `this` `FGameTest*` to get access to the `TestEqual` and so on helper functions.
+```cpp
+DEFINE_LATENT_AUTOMATION_COMMAND_ONE_PARAMETER(FMyCommand, FGameTest*, Test);
+bool FMyCommand::Update()
+{
+    // Use Test->TestEqual, or any other public member function of FGameTest, to do the testing.
+}
+```
 Used with `ADD_LATENT_AUTOMATION_COMMAND` from within `RunTest`.
 ```c++
 ADD_LATENT_AUTOMATION_COMMAND(FMyCommand(this));
