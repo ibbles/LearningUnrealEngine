@@ -182,6 +182,8 @@ Trying a space-separated list with `"` around each test name, but now I get
 `Found 0 Automation Tests, based on ''\`. Where did the empty string come from?
 I give up...
 
+You can do + seperated test lists. Ex: Pretty.TestName+Pretty.TestNameTwo
+
 # Automation System Overview
 
 URL: https://docs.unrealengine.com/en-US/Programming/Automation/index.html
