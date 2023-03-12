@@ -3,7 +3,7 @@
 # Notation
 
 Each chapter, except for this one and the Summary, corresponds to a source. Each
-source has an URL, an author, and optinally an Unreal Engine version for which
+source has an URL, an author, and optionally an Unreal Engine version for which
 the source was written. Each line of text that state a fact from the source is a
 regular line. Each line of text that is a comment from me is prefixed with >.
 
@@ -52,7 +52,7 @@ bool FMyGameClassTest::RunTest(const FString& Parameters)
 ```
 In a complex test, `GetTests` is used to instantiate `RunTest` descriptions.
 Each instantiation has a name and a command.
-The name is appended to the name of the complext test. I think.
+The name is appended to the name of the complex test. I think.
 The command is passed as an argument to the `RunTest` function.
 Example complex text:
 ```c++
@@ -82,10 +82,11 @@ bool FMyComplexTest::RunTest(const FString& Parameters)
 ```
 Actual testing can be done with `TestEqual`, `TestLessThan` and similar helper functions.
 Cases that should print an error message are tested with `AddExpcetedError` in `RunTest`.
+
 Latent commands are scheduled for later execution, in a later frame.
 They have an `Update` method that is called every tick until `true` is returned.
 I think the latent commands are in a queue, so the next won't run until the current is finished.
-Used for asynchronous events such as map loading or just to wait for a bit.
+Used for asynchronous events such as map loading or just to wait a bit.
 Create with `DEFINE_LATENT_AUTOMATION_COMMAND` and a member function definition.
 Example:
 ```c++
@@ -93,7 +94,7 @@ DEFINE_LATENT_AUTOMATION_COMMAND(FMyLatentCommand);
 
 bool FMyLatentCommand::Update()
 {
-    return /* Some event has happened, or some criterion is true. */
+    return /* True if some event has happened, or some criterion is true. False if we need to run next tick as well. */
 }
 ```
 Can take parameters.
@@ -110,6 +111,7 @@ Used with `ADD_LATENT_AUTOMATION_COMMAND` from within `RunTest`.
 ```c++
 ADD_LATENT_AUTOMATION_COMMAND(FMyCommand(this));
 ```
+
 The `RunTest` function does not wait for the latent command to finish.
 Everything that must wait on a Latent Command must also be a Latent command.
 
@@ -119,11 +121,12 @@ Create a `FunctionalTest` Blueprint.  TODO: Check this, the YouTube video.
 
 Test plugins must be enabled before the tests can be run.
 Top Menu Bar > Edit > Plugins.
-Restart Unreal Enditor after enabling or disabling plugins.
-Run tests from the Session Frontent, Automation tab.
+Which test plugins?
+Restart Unreal Editor after enabling or disabling plugins.
+Run tests from the Session Frontend, Automation tab.
 Top Menu Bar > Window > Test Automation.
 At least one plugin with tests must be enabled for this to show up.
-There is also a stand-alone binary for the Session Frontent, called the Unreal Frontend.
+There is also a stand-alone binary for the Session Frontend, called `UnrealFrontend`.
 
 Tests are run from the command line with the following command:
 ```
@@ -155,7 +158,6 @@ The world is an `Editor` world.
 `FLoadGameMapCommand` asserts when it's an `Editor` world.
 With `-Game` I can run my world tests just fine. (Not anymore, possibly after upgrade to 4.25.)
 From the Unreal Editor Session Frontent I cannot run my world tests, because it's an `Editor` world.
-
 
 Some suggest passing `-NoPause` as well. Manual says `Close the log window automatically on exit`.
 The map passed is the map that is loaded initially.
