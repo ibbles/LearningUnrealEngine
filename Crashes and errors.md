@@ -50,7 +50,9 @@ export LD_LIBRARY_PATH
 VK_LAYER_PATH="$VULKAN_SDK/etc/vulkan/explicit_layer.d"
 export VK_LAYER_PATH
 ```
-More instructions needed.
+[The env variables can be found in Vulkan SDK documentation](https://vulkan.lunarg.com/doc/sdk/1.3.243.0/linux/getting_started.html).
+
+Set them according to your installation.
 
 ## VendorId != EGpuVendorId::Unknown
 
