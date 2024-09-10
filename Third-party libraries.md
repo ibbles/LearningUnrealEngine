@@ -235,11 +235,27 @@ I don't see any mention of Clang in any of these files, which seems like an impo
 ## ue4cli
 
 ue4cli is a tool developed to, among other things, help with building third-party libraries for Unreal Engine.
+The binary is named `ue4`.
 We are particularly interested in the [library commands @ docs.adamrehn.com](https://docs.adamrehn.com/ue4cli/overview/introduction-to-ue4cli#library-commands).
-These commands tell us that flags we need to pass at the various stages of the build pipeline.
+These commands tell us what flags we need to pass at the various stages of the build pipeline.
 They are centered around libraries shipped with Unreal Engine.
 So if you need to link against a library shipped by Unreal Engine then you can ask ue4cli what flags you need to do that.
 The standard library is considered just another lib, named `libc++`.
+
+`ue4cli` tries to auto-detect the Unreal Engine installation.
+One of the places it looks is `~/.local/share/applications/com.epicgames.UnrealEngineEditor.desktop`.
+You can also explicitly tell it which Unreal Engine installation to use with `ue4 setroot $UE_ROOT`.
+Re-enable auto-detect with `ue4 clearroot`.
+
+To learn what additional flags to pass to the various build stages when adding  another library to your build,
+also pass `--multiline --nodefaults` to make the output easier to read.
+Some commands only allow a subset for the flags.
+
+### List Of Some `ue4cli` Library Commands
+
+`ue4 libs`
+
+List all available libraries with
 
 `ue4 cmakeflags [LIBS]`
 
