@@ -32,6 +32,17 @@ The build steps are:
 The last step is to build shaders.
 The full process about an hour on my 2017 machine.
 
+The GitHub access token will expire from time to time.
+When that is about to happen you will get an email with a link to the GitHub access token regeneration page.
+Select an expiration date for the new access token. Infinite is not recommended.
+Click Generate and the new token is displayed on screen.
+This is the only time the token is shown, so be sure to copy and save it somewhere safe.
+I like to include the expiration date in the `Note` field, along with the word `UnrealEngine` and in what role I generated that token.
+The selected scopes should include at least `repo`.
+Click Update Token.
+That completes the token update.
+
+
 If you know that you will use a particular version of Unreal Engine then some disk space can be saved by clone a single release of the Unreal Engine repository.
 ```
 git clone --depth 1 https://github.com/EpicGames/UnrealEngine.git -b 4.25.3-release .
