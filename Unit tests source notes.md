@@ -3,7 +3,7 @@
 # Notation
 
 Each chapter, except for this one and the Summary, corresponds to a source. Each
-source has an URL, an author, and optinally an Unreal Engine version for which
+source has an URL, an author, and optionally an Unreal Engine version for which
 the source was written. Each line of text that state a fact from the source is a
 regular line. Each line of text that is a comment from me is prefixed with >.
 
@@ -52,7 +52,7 @@ bool FMyGameClassTest::RunTest(const FString& Parameters)
 ```
 In a complex test, `GetTests` is used to instantiate `RunTest` descriptions.
 Each instantiation has a name and a command.
-The name is appended to the name of the complext test. I think.
+The name is appended to the name of the complex test. I think.
 The command is passed as an argument to the `RunTest` function.
 Example complex text:
 ```c++
@@ -82,10 +82,11 @@ bool FMyComplexTest::RunTest(const FString& Parameters)
 ```
 Actual testing can be done with `TestEqual`, `TestLessThan` and similar helper functions.
 Cases that should print an error message are tested with `AddExpcetedError` in `RunTest`.
+
 Latent commands are scheduled for later execution, in a later frame.
 They have an `Update` method that is called every tick until `true` is returned.
 I think the latent commands are in a queue, so the next won't run until the current is finished.
-Used for asynchronous events such as map loading or just to wait for a bit.
+Used for asynchronous events such as map loading or just to wait a bit.
 Create with `DEFINE_LATENT_AUTOMATION_COMMAND` and a member function definition.
 Example:
 ```c++
@@ -93,7 +94,7 @@ DEFINE_LATENT_AUTOMATION_COMMAND(FMyLatentCommand);
 
 bool FMyLatentCommand::Update()
 {
-    return /* Some event has happened, or some criterion is true. */
+    return /* True if some event has happened, or some criterion is true. False if we need to run next tick as well. */
 }
 ```
 Can take parameters.
@@ -105,11 +106,19 @@ bool FMyCommand::Update()
     // Use <Parameter name>, now a class member variable, to determine wheter to return true or false.
 }
 ```
-Pass the `this` `FGameTest*` get access to the `TestEqual` and so on helper functions.
+Pass the `this` `FGameTest*` to get access to the `TestEqual` and so on helper functions.
+```cpp
+DEFINE_LATENT_AUTOMATION_COMMAND_ONE_PARAMETER(FMyCommand, FGameTest*, Test);
+bool FMyCommand::Update()
+{
+    // Use Test->TestEqual, or any other public member function of FGameTest, to do the testing.
+}
+```
 Used with `ADD_LATENT_AUTOMATION_COMMAND` from within `RunTest`.
 ```c++
 ADD_LATENT_AUTOMATION_COMMAND(FMyCommand(this));
 ```
+
 The `RunTest` function does not wait for the latent command to finish.
 Everything that must wait on a Latent Command must also be a Latent command.
 
@@ -119,11 +128,12 @@ Create a `FunctionalTest` Blueprint.  TODO: Check this, the YouTube video.
 
 Test plugins must be enabled before the tests can be run.
 Top Menu Bar > Edit > Plugins.
-Restart Unreal Enditor after enabling or disabling plugins.
-Run tests from the Session Frontent, Automation tab.
+Which test plugins?
+Restart Unreal Editor after enabling or disabling plugins.
+Run tests from the Session Frontend, Automation tab.
 Top Menu Bar > Window > Test Automation.
 At least one plugin with tests must be enabled for this to show up.
-There is also a stand-alone binary for the Session Frontent, called the Unreal Frontend.
+There is also a stand-alone binary for the Session Frontend, called `UnrealFrontend`.
 
 Tests are run from the command line with the following command:
 ```
@@ -156,7 +166,6 @@ The world is an `Editor` world.
 With `-Game` I can run my world tests just fine. (Not anymore, possibly after upgrade to 4.25.)
 From the Unreal Editor Session Frontent I cannot run my world tests, because it's an `Editor` world.
 
-
 Some suggest passing `-NoPause` as well. Manual says `Close the log window automatically on exit`.
 The map passed is the map that is loaded initially.
 Some suggest passing `-Messaging` as well. Not documented at [CommandLineArguments@docs.unrealengine.com](https://docs.unrealengine.com/en-US/Programming/Basics/CommandLineArguments/index.html).
@@ -171,16 +180,8 @@ The former handles the case where no tests were found, so `-TextExit` never acti
 However, `;Quit` leads raises `CriticalError` and an non-zero exit code from the process.
 I way want to run without it... maybe. Not sure.
 
-I had hoped to be able to run multiple test by just listing them one after another, but that didn't work.
-It thought the entire list was a single test name.
-I tried with ',' between, but that didn't work either.
-I tried with `;RunTests <pretty-name>` after the first, but then it didn't run
-the first test and ran the second one twice.
-I tried with `;Automation RunTests <pretty-name>` after the first, but gives
-`Incorrect automation command syntax!` and then it runs only the first test.
-Trying a space-separated list with `"` around each test name, but now I get
-`Found 0 Automation Tests, based on ''\`. Where did the empty string come from?
-I give up...
+Multiple tests can be run in sequence by listing them separated by `+`.
+For example `-ExecCmds="Automation RunTests MyGame.MyClass.Test1+MyGame.MyClass.Test2"`
 
 # Automation System Overview
 
