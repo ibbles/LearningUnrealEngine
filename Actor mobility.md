@@ -8,7 +8,7 @@ The restrictions are often a list of Details Panel settings that may not be chan
 The main advantage of reduced mobility is the improved performance that can be gained from precomputation or algorithms that can take advantage of the reduced state space.
 Mobility is set in the Actor's Details Panel, right below the transformation widget.
 
-![DetailsPanel-Transform](./Images/DetailsPanel-Transform.png)
+![DetailsPanel-Transform](./Images/DetailsPanel-Transform.jpg)
 
 - Static: The Actor can never move and extra Actor type specific restrictions apply.
 - Stationary: The Actor can never move, but the extra Actor type specific restrictions are loosened.

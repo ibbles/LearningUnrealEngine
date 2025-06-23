@@ -301,7 +301,7 @@ The Collision Profiles are part of the Project Settings.
 The can be found under Engine > Collisions.
 The fact that it's a Project Settings Panel and not a Panel for something in the level may influence how it is implemented.
 
-![Screenshot](Images/DetailsCustomizationExamples_CollisionProfileDetails.png)
+![Screenshot](Images/DetailsCustomizationExamples_CollisionProfileDetails.jpg)
 
 It contains a few collapsible groups, for Object Channels, Trace Channels, and Preset, each with some buttons and a table.
 
@@ -366,7 +366,7 @@ TraceChannelList.Add(MakeShareable(
 The widgets are created with Slate expressions.
 Here I'll focus on the Object Channels Category.
 
-![ObjectChannels](./Images/DetailsCustomizationExamples_CollisionProfileDetails_Object.png)
+![ObjectChannels](./Images/DetailsCustomizationExamples_CollisionProfileDetails_Object.jpg)
 
 The entire thing is held in a Custom Row, created with `IDetailCategoryBuilder::AddCustomRow`.
 The sole member of the Custom Row is a Vertical Box.

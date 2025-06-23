@@ -7,7 +7,7 @@ The transformed object can be an Actor in the level, a Component in an Actor, or
 By "attribute" I mean anything that a Component might have, often a UProperty.
 For example one of the control points of a spline.
 
-![A transformation widget on a spline control point](Images/ComponentVisualiser_WidgetLocation_example.png)
+![A transformation widget on a spline control point](Images/ComponentVisualiser_WidgetLocation_example.jpg)
 
 The editor provide code for transforming Actors and Components, but custom attributes require custom code.
 The custom code lives in the Component Visualizer associated with the Component type.

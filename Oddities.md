@@ -36,7 +36,7 @@ I have a keyboard event and two integers, `Last` and `Current`.
 When the event is fired I randomly regenerate `Current` until it's different from `Last`.
 When different I set `Last` to the value of `Current` and then end the execution.
 
-![Why back to loop?](./Images/why_back_to_loop.png)
+![Why back to loop?](./Images/why_back_to_loop.jpg)
 
 This should implement the following:
 ```c++

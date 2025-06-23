@@ -34,7 +34,7 @@ Target:
     Not sure what the "extra" means. Is there a list of non-additional modules that are always included?
 
 
-![modues_targets_and_builds](./Images/modules_targets_and_builds.png)
+![modues_targets_and_builds](./Images/modules_targets_and_builds.jpg)
 
 
 [Gameplay Modules @ docs.unrealengine.com](https://docs.unrealengine.com/en-US/ProgrammingAndScripting/GameplayArchitecture/Gameplay/index.html)  
